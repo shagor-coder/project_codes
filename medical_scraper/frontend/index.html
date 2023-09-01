@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraping App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script>
+        function toggleLoginFields() {
+            const loginFields = document.getElementById('loginFields');
+            loginFields.style.display = document.getElementById('needsLogin').checked
+                ? 'block'
+                : 'none';
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto py-10">
+        <h1 class="text-3xl font-semibold text-center mb-5">Welcome to the Web Scraping App</h1>
+        <form class="max-w-md mx-auto p-5 bg-white rounded-lg shadow-md" action="/scrape" method="post" id="scrapeForm">
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="url">URL:</label>
+                <input class="mt-1 px-3 py-2 w-full border rounded-md" type="url" name="url" id="url" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="mainProductCardSelector">Main Product Card
+                    Selector:</label>
+                <input class="mt-1 px-3 py-2 w-full border rounded-md" type="text" name="mainProductCardSelector"
+                    id="mainProductCardSelector">
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="productSelector">Product Name
+                    Selector:</label>
+                <input class="mt-1 px-3 py-2 w-full border rounded-md" type="text" name="productSelector"
+                    id="productSelector">
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="priceSelector">Price Selector:</label>
+                <input class="mt-1 px-3 py-2 w-full border rounded-md" type="text" name="priceSelector"
+                    id="priceSelector">
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="needsLogin">
+                    <input type="checkbox" id="needsLogin" onclick="toggleLoginFields()">
+                    Requires Login?
+                </label>
+            </div>
+            <div id="loginFields" style="display: none;">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700" for="loginUrl">Login URL:</label>
+                    <input class="mt-1 px-3 py-2 w-full border rounded-md" type="url" name="loginUrl" id="loginUrl">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700" for="email">Email:</label>
+                    <input class="mt-1 px-3 py-2 w-full border rounded-md" type="email" name="email" id="email">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700" for="password">Password:</label>
+                    <input class="mt-1 px-3 py-2 w-full border rounded-md" type="password" name="password"
+                        id="password">
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none"
+                    type="submit">Scrape Data</button>
+            </div>
+        </form>
+        <div id="resultContainer" class="mt-8"></div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

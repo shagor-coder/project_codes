@@ -1,0 +1,162 @@
+.sidebar-v2-location/* Button */
+#canny_logs-toggle {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Button */
+#recent_activities-toggle {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Button */
+#hl_header--help-icon {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Launchpad */
+#sb_launchpad {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Dashboard */
+#sb_dashboard {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Payments */
+#sb_payments {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Automation */
+#sb_automation {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Sites */
+#sb_sites {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Reputation */
+#sb_reputation {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Reporting */
+#sb_reporting {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Division */
+.transition-slowest .flex-col .overflow-hidden .lg\:justify-between {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Justify between */
+#globalSearchOpener .justify-between {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Global search opener */
+#globalSearchOpener {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Quick actions */
+#quickActions {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Division */
+.transition-slowest .flex-col .md\:flex-col {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Agency logo container */
+.transition-slowest .flex-col .agency-logo-container {
+	min-height: 136px !important;
+	transform: translatex(0px) translatey(0px) !important;
+}
+
+.sidebar-v2-location/* Image */
+.transition-slowest .flex-col .overflow-hidden .agency-logo-container img {
+	width: 141px !important;
+	max-width: 141px !important;
+	min-height: 140px !important;
+}
+
+.sidebar-v2-location/* Span Tag */
+.flex-nowrap p span {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Span Tag */
+#tb_pipeline span {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Bulk actions */
+#tb_bulk-actions {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Contacts restore */
+#tb_contacts-restore {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Business */
+#tb_business {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Contacts settings top */
+#tb_contacts-settings-top {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Contact custom fields settings */
+#tb_contact-custom-fields-settings {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Custom fields settings */
+#sb_custom-fields-settings {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Span Tag */
+#tb_email-builder span {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Span Tag */
+#tb_email-templates span {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Span Tag */
+#tb_trigger-links span {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Affiliate manager */
+#tb_affiliate-manager {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Email builder */
+#tb_email-builder {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Email templates */
+#tb_email-templates {
+	display: none !important;
+}
+
+.sidebar-v2-location/* Trigger links */
+#tb_trigger-links {
+	display: none !important;
+}

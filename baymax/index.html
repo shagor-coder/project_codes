@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+  <style>
+    ._targetStatesMain {
+      position: relative;
+      width: 100%;
+      border: 1px solid #d1d5db;
+      border-radius: 5px;
+      background-color: #fff;
+      min-height: 42px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 4px 15px;
+    }
+
+    ._currentStatesMain {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    ._currentStatesMain ._placeholder {
+      font-size: 14px;
+      font-weight: 400;
+      color: #00000094;
+      font-family: "Montserrat", sans-serif;
+      text-align: left;
+      width: 100%;
+    }
+
+    ._currentStatesMain ._currentStates {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    ._currentStatesMain ._currentStates span {
+      font-size: 14px;
+      font-weight: 400;
+      color: #000;
+      font-family: "Montserrat", sans-serif;
+      background-color: #bbbbbb;
+      padding: 3px;
+      border-radius: 3px;
+      cursor: pointer;
+      margin-right: 3px;
+    }
+
+    ._targetStatesMain ._statesOptions {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 100%;
+      padding: 5px 0 0 0;
+      background-color: #fff;
+      border-radius: 5px;
+      max-height: 400px;
+      overflow-y: auto;
+      box-shadow: 0 3px 10px rgb(0 0 0 / 15%);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease-out;
+      z-index: 9999;
+    }
+
+    ._targetStatesMain:hover ._statesOptions {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    ._targetStatesMain ._statesOptions label {
+      font-size: 14px;
+      font-weight: 400;
+      color: #000;
+      font-family: "Montserrat", sans-serif;
+      padding: 4px 16px;
+      border-radius: 3px;
+      cursor: pointer;
+      margin-right: 3px;
+      transition: all 0.3s ease-out;
+      min-width: 300px;
+    }
+
+    ._targetStatesMain ._statesOptions label:hover {
+      background-color: #bbbbbb;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module" src="./updateInfo.js"></script>
+</body>
+
+</html>
