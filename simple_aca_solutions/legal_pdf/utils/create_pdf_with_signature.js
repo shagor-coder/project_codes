@@ -58,7 +58,7 @@ async function createPdfWithSignature(req, res) {
 			'\n',
 			'\n',
 			'\n',
-			`I, ${full_name}, affirm that I have submitted my information to ${name} to sign up for, the federally regulated, $0 health insurance plan, on ${authorizationDate}, and would like them to be my agent on record.`,
+			`I, ${full_name}, affirm that I have submitted my information to ${name} to sign up for, the federally regulated, $0 health insurance plan, on ${new Date().toDateString()}, and would like them to be my agent on record.`,
 
 			'\n',
 			'\n',
