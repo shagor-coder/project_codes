@@ -9,7 +9,19 @@ Route.post(
 	'/create',
 	get_webhook_data,
 	createPdfWithSignature,
-	post_pdf_to_contact
+	async (request, response) => {
+		try {
+			await post_pdf_to_contact(request, response);
+
+			response.status(200).json({
+				message: 'The PDF is Updated!!!',
+			});
+		} catch (error) {
+			response.status(500).json({
+				message: 'The PDF Update Failed!!!',
+			});
+		}
+	}
 );
 
 module.exports = Route;

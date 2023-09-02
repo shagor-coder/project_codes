@@ -28,8 +28,6 @@ async function post_pdf_to_contact(request, response) {
 		eventData: eventData,
 	};
 
-	console.log(fd);
-
 	const pdfReadableStream = new stream.Readable();
 	pdfReadableStream._read = () => {};
 	pdfDoc.on('data', (chunk) => pdfReadableStream.push(chunk));
@@ -53,22 +51,15 @@ async function post_pdf_to_contact(request, response) {
 			};
 
 			const contact = await axios.request(config);
-			console.log(contact.data);
 			return contact;
 		} catch (error) {
 			console.log(error);
 		}
 	});
+
 	pdfDoc.end();
 
-	try {
-		response.status(200).json({
-			message: 'PDF creation and posting successful',
-		});
-	} catch (error) {
-		console.error(error);
-		response.status(500).json({ error: 'An error occurred' });
-	}
+	return true;
 }
 
 module.exports = post_pdf_to_contact;
