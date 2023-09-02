@@ -1,4 +1,4 @@
-function get_webhook_data(req, res, next) {
+function get_webhook_data(req, res) {
 	const {
 		contact_id,
 		full_name,
@@ -54,6 +54,5 @@ function get_webhook_data(req, res, next) {
 		surveypage_url,
 	};
 	req.formatted_data = formatted_data;
-	next();
 }
 module.exports = get_webhook_data;
