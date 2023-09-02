@@ -23,8 +23,8 @@ async function post_pdf_to_contact(request, response) {
 	const fd = {
 		full_name: full_name,
 		email: email,
-		formId: surveyId,
-		location_id: location_id,
+		formId: surveyId.trim(),
+		location_id: location_id.trim().trim(),
 		eventData: eventData,
 	};
 
@@ -50,7 +50,9 @@ async function post_pdf_to_contact(request, response) {
 				data: fData,
 			};
 
-			await axios.request(config);
+			const contact = await axios.request(config);
+			console.log(contact.data);
+			return contact;
 		} catch (error) {
 			console.log(error);
 		}
