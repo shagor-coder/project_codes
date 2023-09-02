@@ -24,7 +24,7 @@ async function post_pdf_to_contact(request, response) {
 		full_name: full_name,
 		email: email,
 		formId: surveyId.trim(),
-		location_id: location_id.trim().trim(),
+		location_id: location_id.trim(),
 		eventData: eventData,
 	};
 
@@ -58,6 +58,15 @@ async function post_pdf_to_contact(request, response) {
 		}
 	});
 	pdfDoc.end();
+
+	try {
+		response.status(200).json({
+			message: 'PDF creation and posting successful',
+		});
+	} catch (error) {
+		console.error(error);
+		response.status(500).json({ error: 'An error occurred' });
+	}
 }
 
 module.exports = post_pdf_to_contact;

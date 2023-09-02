@@ -5,17 +5,11 @@ const Router = require('express').Router;
 
 const Route = Router();
 
-Route.post('/create', get_webhook_data, async (request, response) => {
-	try {
-		await createPdfWithSignature(request, response);
-		await post_pdf_to_contact(request, response);
-		response.status(200).json({
-			message: 'PDF creation and posting successful',
-		});
-	} catch (error) {
-		console.error(error);
-		response.status(500).json({ error: 'An error occurred' });
-	}
-});
+Route.post(
+	'/create',
+	get_webhook_data,
+	createPdfWithSignature,
+	post_pdf_to_contact
+);
 
 module.exports = Route;

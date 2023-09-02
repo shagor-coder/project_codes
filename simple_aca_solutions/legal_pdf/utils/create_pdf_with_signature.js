@@ -1,7 +1,7 @@
 const PdfPrinter = require('pdfmake');
 const { default: axios } = require('axios');
 
-async function createPdfWithSignature(req, res) {
+async function createPdfWithSignature(req, res, next) {
 	const {
 		authorizationSignature,
 		ip,
