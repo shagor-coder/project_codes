@@ -54,6 +54,8 @@ function get_webhook_data(req, res, next) {
 		surveypage_url,
 	};
 
+	console.log(formatted_data);
+
 	req.formatted_data = formatted_data;
 	next();
 }
