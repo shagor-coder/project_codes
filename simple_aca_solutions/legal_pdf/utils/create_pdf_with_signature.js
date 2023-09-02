@@ -82,6 +82,8 @@ async function createPdfWithSignature(req, res, next) {
 	var pdfDoc = printer.createPdfKitDocument(pdfDefinition);
 
 	req.pdfDoc = pdfDoc;
+
+	next();
 }
 
 module.exports = createPdfWithSignature;

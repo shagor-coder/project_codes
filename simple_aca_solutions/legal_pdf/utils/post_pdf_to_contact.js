@@ -28,6 +28,8 @@ async function post_pdf_to_contact(request, response) {
 		eventData: eventData,
 	};
 
+	console.log(fd);
+
 	const pdfReadableStream = new stream.Readable();
 	pdfReadableStream._read = () => {};
 	pdfDoc.on('data', (chunk) => pdfReadableStream.push(chunk));
