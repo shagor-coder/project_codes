@@ -1,0 +1,190 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+/* Start Root CSS */
+:root {
+	--main-container-max-width: 800px;
+	--main-container-background-color: #fff;
+	--main-container-border: none;
+
+	--main-brand-color: #29b2e6;
+	--all-input-bg-color: #d9d9d9;
+	--all-input-hover-bg-color: #d9d9d9;
+	--all-input-box-shadow: inset 10px 10px 20px rgb(0 0 0 / 5%);
+	--all-input-border-color: transparent;
+	--all-input-border-hover: #29b2e6;
+	--all-input-max-height: 70px;
+	--all-input-min-height: 70px;
+	--all-input-max-width: 565px;
+
+	--main-label-font-weight: 700;
+	--main-label-color: #000000;
+	--main-label-font-size: 22px;
+	--main-label-font-family: 'Roboto', sans-serif;
+
+	--placeholder-font-color: #00000084;
+	--main-placeholder-font-size: 16px;
+	--placeholder-font-weight: 400;
+	--all-input-placeholder-font-family: 'Roboto', sans-serif;
+
+	--all-input-font-color: #000000;
+	--all-input-font-size: 16px;
+	--all-input-font-weight: 400;
+	--all-input-font-family: 'Roboto', sans-serif;
+	--all-border-radius: 3px;
+	--all-inputs-border: 1px solid var(--all-input-border-color);
+
+	--footer-button-bg: #29b2e6;
+	--footer-button-font-color: #ffffff84;
+	--footer-button-hover-bg: #1688b5;
+	--footer-button-hover-font-color: #ffffff;
+	--footer-button-font-size: 16px;
+	--footer-button-font-weight: 600;
+	--footer-button-font-family: 'Roboto', sans-serif;
+	--footer-button-border-radius: 10px;
+
+	--transition-all: all 0.3s ease-in-out;
+}
+
+.hl-app,
+#form-builder.hl_wrapper--inner,
+.hl_form-builder--main,
+.ghl-form-wrap,
+#_builder-form.ghl-survey-form {
+	width: 100% !important;
+	padding: 0 !important;
+	margin: 0 auto !important;
+	border: none !important;
+	background: transparent !important;
+	max-width: var(--main-container-max-width) !important;
+}
+
+/* Start Common Inputs CSS */
+
+.hl-app #_builder-form .menu-field-wrap .form-builder--item > label {
+	font-size: var(--main-label-font-size) !important;
+	font-weight: var(--main-label-font-weight) !important;
+	font-family: var(--main-label-font-family) !important;
+	color: var(--main-label-color) !important;
+	text-align: left !important;
+	margin-bottom: 15px !important;
+	width: 100% !important;
+}
+
+.hl-app #_builder-form .form-builder--item {
+	padding-left: 0px !important ;
+	padding-right: 0px !important ;
+}
+
+body
+	.c-form
+	#_builder-form
+	.form-builder--item
+	input[type='text'][class='form-control'],
+body .c-form #_builder-form .form-builder--item .date-picker-custom-style,
+body .c-form #_builder-form .form-builder--item input[type='number'] {
+	background: var(--all-input-bg-color) !important;
+	transition: var(--transition-border) !important;
+	font-size: var(--all-input-font-size) !important;
+	color: var(--all-input-font-color) !important;
+	font-family: var(--all-input-font-family) !important;
+	font-weight: var(--all-input-font-weight) !important;
+	border-radius: var(--all-border-radius) !important;
+	box-shadow: var(--all-input-box-shadow) !important;
+	border: var(--all-inputs-border) !important;
+}
+
+.hl-app #_builder-form input:-internal-autofill-selected {
+	background: var(--all-input-hover-bg-color) !important;
+}
+
+.hl-app #_builder-form .form-builder--item input::placeholder {
+	font-size: var(--main-placeholder-font-size) !important;
+	color: var(--placeholder-font-color) !important;
+	font-weight: var(--placeholder-font-weight) !important;
+	font-family: var(--all-input-placeholder-font-family) !important;
+}
+.hl-app #_builder-form .form-builder--item .form-control:not(textarea),
+.hl-app #_builder-form .countryphone {
+	background-color: var(--all-input-bg-color) !important;
+	border: var(--all-inputs-border) !important;
+	min-height: var(--all-input-min-height) !important;
+	max-height: var(--all-input-max-height) !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	transition: var(--transition-border) !important;
+	font-size: var(--all-input-font-size) !important;
+	color: var(--all-input-font-color) !important;
+	font-family: var(--all-input-font-family) !important;
+	font-weight: var(--all-input-font-weight) !important;
+	border-radius: var(--all-border-radius) !important;
+	box-shadow: var(--all-input-box-shadow) !important;
+	transition: var(--transition-all) !important;
+}
+
+.hl-app #_builder-form .form-builder--item .form-control:hover,
+.hl-app #_builder-form .countryphone:hover,
+.hl-app #_builder-form .form-builder--item .form-control:focus,
+.hl-app #_builder-form .countryphone:focus {
+	border-color: var(--all-input-border-hover) !important;
+	box-shadow: var(--all-input-hover-box-shadow) !important;
+	background-color: var(--all-input-hover-bg-color) !important;
+}
+
+body
+	.c-form
+	#_builder-form
+	.form-builder--item
+	input[type='text'][class='form-control']:hover,
+body
+	.c-form
+	#_builder-form
+	.form-builder--item
+	input[type='text'][class='form-control']:focus {
+	border-color: var(--all-input-border-hover) !important;
+	box-shadow: var(--all-input-hover-box-shadow) !important;
+	background-color: var(--all-input-hover-bg-color) !important;
+}
+
+.hl-app #_builder-form button[type='submit'] {
+	margin: 0 auto !important;
+	width: 100% !important;
+	min-height: 70px !important;
+	padding: 10px 25px !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	max-height: 100% !important;
+	position: relative !important;
+	z-index: 10 !important;
+	border-radius: var(--footer-button-border-radius) !important;
+	background-color: var(--footer-button-bg) !important;
+	transition: var(--transition-all) !important;
+}
+
+.hl-app #_builder-form button[type='submit'] > div {
+	color: var(--footer-button-font-color) !important;
+	font-size: var(--footer-button-font-size) !important;
+	font-weight: var(--footer-button-font-weight) !important;
+	font-family: var(--footer-button-font-family) !important;
+	transition: var(--transition-all) !important;
+}
+
+.hl-app #_builder-form button[type='submit']:hover {
+	background-color: var(--footer-button-hover-bg) !important;
+}
+.hl-app #_builder-form button[type='submit']:hover > div {
+	color: var(--footer-button-hover-font-color) !important;
+}
+
+@media (max-width: 768px) {
+	:root {
+		--all-input-max-height: 42px;
+		--all-input-min-height: 42px;
+		--main-placeholder-font-size: 14px;
+		--all-input-font-size: 14px;
+		--footer-button-font-size: 14px;
+	}
+
+	.hl-app #_builder-form button[type='submit'] {
+		min-height: 42px !important;
+	}
+}

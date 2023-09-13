@@ -51,7 +51,7 @@ async function post_pdf_to_contact(request, response) {
 			};
 
 			const contact = await axios.request(config);
-			return contact;
+			return contact.data;
 		} catch (error) {
 			console.log(error);
 		}
