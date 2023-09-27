@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Give</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Give Donation</h1>
+        <form id="payment-form">
+            <div class="info-card">
+                <div class="panel-body">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" placeholder="0.00" required>
+                    <div class="error-message">Please enter an amount</div>
+                </div>
+                <div class="panel-tabs">
+                    <label class="tab-label" for="give-one-time">Gift Type:</label>
+                    <div class="tab-inputs">
+                        <input type="radio" id="give-one-time" name="GiftType" value="Give One Time">
+                        <label for="give-one-time">Give one time</label>
+                        <input type="radio" id="set-up-recurring" name="GiftType" value="Set Up Recurring" required
+                            checked>
+                        <label for="set-up-recurring">Set up recurring</label>
+                    </div>
+                </div>
+                <div class="panel-tabs" id="frequency-options">
+                    <label class="tab-label" for="every-week">Frequency:</label>
+                    <div class="tab-inputs">
+                        <input type="radio" id="every-week" name="Frequency" value="Every Week" checked '{{}}'>
+                        <label for="every-week">Every week</label>
+                        <input type="radio" id="every-2-weeks" name="Frequency" value="Every 2 Week">
+                        <label for="every-2-weeks">Every 2 weeks</label>
+                        <input type="radio" id="every-month" name="Frequency" value="every-month">
+                        <label for="every-month">Every month</label>
+                        <input type="radio" id="1st-15th-monthly" name="Frequency" value="1 15 Month">
+                        <label for="1st-15th-monthly">1st & 15th monthly</label>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <label for="StartDate">Starting Date</label>
+                    <input class=" hidden" type="text" id="StartDate115th" name="StartDate" aria-invalid="false"
+                        aria-required="true" required>
+                    <input type="text" id="StartDateAll" name="StartDate" aria-invalid="false" aria-required="true"
+                        required>
+                </div>
+                <div class="panel-body">
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">I'd like to help cover the fees associated
+                            with my donation.</label>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <label for="giving-type">Giving Type</label>
+                    <select id="giving-type" name="GivingType">
+                    </select>
+                </div>
+                <div class="panel-footer">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#paymentModal">Next</button>
+                </div>
+            </div>
+
+        </form>
+
+
+
+
+
+        <!-- Payment Card -->
+        <form>
+
+            <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="paymentModalLabel">Payment Information</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="payment-card">
+                                <div class="card-inputs">
+                                    <div class="input-field">
+                                        <label for="card-name">Cardholder Name</label>
+                                        <input type="text" id="card-name" placeholder="Cardholder Name">
+                                    </div>
+                                    <div class="input-field d-flex align-items-stretch justify-content-between">
+                                        <div class="number flex-lg-fill">
+                                            <label for="card-number">Card Number</label>
+                                            <input type="text" id="card-number" placeholder="Card Number">
+                                        </div>
+
+                                        <div class="card-brand d-flex align-items-end justify-content-between ms-2">
+                                            <span>
+                                                <i class="far fa-credit-card"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="expiry-date">Expiration Date</label>
+                                        <input type="text" id="expiry-date" placeholder="MM/YY">
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="cvv">CVV</label>
+                                        <input type="text" id="cvv" placeholder="CVV">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class=" w-100">
+                                <button type="submit">Pay</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>

@@ -2,10 +2,11 @@
 	--nav-menus-background-color: #dbf1e6 !important;
 	--nav-menu-text-color: #040508 !important;
 	--nav-menu-icon-color: #ffffff !important;
-	--nav-hover-background-color: #131111 !important;
+	--nav-hover-background-color: #2e2e97 !important;
 	--nav-hover-font-color: #ffffff !important;
 	--location-switcher-background-color: #ffffff !important;
-	--sidebar-agency-back-button: #00bf63 !important;
+	--location-switcher-text-color: #333;
+	--sidebar-agency-back-button: #62c341 !important;
 	--sidebar-backbutton-font-color: #fff;
 	--sidebar-backbutton-font-size: 16px;
 	--sidebar-backbutton-font-weight: 600;
@@ -13,11 +14,11 @@
 	/* Cards */
 	--cards-border-radius: 10px;
 	--cards-boxshadow: 3px 5px 10px #13111136 !important;
-	--card-header-background-color: #00bf63 !important;
+	--card-header-background-color: #62c341 !important;
 	--card-header-text-color: #ffffff !important;
-	--button-background-color: #00bf63 !important;
+	--button-background-color: #62c341 !important;
 	--button-text-color: #ffffff !important;
-	--tw-ring-color: #00bf63 !important;
+	--tw-ring-color: #62c341 !important;
 
 	/* Search Opener */
 	--dashboard-search-opener-bg: #fff;
@@ -61,7 +62,6 @@ nav a {
 #sidebar-v2 .text-white,
 nav .text-white,
 nav span {
-	--tw-text-opacity: 1;
 	color: var(--nav-menu-text-color) !important;
 }
 
@@ -84,6 +84,11 @@ nav a:hover span {
 	color: var(--nav-hover-font-color) !important;
 }
 
+nav a img,
+nav a img {
+	filter: invert(1) !important;
+}
+
 nav a.active img,
 nav a:hover img {
 	filter: invert(0) !important;
@@ -91,11 +96,15 @@ nav a:hover img {
 
 nav a#sb_launchpad:hover img,
 nav a.active#sb_launchpad img {
-	filter: invert(1) !important;
+	filter: invert(0) !important;
 }
 
 #location-switcher-sidbar-v2 {
 	background: var(--location-switcher-background-color) !important;
+}
+
+#location-switcher-sidbar-v2 .hl_location-text span {
+	color: var(--location-switcher-text-color) !important;
 }
 
 #sb_other-settings {

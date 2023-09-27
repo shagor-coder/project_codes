@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="form">
+        <table>
+            <tr>
+                <td>Method</td>
+                <td><input type="text" name="Method" value="CreditCardAuthorize" /></td>
+            </tr>
+            <tr>
+                <td>Terminal ID</td>
+                <td><input type="text" name="TerminalId" value="1000272271515" /></td>
+            </tr>
+            <tr>
+                <td>Terminal Key</td>
+                <td><input type="text" name="TerminalKey" value="B90F4002-0283-4D59-A7F2-7187F3D8F84C" /></td>
+            </tr>
+            <tr>
+                <td>Card Number</td>
+                <td><input type="text" name="AccountInfo" value="4111111111111111" /></td>
+            </tr>
+            <tr>
+                <td>Expiration Date [MMYY]</td>
+                <td><input type="text" name="ExpirationInfo" value="1219" /></td>
+            </tr>
+            <tr>
+                <td>Amount</td>
+                <td><input type="text" name="Amount" value="1.00" /></td>
+            </tr>
+            <tr>
+                <td>Reference Number</td>
+                <td><input type="text" name="ReferenceNumber" value="XYZ123" /></td>
+            </tr>
+            <tr>
+                <td> Customer IP</td>
+                <td><input type="text" name="CustomerIP" value="123.123.123.123" /></td>
+            </tr>
+            <tr>
+                <td>CVV2</td>
+                <td><input type="text" name="CVV2" value="123" /></td>
+            </tr>
+            <tr>
+                <td>Response URL</td>
+                <td><input type="text" name="ResponseURL" value="" /></td>
+            </tr>
+            <tr>
+                <td>Callback URL</td>
+                <td><input type="text" name="CallbackURL" value="" /></td>
+            </tr>
+            <tr>
+                <td>Cardholder Name</td>
+                <td><input type="text" name="CardHolderName" value="John Doe" /></td>
+            </tr>
+            <tr>
+                <td>Billing Address</td>
+                <td><input type="text" name="BillingAddress" value="123 Main St" /></td>
+            </tr>
+            <tr>
+                <td>Billing City</td>
+                <td><input type="text" name="BillingCity" value="City" /></td>
+            </tr>
+            <tr>
+                <td>Billing State</td>
+                <td><input type="text" name="BillingState" value="ST" /></td>
+            </tr>
+            <tr>
+                <td>Billing Zip</td>
+                <td><input type="text" name="BillingZip" value="000000" /></td>
+            </tr>
+            <tr>
+                <td>Billing Country</td>
+                <td><input type="text" name="BillingCountry" value="Country" /></td>
+            </tr>
+        </table>
+        <input type="submit" value="Submit" />
+    </form>
+
+    <script>
+        const form = document.querySelector("#form");
+        const url = 'https://gateway.paymentworld.com';
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            const formDataObj = {};
+
+            formData.forEach((value, key) => {
+                formDataObj[key] = value;
+            });
+
+            try {
+                const request = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formDataObj)
+                });
+
+                const res = await request.json();
+                console.log(res);
+            } catch (error) {
+                console.log(error);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
