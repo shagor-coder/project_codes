@@ -1,0 +1,120 @@
+<div class="container">
+    <h1>Give Donation</h1>
+    <div class="info-card">
+        <div class="panel-body">
+            <label for="amount">Amount</label> <input id="amount" required="" type="number" placeholder="0.00" />
+            <div class="error-message">Please enter an amount</div>
+        </div>
+        <div class="panel-tabs">
+            <label class="tab-label" for="give-one-time">Gift Type:</label>
+            <div class="tab-inputs"><input id="give-one-time" name="GiftType" type="radio" value="Give One Time" />
+                <label for="give-one-time">Give one time</label> <input id="set-up-recurring" checked="checked"
+                    name="GiftType" required="" type="radio" value="Set Up Recurring" /> <label
+                    for="set-up-recurring">Set up recurring</label>
+            </div>
+        </div>
+        <div id="frequency-options" class="panel-tabs">
+            <label class="tab-label" for="every-week">Frequency:</label>
+            <div class="tab-inputs"><input id="every-week" checked="checked" name="Frequency" type="radio"
+                    value="Every Week" /> <label for="every-week">Every week</label> <input id="every-2-weeks"
+                    name="Frequency" type="radio" value="Every 2 Week" /> <label for="every-2-weeks">Every 2
+                    weeks</label> <input id="every-month" name="Frequency" type="radio" value="every-month" /> <label
+                    for="every-month">Every month</label> <input id="1st-15th-monthly" name="Frequency" type="radio"
+                    value="1st & 15th monthly" /> <label for="1st-15th-monthly">1st &amp; 15th monthly</label>
+            </div>
+        </div>
+        <div class="panel-body"><label for="StartDate">Starting Date</label> <input id="StartDate115th" class=" hidden"
+                name="StartDate" required="" type="text" aria-invalid="false" aria-required="true" /> <input
+                id="StartDateAll" name="StartDate" required="" type="text" aria-invalid="false" aria-required="true" />
+        </div>
+        <div class="panel-body">
+            <div class="mb-1 form-check"><input id="coverExpense" class="form-check-input" checked="checked"
+                    type="checkbox" /> <label class="form-check-label" for="coverExpense"> I'd like to help cover the
+                    fees associated with my donation <i class="fas fa-info-circle"></i> </label>
+            </div>
+            <div id="new_total" class=" visually-hidden text-primary fs-6 text-start"> </div>
+        </div>
+        <div class="panel-body">
+            <label for="BillingAddress">Address</label> <input id="BillingAddress" name="BillingAddress" type="text"
+                placeholder="Street Address" required />
+        </div>
+        <div class="panel-body">
+            <label for="BillingZip">Zip</label> <input id="BillingZip" name="BillingZip" type="text"
+                placeholder="Zip Code" required />
+        </div>
+        <div class="panel-body">
+            <label for="BillingCity">City</label> <input id="BillingCity" name="BillingCity" type="text"
+                placeholder="City" required />
+        </div>
+        <div class="panel-body">
+            <label for="BillingState">State</label> <input id="BillingState" name="BillingState" type="text"
+                placeholder="State" required />
+        </div>
+        <div class="panel-body"><label for="giving-type">Giving Type</label><select id="giving-type"
+                name="GivingType"></select></div>
+        <div class="panel-footer"><button id="info_button" class="btn btn-primary" disabled="disabled" type="button"
+                data-bs-toggle="modal" data-bs-target="#paymentModal">Next</button></div>
+    </div>
+    <!-- Payment Card -->
+    <div id="paymentModal" class="modal fade" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="paymentModalLabel" class="modal-title">Payment Information</h5>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="payment-card">
+                        <div class="card-inputs">
+                            <div class="input-field"><label for="card-name">Cardholder Name</label> <input
+                                    id="card-name" name="CardHolderName" type="text" placeholder="Cardholder Name" />
+                            </div>
+                            <div class="input-field d-flex align-items-stretch justify-content-between">
+                                <div class="number flex-lg-fill"><label for="card-number">Card Number</label> <input
+                                        id="card-number" maxlength="16" name="AccountInfo" type="text"
+                                        placeholder="Card Number" /></div>
+                                <div class="card-brand d-flex align-items-end justify-content-between ms-2">
+                                    <span>
+                                        <i class="far fa-credit-card"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="input-field"><label for="expiry-date">Expiration Date</label> <input
+                                    id="expiry-date" maxlength="5" name="ExpirationInfo" type="text"
+                                    placeholder="MM/YY" /></div>
+                            <div class="input-field"><label for="cvv">CVV</label> <input id="cvv" maxlength="3"
+                                    name="CVV2" type="text" placeholder="CVV" /></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class=" w-100"><button id="payButton" class="btn btn-primary" disabled="disabled" type="button"
+                            data-bs-toggle="modal" data-bs-target="#confirmationModal"
+                            data-bs-dismiss="modal">Pay</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Confirmation Card -->
+    <div id="confirmationModal" class="modal fade" tabindex="-1" aria-labelledby="confirmationModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="confirmationModalLabel" class="modal-title">Confirmation</h5>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"
+                        data-bs-toggle="modal" data-bs-target="#paymentModal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Amount to pay: <span id="confirmationTotalAmount"></span></p>
+                    <p>Scheduled At: <span id="confirmationScheduled"></span></p>
+                    <p>Card Name <span id="confirmationCardType"></span></p>
+                    <p>Ending in: <span id="confirmationLastFourDigits"></span></p>
+                </div>
+                <div class="modal-footer"><button class="btn btn-secondary" type="button" data-bs-dismiss="modal"
+                        data-bs-toggle="modal" data-bs-target="#paymentModal">Cancel</button> <button
+                        id="confirmPaymentButton" class="btn btn-primary" type="button">Confirm</button></div>
+            </div>
+        </div>
+    </div>
+</div>

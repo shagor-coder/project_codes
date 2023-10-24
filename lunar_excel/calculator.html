@@ -1,0 +1,1355 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Poppins:wght@400;600&family=Roboto:wght@100;400;500;700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: Poppins;
+        font-size: 11pt;
+
+
+    }
+
+    div {
+        transition: 0.3s ease-in-out;
+
+    }
+
+    .left {
+        float: left !important;
+        width: 45% !important;
+    }
+
+    #imgLogo {
+        width: 50px;
+    }
+
+    .caption {
+        font-family: Poppins;
+    }
+
+    .right {
+        float: right;
+        width: 45% !important;
+        position: relative;
+    }
+
+    .container {
+        padding: 40px;
+    }
+
+    .container-2 {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .section {
+        border: 2px solid;
+        border-radius: 500px;
+        width: 45px;
+        font-size: 22pt;
+
+    }
+
+    .inactive-section {
+        border-color: #bababa !important;
+        color: #bababa
+    }
+
+    .section-tab {
+        text-align: right;
+    }
+
+    .title {
+        font-family: Poppins;
+    }
+
+    .fw800 {
+        font-weight: 800;
+    }
+
+    .hover:hover {
+        cursor: pointer;
+
+    }
+
+    .op5 {
+        opacity: 0.5
+    }
+
+    .list-plain {
+        list-style: none;
+    }
+
+    .form-button {
+        padding: 20px;
+        border: 0px;
+        color: white;
+        border-radius: 5px !important;
+        width: 80%;
+    }
+
+    .form-button-2 {
+        width: auto !important;
+        color: #0a275c !important;
+        margin-bottom: 20px;
+        margin-left: 32%;
+    }
+
+    .form-input {
+        margin-top: 10px;
+        padding: 7px;
+        margin-left: 5%;
+        border: 1px solid;
+        /* border-bottom: 1px solid */
+    }
+
+    .form-select {
+        border: 1px solid #e6e6e6;
+    }
+
+    .ml5 {
+        margin-left: 5%;
+    }
+
+    .w100 {
+        width: 90%;
+    }
+
+    .w90 {
+        width: 88%;
+    }
+
+    .form-label {
+        font-size: 10pt;
+    }
+
+    .fs18 {
+        font-size: 16pt;
+    }
+
+    .fs24 {
+        font-size: 24pt;
+    }
+
+    .fs34 {
+        font-size: 34pt;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus,
+    button:focus {
+        outline: 0;
+    }
+
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black;
+    }
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 80px;
+        background-color: black;
+        color: #fff;
+        font-size: 9pt;
+        padding: 10px;
+        text-align: center;
+        border-radius: 6px;
+
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+    }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .inline-list {
+        display: inline;
+    }
+
+    .tab-list {
+        padding: 20px;
+        text-align: center;
+        width: 25% !important;
+        color: white !important
+    }
+
+    .active-list {
+        color: white !important;
+        border-top-right-radius: 120px;
+
+        border-bottom-right-radius: 120px;
+    }
+
+    .inactive-list {
+        color: #b7b7b7 !important;
+        background-color: #e5e8e9 !important;
+    }
+
+    .rounded-numbers {
+        border-radius: 100px;
+
+        padding: 5px 10px;
+        ;
+        margin: 10px;
+
+        text-align: center
+    }
+
+    .active-rounded-numbers {
+        background-color: white;
+        color: #b7b7b7;
+    }
+
+    .inactive-rounded-numbers {
+        background-color: rgb(162, 173, 183);
+        color: #ebebeb;
+    }
+
+    .form-button-icon {
+        margin-left: 7px;
+    }
+
+    .container-list {
+        width: 100% !important;
+        background-color: #e5e8e9 !important;
+    }
+
+    .result-box {
+        background-color: white;
+        border-radius: 20px;
+        margin-left: 10%;
+
+        width: 80%;
+        margin-top: 40px !important;
+        overflow: hidden;
+    }
+
+    #quote {
+        width: 100% !important;
+        text-align: center;
+    }
+
+    .w50 {
+        width: 29% !important;
+        margin: 1%;
+    }
+
+    .w100-3 {
+        width: 91% !important;
+        margin: 1%;
+
+    }
+
+    .w100-2 {
+        width: 92% !important;
+        margin: 3%;
+        margin-top: 1%;
+
+    }
+
+    .box-shadow-1 {
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .box-shadow-2 {
+        box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+
+        border-radius: 10px;
+
+    }
+
+    .fs18 {
+        font-size: 18pt;
+    }
+
+    .fs10 {
+        font-size: 10pt;
+    }
+
+    .w40 {
+        width: 40%;
+    }
+
+    .w40-2 {
+        width: 42%;
+    }
+
+    .slidecontainer {
+        width: 90%;
+        /* Width of the outside container */
+    }
+
+    /* The slider itself */
+    .slider {
+        -webkit-appearance: none;
+        /* Override default CSS styles */
+        appearance: none;
+        width: 100%;
+        /* Full-width */
+        height: 25px;
+        /* Specified height */
+        background: #d3d3d3;
+        /* Grey background */
+        outline: none;
+        /* Remove outline */
+        opacity: 0.7;
+        /* Set transparency (for mouse-over effects on hover) */
+        -webkit-transition: .2s;
+        /* 0.2 seconds transition on hover */
+        transition: opacity .2s;
+    }
+
+    /* Mouse-over effects */
+    .slider:hover {
+        opacity: 1;
+        /* Fully shown on mouse-over */
+    }
+
+    /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        /* Override default look */
+        appearance: none;
+        width: 25px;
+        /* Set a specific slider handle width */
+        height: 25px;
+        /* Slider handle height */
+        background: #04AA6D;
+        /* Green background */
+        cursor: pointer;
+        /* Cursor on hover */
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        /* Set a specific slider handle width */
+        height: 25px;
+        /* Slider handle height */
+        background: #04AA6D;
+        /* Green background */
+        cursor: pointer;
+        /* Cursor on hover */
+    }
+
+    .system-cost-div {
+        width: 100%;
+
+    }
+
+    .span-2 {}
+
+    #ftc {
+        margin-top: -8px !important;
+    }
+
+    .disclaimer {
+        width: 90% !important;
+        font-size: 10pt;
+        text-align: justify;
+        margin-bottom: 30px;
+    }
+
+    .gradient1 {
+        background: rgb(4, 188, 100);
+        background: -moz-linear-gradient(90deg, rgba(4, 188, 100, 1) 0%, rgba(10, 39, 92, 1) 100%);
+        background: -webkit-linear-gradient(90deg, rgba(4, 188, 100, 1) 0%, rgba(10, 39, 92, 1) 100%);
+        background: linear-gradient(90deg, rgba(4, 188, 100, 1) 0%, rgba(10, 39, 92, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#04bc64", endColorstr="#0a275c", GradientType=1);
+    }
+
+
+
+    .text-gradient-1 {
+        background: #04BC64 !important;
+        background: -webkit-linear-gradient(to right, #04BC64 0%, #0a275c 100%) !important;
+        background: -moz-linear-gradient(to right, #04BC64 0%, #0a275c 100%) !important;
+        background: linear-gradient(to right, #04BC64 0%, #0a275c 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+    }
+
+    .border-gradient-1 {
+        background: linear-gradient(white, white) padding-box,
+            linear-gradient(to right, #04bc64, #0a275c) border-box !important;
+        border-radius: 10px !important;
+        border: 2px solid transparent !important;
+    }
+
+
+    @media screen and (max-width: 1165px) {
+        .span-1 {
+            font-size: 9pt !important;
+        }
+
+        .tab-list {
+            width: 25% !important;
+        }
+    }
+
+    @media screen and (max-width: 1052px) {
+
+        .w50 {
+            width: 45% !important
+        }
+
+        .form-button-2 {
+            margin-left: 25%;
+        }
+
+    }
+
+    @media screen and (max-width: 958px) {
+        .span-1 {
+            display: none !important
+        }
+
+        .tab-list {
+            width: 25% !important;
+        }
+
+        .result-box {
+            width: 80% !important;
+            margin-left: 10%;
+        }
+
+        .form-button {
+            width: 80%;
+        }
+    }
+
+    @media screen and (max-width: 809px) {
+        .result-box {
+            width: 80% !important;
+            margin-left: 10%;
+        }
+
+    }
+
+    @media screen and (max-width: 674px) {
+        .result-box {
+
+            width: 90% !important;
+
+            margin-left: 5%;
+        }
+
+        .form-button {
+            width: 90%;
+        }
+
+    }
+
+    @media screen and (max-width: 724px) {
+        .result-box {
+
+            width: 90% !important;
+
+            margin-left: 5%;
+        }
+
+        .w50 {
+            width: 95% !important
+        }
+
+        .w100-3 {
+            width: 95% !important;
+            padding-bottom: 32;
+        }
+    }
+
+    @media screen and (max-width: 614px) {}
+
+    @media screen and (max-width: 584px) {
+
+        .result-box {
+
+            width: 98% !important;
+            margin-left: 1%;
+        }
+
+        .w40 {
+            width: 85% !important;
+        }
+
+        .form-button-2 {
+            margin-left: 20%;
+        }
+
+        .fs24 {
+            font-size: 18pt !important;
+            opacity: 0.5;
+        }
+
+        .sfp-div .w50 {
+            margin-top: -50px !important;
+        }
+    }
+
+    @media screen and (max-width: 425px) {
+
+        .form-button-2 {
+            margin-left: 10%;
+        }
+
+    }
+
+    @media screen and (max-width: 394px) {
+
+        .form-button-2 {
+            margin-left: 5%;
+        }
+
+    }
+
+    @media screen and (max-width: 334px) {
+
+        .result-box {
+
+            width: 100% !important;
+        }
+
+        .container {
+            padding: 20px !important;
+            padding-top: 30px;
+        }
+
+    }
+</style>
+
+
+
+
+
+<div class="container">
+    <center>
+        <span class="title fs24 fw800">
+            Get Solar Quotation in seconds.
+        </span>
+        <br>
+        <span class="caption op5">
+            Enter your information for a more personalized result
+        </span>
+    </center>
+    <div class="result-box box-shadow-1">
+        <div class="container-list left">
+            <li class="gradient1 plain-list inline-list tab-list active-list left info-tab">
+                <i class="fa-solid fa-user"></i>
+
+                <span class="span-1">
+                    Info
+                </span>
+            </li>
+            <li class="plain-list inline-list tab-list left inactive-list pre-tab " id="">
+                <i class="fa-regular fa-circle-question info-i"></i>
+                <span class="span-1">
+                    Pre
+                </span>
+            </li>
+            <li class="plain-list inline-list tab-list left inactive-list consumption-tab" id="consumption-tab">
+                <i class="fa-solid fa-bolt consumption-i"></i>
+                <span class="span-1">
+                    Billing
+                </span>
+            </li>
+            <li class=" plain-list inline-list tab-list left inactive-list quote-tab">
+                <i class="fa-solid fa-file-invoice-dollar quote-i"></i>
+                <span class="span-1">
+                    Quote
+                </span>
+            </li>
+
+        </div>
+
+        <div class="container" id="info">
+
+            <br><br>
+            <center>
+                <span class="op5">
+                    Step 1
+                </span>
+                <br>
+                <span class="fs18">
+                    Your Info
+
+                </span>
+            </center>
+            <br>
+            <div>
+                <span class="fs10 ml5">
+                    First Name
+                </span>
+                <br>
+                <input type="text" class="form-input w90" placeholder="ex. Jane Marie" id="txtFirstName">
+                <br>
+                <br>
+                <span class="fs10 ml5">
+                    Last Name
+                </span>
+                <br>
+
+                <input type="text" class="form-input w90" placeholder="ex. Doe " id="txtLastName">
+
+                <br>
+                <br>
+                <span class="fs10 ml5">
+                    Email
+                </span>
+                <br>
+
+                <input type="text" class="form-input w90" placeholder="ex. johndoe@email.com" id="txtEmail">
+
+                <br>
+                <br>
+                <span class="fs10 ml5">
+                    Phone Number
+                </span>
+                <br>
+
+                <input type="text" class="form-input w90" placeholder="ex. +18887324197" id="txtPhone">
+
+                <br>
+                <br>
+                <span class="fs10 ml5">
+                    Street Address
+                </span>
+                <br>
+
+                <input type="text" class="form-input w90" placeholder="ex. 142 West Street Drive" id="txtStreetAddress">
+
+
+                <br>
+                <br>
+                <span class="fs10 ml5">
+                    State
+                </span>
+                <br>
+                <input type="text" class="form-input w90" placeholder="ex. Texas" id="txtState">
+
+                <br>
+                <br>
+                <span class="fs10 ml5">
+                    City
+                </span>
+                <br>
+
+                <input type="text" class="form-input w90" placeholder="ex. Houston" id="txtCity">
+                <br>
+                <br>
+                <span class="fs10 ml5">
+                    Zip Code
+                </span>
+                <br>
+
+                <input type="text" class="form-input w90" placeholder="ex. 77001" id="txtZip">
+
+                <br>
+                <br>
+                <span class="fs10 ml5">
+                    Country
+                </span>
+                <input type="text" class="form-input w90" placeholder="ex. US, UK" id="txtCountry">
+
+
+
+            </div>
+
+
+
+        </div>
+        <div class="container hide" id="preassess">
+
+            <br><br>
+            <center>
+                <span class="op5">
+                    Step 2
+                </span>
+                <br>
+                <span class="fs18">
+                    Pre-Assessment Check
+
+                </span>
+            </center>
+            <br>
+            <div>
+                <span class="ml5 op5">
+                    What's the type of the area?
+                </span>
+                <br>
+                <select name="" id="selectAreaType" class="form-input form-select w100">
+                    <option value="residential">Residential</option>
+                    <option value="commercial">Commercial</option>
+                </select>
+                <br>
+                <br>
+                <span class="ml5 op5">
+                    What's the angle of your roof?
+                </span>
+                <br>
+                <select name="" id="selectAngle" class="form-input form-select w40-2">
+                    <option value="slope">Slope</option>
+                    <option value="flat">Flat</option>
+                </select>
+                <select name="" id="selectRoofType" class="form-input form-select w40-2">
+                    <option value="" disabled="">Roof Type</option>
+                    <option value="metal">Metal</option>
+                    <option value="brick / stone">Brick / Stone</option>
+                </select>
+                <br><br>
+
+                <span class="ml5 op5">
+                    How shaded is your area?
+                </span>
+                <br>
+                <select name="" id="selectShading" class="form-input form-select w100">
+                    <option value="none">None</option>
+                    <option value="light">Light</option>
+                    <option value="heavy">Heavy</option>
+                </select>
+
+                <br>
+                <br>
+
+                <span class="ml5 op5">
+                    What's your payment plan?
+                </span>
+                <br>
+                <select name="" id="selectPayment" class="form-input form-select w100">
+                    <option value="financing">Financing</option>
+                    <option value="cash">Cash</option>
+                </select>
+
+
+            </div>
+
+
+
+        </div>
+        <div class="container hide" id="consumption">
+
+            <br><br>
+            <center>
+                <span class="op5">
+                    Step 2
+                </span>
+                <br>
+                <span class="fs18">
+                    Your Energy Consumption
+
+                </span>
+            </center>
+            <br>
+            <div>
+                <!-- <input type="text" class="form-input w90" placeholder="Area Code"> -->
+                <br><br>
+                <span class="ml5 op5">
+                    Your avg kW Consumption (<span class="op5" id="demo">
+
+                    </span>)
+                </span>
+                <br><br>
+                <div class="slidecontainer ml5">
+                    <input type="range" min="100" max="3000" value="800" class="slider" id="myRange">
+                </div>
+                <br><br>
+                <span class="ml5 op5">
+                    Your avg monthly bill (<span class="op5" id="demo2">
+
+                    </span>)
+                </span>
+                <br><br>
+                <div class="slidecontainer ml5">
+                    <input type="range" min="100" max="1000" value="100" class="slider" id="myRange2">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="left hide" id="quote">
+
+            <br><br>
+            <span class="op5">
+                Step 3
+            </span>
+            <br>
+            <span class="fs18">
+                Your Estimated Solar System Cost <br>
+                &amp; Savings
+            </span>
+            <br><br>
+            <center>
+                <select name="" onchange="changeOffset(this.value)" class="form-input w40" id="selectOffset">
+                    <option value="0.35">35% OFF on Utility Bill </option>
+                    <option value="0.50" selected="">50% OFF on utility Bill</option>
+                    <option value="0.75">75% OFF on Utility Bill </option>
+                </select>
+            </center>
+            <br><br>
+            <div class="ml5">
+                <div class="box-shadow-2 w50 left">
+                    <div class="container">
+                        <center>
+                            Monthly Saving with Solar
+                            <div class="tooltip">
+                                <i class="fa-regular fa-circle-question"></i>
+
+                                <span class="tooltiptext">Has a monthly offset of 59%</span>
+                            </div>
+
+                            <br>
+                            <span class="fs34 fw800 text-gradient-1" id="txtSavings">
+                                $149
+                            </span>
+                        </center>
+                    </div>
+
+                </div>
+                <div class="box-shadow-2 w50 left">
+                    <div class="container">
+                        <center>
+                            Suggested System Size
+                            <div class="tooltip">
+                                <i class="fa-regular fa-circle-question"></i>
+
+                                <span class="tooltiptext">Tooltip text</span>
+                            </div>
+
+                            <br>
+                            <span class="fs34 fw800" id="txtSystemSize">
+                                25 kW
+                            </span>
+                        </center>
+                    </div>
+
+                </div>
+                <div class="box-shadow-2 w50 left">
+                    <div class="container">
+                        <center>
+                            Suggested No. of Panels (400W)
+                            <div class="tooltip">
+                                <i class="fa-regular fa-circle-question"></i>
+
+                                <span class="tooltiptext">Black - 400 Watt</span>
+                            </div>
+                            <br>
+                            <span class="fs34 fw800" id="txtPanels">
+                                10
+                            </span>
+                        </center>
+                    </div>
+
+                </div>
+                <div class="box-shadow-2 w100-3 left">
+                    <div class="container container-2">
+                        <center>
+                            <div class="left">
+                                Federal Tax Credit Incentives (30%)
+
+                                <div class="tooltip">
+                                    <i class="fa-regular fa-circle-question"></i>
+
+                                    <span class="tooltiptext">Tooltip text</span>
+                                </div>
+                                <span class="fs18 left" id="txtFedCredit">
+                                    $2,000
+                                </span>
+
+                                <br>
+                                <br>
+
+                            </div>
+                            <br><br><br>
+
+                        </center>
+                    </div>
+
+                </div>
+                <div class="box-shadow-2 w100-3 left">
+                    <div class="hide container container-2">
+                        <center>
+                            <div class="span-2 left">
+                                Solar Tax Credit
+                                <br><br>
+                            </div>
+                            <div class="fs18 right" id="">
+                                $1,000
+                            </div>
+                        </center>
+                    </div>
+
+                </div>
+            </div>
+            <br>
+
+            <div class="w100-2 left">
+                <div class="container">
+                    <center>
+                        Total System Cost
+                        <div class="tooltip">
+                            <i class="fa-regular fa-circle-question"></i>
+
+                            <span class="tooltiptext">Estimated Total Cost of the suggested system size with the
+                                suggested amount of panels minus the labor. </span>
+                        </div>
+
+                        <br>
+                        <span class="fs34 fw800 text-gradient-1" id="txtSystemCost">
+                            $59,000
+                        </span>
+                    </center>
+                </div>
+            </div>
+
+            <div class="ml5 sfp-div">
+                <div class="w50 left" style="margin-top: -80px;">
+                    <div class="container">
+                        <center>
+                            Yearly Savings
+                            <div class="tooltip">
+                                <i class="fa-regular fa-circle-question"></i>
+
+                                <span class="tooltiptext">Tooltip text</span>
+                            </div>
+
+                            <br>
+                            <span class="fs24">
+                                -
+                            </span>
+                        </center>
+                    </div>
+
+                </div>
+                <div class="w50 left" style="margin-top: -80px;">
+                    <div class="container">
+                        <center>
+                            Financing
+                            <div class="tooltip">
+                                <i class="fa-regular fa-circle-question"></i>
+
+                                <span class="tooltiptext">Tooltip text</span>
+                            </div>
+
+                            <br>
+                            <span class="fs24">
+                                Loan
+                            </span>
+                        </center>
+                    </div>
+
+                </div>
+                <div class="w50 left" style="margin-top: -80px;">
+                    <div class="container">
+                        <center>
+                            Payback in Years
+                            <div class="tooltip">
+                                <i class="fa-regular fa-circle-question"></i>
+
+                                <span class="tooltiptext">Tooltip text</span>
+                            </div>
+
+                            <br>
+                            <span class="fs24">
+                                -
+                            </span>
+                        </center>
+                    </div>
+
+                </div>
+
+                <center>
+                    <button value="Continue" class="border-gradient-1 hover form-button form-button-2 left"
+                        onclick="next()">
+                        <i class="fa-solid fa-phone"></i> Schedule a Call with Us
+
+                    </button>
+                </center>
+
+
+                <p class="op5 disclaimer left">
+                    A much more accurate quotation will be provided after going through a thorough design and
+                    engineering process.
+
+                    <br><br>
+
+                    Federal and Tax Solar Credit Eligibility is not 100% guaranteed by Lunar Solar. You may consult to a
+                    tax professional rergarding your Eligibility.
+                    <br>
+                </p>
+
+                <br><br>
+            </div>
+
+
+        </div>
+
+    </div>
+    <br>
+    <div>
+        <center>
+            <button value="Continue" id="form-button" class=" hover form-button" onclick="next()">
+                Continue
+                <i class="fa-solid fa-arrow-right form-button-icon"></i>
+            </button>
+            <br><br>
+
+        </center>
+    </div>
+    <br><br>
+
+
+
+
+
+</div>
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.js" defer=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/8aeafc3531.js" crossorigin="anonymous"></script>
+<script>
+    logo = 'https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/GCAdJintzNlCysF1UlPH/media/651ad8ff9b46ac4ae89aa9c6.png';
+
+    primary_color = '#04bc64';
+    secondary_color = '#0a275c';
+    var panel_rating = 400;
+    var cost_per_watt = 1.49;
+    var panel_cost = panel_rating * cost_per_watt;
+    var labor = 0.50;
+
+    let USDollar = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    });
+
+
+
+    $('#imgLogo').attr('src', logo);
+    $('.form-label').css('color', primary_color);
+
+    $('#form-button').css('background-color', secondary_color);
+
+    $('.form-button-2').css('color', secondary_color + ' !important');
+    $('.active-list').css('border-color', primary_color);
+
+    $('.active-section').css('border-color', primary_color);
+    $('.active-section').css('color', primary_color);
+
+    $('.active-list').css('color', primary_color);
+    $('.form-input').css('border-color', '#bababa');
+
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value + "kWh";
+
+
+    slider.oninput = function () {
+        output.innerHTML = this.value + "kWh";
+    }
+
+    var slider2 = document.getElementById("myRange2");
+    var output2 = document.getElementById("demo2");
+    output2.innerHTML = "$" + slider2.value;
+
+
+    slider2.oninput = function () {
+        output2.innerHTML = "$" + this.value;
+    }
+
+    function changeOffset(offset) {
+
+        reCalculate(localStorage.getItem("mkWh"), localStorage.getItem("mBill"), offset);
+
+
+
+    }
+
+    function next() {
+        var step1 = $("#info");
+        var step2 = $("#preassess");
+        var step3 = $("#consumption");
+        var step4 = $("#quote");
+
+        var step1_tab = $(".info-tab");
+        var step2_tab = $(".pre-tab");
+        var step3_tab = $(".consumption-tab");
+        var step4_tab = $(".quote-tab");
+
+        var form_button = $("#form-button");
+
+        if (form_button.val() == "Continue") {
+
+            var txtFirstName = $("#txtFirstName").val();
+            localStorage.setItem("txtFirstName", txtFirstName);
+
+            var txtLastName = $("#txtLastName").val();
+            localStorage.setItem("txtLastName", txtLastName);
+
+            var txtEmail = $("#txtEmail").val();
+            localStorage.setItem("txtEmail", txtEmail);
+
+            var txtPhone = $("#txtPhone").val();
+            localStorage.setItem("txtPhone", txtPhone);
+
+            var txtStreetAddress = $("#txtStreetAddress").val();
+            localStorage.setItem("txtStreetAddress", txtStreetAddress);
+
+            var txtState = $("#txtState").val();
+            localStorage.setItem("txtState", txtState);
+
+            var txtCity = $("#txtCity").val();
+            localStorage.setItem("txtCity", txtCity);
+
+
+            var txtZip = $("#txtZip").val();
+            localStorage.setItem("txtZip", txtZip);
+
+            var txtCountry = $("#txtCountry").val();
+            localStorage.setItem("txtCountry", txtCountry);
+
+
+
+            if (txtFirstName == "" || txtLastName == "" || txtEmail == "" || txtStreetAddress == "" || txtState == "" || txtCity == "" || txtZip == "" || txtCountry == "") {
+
+            }
+            else {
+                step1.toggle();
+                step2.toggle();
+
+                step1_tab.css("background-color", primary_color);
+                step1_tab.removeClass("active-list");
+                step1_tab.removeClass("gradient1");
+
+                step2_tab.addClass("gradient1");
+                step2_tab.addClass("active-list");
+                step2_tab.removeClass("inactive-list");
+
+                form_button.html('Next <i class="fa-solid fa-arrow-right form-button-icon"></i>');
+                form_button.val("Next");
+
+
+
+            }
+
+
+        }
+
+        else if (form_button.val() == "Next") {
+
+
+            var selectAreaType = $("#selectAreaType").val();
+            var selectPayment = $("#selectPayment").val();
+            var selectAngle = $("#selectAngle").val();
+            var selectRoofType = $("#selectRoofType").val();
+            var selectShading = $("#selectShading").val();
+
+            step2.toggle();
+            step3.toggle();
+
+            form_button.text('Calculate');
+            form_button.val("Calculate");
+
+            step1_tab.css("background-color", primary_color);
+            step1_tab.removeClass("active-list");
+            step1_tab.removeClass("gradient1");
+
+            step2_tab.removeClass("active-list");
+            step2_tab.removeClass("gradient1");
+            step2_tab.css("background-color", primary_color);
+
+            step3_tab.addClass("gradient1");
+            step3_tab.addClass("active-list");
+            step3_tab.removeClass("inactive-list");
+
+
+            $.ajax({
+                type: 'POST',
+                url: 'https://rest.gohighlevel.com/v1/contacts/',
+                headers: { "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2NhdGlvbl9pZCI6IkdDQWRKaW50ek5sQ3lzRjFVbFBIIiwiY29tcGFueV9pZCI6Ik8zZmJ1dVJPVllYdzVsR3FPZUEwIiwidmVyc2lvbiI6MSwiaWF0IjoxNjg2MjYwMjQ4MzU0LCJzdWIiOiJ1c2VyX2lkIn0.enXlzfRTRlwccc3u1AW6LDkiNdtRnTE0FrAYvNL_RDY" },
+                data: JSON.stringify({
+                    "email": localStorage.getItem("txtEmail"),
+                    "phone": localStorage.getItem("txtPhone"),
+                    "firstName": localStorage.getItem("txtFirstName"),
+                    "lastName": localStorage.getItem("txtLastName"),
+                    "name": localStorage.getItem("txtFirstName") + " " + localStorage.getItem("txtLastName"),
+                    "address1": localStorage.getItem("txtStreetAddress"),
+                    "city": localStorage.getItem("txtCity"),
+                    "state": localStorage.getItem("txtState"),
+                    "country": localStorage.getItem("txtCountry"),
+                    "postalCode": localStorage.getItem("txtZip"),
+                    "tags": [
+                        "lead",
+                    ],
+                    "source": "public api",
+                    "customField": {
+                        "mDAmrO9at6NYVrixNbpd": selectAreaType,
+                        "kO8RGr8F9CZ4atcYRjrS": selectAngle,
+                        "FZWk9mTXmXYRetzQbBB6": selectRoofType,
+                        "plN8kVn5ElpmnPznnjCf": selectShading,
+                        "bj3Z5h9LtmHbUXAX3Juu": selectPayment
+                    }
+                }),
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (msg) {
+                    console.log(msg);
+                }
+
+
+            });
+
+
+        }
+
+
+        else if (form_button.val() == "Calculate") {
+            step3.toggle();
+            step4.toggle();
+
+            form_button.text('Schedule a Call with Us!');
+            form_button.val("call");
+
+            step1_tab.css("background-color", primary_color);
+            step1_tab.removeClass("active-list");
+            step1_tab.removeClass("gradient1");
+
+            step2_tab.css("background-color", primary_color);
+            step2_tab.removeClass("active-list");
+            step2_tab.removeClass("gradient1");
+
+            step3_tab.css("background-color", primary_color);
+            step3_tab.removeClass("active-list");
+            step3_tab.removeClass("gradient1");
+
+            step4_tab.addClass("gradient1");
+            step4_tab.addClass("active-list");
+            step4_tab.removeClass("inactive-list");
+
+            form_button.text("Calculate");
+            form_button.val("Calculate");
+
+            var mkWh = $("#myRange").val();
+            var mBill = $("#myRange2").val();
+            var offset = 0.5;
+
+            localStorage.setItem("mkWh", mkWh);
+            localStorage.setItem("mBill", mBill);
+
+            reCalculate(localStorage.getItem("mkWh"), localStorage.getItem("mBill"), offset);
+
+            form_button.toggle();
+
+        }
+    }
+    function reCalculate(mkWh, mBill, offset) {
+
+
+        var dkWh = mkWh / 31;
+        var rkWh = mkWh / mBill;
+
+        var nBill = mBill * offset;
+        var sys = dkWh * offset;
+        var panels = (sys * 1000) / panel_rating;
+
+        var sysCost = panels * panel_cost;
+        var sysCost = sysCost + (sysCost * labor);
+        var fedCredit = sysCost * 0.30;
+
+        $("#txtSavings").html("$" + Math.round(nBill));
+        $("#txtSystemSize").html(Math.round(sys) + " kW");
+        $("#txtPanels").html(Math.round(panels));
+
+        $("#txtSystemCost").html(USDollar.format(Math.round(sysCost)));
+        $("#txtFedCredit").html(USDollar.format(Math.round(fedCredit)));
+    }
+
+    function getCustomFieldsId() {
+
+        $.ajax({
+            type: 'GET',
+            url: 'https://rest.gohighlevel.com/v1/custom-fields/',
+            headers: { "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2NhdGlvbl9pZCI6IkdDQWRKaW50ek5sQ3lzRjFVbFBIIiwiY29tcGFueV9pZCI6Ik8zZmJ1dVJPVllYdzVsR3FPZUEwIiwidmVyc2lvbiI6MSwiaWF0IjoxNjg2MjYwMjQ4MzU0LCJzdWIiOiJ1c2VyX2lkIn0.enXlzfRTRlwccc3u1AW6LDkiNdtRnTE0FrAYvNL_RDY" },
+
+            contentType: 'application/json',
+            success: function (data) {
+                console.log(data);
+            }
+
+
+        });
+    }
+
+    document.getElementById("txtCountry").maxLength = "2";
+
+    // let domain = 'https://docs.google.com/spreadsheets/d/';
+    // let sheet_id = '1G6oh1kiUPVzf5F45t72mhBykuiVF4Ryd2eplWKy-fhk';
+
+    // let config_sheet_name = 'config';
+    // let config_sheet_range = 'A1:E2';
+
+    // let url_1  = ('https://docs.google.com/spreadsheets/d/'+ sheet_id + '/gviz/tq?sheet=' + config_sheet_name + '&range=' + config_sheet_range);
+
+
+    // fetch(url_1)
+    // .then(res => res.text())
+    // .then(rep => {
+    //     let data = JSON.parse(rep.substr(47).slice(0, -2));
+
+
+    // });
+
+    // console.log(data);
+
+</script>
+<script>
+
+    const mapsApiURL = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCexYnVMOFJ2ZwoHan_Qti2gXYfzlvffIc&libraries=places`
+
+    const mapScript = document.createElement("script");
+    mapScript.src = mapsApiURL;
+    mapScript.defer;
+
+    document.querySelector("head")?.append(mapScript)
+
+    const adressInput = document.querySelector('#txtStreetAddress');
+
+    const autocomplete = new google.maps.places.Autocomplete(
+        adressInput,
+        {
+            componentRestrictions: { country: 'us' },
+            fields: ['address_components', 'geometry', 'name'],
+            types: ['address'],
+        }
+    );
+    autocomplete.addListener('place_changed', async () => {
+        const places = autocomplete.getPlace();
+        const { address_components, name } = places;
+
+        const street_adress = name;
+        const city_obj = address_components.find((ac) => {
+            return ac.types.includes('locality') && ac.types.includes('political');
+        });
+        const state_obj = address_components.find((ac) => {
+            return ac.types.includes('administrative_area_level_1');
+        });
+        const postal_code_obj = address_components.find((ac) => {
+            return ac.types.includes('postal_code');
+        });
+
+        const event = new Event('blur');
+        adressInput.dispatchEvent(event);
+
+        console.log({ address_components })
+    });
+</script>

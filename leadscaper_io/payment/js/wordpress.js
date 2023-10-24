@@ -10,12 +10,13 @@
 			rate: 0.025,
 			transfees: 0.35,
 		},
+		redirectURL: '',
 	};
 
 	const paymentData = {
 		Method: 'CreditCardAuthorize',
-		TerminalId: '1000001581515',
-		TerminalKey: 'cce5d0f9-d7ba-440b-a64a-a30006cf860c',
+		TerminalId: '1000272271515',
+		TerminalKey: 'B90F4002-0283-4D59-A7F2-7187F3D8F84C',
 		AccountInfo: '',
 		ExpirationInfo: '',
 		TotalAmount: 0,
@@ -27,11 +28,11 @@
 		CustomerIP: '',
 		CVV2: '',
 		CardHolderName: '',
+		BillingCountry: 'USA',
 		BillingAddress: '',
+		BillingZip: '',
 		BillingCity: '',
 		BillingState: '',
-		BillingZip: '',
-		Country: 'US',
 		CardName: '',
 	};
 
@@ -47,6 +48,10 @@
 	const amoutError = document.querySelector('.error-message');
 	const coverExpense = document.querySelector('#coverExpense');
 	const newTotalMessage = document.querySelector('#new_total');
+	const addressInput = document.querySelector('#BillingAddress');
+	const zipInput = document.querySelector('#BillingZip');
+	const cityInput = document.querySelector('#BillingCity');
+	const stateInput = document.querySelector('#BillingState');
 
 	function addGivingTypeOptions() {
 		clientData.givingType.forEach((cd) => {
@@ -97,10 +102,9 @@
 				const selectedDate = moment(date);
 				const currentDate = moment();
 				const isLateDate = currentDate.date() < 15;
-				if (isLateDate) {
-					return selectedDate.isBefore(currentDate, 'day');
-				}
-				return false;
+
+				// Disable all dates before the current date
+				return selectedDate.isBefore(currentDate, 'day');
 			},
 		});
 
@@ -121,8 +125,11 @@
 				const selectedDate = moment(date);
 				const currentDate = moment();
 				const isBefore15th = currentDate.date() < 15;
-				const isFirstAndFifteen = paymentData.Frequency === '1 15 Month';
-				if (!isFirstAndFifteen) return console.log('Normal');
+				const isFirstAndFifteen = paymentData.Frequency === '1st-15th-monthly';
+
+				if (!isFirstAndFifteen) {
+					return true;
+				}
 
 				if (isBefore15th) {
 					return !(
@@ -131,7 +138,7 @@
 					);
 				} else {
 					return !(
-						(selectedDate.date() >= 1 || selectedDate.date() === 15) &&
+						(selectedDate.date() === 1 || selectedDate.date() === 15) &&
 						currentDate.month() < selectedDate.month()
 					);
 				}
@@ -174,10 +181,11 @@
 		frequencyInputs.forEach((input) => {
 			input.addEventListener('change', () => {
 				paymentData.Frequency = input.value;
-				if (paymentData.Frequency === '1 15 Month') {
+				if (paymentData.Frequency === '1st-15th-monthly') {
 					pikadayAll.style = 'display: none !important';
 					pikadayOneFifteen.style = 'display: block !important';
-					if (pikadayOneFifteenInstance) return;
+					if (pikadayOneFifteenInstance)
+						return setDefaultDate(pikadayOneFifteenInstance, '1/15');
 					generatePikadayForFifteen();
 				} else {
 					pikadayAll.style = 'display: block !important';
@@ -213,9 +221,16 @@
 
 		amoutError.style.display = 'none';
 		paymentData.TotalAmount = amoutInput.value;
-		nextButton.disabled = '';
 		// Calculates On Every Input
 		calculateExpense();
+
+		const isInfoFilled =
+			paymentData.BillingAddress &&
+			paymentData.BillingZip &&
+			paymentData.BillingCity &&
+			paymentData.BillingState;
+
+		if (isInfoFilled) nextButton.disabled = '';
 	}
 
 	coverExpense.addEventListener('change', calculateExpense);
@@ -244,6 +259,30 @@
 	}
 
 	amoutInput.addEventListener('input', validateAmoutInput);
+
+	function handleBillingAddressInputs() {
+		const addressValue = addressInput.value.trim();
+		const zipValue = zipInput.value.trim();
+		const cityValue = cityInput.value.trim();
+		const stateValue = stateInput.value.trim();
+
+		paymentData[addressInput.name.trim()] = addressValue;
+		paymentData[zipInput.name.trim()] = zipValue;
+		paymentData[cityInput.name.trim()] = cityValue;
+		paymentData[stateInput.name.trim()] = stateValue;
+
+		const isInfoFilled = addressValue && zipInput && cityValue && stateValue;
+
+		if (!isInfoFilled || !amoutInput.value)
+			return (nextButton.disabled = 'disabled');
+
+		nextButton.disabled = '';
+	}
+
+	addressInput.addEventListener('input', handleBillingAddressInputs);
+	zipInput.addEventListener('input', handleBillingAddressInputs);
+	cityInput.addEventListener('input', handleBillingAddressInputs);
+	stateInput.addEventListener('input', handleBillingAddressInputs);
 
 	const cardNumberInput = document.querySelector('#card-number');
 	const cardBrandLogo = document.querySelector('.card-brand span i');
@@ -428,7 +467,7 @@
 	async function handlePaymentRequest() {
 		const baseURL = 'https://gateway.paymentworld.com/WebHost2012/WebHost.aspx';
 
-		let params = '?Country=US';
+		let params = '?ReferenceId=Rudy';
 
 		const keys = Object.keys(paymentData);
 
@@ -436,18 +475,19 @@
 
 		keys.forEach((key) => {
 			if (!paymentData[key] || paymentData[key] === '') return;
-			params += '&' + key + '=' + paymentData[key];
+			params += `&${key}=${paymentData[key]}`;
 		});
 
 		try {
 			const requestURL = baseURL + params;
-			const request = await fetch(requestURL, {
+			const request = await fetch(requestURL.trim(), {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 			});
 			const response = await request.json();
 			console.log(response);
 			alert('Payment Completed');
+			window.open(clientData.redirectURL, '_blank');
 		} catch (error) {
 			console.log(error);
 			alert('Payment Error!!!');

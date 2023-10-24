@@ -180,3 +180,28 @@ input[type='text'] {
 	font-family: Arial, sans-serif;
 	font-size: 16px;
 }
+
+/* CSS FOR PIKA Day */
+.pika-table th {
+	color: #111;
+}
+
+.pika-table td,
+.pika-table th {
+	padding: 2px !important;
+}
+
+.pika-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #d3e7fd;
+}
+
+.pika-button:hover {
+	background-color: rgb(0, 179, 90);
+}
+
+.is-disabled .pika-button {
+	background-color: rgb(221, 221, 221);
+}

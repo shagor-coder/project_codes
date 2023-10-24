@@ -1,53 +1,40 @@
-import get_user_data from './utils/get_user_data';
-import update_contact_tags from './utils/update_contact_tags';
+import create_four_digit_pin from './utils/create_four_digit_pin';
+import hide_input_field from './utils/hide_input_field';
+import update_input_field from './utils/update_input_field';
 
-const next_step = document.querySelector('.next_step');
+let limit = 20;
+let intervalId;
+let isRunning = true;
 
-const pin_form = document.querySelector('#pinForm');
-const button = document.querySelector('#pinForm button');
-const location_key = '{{ custom_values.location_api_key }}';
+function getElementByInterval() {
+	limit--;
 
-async function update_contact(id, api_key) {
-	try {
-		const updated = await update_contact_tags(
-			id.trim(),
-			['verified', 'mortgage protection'],
-			api_key
-		);
-		console.log({ updated });
-		button.innerHTML = 'Success!!';
-		setTimeout(() => {
-			next_step.click();
-		}, 1500);
-	} catch (error) {
-		throw new Error(error);
+	if (limit === 0 || !isRunning) {
+		clearInterval(intervalId);
+		return console.log('Done!!!');
+	}
+
+	const verification_input_field = document.querySelector(
+		'[data-q="pin_verification"]'
+	);
+	if (verification_input_field) {
+		clearInterval(intervalId);
+		main(verification_input_field);
+		isRunning = false;
 	}
 }
 
-async function check_user_pin_enter(e) {
-	e.preventDefault();
-	const _ud = get_user_data();
-	const { id, verification_pin } = _ud;
-	if (!id || !verification_pin) return console.log('No User data found!!');
+intervalId = setInterval(getElementByInterval, 500);
 
-	const digit1 = document.getElementById('digit1').value.trim();
-	const digit2 = document.getElementById('digit2').value.trim();
-	const digit3 = document.getElementById('digit3').value.trim();
-	const digit4 = document.getElementById('digit4').value.trim();
+setTimeout(() => {
+	isRunning = false;
+	clearInterval(intervalId);
+}, 9000);
 
-	const user_entered_pin = digit1 + digit2 + digit3 + digit4;
+getElementByInterval();
 
-	if (user_entered_pin.trim() === verification_pin.trim()) {
-		button.innerHTML = 'Sending...';
-		await update_contact(id, location_key);
-	} else {
-		button.innerHTML = 'Wrong Pin!!';
-		button.classList.add('error');
-		setTimeout(() => {
-			button.innerHTML = 'Verify';
-			button.classList.remove('error');
-		}, 1500);
-	}
+async function main(verification_input_field) {
+	const pin_number = create_four_digit_pin();
+	hide_input_field(verification_input_field);
+	update_input_field(verification_input_field, pin_number);
 }
-
-pin_form.addEventListener('submit', check_user_pin_enter);
