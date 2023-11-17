@@ -1,35 +1,61 @@
-function getNextOrCurrentWednesday() {
+function getNextOrCurrentTWT(day = 0) {
 	const today = new Date();
-	if (today.getDay() === 3) {
+	if (today.getDay() === day) {
 		return today.toLocaleDateString('en-US', {
 			weekday: 'long',
 			month: 'long',
 			day: 'numeric',
+			year: 'numeric',
 		});
 	} else {
-		const daysUntilWednesday = (3 - today.getDay() + 7) % 7;
-		const nextWednesday = new Date(today);
-		nextWednesday.setDate(today.getDate() + daysUntilWednesday);
-		return nextWednesday.toLocaleDateString('en-US', {
+		const daysUntilTWT = (day - today.getDay() + 7) % 7;
+		const nextWeekday = new Date(today);
+		nextWeekday.setDate(today.getDate() + daysUntilTWT);
+		return nextWeekday.toLocaleDateString('en-US', {
 			weekday: 'long',
 			month: 'long',
 			day: 'numeric',
+			year: 'numeric',
 		});
 	}
 }
 
-function changeWednesdayText() {
-	const wednesdayEl = [...document.querySelectorAll('.show-wednesday')];
+function changeTuesdayText() {
+	const tuesdayEl = [...document.querySelectorAll('.next-tuesday')];
 
-	if (!wednesdayEl.length) return;
+	if (!tuesdayEl.length) return;
 
-	const result = getNextOrCurrentWednesday();
+	const result = getNextOrCurrentTWT(2);
 
-	wednesdayEl.forEach((wel) => {
-		const oldText = wel.textContent.trim();
-		const newText = oldText.replace('this_wednesday', result);
-		wel.textContent = newText;
+	tuesdayEl.forEach((wel) => {
+		wel.textContent = result;
 	});
 }
 
+function changeWednesdayText() {
+	const wednesdayEl = [...document.querySelectorAll('.next-wednesday')];
+
+	if (!wednesdayEl.length) return;
+
+	const result = getNextOrCurrentTWT(3);
+
+	wednesdayEl.forEach((wel) => {
+		wel.textContent = result;
+	});
+}
+
+function changeThursdayText() {
+	const thursdayEl = [...document.querySelectorAll('.next-thursday')];
+
+	if (!thursdayEl.length) return;
+
+	const result = getNextOrCurrentTWT(4);
+
+	thursdayEl.forEach((wel) => {
+		wel.textContent = result;
+	});
+}
+
+changeTuesdayText();
 changeWednesdayText();
+changeThursdayText();

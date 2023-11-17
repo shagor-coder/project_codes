@@ -11,6 +11,10 @@ async function createPdfWithSignature(req, res) {
 		state,
 		country,
 		name,
+		agent_name,
+		agent_phone_number,
+		national_producer_number,
+		agent_email,
 	} = req.formatted_data;
 
 	const imageResponse = await axios.get(authorizationSignature.url, {
@@ -70,12 +74,31 @@ async function createPdfWithSignature(req, res) {
 			'\n',
 			'\n',
 			'\n',
-			'By answering YES and confirming your information below, you attest to the following: 1.) This is a request to be enrolled in the best NO-COST plan in your area, based on our expertise of the market. 2) We will enroll you using the information provided in this form AND the minimum income to qualify. You MUST update your income with us within 30 days of enrollment; 3) This is a request to have AGENTS NAME or designee take over as your agent of record from this point forward, unless written notice is provided to AGENTS EMAIL. PLEASE ANSWER YES TO APPROVE OF THESE TERMS AND CONDITIONS',
+			`I give my permission to ${agent_name} to serve as my health insurance agent for myself and my entire household if applicable, for purposes of enrollment in a Qualified Health Plan offered on the Federally Facilitated Marketplace. By consenting to this agreement, I authorize the above-mentioned agent to view and use the confidential information provided by me in writing, electronically, or by telephone only for the purposes of one or more of the following
+			\n
+			1. Searching for an existing Marketplace application.
+			\n
+			2. Completing an application for eligibility and enrollment in a Marketplace Qualified Health Plan or other government insurance affordability programs, such as Medicaid and CHIP or advance tax credits to help pay for Marketplace premiums.
+			\n
+			3. Providing ongoing account maintenance and enrollment assistance, as necessary.
+			\n
+			4. Responding to inquiries from the Marketplace regarding my Marketplace application.
+			\n
+			5. If you already have a Marketplace plan, you give permission to switch you to a better plan if one is available, if you are already on the best plan possible you are requesting ${agent_name} to take over as your agent of record from this point forward unless notified of a change.
+			\n
+			6. I agree that if I am making less than 100% of the federal poverty line that I am looking for work making at least minimum wage.
+			\n
+			I understand that the agent will not use or share my personal identifiable information (PII) for any purposes other than those listed above. The Agent will ensure my PII is kept private and safe when collecting, starting, and using my PII for stated purposes above. I confirm that the information I provided for entry on my Marketplace eligibility and enrollment application will be true to the best of my knowledge. I understand that I do not have to share additional personal information about myself or my health with my Agent beyond what is required on the application for eligibility and enrollment purposes. I understand that my consent remains in effect until I revoke it, and I may revoke or notify my consent at any time by sending an email, text, or phone call to ${agent_name} at ${agent_phone_number}
+			\n
+			Name of Primary Writing Agent: ${agent_name}
+			Agent National Producer Number: ${national_producer_number}
+			Phone Number: ${agent_phone_number}
+			Email Address: ${agent_email}`,
 		],
 		defaultStyle: {
-			font: 'Times',
-			lineHeight: 1.6,
-			fontSize: 12,
+			font: 'Helvetica',
+			lineHeight: 1.4,
+			fontSize: 10,
 		},
 	};
 

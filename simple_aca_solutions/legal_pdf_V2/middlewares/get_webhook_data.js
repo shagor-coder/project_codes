@@ -20,7 +20,14 @@ function get_webhook_data(req, res) {
 
 	const { ip } = contact.lastAttributionSource && contact.lastAttributionSource;
 	const { name, id: location_id } = location;
-	const { surveyId, surveypage_url } = customData;
+	const {
+		surveyId,
+		surveypage_url,
+		agent_name,
+		agent_phone_number,
+		national_producer_number,
+		agent_email,
+	} = customData;
 
 	if (
 		!contact_id ||
@@ -57,6 +64,10 @@ function get_webhook_data(req, res) {
 		location_id,
 		surveyId,
 		surveypage_url,
+		agent_name,
+		agent_phone_number,
+		national_producer_number,
+		agent_email,
 		...filtered_custom_fields,
 	};
 	req.formatted_data = formatted_data;
