@@ -1,7 +1,5 @@
 import { calculator_data } from "./calculator.data";
 import { handle_enable_disable_button } from "./calculator.enable.disable";
-import { next_button } from "./calculator.html";
-import { active_step } from "./calculator.nexthandler";
 
 export const handle_input_events = (input) => {
   const parent_element = input.parentElement.parentElement;
