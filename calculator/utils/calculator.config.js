@@ -110,7 +110,7 @@ export const config = {
           field_type: "select",
           label: "Utility Offset.",
           field_key: "utility_offset",
-          options: ["0.35", "0.50", "0.75"],
+          options: ["35% Offset", "50% Offset", "75% Offset"],
         },
       ],
     },

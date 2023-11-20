@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Poppins:wght@400;600&family=Roboto:wght@100;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 
 html {
   scroll-behavior: smooth !important;
 }
 
-input:not(input[type="radio"], input[type="checkbox"]) {
+#calculator input:not(input[type="radio"], input[type="checkbox"]) {
   appearance: none;
   -webkit-appearance: none;
 }
@@ -101,6 +101,9 @@ input:not(input[type="radio"], input[type="checkbox"]) {
   color: #181818;
   text-align: center;
   margin-top: 10px;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #calculator .calculator_next_button {
@@ -118,15 +121,17 @@ input:not(input[type="radio"], input[type="checkbox"]) {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(100% - 40px);
+  max-width: 711px;
   margin-left: auto;
   margin-right: auto;
   cursor: pointer;
+  width: 100%;
 }
 
 #calculator .calculator_next_button:disabled {
   opacity: 0.8;
   cursor: not-allowed;
+  background-color: #f7410a;
 }
 
 #calculator .calculator_input_block {
@@ -134,6 +139,9 @@ input:not(input[type="radio"], input[type="checkbox"]) {
   align-items: flex-start;
   flex-direction: column;
   padding: 0px 20px;
+  max-width: 751px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #calculator .calculator_input_block:not(:last-child) {
@@ -143,7 +151,7 @@ input:not(input[type="radio"], input[type="checkbox"]) {
 #calculator .calculator_input_block .calculator_input_label {
   font-size: 16px;
   color: #000;
-  font-weight: 400;
+  font-weight: 300;
   font-family: "Roboto", sans-serif;
   margin-bottom: 10px;
 }
@@ -158,9 +166,16 @@ input:not(input[type="radio"], input[type="checkbox"]) {
   min-height: 45px;
   font-size: 16px;
   color: #000;
-  font-weight: 400;
+  font-weight: 300;
   font-family: "Roboto", sans-serif;
   width: 100%;
+}
+
+#calculator .calculator_input_block select option {
+  font-size: 15px;
+  color: #000;
+  font-weight: 300;
+  font-family: "Roboto", sans-serif;
 }
 
 #calculator .calculator_input_block input:focus,
@@ -248,7 +263,7 @@ input:not(input[type="radio"], input[type="checkbox"]) {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: calc(33% - 15px);
+  width: calc(33% - 11px);
   padding: 25px;
   border-radius: 8px;
   border: 1px solid #ddd;
@@ -265,7 +280,7 @@ input:not(input[type="radio"], input[type="checkbox"]) {
 
 .calculator_estimate_cards .estimate_card h4 {
   display: block;
-  max-width: 180px;
+  max-width: 150px;
   margin-left: auto;
   margin-right: auto;
   color: #000;
@@ -280,7 +295,7 @@ input:not(input[type="radio"], input[type="checkbox"]) {
   color: #000;
   font-size: 35px;
   font-family: "Roboto", sans-serif;
-  font-weight: 800;
+  font-weight: 900;
   margin-top: 10px;
 }
 
@@ -377,4 +392,88 @@ tooltip {
   text-align: center;
   font-weight: 400;
   line-height: 1.5;
+}
+
+#calculator div[data-index="4"] .calculator_input_block {
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#calculator div[data-index="4"] .calculator_input_block label {
+  width: 100%;
+  text-align: center;
+}
+
+.estimate_footer {
+  max-width: 751px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.estimate_footer .estimate_footer_texts {
+  font-size: 16px;
+  color: #000;
+  font-weight: 300;
+  font-family: "Roboto";
+  line-height: 1.5;
+  padding: 0 20px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.estimate_footer .calculator_footer_button {
+  padding: 15px 20px;
+  color: #000;
+  border-radius: 5px;
+  background: #fff;
+  outline: none;
+  border: 1px solid #aaa;
+  margin-top: 20px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.estimate_footer .calculator_footer_button i {
+  display: inline-flex;
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 768px) {
+  #calculator .calculator_header_tabs li {
+    padding: 15px !important;
+    font-size: 15px !important;
+  }
+
+  .calculator_next_button {
+    width: calc(100% - 40px) !important;
+  }
+
+  .calculator_estimate_cards .estimate_card {
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+
+  .calculator_estimate_cards .estimate_card:not(:last-child) {
+    margin-top: 20px !important;
+  }
+
+  .calculator_savings_panel {
+    flex-wrap: wrap !important;
+  }
+
+  .calculator_savings_panel > div:not(:last-child) {
+    margin-bottom: 20px !important;
+    margin-right: 0 !important;
+  }
 }

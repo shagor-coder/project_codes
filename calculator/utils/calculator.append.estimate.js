@@ -108,7 +108,7 @@ export const append_cost_estimates = (step, utility_offset) => {
           <span>Federal Tax Credit Incentives (30%)</span>
           <div class="tooltip">
           <i class="fa-regular fa-circle-question"></i>
-          <span class="tooltip_text">Number of panels you need.</span>
+          <span class="tooltip_text">Tax incentive from government.</span>
           </div>
         </h4>
         <span class="estimate_value" id="incentive_text"></span>
@@ -158,6 +158,18 @@ export const append_cost_estimates = (step, utility_offset) => {
         <span class="estimate_value" id="payback_text">-</span>
       </div>
     </div>
+    <div class="estimate_footer">
+      <a href="#" class="calculator_footer_button">
+        <i class="fa-solid fa-phone"></i> 
+        Schedule a Call with Us
+      </a>
+      <p class="estimate_footer_texts">
+        A much more accurate quotation will be provided after going through a thorough design and engineering process.
+      </p>
+      <p class="estimate_footer_texts">
+        Federal and Tax Solar Credit Eligibility is not 100% guaranteed by Lunar Solar. You may consult to a tax professional rergarding your Eligibility.
+      </p>
+    </div>
   `;
 
   const saving_text = estimate_div.querySelector("#saving_text");
@@ -174,32 +186,3 @@ export const append_cost_estimates = (step, utility_offset) => {
 
   step.append(estimate_div);
 };
-
-// var panel_rating = 400;
-// var cost_per_watt = 1.49;
-// var panel_cost = panel_rating * cost_per_watt;
-// var labor = 0.5;
-
-//  var mkWh = $("#myRange").val();
-//  var mBill = $("#myRange2").val();
-//  var offset = 0.5;
-
-// function reCalculate(mkWh, mBill, offset) {
-//   var dkWh = mkWh / 31;
-//   var rkWh = mkWh / mBill;
-
-//   var nBill = mBill * offset;
-//   var sys = dkWh * offset;
-//   var panels = (sys * 1000) / panel_rating;
-
-//   var sysCost = panels * panel_cost;
-//   var sysCost = sysCost + sysCost * labor;
-//   var fedCredit = sysCost * 0.3;
-
-//   $("#txtSavings").html("$" + Math.round(nBill));
-//   $("#txtSystemSize").html(Math.round(sys) + " kW");
-//   $("#txtPanels").html(Math.round(panels));
-
-//   $("#txtSystemCost").html(USDollar.format(Math.round(sysCost)));
-//   $("#txtFedCredit").html(USDollar.format(Math.round(fedCredit)));
-// }

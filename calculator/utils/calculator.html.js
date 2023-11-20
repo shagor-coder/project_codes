@@ -54,11 +54,11 @@ calculator_header.innerHTML = `
    </div>
 `;
 
-export const calculator_quotes = document.createElement("div");
-calculator_quotes.dataset.index = "4";
-calculator_quotes.innerHTML = `
-  
-`;
+// export const calculator_quotes = document.createElement("div");
+// calculator_quotes.dataset.index = "4";
+// calculator_quotes.innerHTML = `
+
+// `;
 
 export const calculator_header_tabs = [
   ...calculator_header.querySelectorAll("li"),

@@ -4,11 +4,13 @@ import {
   next_button,
   calculator,
   calculator_header,
+  step_els,
 } from "./utils/calculator.html";
 import { handle_input_events } from "./utils/calculator.input.handler";
 
 import styles from "./style.css?inline";
 import { handle_enable_disable_button } from "./utils/calculator.enable.disable";
+import { append_cost_estimates } from "./utils/calculator.append.estimate";
 
 const style_tag = document.createElement("style");
 style_tag.innerHTML = styles;
@@ -35,9 +37,22 @@ calculator.append(next_button);
 
 const all_inputs = [
   ...calculator.querySelectorAll(
-    "input:not(input[data-key='full_address']),select"
+    "input:not(input[data-key='full_address'],select[data-key='utility_offset']),select"
   ),
 ];
+
+const utility_offset = calculator.querySelector(
+  "select[data-key='utility_offset']"
+);
+
+utility_offset.addEventListener("change", () => {
+  const offset = utility_offset.value
+    .trim()
+    .replaceAll("Offset", "")
+    .replaceAll("%", "");
+
+  append_cost_estimates(step_els[3], Number(offset / 100));
+});
 
 all_inputs.forEach(handle_input_events);
 
