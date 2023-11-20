@@ -22,8 +22,7 @@ head_tag.append(style_tag);
 // Inserting Libraries
 
 const google_script = document.createElement("script");
-google_script.src =
-  "https://maps.googleapis.com/maps/api/js?key=AIzaSyB_w3vXmsI7WeQtrIOkjR6xTRVN5uOieiE&libraries=places";
+google_script.src = "https://maps.googleapis.com/maps/api/js?key=";
 const fa_script = document.createElement("script");
 fa_script.src = "https://kit.fontawesome.com/8aeafc3531.js";
 fa_script.crossOrigin = "anonymous";
