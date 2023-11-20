@@ -1,5 +1,5 @@
+import { append_cost_estimates } from "./calculator.append.estimate";
 import { config } from "./calculator.config";
-import { calculator_data } from "./calculator.data";
 import {
   calculator_header_tabs,
   next_button,
@@ -11,8 +11,6 @@ import {
 export let active_step = 0;
 
 export const handle_next_button = () => {
-  if (active_step + 1 === step_els.length) return console.log(calculator_data);
-
   active_step++;
 
   step_els.forEach((step_el) => {
@@ -33,5 +31,8 @@ export const handle_next_button = () => {
   step_name.textContent = `Step ${active_step + 1}`;
   const step_key = `step_${active_step + 1}`;
   step_details.textContent = config.steps[step_key].name;
-  next_button.disabled = "disabled";
+  //next_button.disabled = "disabled";
+
+  if (active_step === step_els.length - 1)
+    append_cost_estimates(step_els[active_step], 0.35), next_button.remove();
 };

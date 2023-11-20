@@ -8,6 +8,7 @@ import {
 import { handle_input_events } from "./utils/calculator.input.handler";
 
 import styles from "./style.css?inline";
+import { handle_enable_disable_button } from "./utils/calculator.enable.disable";
 
 const style_tag = document.createElement("style");
 style_tag.innerHTML = styles;
@@ -73,7 +74,7 @@ const check_google_loaded = () => {
       ? postal_code_obj.long_name
       : "";
     calculator_data.step_1.full_address = adress_input.value;
-    next_button.disabled = "";
+    handle_enable_disable_button("step_1");
   });
 };
 

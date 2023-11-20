@@ -28,7 +28,7 @@ input:not(input[type="radio"], input[type="checkbox"]) {
   list-style: none;
   padding-left: 0;
   margin-bottom: 20px;
-  background-color: #d3d3d3;
+  background-color: #e5e8e9;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   overflow: hidden;
@@ -229,4 +229,152 @@ input:not(input[type="radio"], input[type="checkbox"]) {
   height: 25px;
   background: #04aa6d;
   cursor: pointer;
+}
+
+.calculator_estimate_cards {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0 20px;
+  max-width: 751px;
+  margin-left: auto;
+  margin-right: auto;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.calculator_estimate_cards .estimate_card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: calc(33% - 15px);
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.calculator_estimate_cards .estimate_card:nth-child(4) {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.calculator_estimate_cards .estimate_card:not(:nth-child(3), :nth-child(4)) {
+  margin-right: 20px;
+}
+
+.calculator_estimate_cards .estimate_card h4 {
+  display: block;
+  max-width: 180px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #000;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.estimate_value {
+  color: #000;
+  font-size: 35px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+  margin-top: 10px;
+}
+
+tooltip {
+  position: relative;
+  display: inline-flex;
+}
+
+.tooltip .tooltip_text {
+  position: absolute;
+  left: 18px;
+  top: 0;
+  background-color: #000;
+  border-radius: 3px;
+  padding: 5px;
+  color: #fff;
+  font-size: 11px;
+  font-family: "Roboto", sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-out;
+  width: 100px;
+  text-align: left;
+}
+
+.tooltip:hover .tooltip_text {
+  opacity: 1;
+  visibility: visible;
+}
+
+.calculator_total_cost {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  max-width: 711px;
+  margin-left: auto;
+  margin-right: auto;
+  flex-wrap: wrap;
+  padding-top: 40px;
+  margin-top: 40px;
+  border-top: 2px solid #eeee;
+}
+
+.calculator_total_cost h4 {
+  display: block;
+  max-width: 180px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #000;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.calculator_savings_panel {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0 20px;
+  max-width: 751px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+}
+
+.calculator_savings_panel > div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.calculator_savings_panel > div:not(:last-child) {
+  margin-right: 20px;
+}
+
+.calculator_savings_panel > div h4 {
+  display: block;
+  max-width: 180px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #000;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  font-weight: 400;
+  line-height: 1.5;
 }

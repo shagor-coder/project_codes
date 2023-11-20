@@ -81,23 +81,25 @@ export const config = {
       ],
     },
     step_3: {
-      name: "Your Energy Consumption",
+      name: "Your Energy Consumption.",
       fields: [
         {
           field_type: "range",
-          label: "Your avg kW Consumption.",
+          label: "Your avg kW Consumption <span>(800kWH)</span>",
           field_key: "your_avg_kw_consumtion",
           min: 100,
           max: 3000,
           step: 5,
+          value: 800,
         },
         {
           field_type: "range",
-          label: "Your avg monthly bill.",
+          label: "Your avg monthly bill <span>($100)</span>",
           field_key: "your_avg_monthly_bill",
           min: 50,
           max: 1000,
           step: 5,
+          value: 100,
         },
       ],
     },
@@ -108,9 +110,16 @@ export const config = {
           field_type: "select",
           label: "Utility Offset.",
           field_key: "utility_offset",
-          options: ["35% Off", "50% Off", "75% Off"],
+          options: ["0.35", "0.50", "0.75"],
         },
       ],
     },
+  },
+
+  calculation_values: {
+    panel_rating: 400,
+    cost_per_watt: 1.49,
+    panel_cost: 400 * 1.49,
+    labour: 0.5,
   },
 };
