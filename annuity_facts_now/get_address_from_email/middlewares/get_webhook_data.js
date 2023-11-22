@@ -1,69 +1,25 @@
 function get_webhook_data(req, res) {
-	const {
-		contact_id,
-		full_name,
-		email,
-		phone,
-		city,
-		state,
-		country,
-		'Authorization Signature': authorizationSignature,
-		contact,
-		location,
-		customData,
-	} = req.body;
+  const { first_name, last_name, email, location, customData } = req.body;
 
-	const { ip } = contact.lastAttributionSource && contact.lastAttributionSource;
-	const { name, id: location_id } = location;
-	const {
-		surveyId,
-		surveypage_url,
-		agent_name,
-		agent_phone_number,
-		national_producer_number,
-		agent_email,
-	} = customData;
+  if (!first_name || !last_name || !email || !location || !customData) {
+    return res
+      .status(400)
+      .json({ error: "One or more required fields are missing in req.body" });
+  }
 
-	if (
-		!contact_id ||
-		!full_name ||
-		!email ||
-		!phone ||
-		!city ||
-		!state ||
-		!country ||
-		!authorizationSignature ||
-		!contact ||
-		!location ||
-		!customData ||
-		!ip ||
-		!surveyId ||
-		!surveypage_url
-	) {
-		return res
-			.status(400)
-			.json({ error: 'One or more required fields are missing in req.body' });
-	}
+  const { name: location_name, id: location_id } = location;
 
-	const formatted_data = {
-		authorizationSignature,
-		ip,
-		contact_id,
-		full_name,
-		email,
-		phone,
-		city,
-		state,
-		country,
-		name,
-		location_id,
-		surveyId,
-		surveypage_url,
-		agent_name,
-		agent_phone_number,
-		national_producer_number,
-		agent_email,
-	};
-	req.formatted_data = formatted_data;
+  const { surveyId, checkout_page } = customData;
+
+  const formatted_data = {
+    first_name,
+    last_name,
+    email,
+    location_name,
+    location_id,
+    surveyId,
+    checkout_page,
+  };
+  req.formatted_data = formatted_data;
 }
 module.exports = get_webhook_data;

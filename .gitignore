@@ -3,3 +3,4 @@ test
 test.*
 dist
 .env
+.end.local
