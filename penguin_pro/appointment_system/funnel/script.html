@@ -1,0 +1,86 @@
+<script>
+  const get_access_token_by_code = async (client_id, client_secret, code) => {
+    const url = "https://services.leadconnectorhq.com/oauth/token";
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Accept: "application/json",
+      },
+      body: new URLSearchParams({
+        client_id: client_id,
+        client_secret: client_secret,
+        grant_type: "authorization_code",
+        code: code,
+      }),
+    };
+
+    try {
+      const response = await fetch(url, options);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const calculate_expiration_date = (expires_in) => {
+    const current_date = new Date();
+    const expiration_date = new Date(
+      current_date.getTime() + expires_in * 1000
+    );
+    return expiration_date;
+  };
+
+  const insert_auth_to_sheet = async (auth_data, sheet_url) => {
+    const new_expires_in = calculate_expiration_date(auth_data.expires_in);
+
+    const new_auth_data = {
+      ...auth_data,
+      expires_in: new_expires_in,
+    };
+
+    const options = {
+      redirect: "follow",
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain",
+      },
+      body: JSON.stringify(new_auth_data),
+    };
+
+    try {
+      const request = await fetch(
+        sheet_url + "?sheet=0&action=insert",
+        options
+      );
+      const auth_data = await request.json();
+      console.log(auth_data);
+    } catch (err) {
+      console.error(error);
+    }
+  };
+
+  const main = async () => {
+    const url = new URL(location.href);
+    const code = url.searchParams.get("code");
+    if (!code) return console.log("No Code Found!!");
+
+    const sheet_url = "{{ custom_values.sheet_url }}";
+    const client_id = "{{ custom_values.client_id }}";
+    const client_secret = "{{ custom_values.client_secret }}";
+
+    try {
+      const auth_data = await get_access_token_by_code(
+        client_id,
+        client_secret,
+        code
+      );
+      await insert_auth_to_sheet(auth_data, sheet_url);
+    } catch (err) {
+      console.error(error);
+    }
+  };
+
+  main();
+</script>

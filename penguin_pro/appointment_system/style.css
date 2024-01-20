@@ -1,0 +1,40 @@
+#contact_info .headline_text {
+  font-size: 30px;
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+  text-align: center;
+}
+
+#appointment_info .headline_text {
+  font-size: 30px;
+  font-family: "Montserrat", sans-serif;
+  color: #000000;
+  text-align: center;
+}
+
+#contact_info .subheadline_text {
+  font-size: 30px;
+  font-family: "Montserrat", sans-serif;
+  color: #ffffff;
+  text-align: center;
+}
+
+#appointment_info .subheadline_text {
+  font-size: 30px;
+  font-family: "Montserrat", sans-serif;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#appointment_info .paragraph_text {
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  color: #000000;
+  text-align: center;
+}
+
+#contact_info .fw-700,
+#appointment_info .fw-700 {
+  font-weight: 700 !important;
+}
