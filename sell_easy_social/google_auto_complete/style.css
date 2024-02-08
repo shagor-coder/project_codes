@@ -1,0 +1,668 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+/* Start Root CSS */
+:root {
+  --main-container-max-width: 800px;
+  --main-container-background-color: #fff;
+  --main-container-border: 1px solid var(--main-brand-color);
+
+  --main-brand-color: #e43b2c;
+  --all-input-bg-color: #ffffff;
+  --all-input-hover-bg-color: #ffffff;
+  --all-input-box-shadow: inset 10px 10px 20px rgba(0, 0, 0, 0);
+  --all-input-border-color: #303030;
+  --all-input-border-hover: #e43b2c;
+  --all-input-max-height: 55px;
+  --all-input-min-height: 55px;
+  --all-input-max-width: 100%;
+  --all-input-border-radius: 50px;
+  --main-label-font-weight: 700;
+  --main-label-color: #000000;
+  --main-label-font-size: 18px;
+  --main-label-font-family: "Roboto", sans-serif;
+
+  --placeholder-font-color: #acacac;
+  --main-placeholder-font-size: 16px;
+  --placeholder-font-weight: 400;
+  --all-input-placeholder-font-family: "Roboto", sans-serif;
+
+  --radio-and-checkbox-font-color: #ffffff;
+  --radio-and-checkbox-font-size: 16px;
+  --radio-and-checkbox-font-weight: 500;
+  --radio-and-checkbox-font-family: "Roboto", sans-serif;
+  --radio-and-checkbox-border: 1px solid #e43b2c;
+  --radio-and-checkbox-bg-color: #e43b2c;
+  --radio-and-checkbox-hover-bg-color: #bf2f22;
+  --radio-and-checkbox-border-radius: 50px;
+  --radio-and-checkbox-answer-font-color: #ffffff;
+  --radio-and-checkbox-answer-font-size: 16px;
+  --radio-and-checkbox-answer-font-weight: 500;
+  --radio-and-checkbox-answer-font-family: "Roboto", sans-serif;
+
+  --multi-select-placeholder-font-size: 18px;
+  --multi-select-placeholder-font-color: #acacac;
+  --multi-select-placeholder-font-weight: 500;
+  --multi-select-option-font-size: 18px;
+  --multi-select-option-font-color: #000;
+  --multiselect-tags-bg-color: var(--main-brand-color);
+  --multiselect-tag-icon-color: #fff;
+  --multiselect-font-family: "Roboto", sans-serif;
+  --multiselect-option-hover-bg: #e43b2c6f;
+  --multiselect-option-bg: #e43b2c6f;
+
+  --all-input-font-color: #000;
+  --all-input-font-size: 16px;
+  --all-input-font-weight: 500;
+  --all-input-font-family: "Roboto", sans-serif;
+  --all-border-radius: 50px;
+  --all-inputs-border: 1px solid var(--all-input-border-color);
+
+  --footer-button-bg: #e43b2c;
+  --footer-button-hover-bg: #b52316;
+  --footer-button-hover-font-color: #ffffff;
+  --footer-bg-color: transparent;
+  --footer-button-font-size: 16px;
+  --footer-button-font-weight: 700;
+  --footer-button-font-family: "Roboto", sans-serif;
+  --footer-button-font-color: #fff;
+  --footer-button-border-radius: 50px;
+
+  --transition-all: all 0.3s ease-in-out;
+  --transition-border: border-color 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+
+  --h1-font-family: "Roboto", sans-serif;
+  --h1-font-size: 30px;
+  --h1-font-color: #000000;
+  --h1-font-weight: 700;
+  --h1-max-width: 760px;
+
+  --error-font-size: 18px;
+  --error-font-weight: 400;
+  --error-font-family: "Roboto", sans-serif;
+  --error-container-text-align: center;
+  --error-font-color: #d11010;
+
+  --accent-color: var(--main-brand-color);
+}
+
+/* End Root CSS */
+
+/* Start Parent CSS */
+button {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+input:not(input[type="checkbox"], input[type="radio"]) {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+.hl-app,
+#form-builder.hl_wrapper--inner,
+.hl_form-builder--main,
+.ghl-form-wrap,
+#_builder-form.ghl-survey-form {
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  border: none !important;
+  background: transparent !important;
+  max-width: var(--main-container-max-width) !important;
+}
+
+#_builder-form.ghl-survey-form {
+  display: none !important;
+}
+#_builder-form.ghl-survey-form.form_loaded {
+  display: block !important;
+}
+
+.hl_form-builder--main {
+  position: relative;
+  margin-bottom: 0 !important;
+  margin-top: 0px !important;
+  padding-bottom: 0px !important;
+  padding-top: 0px !important;
+}
+.hl-app .ghl-form-wrap {
+  border-radius: 0 !important;
+}
+.hl-app .hl_form-builder--main .ghl-form-wrap {
+  max-width: var(--main-container-max-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.hl-app #_builder-form.ghl-survey-form {
+  max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 0px !important;
+  z-index: 10 !important;
+  position: relative !important;
+  box-shadow: none !important;
+}
+.hl-app .ghl-question-set {
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  z-index: 100 !important;
+  position: relative !important;
+}
+.hl-app .ghl-question {
+  padding: 0 !important;
+}
+#_builder-form .fields-container {
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+.hl-app .ghl-question .fields-container.row {
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+.hl-app
+  .ghl-question
+  .fields-container.row
+  .form-field-container
+  div
+  .form-builder--item {
+  width: 100% !important;
+  margin: 0 auto !important;
+  margin-bottom: 16px !important;
+  padding: 0 !important;
+}
+
+.ghl-question:nth-child(1) .fields-container .col-12:not(:first-child) {
+  display: none !important;
+}
+
+/* End Parent CSS  Resets */
+
+/* ==== Start Error Text CSS ==== */
+#_builder-form .alert {
+  border-left: none !important;
+}
+
+#_builder-form .alert ul {
+  list-style: none !important;
+}
+
+#_builder-form .alert.alert-danger {
+  text-align: var(--error-container-text-align) !important;
+  font-size: var(--error-font-size) !important;
+  font-weight: var(--error-font-weight) !important;
+  font-family: var(--error-font-family) !important;
+  color: var(--error-font-color) !important;
+}
+
+#_builder-form .alert.alert-danger span {
+  border-left: 5px solid #ff4747 !important;
+}
+/* ==== End Error Text CSS ==== */
+
+/* Start Common Inputs CSS */
+
+.hl-app #_builder-form .form-builder--item > label {
+  font-size: var(--main-label-font-size) !important;
+  font-weight: var(--main-label-font-weight) !important;
+  font-family: var(--main-label-font-family) !important;
+  color: var(--main-label-color) !important;
+  text-align: left !important;
+  margin-bottom: 15px !important;
+  width: 100% !important;
+  display: none !important;
+}
+
+.hl-app #_builder-form .form-builder--item.radio_label_container > label {
+  text-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 24px !important;
+}
+
+.hl-app #_builder-form .form-builder--item {
+  padding-left: 0px !important ;
+  padding-right: 0px !important ;
+}
+
+body
+  .c-survey
+  #_builder-form
+  .form-builder--item
+  input[type="text"][class="form-control"],
+body .c-survey #_builder-form .form-builder--item .date-picker-custom-style,
+body .c-survey #_builder-form .form-builder--item input[type="number"] {
+  background: var(--all-input-bg-color) !important;
+  transition: var(--transition-border) !important;
+  font-size: var(--all-input-font-size) !important;
+  color: var(--all-input-font-color) !important;
+  font-family: var(--all-input-font-family) !important;
+  font-weight: var(--all-input-font-weight) !important;
+  border-radius: var(--all-border-radius) !important;
+  box-shadow: var(--all-input-box-shadow) !important;
+  border: var(--all-inputs-border) !important;
+}
+
+.hl-app #_builder-form input:-internal-autofill-selected {
+  background: var(--all-input-hover-bg-color) !important;
+}
+
+.hl-app #_builder-form .form-builder--item input::placeholder {
+  font-size: var(--main-placeholder-font-size) !important;
+  color: var(--placeholder-font-color) !important;
+  font-weight: var(--placeholder-font-weight) !important;
+  font-family: var(--all-input-placeholder-font-family) !important;
+}
+.hl-app #_builder-form .form-builder--item .form-control:not(textarea),
+.hl-app #_builder-form .countryphone {
+  background-color: var(--all-input-bg-color) !important;
+  border: var(--all-inputs-border) !important;
+  min-height: var(--all-input-min-height) !important;
+  max-height: var(--all-input-max-height) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  transition: var(--transition-border) !important;
+  font-size: var(--all-input-font-size) !important;
+  color: var(--all-input-font-color) !important;
+  font-family: var(--all-input-font-family) !important;
+  font-weight: var(--all-input-font-weight) !important;
+  border-radius: var(--all-border-radius) !important;
+  box-shadow: var(--all-input-box-shadow) !important;
+}
+
+.hl-app #_builder-form .form-builder--item .form-control:hover,
+.hl-app #_builder-form .countryphone:hover,
+.hl-app #_builder-form .form-builder--item .form-control:focus,
+.hl-app #_builder-form .countryphone:focus {
+  border-color: var(--all-input-border-hover) !important;
+  box-shadow: var(--all-input-hover-box-shadow) !important;
+  background-color: var(--all-input-hover-bg-color) !important;
+}
+
+body
+  .c-survey
+  #_builder-form
+  .form-builder--item
+  input[type="text"][class="form-control"]:hover,
+body
+  .c-survey
+  #_builder-form
+  .form-builder--item
+  .date-picker-custom-style:hover,
+body .c-survey #_builder-form .form-builder--item input[type="number"]:hover,
+body
+  .c-survey
+  #_builder-form
+  .form-builder--item
+  input[type="text"][class="form-control"]:focus,
+body
+  .c-survey
+  #_builder-form
+  .form-builder--item
+  .date-picker-custom-style:focus,
+body .c-survey #_builder-form .form-builder--item input[type="number"]:focus {
+  border-color: var(--all-input-border-hover) !important;
+  box-shadow: var(--all-input-hover-box-shadow) !important;
+  background-color: var(--all-input-hover-bg-color) !important;
+}
+
+.hl-app #_builder-form .form-builder--item textarea.form-control {
+  background-color: var(--all-input-bg-color) !important;
+  border: var(--all-inputs-border) !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  transition: var(--transition-border) !important;
+  font-size: var(--all-input-font-size) !important;
+  color: var(--all-input-font-color) !important;
+  font-family: var(--all-input-font-family) !important;
+  font-weight: var(--all-input-font-weight) !important;
+  border-radius: var(--all-border-radius) !important;
+  box-shadow: var(--all-input-box-shadow) !important;
+}
+
+.hl-app #_builder-form .form-builder--item textarea::placeholder {
+  font-size: var(--main-placeholder-font-size) !important;
+  color: var(--placeholder-font-color) !important;
+  font-weight: var(--placeholder-font-weight) !important;
+  font-family: var(--all-input-placeholder-font-family) !important;
+}
+
+/* Phone Input Fix */
+.hl-app #_builder-form .form-builder--item .iti--allow-dropdown {
+  display: block !important;
+  max-width: var(--all-input-max-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+/* End Inputs CSS */
+
+/* Radio Input Styles */
+.hl-app input[type="radio"],
+.hl-app input[type="checkbox"] {
+  accent-color: var(--accent-color) !important ;
+}
+
+.hl-app #_builder-form .in-r-c,
+.hl-app #_builder-form .option-radio {
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+.hl-app #_builder-form .in-r-c:not(:last-child),
+.hl-app #_builder-form .option-radio:not(:last-child) {
+  margin-bottom: 10px !important;
+}
+
+.hl-app .in-r-c input[type="checkbox"],
+.hl-app #_builder-form .option-radio input[type="radio"] {
+  margin-top: 0px !important;
+  display: none !important;
+}
+
+.hl-app #_builder-form .option-radio > div {
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+.hl-app #_builder-form .option-radio > div > label,
+.hl-app #_builder-form .in-r-c > label {
+  margin-top: 0 !important;
+  margin-left: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 30px !important;
+  position: relative !important;
+  padding-left: 0px !important;
+  padding: 10px 20px !important;
+  background-color: var(--radio-and-checkbox-bg-color) !important;
+  border-radius: var(--radio-and-checkbox-border-radius) !important;
+  border: var(--radio-and-checkbox-border) !important;
+  width: 100% !important;
+}
+
+.hl-app #_builder-form .option-radio > div > label,
+.hl-app #_builder-form .in-r-c > label {
+  font-size: var(--radio-and-checkbox-answer-font-size) !important;
+  font-weight: var(--radio-and-checkbox-answer-font-weight) !important;
+  color: var(--radio-and-checkbox-answer-font-color) !important;
+  font-family: var(--radio-and-checkbox-answer-font-family) !important;
+  cursor: pointer !important;
+  transition: var(--transition-all) !important;
+}
+
+.hl-app #_builder-form .option-radio > div > label:hover,
+.hl-app #_builder-form .in-r-c > label:hover {
+  background-color: var(--radio-and-checkbox-hover-bg-color) !important;
+}
+
+.hl-app .option label::before,
+.hl-app .option-radio label::before {
+  display: none !important;
+}
+
+.hl-app .option label::after,
+.option-radio label::after {
+  display: none !important;
+}
+/* End Radio Input Styles */
+
+/* Start Multiselect CSS */
+body .c-survey #_builder-form .form-builder--item .multiselect {
+  background-color: var(--all-input-bg-color) !important;
+  border: var(--all-inputs-border) !important;
+  min-height: var(--all-input-min-height) !important;
+  max-height: var(--all-input-max-height) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  transition: var(--transition-border) !important;
+  font-size: var(--all-input-font-size) !important;
+  color: var(--all-input-font-color) !important;
+  font-family: var(--all-input-font-family) !important;
+  font-weight: var(--all-input-font-weight) !important;
+  border-radius: var(--all-border-radius) !important;
+  box-shadow: var(--all-input-box-shadow) !important;
+  display: flex !important;
+}
+
+body .c-survey #_builder-form .form-builder--item .multiselect:hover {
+  border-color: var(--all-input-border-hover) !important;
+  box-shadow: var(--all-input-hover-box-shadow) !important;
+  background-color: var(--all-input-hover-bg-color) !important;
+}
+
+body
+  .c-survey
+  #_builder-form
+  .form-builder--item
+  .multiselect
+  .multiselect__input {
+  background-color: transparent !important;
+  font-size: var(--multi-select-placeholder-font-size) !important;
+  color: var(--multi-select-placeholder-font-color) !important;
+  font-weight: var(--multi-select-placeholder-font-weight) !important;
+  font-family: var(--multiselect-font-family) !important;
+  padding: 0px !important;
+}
+
+body
+  .c-survey
+  #_builder-form
+  .form-builder--item
+  .multiselect
+  .multiselect__input:focus {
+  background-color: transparent !important;
+}
+
+body .c-survey #_builder-form .multiselect .multiselect__tags {
+  padding: 0px !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  display: flex !important;
+  height: 67px !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  padding-left: 20px !important;
+}
+
+body
+  .c-survey
+  #_builder-form
+  .multiselect
+  .multiselect__tags
+  .multiselect__placeholder {
+  background-color: transparent !important;
+  font-size: var(--multi-select-placeholder-font-size) !important;
+  color: var(--multi-select-placeholder-font-color) !important;
+  font-weight: var(--multi-select-placeholder-font-weight) !important;
+  font-family: var(--multiselect-font-family) !important;
+}
+
+body .c-survey #_builder-form .multiselect .multiselect__select {
+  top: 0px !important;
+  height: 100% !important;
+}
+
+body .c-survey #_builder-form .multiselect .multiselect__single {
+  background-color: transparent !important;
+  font-size: var(--multi-select-placeholder-font-size) !important;
+  color: var(--multi-select-placeholder-font-color) !important;
+  font-weight: var(--multi-select-placeholder-font-weight) !important;
+  font-family: var(--multiselect-font-family) !important;
+}
+/* End Multiselect CSS */
+
+/* Start Signature Button CSS */
+#_builder-form .signature-button {
+  background-color: var(--all-input-bg-color) !important;
+  border: var(--all-inputs-border) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  transition: var(--transition-border) !important;
+  border-radius: var(--all-border-radius) !important;
+  box-shadow: var(--all-input-box-shadow) !important;
+}
+
+#_builder-form .signature-container .clear-button {
+  font-size: var(--all-input-font-size) !important;
+  color: var(--all-input-font-color) !important;
+  font-family: var(--all-input-font-family) !important;
+  font-weight: var(--all-input-font-weight) !important;
+}
+
+#_builder-form .signature-button:hover {
+  border-color: var(--all-input-border-hover) !important;
+  box-shadow: var(--all-input-hover-box-shadow) !important;
+  background-color: var(--all-input-hover-bg-color) !important;
+}
+/* End Signature Button CSS */
+
+/* Start Footer Button CSS  */
+.ghl-footer-buttons {
+  position: relative !important;
+  bottom: 10px !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: var(--footer-bg-color) !important;
+  box-shadow: none !important;
+  height: 100% !important;
+  margin-top: 5px !important;
+  width: 100% !important;
+}
+.hl-app .ghl-btn.ghl-footer-back {
+  display: none !important;
+}
+
+.hl-app .ghl-footer .ghl-btn.ghl-footer-next,
+.hl-app .ghl-footer .ghl-btn.ghl-submit-btn {
+  margin: 0 auto !important;
+  float: initial !important;
+  min-height: 55px !important;
+  min-width: 150px !important;
+  width: 100% !important;
+  padding: 10px 25px !important;
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  max-height: 100% !important;
+  position: relative !important;
+  z-index: 10 !important;
+  border-radius: var(--footer-button-border-radius) !important;
+  color: var(--footer-button-font-color) !important;
+  line-height: 0 !important;
+  border-radius: var(--footer-button-border-radius) !important;
+  background-color: var(--footer-button-bg) !important;
+  transition: var(--transition-all) !important;
+  font-family: var(--footer-button-font-family) !important;
+  font-size: var(--footer-button-font-size) !important;
+  font-weight: var(--footer-button-font-weight) !important;
+  letter-spacing: 1px !important;
+  color: var(--footer-button-font-color) !important;
+}
+
+.hl-app .ghl-btn.ghl-footer-next:hover,
+.hl-app .ghl-footer .ghl-btn.ghl-submit-btn:hover {
+  background-color: var(--footer-button-hover-bg) !important;
+}
+
+.ghl-footer-next-arrow {
+  width: 40px !important;
+  height: 25px !important;
+}
+
+/* End Footer Button CSS  */
+
+/* Start Footer Reset CSS */
+.hl-app .ghl-footer,
+.hl-app .ghl-footer.ghl-footer-preview {
+  position: relative !important;
+  bottom: 10px !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: var(--footer-bg-color) !important;
+  box-shadow: none !important;
+  height: 100% !important;
+  margin-top: 15px !important;
+}
+
+.hl-app .ghl-footer .ghl-progress-container,
+.hl-app .ghl-footer.ghl-footer-preview .ghl-progress-container {
+  position: relative !important;
+  margin-top: 30px !important;
+  left: 0px !important;
+  width: calc(100%) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.hl-app .ghl-footer .ghl-progress-container .ghl-footer-progress-bar {
+  width: 100% !important;
+}
+
+.hl-app .ghl-footer .ghl-progress-container .ghl-progress-container-text {
+  background-color: #111110 !important;
+  font-family: var(--all-input-font-family) !important;
+  font-size: 12px !important;
+  color: #fff !important;
+  font-weight: 400 !important;
+  transition: var(--transition-all) !important;
+}
+
+.hl-app .ghl-footer .ghl-progress-container .ghl-progress-container-inner {
+  background-color: #dcb143 !important;
+  transition: var(--transition-all) !important;
+}
+/* End Footer Reset CSS */
+
+/* For Mobile responsive */
+
+@media (max-width: 768px) {
+  :root {
+    --all-input-max-height: 45px;
+    --all-input-min-height: 45px;
+    --main-label-font-size: 16px;
+
+    --h1-font-size: 20px;
+
+    --footer-button-font-size: 18px;
+  }
+
+  .hl-app .ghl-footer .ghl-button-bar .ghl-button {
+    min-height: 50px !important;
+  }
+
+  .hl-app .ghl-footer .ghl-button-bar .ghl-btn-submit input.ghl-next-button {
+    min-height: 50px !important;
+  }
+}
+
+/* Start Thank you CSS */
+
+.hl-app #_builder-form > .row > div h3 {
+  font-size: 25px !important;
+  font-family: "Roboto", sans-serif !important;
+  color: #000 !important;
+  text-align: center !important;
+  margin-top: 50px !important;
+}
+
+.hl-app #_builder-form > .row + .ghl-footer {
+  display: none !important;
+}
+#_builder-form > .row + .percent-container {
+  display: none !important;
+}

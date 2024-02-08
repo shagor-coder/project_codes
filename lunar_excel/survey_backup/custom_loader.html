@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .custom-loading-main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .animation-container {
+        padding: 20px 0px;
+      }
+
+      .animation-container .circle-loader {
+        border: 2px solid rgba(0, 0, 0, 0.2);
+        border-left-color: var(--main-brand-color);
+        animation-name: loader-spin;
+        animation-duration: 0.8s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+      }
+
+      .animation-container .circle-loader.success {
+        animation: none;
+        border-color: var(--main-brand-color);
+        transition: border 500ms ease-out;
+      }
+
+      .circle-loader-checkmark {
+        width: 70px;
+        height: 70px;
+        opacity: 0;
+      }
+
+      .circle-loader-checkmark.loaded {
+        opacity: 1;
+      }
+
+      .circle-loader-checkmark:after {
+        content: "";
+        position: absolute;
+        height: 66px;
+        width: 34px;
+        transform-origin: left top;
+        border-right: 2px solid var(--main-brand-color);
+        border-top: 2px solid var(--main-brand-color);
+        top: 60px;
+      }
+
+      .circle-loader-checkmark.loaded:after {
+        animation-duration: 800ms;
+        animation-timing-function: ease;
+        animation-name: checkmark;
+        transform: scaleX(-1) rotate(135deg);
+      }
+
+      .custom-loading-main .text-container {
+        padding-top: 10px;
+        padding-bottom: 20px;
+        width: 100%;
+      }
+
+      .custom-loading-main .text-container h2 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 32px;
+        font-weight: 500;
+        line-height: 1.35;
+        letter-spacing: normal;
+        color: var(--main-label-color);
+        text-align: center;
+        margin: 0;
+      }
+
+      .custom-loading-main .text-container p {
+        font-family: "Montserrat", sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.35;
+        letter-spacing: normal;
+        color: var(--main-label-color);
+        text-align: center;
+        margin: 0;
+        margin-top: 10px;
+      }
+
+      @keyframes loader-spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes checkmark {
+        0% {
+          height: 0;
+          width: 0;
+          opacity: 1;
+        }
+        20% {
+          height: 0;
+          width: 34px;
+          opacity: 1;
+        }
+        40% {
+          height: 66px;
+          width: 34px;
+          opacity: 1;
+        }
+        100% {
+          height: 66px;
+          width: 34px;
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="custom-loading-main">
+      <div class="animation-container">
+        <div class="circle-loader">
+          <div class="circle-loader-checkmark"></div>
+        </div>
+      </div>
+      <div class="text-container">
+        <h2>Evaluating your requirements... 🎉</h2>
+        <p>Just give us a moment</p>
+      </div>
+    </div>
+
+    <script>
+      let questions = [];
+      let previewDiv = "";
+      let index = 0;
+
+      function addSurveyProgress() {
+        questions = [...document.querySelectorAll(".ghl-question")];
+        let form = document.querySelector("#_builder-form");
+
+        let div = document.createElement("div");
+        let child = document.createElement("div");
+        form.append(div);
+        div.appendChild(child);
+        div.className = "percent-container";
+        child.className = "percent-preview";
+        div.setAttribute = "data-percent";
+
+        previewDiv = document.querySelector(".percent-preview");
+        previewDiv.style.width = parseInt((1 / questions.length) * 100) + "%";
+
+        let questionContainer = document.querySelector(".ghl-question-set");
+
+        let config = { attributes: true, children: true, subtree: true };
+        let mutationObserver = new MutationObserver(mutationCallback);
+        mutationObserver.observe(questionContainer, config);
+        function mutationCallback(mutationList, observe) {
+          mutationList.forEach((mutation) => {
+            if (mutation.attributeName !== "class") return;
+            let targetClass = mutation.target.classList;
+            let isNext = targetClass.contains("ghl-page-rotateSlideOutNext");
+            let isPrevious = targetClass.contains(
+              "ghl-page-rotateSlideOutPrev"
+            );
+            if (isNext)
+              addAndRemoveActiveClass("NEXT"), addAndRemoveNextButton("NEXT");
+            if (isPrevious)
+              addAndRemoveActiveClass("PREVIOUS"),
+                addAndRemoveNextButton("PREVIOUS");
+          });
+        }
+      }
+
+      function activeSlideIndex(questions = []) {
+        let activeSlide = questions.find((slide) => {
+          return slide.classList.contains("ghl-page-current");
+        });
+
+        index = questions.indexOf(activeSlide);
+
+        return (index += 1);
+      }
+
+      function addAndRemoveActiveClass() {
+        index = activeSlideIndex(questions);
+
+        console.log(index);
+
+        if (index === 3) runLoadingAnimation();
+
+        index++;
+
+        let percent = parseFloat(index / questions.length).toFixed(2) * 100;
+        previewDiv.style.width = `${percent}%`;
+      }
+
+      function runLoadingAnimation() {
+        const circleLoaderCheckmark = document.querySelector(
+          ".circle-loader-checkmark"
+        );
+        const ghlNextButton = document.querySelector(".ghl-next-button");
+        ghlNextButton.style.display = "none";
+
+        setTimeout(() => {
+          circleLoaderCheckmark.classList.add("loaded");
+          circleLoaderCheckmark.parentElement.classList.add("success");
+          console.log("Hello");
+        }, 2500);
+
+        setTimeout(() => {
+          ghlNextButton.click();
+        }, 3500);
+      }
+
+      function removeStartLabel() {
+        let allLabels = document.querySelectorAll("#_builder-form label");
+        allLabels.forEach((label) => {
+          let span = label.querySelector("span");
+          if (span === null) return;
+          if (span.innerText.includes("*")) {
+            span.remove();
+          }
+        });
+      }
+
+      function hideNextButtonDefault() {
+        const currentSlide = document.querySelector(".ghl-page-current");
+        const continueBtn = document.querySelector(".ghl-next-button");
+
+        const optionRadio = currentSlide.querySelectorAll(".option-radio");
+
+        if (optionRadio.length === 0) {
+          continueBtn.style.display = "flex";
+        } else {
+          continueBtn.style.display = "none";
+        }
+      }
+
+      function addAndRemoveNextButton(actionType) {
+        if (actionType) {
+          const currentSlide = document.querySelector(".ghl-page-current");
+          const continueBtn = document.querySelector(".ghl-next-button");
+
+          const optionRadio = currentSlide.querySelectorAll(".option-radio");
+
+          if (optionRadio.length === 0 && index !== 3) {
+            continueBtn.style.display = "flex";
+          } else {
+            continueBtn.style.display = "none";
+          }
+        }
+      }
+
+      // Add Progressbar on top
+      addSurveyProgress();
+
+      // Remove All * From Label
+      removeStartLabel();
+
+      // Hide Next Button By Default
+      hideNextButtonDefault();
+    </script>
+  </body>
+</html>

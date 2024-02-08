@@ -1,0 +1,232 @@
+<script>
+  const progressContainer = document.createElement("div");
+  progressContainer.classList = "percent-container";
+  const progressPreview = document.createElement("div");
+  progressPreview.className = "percent-preview";
+  progressContainer.append(progressPreview);
+
+  const surveyQuestions = [
+    ...document.querySelectorAll("#_builder-form .ghl-question"),
+  ];
+  const mainSurvey = document.querySelector("#_builder-form");
+  const questionContainer = document.querySelector(
+    "#_builder-form .ghl-question-set"
+  );
+
+  const getElementsByFn = (selector) => {
+    let intervalId;
+    let elements;
+    return new Promise((resolve, reject) => {
+      intervalId = setInterval(() => {
+        elements = [...document.querySelectorAll(selector)];
+        if (!elements.length) return;
+        clearInterval(intervalId);
+        if (elements.length === 1) return resolve(elements[0]);
+        if (elements.length > 0) return resolve(elements);
+      }, 500);
+
+      setTimeout(() => {
+        if (!elements.length) {
+          clearInterval(intervalId);
+          resolve(false);
+        }
+      }, 20000);
+    });
+  };
+
+  const insertErrorElement = (activeSlide) => {
+    const inputs = [
+      ...activeSlide.querySelectorAll(
+        ".ghl-page-current .form-builder--item-input input"
+      ),
+    ];
+
+    if (!inputs.length) return;
+
+    inputs.forEach((inputField) => {
+      const errorContainer = document.createElement("div");
+      errorContainer.style.display = "none";
+      errorContainer.innerHTML = `<p style="color:#ff0010; font-family:"Roboto",sans-serif;font-weight: 700;">Please fill in ${inputField.placeholder}</p>`;
+      errorContainer.classList = "custom-input-error";
+      let inputParent = inputField.parentElement;
+      if (!inputParent) return console.log("Input Parent Not Found");
+      inputParent.style = `position:relative;`;
+      if (inputParent.querySelector(".custom-input-error")) return;
+      inputParent.append(errorContainer);
+    });
+  };
+
+  const showErrorMessage = (input) => {
+    const isInputValid = input.value;
+    const inputParent = input.parentElement.parentElement;
+    const inputError = inputParent.querySelector(".custom-input-error");
+    if (!isInputValid) {
+      inputError.style.display = "block";
+      return;
+    }
+    inputError.style.display = "none";
+  };
+
+  const addProgressBar = () => {
+    if (!progressContainer.isConnected) {
+      mainSurvey.append(progressContainer);
+    }
+    let currentPercent = parseInt(parseFloat(1 / surveyQuestions.length) * 100);
+    progressPreview.style.width = `${currentPercent}%`;
+  };
+
+  const changeProgressBar = (index) => {
+    let currentPercent = parseInt(
+      parseFloat(index / surveyQuestions.length) * 100
+    );
+    progressPreview.style.width = `${currentPercent}%`;
+  };
+
+  const addAndRemoveNextButton = (activeSlide) => {
+    if (activeSlide) {
+      const currentSlide = activeSlide;
+      const continueBtn = document.querySelector(".ghl-next-button");
+      const optionRadio = [...currentSlide.querySelectorAll(".option-radio")];
+      if (!optionRadio.length) {
+        continueBtn.style = "display: flex !important";
+        return;
+      } else {
+        continueBtn.style = "display: none !important";
+        return;
+      }
+    }
+  };
+
+  const customSubmitBtn = document.createElement("input");
+  customSubmitBtn.type = "submit";
+  customSubmitBtn.value = "Submit";
+  customSubmitBtn.classList = "ghl-button ghl-next-button";
+
+  const checkInputValue = (activeSlide) => {
+    let isAllInputFilled = false;
+    const inputs = [
+      ...activeSlide.querySelectorAll(
+        ".ghl-page-current .form-builder--item-input input"
+      ),
+    ];
+
+    if (!inputs.length) return;
+
+    let isAllFilled = 0;
+    inputs.forEach((input) => {
+      showErrorMessage(input);
+      isAllFilled++;
+      if (isAllFilled === inputs.length) {
+        isAllInputFilled = true;
+      }
+    });
+    return isAllInputFilled;
+  };
+
+  const replaceSubmitBtn = (activeSlide, submitBtn) => {
+    submitBtn.style = `display: none !important;`;
+
+    submitBtn?.parentElement?.append(customSubmitBtn);
+
+    customSubmitBtn.addEventListener("click", async () => {
+      const isNextClick = checkInputValue(activeSlide);
+
+      customSubmitBtn.value = "Please wait...";
+
+      const mainErrorContainer = await getElementsByFn(".alert.alert-danger");
+
+      if (mainErrorContainer) {
+        const allError = [...mainErrorContainer.querySelectorAll("span")];
+
+        if (!allError.length) return;
+
+        const isPhoneError = allError.find((error) => {
+          return error.innerText.trim().includes("Invalid phone");
+        });
+
+        if (isPhoneError) {
+          const phoneElError = activeSlide.querySelector(
+            ".iti .custom-input-error"
+          );
+          if (!phoneElError) return;
+          phoneElError.innerHTML = ` <p style="color:#ff0010; font-family:"Roboto",sans-serif;font-weight: 700;">Please enter a valid number!</p>`;
+          phoneElError.style.display = "block";
+          return;
+        }
+      }
+
+      if (isNextClick) {
+        submitBtn?.click();
+      }
+    });
+    customSubmitBtn.removeEventListener("click", async () => {});
+  };
+
+  const getCurrentActiveSlideIndex = async (currentElement) => {
+    let activeSlide = currentElement;
+    let index = surveyQuestions.indexOf(activeSlide);
+
+    changeProgressBar((index += 1));
+    addAndRemoveNextButton(activeSlide);
+    const submitBtn = await getElementsByFn("input[id='nextButton']");
+    if (!submitBtn) return;
+    replaceSubmitBtn(activeSlide, submitBtn);
+    insertErrorElement(activeSlide);
+  };
+
+  const observeSurveyProgress = () => {
+    let config = { attributes: true, children: true, subtree: true };
+    const mutationCallback = (mutationList, observe) => {
+      mutationList.forEach((mutation) => {
+        if (mutation.attributeName !== "class") return;
+        let targetClass = mutation.target.classList;
+        let isNext = targetClass.contains("ghl-page-rotateSlideOutNext");
+        let isPrevious = targetClass.contains("ghl-page-rotateSlideOutPrev");
+        if (isNext) {
+          let currentNext = mutation.target.nextElementSibling;
+          getCurrentActiveSlideIndex(currentNext);
+          return;
+        }
+        if (isPrevious) {
+          let currentPrev = mutation.target.previousElementSibling;
+          getCurrentActiveSlideIndex(currentPrev);
+          return;
+        }
+      });
+    };
+
+    let mutationObserver = new MutationObserver(mutationCallback);
+    mutationObserver.observe(questionContainer, config);
+  };
+
+  const hideNextButtonDefault = () => {
+    const currentSlide = document.querySelector(".ghl-page-current");
+    const continueBtn = document.querySelector(".ghl-next-button");
+
+    const optionRadio = [...currentSlide.querySelectorAll(".option-radio")];
+
+    if (!optionRadio.length) {
+      continueBtn.style = "display: flex !important";
+      return;
+    } else {
+      continueBtn.style = "display: none !important";
+      return;
+    }
+  };
+
+  const removeStarLabel = () => {
+    let allLabels = document.querySelectorAll("#_builder-form label");
+    allLabels.forEach((label) => {
+      let span = label.querySelector("span");
+      if (span === null) return;
+      if (span.innerText.includes("*")) {
+        span.remove();
+      }
+    });
+  };
+
+  addProgressBar();
+  observeSurveyProgress();
+  hideNextButtonDefault();
+  removeStarLabel();
+</script>

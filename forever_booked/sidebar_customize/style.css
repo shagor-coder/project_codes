@@ -1,0 +1,29 @@
+/* #sidebar-v2 a.divider {
+  display: none !important;
+} */
+
+.sidebar-v2-location #sidebar-v2 .hl_nav-header {
+  z-index: 99999 !important;
+}
+
+.hl_nav-header > nav > div {
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+}
+
+.hl_nav-header > nav > div .custom-text {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  margin-bottom: 2px !important;
+}
+
+.custom-dropdown {
+  z-index: 99999;
+  width: 100%;
+  padding-left: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}

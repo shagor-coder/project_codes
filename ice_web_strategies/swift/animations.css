@@ -1,0 +1,92 @@
+/* CSS For Animation */
+.loadingElement {
+  max-height: 100vh !important;
+  overflow: hidden !important;
+}
+
+.loadingElement::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 9999 !important;
+  background: #7a7a7a !important;
+  animation-fill-mode: both !important;
+  animation-duration: 1200ms !important;
+}
+
+.loadingElement::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  width: 300px !important;
+  height: 60px !important;
+  background-image: url("https://assets.cdn.filesafe.space/BYljqoXs1fwjf5kM3pk2/media/65abcc2628a68b35a6c7acac.png") !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 10000 !important;
+}
+
+.loadingElement.loading::after {
+  animation: var(--e-preloader-animation, none)
+      var(--e-preloader-animation-duration, 0s) linear infinite,
+    fadesOut 0.5s both;
+  transition: none !important;
+}
+
+.loadingElement.loading::before {
+  animation-name: fadesOutLeft !important;
+  animation-delay: 0.5s !important;
+}
+
+.loadingElement.loaded {
+  max-height: 100% !important;
+}
+
+.loadingElement.loaded::before {
+  display: none !important;
+}
+
+.loadingElement.loaded::after {
+  display: none !important;
+}
+
+#preview-container {
+  opacity: 0 !important;
+  transition: opacity 0s ease !important;
+  height: 100vh !important;
+  overflow-y: hidden !important;
+}
+
+#preview-container.show {
+  opacity: 1 !important;
+  height: 100% !important;
+  overflow-y: unset !important;
+}
+
+@keyframes fadesOutLeft {
+  0% {
+    opacity: 1;
+    transform: none;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes fadesOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
