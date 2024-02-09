@@ -1,17 +1,58 @@
-/* #sidebar-v2 a.divider {
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css");
+
+#sidebar-v2 a.divider:not(.custom-divider) {
   display: none !important;
-} */
+}
+
+.sidebar-v2-location #sb_app-marketplace {
+  display: none !important;
+}
+
+.sidebar-v2-location #sb_memberships {
+  display: none !important;
+}
+
+.hl_nav-header > nav a span.custom-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin-right: 8px !important;
+}
+
+.hl_nav-header > nav a span.custom-icon i {
+  color: #000 !important;
+  font-size: 16px !important;
+}
+
+.sidebar-v2-location .hl_nav-header > nav a span.h-5.w-5 {
+  display: none !important;
+}
+
+.sidebar-v2-location .hl_nav-header > nav a > img {
+  display: none !important;
+}
 
 .sidebar-v2-location #sidebar-v2 .hl_nav-header {
   z-index: 99999 !important;
 }
 
-.hl_nav-header > nav > div {
+.hl_nav-header > nav .custom-item {
   flex-direction: column !important;
   justify-content: flex-start !important;
 }
 
-.hl_nav-header > nav > div .custom-text {
+.hl_nav-header > nav .custom-item:hover .custom-text {
+  background-color: rgb(243 244 246) !important;
+}
+
+.hl_nav-header > nav .custom-text i {
+  color: #000 !important;
+  font-size: 16px !important;
+}
+
+.hl_nav-header > nav .custom-item .custom-text {
   width: 100% !important;
   display: flex !important;
   align-items: center !important;
@@ -19,11 +60,29 @@
   margin-bottom: 2px !important;
 }
 
-.custom-dropdown {
+.hl_nav-header > nav .custom-item .custom-text .nav-title {
+  color: #000 !important;
+}
+
+.custom-item .custom-dropdown {
+  transition: all 0.3s ease-out;
+  transform-origin: top;
+  max-height: 0px;
+  overflow: hidden;
+  transform: scaleY(0);
   z-index: 99999;
   width: 100%;
   padding-left: 10px;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+}
+
+.custom-item.active .custom-text {
+  background-color: rgb(243 244 246) !important;
+}
+
+.custom-item.active .custom-dropdown {
+  max-height: 200px;
+  transform: scaleY(1);
 }
