@@ -18,9 +18,12 @@ const initiate_observer = async () => {
     return console.log("Agency View"), (old_location_id = "");
 
   if (current_path.toString().includes("/settings/"))
-    return console.log("Settings View"), (settings_visited = true);
+    return (settings_visited = true);
 
   let paths = current_path.split("/");
+
+  if (current_path.toString().includes("/workflow/"))
+    return (settings_visited = true);
 
   if (current_path.toString().includes("/form-builder-v2/"))
     return (settings_visited = true);
@@ -34,13 +37,15 @@ const initiate_observer = async () => {
   if (current_path.toString().includes("/emails/create/"))
     return (settings_visited = true);
 
+  if (current_path.toString().includes("/campaigns/create"))
+    return (settings_visited = true);
+
   let current_location_id = paths[3];
 
   if (exclude_accounts.includes(current_location_id.trim()))
-    return console.log("Excluded"), stylesheet.remove();
+    return stylesheet.remove();
 
-  if (old_location_id === current_location_id && !settings_visited)
-    return console.log("Same Location");
+  if (old_location_id === current_location_id && !settings_visited) return;
 
   if (old_location_id && old_location_id !== current_location_id)
     return (location.pathname = `/v2/location/${current_location_id}/settings/company`);
