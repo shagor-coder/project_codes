@@ -42,6 +42,16 @@ const initiate_observer = async () => {
 
   let current_location_id = paths[3];
 
+  if (
+    old_location_id &&
+    exclude_accounts.includes(current_location_id.trim()) &&
+    old_location_id !== current_location_id
+  )
+    return (
+      stylesheet.remove(),
+      (location.pathname = `/v2/location/${current_location_id}/settings/company`)
+    );
+
   if (exclude_accounts.includes(current_location_id.trim()))
     return stylesheet.remove();
 

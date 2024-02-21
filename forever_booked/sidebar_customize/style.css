@@ -34,9 +34,9 @@
   display: none !important;
 }
 
-.sidebar-v2-location #sidebar-v2 .hl_nav-header {
+/* .sidebar-v2-location #sidebar-v2 .hl_nav-header {
   z-index: 99999 !important;
-}
+} */
 
 .hl_nav-header > nav .custom-item {
   flex-direction: column !important;
@@ -70,7 +70,7 @@
   max-height: 0px;
   overflow: hidden;
   transform: scaleY(0);
-  z-index: 99999;
+  /* z-index: 99999; */
   width: 100%;
   padding-left: 10px;
   flex-direction: column;
