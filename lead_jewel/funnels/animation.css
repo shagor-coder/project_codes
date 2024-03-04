@@ -1,0 +1,132 @@
+.animated-col > .inner {
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+    rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg) !important;
+  opacity: 1 !important;
+  transform-style: preserve-3d !important;
+}
+
+.animated-col .c-image:not(:first-child) {
+  position: absolute !important;
+  display: block;
+  width: 100% !important;
+  max-height: 750px !important;
+  -o-object-fit: contain !important;
+  object-fit: contain !important;
+  -o-object-position: 100% 100% !important;
+  object-position: 100% 100% !important;
+}
+
+.animated-col .c-image:nth-child(2) {
+  z-index: 10 !important;
+}
+
+.animated-col .c-image:nth-child(3) {
+  left: 0 !important;
+  z-index: 11 !important;
+}
+
+.animated-col .c-image:nth-child(3) img {
+  margin-left: 0px !important;
+}
+
+.animated-col .c-image:nth-child(4) {
+  right: 0 !important;
+}
+
+.animated-col .c-image:nth-child(4) img {
+  margin-right: 0px !important;
+}
+
+.animate__animated {
+  opacity: 0;
+  transform: translate3d(0px, 48px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+    rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+  transform-style: preserve-3d;
+}
+
+.animate__animated.inView {
+  animation-name: slide_up_opacity;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+  animation-direction: normal;
+}
+
+@keyframes slide_up_linear {
+  0% {
+    opacity: 0;
+    transform: translate3d(0px, 45px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+      rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+    will-change: opacity, transform;
+  }
+  10% {
+    opacity: 0.1;
+    transform: translate3d(0px, 40px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+      rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+    will-change: opacity, transform;
+  }
+  20% {
+    opacity: 0.2;
+    transform: translate3d(0px, 35px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+      rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+    will-change: opacity, transform;
+  }
+  30% {
+    opacity: 0.3;
+    transform: translate3d(0px, 30px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+      rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+    will-change: opacity, transform;
+  }
+  40% {
+    opacity: 0.4;
+    transform: translate3d(0px, 25px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+      rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+    will-change: opacity, transform;
+  }
+  50% {
+    opacity: 0.5;
+    transform: translate3d(0px, 20px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+      rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+    will-change: opacity, transform;
+  }
+  60% {
+    opacity: 0.6;
+    transform: translate3d(0px, 15px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+      rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+    will-change: opacity, transform;
+  }
+  70% {
+    opacity: 0.7;
+    transform: translate3d(0px, 10px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+      rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+    will-change: opacity, transform;
+  }
+  80% {
+    opacity: 0.8;
+    transform: translate3d(0px, 7px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+      rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+    will-change: opacity, transform;
+  }
+  90% {
+    opacity: 0.9;
+    transform: translate3d(0px, 5px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+      rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+    will-change: opacity, transform;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+      rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+    will-change: opacity, transform;
+  }
+}
