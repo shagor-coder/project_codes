@@ -44,8 +44,8 @@ const initiate_observer = async () => {
   let paths = current_path.split("/");
   let current_location_id = paths[3];
 
-  if (current_location_id !== "FXF6jjAr2psAbWqibDRR")
-    return rebuttal_button.remove(), script_button.remove();
+  // if (current_location_id !== "FXF6jjAr2psAbWqibDRR")
+  //   return rebuttal_button.remove(), script_button.remove();
 
   if (rebuttal_button.isConnected && script_button.isConnected) return;
 

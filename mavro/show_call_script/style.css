@@ -156,9 +156,16 @@
 .script_container_wrapper.rebuttal_container_wrapper {
   width: 400px;
   height: 450px;
+  max-height: 410px;
+  overflow-y: overlay !important;
 }
 
 .single_script_container.single_rebuttal {
   width: 100%;
   font-size: 14px;
+}
+
+.sidebar-v2-location #sidebar-v2 .hl_nav-header::-webkit-scrollbar,
+.sidebar-v2-location #sidebar-v2 .hl_nav-settings ::-webkit-scrollbar {
+  width: 0;
 }

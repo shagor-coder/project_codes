@@ -3,6 +3,9 @@
 #sidebar-v2 a.divider:not(.custom-divider) {
   display: none !important;
 }
+#sidebar-v2 a.active.divider:not(.custom-divider) {
+  display: none !important;
+}
 
 .sidebar-v2-location #sb_app-marketplace {
   display: none !important;

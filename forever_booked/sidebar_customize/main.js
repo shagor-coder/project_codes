@@ -37,7 +37,10 @@ const initiate_observer = async () => {
   if (current_path.toString().includes("/emails/create/"))
     return (settings_visited = true);
 
-  if (current_path.toString().includes("/campaigns/create"))
+  if (current_path.toString().includes("/campaigns/create/"))
+    return (settings_visited = true);
+
+  if (current_path.toString().includes("/customers/detail/"))
     return (settings_visited = true);
 
   let current_location_id = paths[3];
@@ -65,14 +68,12 @@ const initiate_observer = async () => {
   settings_visited = false;
   document.head.appendChild(stylesheet);
 
-  add_sidebar_menus(mutation_observer);
+  await add_sidebar_menus(mutation_observer);
 };
 
 const run_mutation_observer = () => {
   const app = document.querySelector("#app");
-
   mutation_observer = new MutationObserver(initiate_observer);
-
   mutation_observer.observe(app, {
     subtree: true,
     childList: true,
