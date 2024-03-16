@@ -2,13 +2,14 @@ import mongoose from "mongoose";
 
 const LocationSchema = new mongoose.Schema(
   {
-    userId: {
+    companyId: {
       type: String,
-      required: true,
+      default: "",
     },
     locationId: {
       type: String,
       required: true,
+      unique: true,
     },
     auth: {
       access_token: {

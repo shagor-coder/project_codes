@@ -9,7 +9,7 @@ export const verifyUser = (req, res, next) => {
   jwt.verify(token, process.env.JWT_SECRET_STRING, (err, user) => {
     if (err) return next(createError(403, "Your token is invalid!"));
 
-    if (req.params.id !== user.id && !user.isAdmin)
+    if (req.params.id !== user.id)
       return next(createError(401, "Bad request!"));
 
     req.user = user;
