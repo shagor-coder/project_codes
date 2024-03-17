@@ -4,8 +4,6 @@ import bcrypt from "bcrypt";
 
 // Create a new Location
 export const createLocation = async (req, res, next) => {
-  if (req.user.isAdmin) req.body.companyId = req.user.id;
-
   const { access_token, refresh_token, expires_in } = req.body.auth;
 
   const hasedAccessToken = await bcrypt.hash(access_token, 8);
@@ -63,7 +61,12 @@ export const getLocation = async (req, res, next) => {
 // Update current location
 export const updateLocation = async (req, res, next) => {
   try {
-    await LocationModel.findByIdAndUpdate(req.params.id, req.body);
+    const updatedLocation = await LocationModel.findByIdAndUpdate(
+      req.params.id,
+      req.body
+    );
+
+    if (!updatedLocation) return next(createError(404, "Location not Found!!"));
     res
       .status(200)
       .json({ status: "success", message: "Location updated successfully!" });

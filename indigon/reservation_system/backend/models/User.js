@@ -23,7 +23,11 @@ const UserSchema = new mongoose.Schema(
     },
     companyId: {
       type: String,
-      default: "",
+      required: true,
+    },
+    locations: {
+      type: [String],
+      default: [],
     },
   },
   { timestamps: true }

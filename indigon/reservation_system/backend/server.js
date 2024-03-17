@@ -11,12 +11,12 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(urlencoded({ extended: true }));
-app.use(express.json());
 app.use(cookieParser());
+app.use(express.json());
 
 app.use("/auth", AuthRouter);
-app.use("/user", UserRouter);
-app.use("/location", LocationRouter);
+app.use("/api/user", UserRouter);
+app.use("/api/location", LocationRouter);
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;

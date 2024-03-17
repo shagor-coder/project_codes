@@ -12,11 +12,14 @@ export const registerUser = async (req, res, next) => {
 
   const newUser = new UserModel({ ...req.body, password: hasedPassword });
 
+  const { password: hashedPass, ...other } = newUser._doc;
+
   try {
     await newUser.save();
     res.status(200).json({
       status: "success",
       message: "User created successfully!",
+      data: other,
     });
   } catch (error) {
     next(createError(500, error.message));
@@ -35,9 +38,12 @@ export const loginUser = async (req, res, next) => {
     if (!isPassword)
       return next(createError(401, "email or password incorrect!"));
 
-    const { id, isAdmin } = isUser;
+    const { companyId, isAdmin, id } = isUser;
 
-    const token = jwt.sign({ id, isAdmin }, process.env.JWT_SECRET_STRING);
+    const token = jwt.sign(
+      { id, isAdmin, companyId },
+      process.env.JWT_SECRET_STRING
+    );
 
     res
       .cookie("access_token", token, {
