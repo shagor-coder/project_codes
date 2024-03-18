@@ -5,13 +5,13 @@ import bcrypt from "bcrypt";
 // Get all user under admin
 export const getAllUser = async (req, res, next) => {
   try {
-    const users = await UserModel.find({
-      companyId: req.params.companyId,
-    }).select("-password");
+    const currentAdmin = await UserModel.find({ _id: req.user.id })
+      .populate("users", "-password")
+      .select("-password");
 
-    if (!users.length) return next(createError(404, "Users not found"));
+    if (!currentAdmin) return next(createError(404, "Users not found"));
 
-    res.status(200).json({ status: "success", data: users });
+    res.status(200).json({ status: "success", data: currentAdmin });
   } catch (error) {
     next(createError(500, error.message));
   }
@@ -20,9 +20,12 @@ export const getAllUser = async (req, res, next) => {
 // Get the current user
 export const getUser = async (req, res, next) => {
   try {
-    const user = await UserModel.findOne({ _id: req.params.id }).select(
-      "-password"
-    );
+    const user = await UserModel.findOne({
+      _id: req.params.id,
+    })
+      .populate("locations")
+      .select("-password");
+
     if (!user) return next(createError(404, "User not found"));
     res.status(200).json({ status: "success", data: user });
   } catch (error) {
@@ -30,7 +33,7 @@ export const getUser = async (req, res, next) => {
   }
 };
 
-// Update the current user
+// Create a user
 export const createUser = async (req, res, next) => {
   const { password, ...other } = req.body;
 
@@ -39,11 +42,21 @@ export const createUser = async (req, res, next) => {
   const newUser = new UserModel({
     ...other,
     password: hashedPassword,
-    companyId: req.params.companyId,
   });
 
   try {
     const savedUser = await newUser.save();
+
+    await UserModel.updateOne(
+      {
+        _id: req.user.id,
+      },
+      {
+        $push: {
+          users: savedUser._id,
+        },
+      }
+    );
 
     const { password: hashedPassword, ...other } = savedUser._doc;
 
@@ -61,14 +74,26 @@ export const createUser = async (req, res, next) => {
 export const updateUser = async (req, res, next) => {
   try {
     const updatedUser = await UserModel.findOneAndUpdate(
-      { _id: req.params.id, companyId: req.params.companyId },
-      req.body
+      {
+        _id: req.params.id,
+      },
+      {
+        $set: req.body,
+      },
+      {
+        new: true,
+      }
     );
 
     if (!updatedUser) return next(createError(404, "User not available"));
-    res
-      .status(200)
-      .json({ status: "success", message: "User have been updated!" });
+
+    const { password: hashedPassword, ...other } = updatedUser._doc;
+
+    res.status(200).json({
+      status: "success",
+      message: "User have been updated!",
+      data: other,
+    });
   } catch (error) {
     next(createError(500, error.message));
   }
@@ -76,19 +101,15 @@ export const updateUser = async (req, res, next) => {
 
 // Delete user account
 export const deleteUser = async (req, res, next) => {
-  const { companyId, id } = req.params;
-
   try {
-    const deletedUser = await UserModel.findOneAndDelete({
-      _id: id,
-      $and: [
-        {
-          companyId: companyId,
-        },
-      ],
-    });
+    const findUser = await UserModel.findOne({ _id: req.user.id });
 
-    if (!deletedUser) return next(createError(404, "User not found!!"));
+    if (!findUser) return next(createError(404, "User not available"));
+
+    if (findUser._id !== req.params.id)
+      return next(createError(403, "Bad request"));
+
+    await findUser.deleteOne();
 
     res.status(200).json({
       status: "success",

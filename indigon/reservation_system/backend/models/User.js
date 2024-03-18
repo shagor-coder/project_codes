@@ -21,14 +21,18 @@ const UserSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    companyId: {
-      type: String,
-      required: true,
-    },
-    locations: {
-      type: [String],
-      default: [],
-    },
+    users: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    locations: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Location",
+      },
+    ],
   },
   { timestamps: true }
 );

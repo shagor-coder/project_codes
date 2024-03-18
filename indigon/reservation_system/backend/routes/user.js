@@ -11,18 +11,18 @@ import { verifyAdmin, verifyUser } from "../utils/verifyToken.js";
 const _Router = express.Router();
 
 // Create a new user
-_Router.post("/:companyId/", verifyAdmin, createUser);
+_Router.post("/", verifyAdmin, createUser);
 
 // Get all the users
-_Router.get("/:companyId/all", verifyAdmin, getAllUser);
+_Router.get("/all", verifyAdmin, getAllUser);
 
 // Get the current user
-_Router.get("/:companyId/:id/", verifyUser, getUser);
+_Router.get("/:id", verifyUser, getUser);
 
 // Update the current user
-_Router.put("/:companyId/:id/", verifyUser, updateUser);
+_Router.put("/:id", verifyUser, updateUser);
 
 // Delete the current user
-_Router.delete("/:companyId/:id/", verifyUser, deleteUser);
+_Router.delete("/:id", verifyUser, deleteUser);
 
 export default _Router;

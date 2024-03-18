@@ -7,15 +7,10 @@ import jwt from "jsonwebtoken";
 export const registerUser = async (req, res, next) => {
   const { password } = req.body;
   const hasedPassword = await bcrypt.hash(password, 8);
-
-  if (req.user && req.user.isAdmin) req.body.companyId = req.user.id;
-
-  const newUser = new UserModel({ ...req.body, password: hasedPassword });
-
-  const { password: hashedPass, ...other } = newUser._doc;
-
+  const newAdmin = new UserModel({ ...req.body, password: hasedPassword });
   try {
-    await newUser.save();
+    const savedAdmin = await newAdmin.save();
+    const { password: hashedPass, ...other } = savedAdmin._doc;
     res.status(200).json({
       status: "success",
       message: "User created successfully!",
@@ -29,21 +24,20 @@ export const registerUser = async (req, res, next) => {
 // Login to a account
 export const loginUser = async (req, res, next) => {
   const { email, password } = req.body;
+
   try {
     const isUser = await UserModel.findOne({ email: email });
+
     if (!isUser) return next(createError(404, "No user found!"));
 
-    const isPassword = await bcrypt.compare(password, isUser.password);
+    const isPassword = bcrypt.compare(password, isUser.password);
 
     if (!isPassword)
       return next(createError(401, "email or password incorrect!"));
 
-    const { companyId, isAdmin, id } = isUser;
+    const { isAdmin, id } = isUser;
 
-    const token = jwt.sign(
-      { id, isAdmin, companyId },
-      process.env.JWT_SECRET_STRING
-    );
+    const token = jwt.sign({ id, isAdmin }, process.env.JWT_SECRET_STRING);
 
     res
       .cookie("access_token", token, {

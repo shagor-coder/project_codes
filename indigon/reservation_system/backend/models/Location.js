@@ -2,9 +2,9 @@ import mongoose from "mongoose";
 
 const LocationSchema = new mongoose.Schema(
   {
-    companyId: {
-      type: String,
-      default: "",
+    userId: {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
     },
     locationId: {
       type: String,
@@ -25,6 +25,12 @@ const LocationSchema = new mongoose.Schema(
         required: true,
       },
     },
+    restaurant: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Restaurant",
+      },
+    ],
   },
   { timestamps: true }
 );
