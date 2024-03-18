@@ -6,6 +6,7 @@ import AuthRouter from "./routes/auth.js";
 import UserRouter from "./routes/user.js";
 import LocationRouter from "./routes/location.js";
 import RestaurantRouter from "./routes/restaurant.js";
+import TableRouter from "./routes/table.js";
 
 dotenv.config();
 const app = express();
@@ -19,6 +20,7 @@ app.use("/auth", AuthRouter);
 app.use("/api/user", UserRouter);
 app.use("/api/location", LocationRouter);
 app.use("/api/restaurant", RestaurantRouter);
+app.use("/api/table", TableRouter);
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;

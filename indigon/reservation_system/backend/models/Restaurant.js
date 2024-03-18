@@ -6,14 +6,24 @@ const RestaurantSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    locationId: {
-      type: String,
-      required: true,
-    },
-    tables: {
-      type: [String],
-      default: [],
-    },
+    userId: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    locationId: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Location",
+      },
+    ],
+    tables: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Table",
+      },
+    ],
   },
   { timestamps: true }
 );

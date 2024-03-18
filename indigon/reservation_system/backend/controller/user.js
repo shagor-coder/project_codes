@@ -111,6 +111,17 @@ export const deleteUser = async (req, res, next) => {
 
     await findUser.deleteOne();
 
+    await UserModel.updateOne(
+      {
+        _id: req.user.id,
+      },
+      {
+        $pull: {
+          users: findUser._id,
+        },
+      }
+    );
+
     res.status(200).json({
       status: "success",
       message: "User deleted successfully",

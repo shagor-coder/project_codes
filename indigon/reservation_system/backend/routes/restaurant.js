@@ -11,18 +11,18 @@ import { verifyUser } from "../utils/verifyToken.js";
 const _Router = express.Router();
 
 // Create a Restaurant
-_Router.post("/", verifyUser, createRestaurant);
+_Router.post("/:locationId", verifyUser, createRestaurant);
 
 // Get all the Restaurants
-_Router.get("/:locationId/all", verifyUser, getAllRestaurant);
+_Router.get("/:locationId/all", getAllRestaurant);
 
 // Get the current Restaurant
-_Router.get("/:id", verifyUser, getRestaurant);
+_Router.get("/:locationId/:id", getRestaurant);
 
 // Update the current Restaurant
-_Router.put("/:id", verifyUser, updateRestaurant);
+_Router.put("/:locationId/:id", verifyUser, updateRestaurant);
 
 // Delete the current Restaurant
-_Router.delete("/:id", verifyUser, deleteRestaurant);
+_Router.delete("/:locationId/:id", verifyUser, deleteRestaurant);
 
 export default _Router;

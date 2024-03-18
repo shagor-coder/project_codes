@@ -1,6 +1,5 @@
 import { LocationModel } from "../models/Location.js";
 import { RestaurantModel } from "../models/Restaurant.js";
-import { UserModel } from "../models/user.js";
 import { createError } from "../utils/error.js";
 
 // Create a new Restaurant
@@ -8,7 +7,7 @@ export const createRestaurant = async (req, res, next) => {
   try {
     const isLocation = await LocationModel.findOne({
       userId: req.user.id,
-      $and: [{ locationId: req.body.locationId }],
+      $and: [{ _id: req.params.locationId }],
     });
 
     if (!isLocation) return next(createError(403, "Not Allowed!"));
@@ -18,6 +17,7 @@ export const createRestaurant = async (req, res, next) => {
     const savedRestaurant = await newRestaurant.save();
 
     await isLocation.updateOne({
+      _id: req.params.locationId,
       $push: {
         restaurant: savedRestaurant._id,
       },
@@ -51,15 +51,13 @@ export const getAllRestaurant = async (req, res, next) => {
 // Get Restaurant for current user
 export const getRestaurant = async (req, res, next) => {
   try {
-    const Restaurant = await RestaurantModel.findOne({
+    const restaurant = await RestaurantModel.findOne({
       _id: req.params.id,
-    });
+    }).populate("tables");
 
-    if (!Restaurant) return next(createError(404, "Restaurant not found"));
+    if (!restaurant) return next(createError(404, "Restaurant not found"));
 
-    const { auth, ...other } = Restaurant._doc;
-
-    res.status(200).json({ staus: "success", data: { ...other } });
+    res.status(200).json({ staus: "success", data: restaurant });
   } catch (error) {
     next(createError(500, error.message));
   }
@@ -71,6 +69,7 @@ export const updateRestaurant = async (req, res, next) => {
     const updatedRestaurant = await RestaurantModel.findOneAndUpdate(
       {
         _id: req.params.id,
+        $and: [{ locationId: req.params.locationId }],
       },
       {
         $set: req.body,
@@ -83,12 +82,10 @@ export const updateRestaurant = async (req, res, next) => {
     if (!updatedRestaurant)
       return next(createError(404, "Restaurant not Found!!"));
 
-    const { auth, ...other } = updatedRestaurant._doc;
-
     res.status(200).json({
       status: "success",
       message: "Restaurant updated successfully!",
-      data: other,
+      data: updatedRestaurant,
     });
   } catch (error) {
     next(createError(500, "Restaurant not Updated"));
@@ -100,6 +97,12 @@ export const deleteRestaurant = async (req, res, next) => {
   try {
     const findRestaurant = await RestaurantModel.findOne({
       _id: req.user.id,
+      $and: [
+        { locationId: req.params.locationId },
+        {
+          userId: req.user.id,
+        },
+      ],
     });
 
     if (!findRestaurant) return next(createError(404, "Restaurant not Found"));
@@ -109,10 +112,14 @@ export const deleteRestaurant = async (req, res, next) => {
 
     await findRestaurant.deleteOne();
 
-    await UserModel.updateOne(
-      { _id: req.user.id },
+    await LocationModel.updateOne(
       {
-        $pull: findRestaurant._id,
+        _id: req.params.locationId,
+      },
+      {
+        $pull: {
+          restaurant: findRestaurant._id,
+        },
       }
     );
 

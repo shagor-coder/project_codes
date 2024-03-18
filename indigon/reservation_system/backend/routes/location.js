@@ -11,7 +11,7 @@ import { verifyAdmin, verifyUser } from "../utils/verifyToken.js";
 const _Router = express.Router();
 
 // Create a location
-_Router.post("/", verifyAdmin, createLocation);
+_Router.post("/", verifyUser, createLocation);
 
 // Get all the locations
 _Router.get("/all", verifyUser, getAllLocation);
