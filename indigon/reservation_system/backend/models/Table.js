@@ -9,6 +9,14 @@ const bookingSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  clientName: {
+    type: String,
+    required: true,
+  },
+  clientId: {
+    type: mongoose.Types.ObjectId,
+    ref: "Client",
+  },
 });
 
 const TableSchema = new mongoose.Schema(

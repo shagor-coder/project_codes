@@ -25,10 +25,10 @@ _Router.get("/:id", getTable);
 _Router.put("/:restaurantId/:id", verifyUser, updateTable);
 
 // Book a Table
-_Router.post("/:id/book", bookTable);
+_Router.post("/:id/book", verifyUser, bookTable);
 
 // Book a Table
-_Router.post("/:id/cancel", cancelBooking);
+_Router.post("/:id/cancel", verifyUser, cancelBooking);
 
 // Delete the current Table
 _Router.delete("/:restaurantId/:id", verifyUser, deleteTable);

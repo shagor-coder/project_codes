@@ -1,3 +1,4 @@
+import { ClientModel } from "../models/Client.js";
 import { RestaurantModel } from "../models/Restaurant.js";
 import { TableModel } from "../models/Table.js";
 import { createError } from "../utils/error.js";
@@ -126,18 +127,24 @@ export const deleteTable = async (req, res, next) => {
   }
 };
 
-// Public Table
-
 // Book current Table
 export const bookTable = async (req, res, next) => {
   try {
+    const client = await ClientModel.findById(req.user.id);
+
+    if (!client) return next(createError(404, "Client not found!"));
+
     const updatedTable = await TableModel.findOneAndUpdate(
       {
         _id: req.params.id,
       },
       {
         $push: {
-          bookedTimes: req.body,
+          bookedTimes: {
+            ...req.body,
+            clientName: client.name,
+            clientId: client._id,
+          },
         },
       },
       {
@@ -147,12 +154,31 @@ export const bookTable = async (req, res, next) => {
 
     if (!updatedTable) return next(createError(404, "Table not Found!!"));
 
+    const bookingId =
+      updatedTable.bookedTimes[updatedTable.bookedTimes.length - 1]._id;
+
+    await ClientModel.findOneAndUpdate(
+      {
+        _id: req.user.id,
+      },
+      {
+        $push: {
+          tables: {
+            tableId: updatedTable._id,
+            bookingId: bookingId,
+            restaurantId: updatedTable.restaurantId,
+          },
+        },
+      }
+    );
+
     res.status(200).json({
       status: "success",
       message: "Table updated successfully!",
-      bookedInfo: updatedTable.bookedTimes,
+      bookedInfo: bookingId,
     });
   } catch (error) {
+    console.log(error);
     next(createError(500, error));
   }
 };
@@ -173,6 +199,17 @@ export const cancelBooking = async (req, res, next) => {
         },
       },
     });
+
+    await ClientModel.findOneAndUpdate(
+      {
+        _id: req.user.id,
+      },
+      {
+        $pull: {
+          tables: findTable._id,
+        },
+      }
+    );
 
     res.status(200).json({
       status: "success",

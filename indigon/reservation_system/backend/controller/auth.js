@@ -1,3 +1,4 @@
+import { ClientModel } from "../models/Client.js";
 import { UserModel } from "../models/user.js";
 import { createError } from "../utils/error.js";
 import bcrypt from "bcrypt";
@@ -30,14 +31,43 @@ export const loginUser = async (req, res, next) => {
 
     if (!isUser) return next(createError(404, "No user found!"));
 
-    const isPassword = bcrypt.compare(password, isUser.password);
+    const isPassword = await bcrypt.compare(password, isUser.password);
 
     if (!isPassword)
       return next(createError(401, "email or password incorrect!"));
 
-    const { isAdmin, id } = isUser;
+    const { isAdmin, id, password: hasedPassword, ...other } = isUser._doc;
 
     const token = jwt.sign({ id, isAdmin }, process.env.JWT_SECRET_STRING);
+
+    res.cookie("access_token", token);
+    res.status(200).json({
+      status: "success",
+      message: "You're now authenticated!",
+      data: { isAdmin, id, ...other },
+    });
+  } catch (error) {
+    next(createError(500, error.message));
+  }
+};
+
+// Login to a account
+export const loginClient = async (req, res, next) => {
+  const { email, password } = req.body;
+
+  try {
+    const isUser = await ClientModel.findOne({ email: email });
+
+    if (!isUser) return next(createError(404, "No user found!"));
+
+    const isPassword = await bcrypt.compare(password, isUser.password);
+
+    if (!isPassword)
+      return next(createError(401, "email or password incorrect!"));
+
+    const { id } = isUser;
+
+    const token = jwt.sign({ id }, process.env.JWT_SECRET_STRING);
 
     res
       .cookie("access_token", token, {

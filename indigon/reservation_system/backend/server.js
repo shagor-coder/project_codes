@@ -7,13 +7,21 @@ import UserRouter from "./routes/user.js";
 import LocationRouter from "./routes/location.js";
 import RestaurantRouter from "./routes/restaurant.js";
 import TableRouter from "./routes/table.js";
+import ClientRouter from "./routes/client.js";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
+const corsOptions = {
+  origin: ["http://localhost:3000"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+};
 
-app.use(urlencoded({ extended: true }));
+app.use(cors(corsOptions));
 app.use(cookieParser());
+app.use(urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/auth", AuthRouter);
@@ -21,6 +29,7 @@ app.use("/api/user", UserRouter);
 app.use("/api/location", LocationRouter);
 app.use("/api/restaurant", RestaurantRouter);
 app.use("/api/table", TableRouter);
+app.use("/api/client", ClientRouter);
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
