@@ -12,9 +12,10 @@ import cors from "cors";
 
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
+
 const corsOptions = {
-  origin: ["http://localhost:3000"],
+  origin: ["http://localhost:5173"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 };
@@ -46,7 +47,7 @@ const connectToMongoDB = async () => {
   }
 };
 
-app.listen(PORT, () => {
+app.listen(PORT, "127.0.0.1", () => {
   connectToMongoDB();
-  console.log(`Server live on http://localhost:${PORT}`);
+  console.log(`Server live on http://127.0.0.1:${PORT}`);
 });

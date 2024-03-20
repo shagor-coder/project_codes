@@ -5,26 +5,12 @@ import { DataGridComponent } from "../components/DataGrid";
 import { ButtonModal } from "../components/ButtonModal";
 import { GridAddIcon } from "@mui/x-data-grid";
 import { AddUserForm } from "../components/AddUserForm";
-import axios from "axios";
+import { useFetch } from "../hooks/useFetch";
 
 export const Users = () => {
-  const getUsers = async () => {
-    try {
-      const request = await axios.get(
-        import.meta.env.VITE_API_BASE_URL + "/api/user/all",
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
-      );
-      const users = await request.data;
-      console.log(users);
-    } catch (error) {}
-  };
-
-  getUsers();
+  const { data, loading, error } = useFetch(
+    import.meta.env.VITE_API_BASE_URL + "/api/user/all"
+  );
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -40,7 +26,24 @@ export const Users = () => {
             />
           }
         />
-        <DataGridComponent />
+        {loading && !error && (
+          <Typography component="h6">Please wait ...</Typography>
+        )}
+        {!loading && error && (
+          <Typography component="h6" color="darkred">
+            There was an error!!
+          </Typography>
+        )}
+        {!loading &&
+          !error &&
+          data &&
+          (console.log(data[0].users),
+          (
+            <DataGridComponent
+              data={data[0].users}
+              columnData={["_id", "name", "email"]}
+            />
+          ))}
       </Box>
     </Box>
   );

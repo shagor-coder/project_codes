@@ -5,11 +5,11 @@ import bcrypt from "bcrypt";
 // Get all user under admin
 export const getAllUser = async (req, res, next) => {
   try {
-    const currentAdmin = await UserModel.find({ _id: req.user.id }).select(
-      "-password"
-    );
+    const currentAdmin = await UserModel.find({ _id: req.user.id })
+      .select("-password")
+      .populate("users", "-password");
 
-    if (!currentAdmin) return next(createError(404, "Users not found"));
+    if (!currentAdmin.length) return next(createError(404, "Users not found"));
 
     res.status(200).json({ status: "success", data: currentAdmin });
   } catch (error) {

@@ -31,6 +31,9 @@ export const LoginForm = () => {
         import.meta.env.VITE_API_BASE_URL + "/auth/login",
         {
           ...formData,
+        },
+        {
+          withCredentials: true,
         }
       );
       const authUserData = await request.data;

@@ -36,15 +36,23 @@ export const loginUser = async (req, res, next) => {
     if (!isPassword)
       return next(createError(401, "email or password incorrect!"));
 
-    const { isAdmin, id, password: hasedPassword, ...other } = isUser._doc;
+    const { isAdmin, _id, password: hasedPassword, ...other } = isUser._doc;
 
-    const token = jwt.sign({ id, isAdmin }, process.env.JWT_SECRET_STRING);
+    const token = jwt.sign({ id: _id, isAdmin }, process.env.JWT_SECRET_STRING);
 
-    res.cookie("access_token", token);
+    res.cookie("access_token", token, {
+      sameSite: "none",
+      secure: true,
+      httpOnly: true,
+      maxAge: 3600000,
+      path: "/",
+      partitioned: true,
+    });
+
     res.status(200).json({
       status: "success",
       message: "You're now authenticated!",
-      data: { isAdmin, id, ...other },
+      data: { isAdmin, id: _id, ...other },
     });
   } catch (error) {
     next(createError(500, error.message));

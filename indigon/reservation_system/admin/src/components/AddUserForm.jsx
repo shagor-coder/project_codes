@@ -1,6 +1,7 @@
 import { Button, Grid } from "@mui/material";
 import { InputComponent } from "./Input";
 import { useState } from "react";
+import axios from "axios";
 
 export const AddUserForm = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +18,24 @@ export const AddUserForm = () => {
     }));
   };
 
-  const handleSubmit = (event) => {};
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const request = await axios.post(
+        import.meta.env.VITE_API_BASE_URL + "/api/user",
+        {
+          ...formData,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      const authUserData = await request.data;
+      // navigate("/dashboard");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit}>

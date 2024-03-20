@@ -1,48 +1,59 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { useDemoData } from "@mui/x-data-grid-generator";
 
-// const VISIBLE_FIELDS = [
-//   "name",
-//   "rating",
-//   "country",
-//   "phone",
-//   "city",
-//   "company",
-//   "dateCreated",
-//   "isAdmin",
-// ];
+const ignoredFields = ["__v", "isAdmin", "users"];
 
-export const DataGridComponent = ({ data, columnData }) => {
-  // const { data } = useDemoData({
-  //   dataSet: "Employee",
-  //   visibleFields: VISIBLE_FIELDS,
-  //   rowLength: 100,
-  // });
+export const DataGridComponent = ({ data }) => {
+  const updateData = data.map((d) => {
+    return { ...d, id: d._id };
+  });
 
-  // Otherwise filter will be applied on fields such as the hidden column id
-  const columns = React.useMemo(
-    () => columnData?.filter((column) => VISIBLE_FIELDS.includes(column)),
-    [columnData]
-  );
+  const getColumns = () => {
+    const d = data[0];
+    const keys = Object.keys(d);
+    let columns = [];
+    keys.forEach((k) => {
+      if (ignoredFields.includes(k)) return;
+      let obj = {
+        field: "",
+        headerName: "",
+        type: "",
+        width: 150,
+      };
+      obj.field = k === "_id" ? k.replace("_", "") : k;
+      obj.headerName = k.toString().toUpperCase();
+      obj.type = typeof k;
+      columns.push(obj);
+    });
+    return columns;
+  };
 
   return (
     <Box sx={{ height: 600, width: 1 }}>
       {data ? (
         <DataGrid
-          {...data}
-          disableColumnFilter
-          disableColumnSelector
-          disableDensitySelector
+          rows={updateData}
+          columns={getColumns()}
+          initialState={{
+            pagination: {
+              paginationModel: {
+                pageSize: 5,
+              },
+            },
+          }}
+          pageSizeOptions={[5]}
           checkboxSelection
-          columns={columns}
+          disableRowSelectionOnClick
           slots={{ toolbar: GridToolbar }}
           slotProps={{
             toolbar: {
               showQuickFilter: true,
             },
           }}
+          disableColumnFilter
+          disableColumnSelector
+          disableDensitySelector
         />
       ) : (
         "No data available"
