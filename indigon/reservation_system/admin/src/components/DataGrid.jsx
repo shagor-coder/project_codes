@@ -2,7 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
-const ignoredFields = ["__v", "isAdmin", "users"];
+const ignoredFields = ["__v", "isAdmin", "users", "restaurant"];
 
 export const DataGridComponent = ({ data }) => {
   const updateData = data.map((d) => {

@@ -13,9 +13,7 @@ export const useFetch = (url) => {
         const request = await axios.get(url, {
           withCredentials: true,
         });
-
         const response = await request.data;
-        console.log(response);
         setData(response.data);
         setLoading(false);
         setError(false);

@@ -34,16 +34,9 @@ export const Users = () => {
             There was an error!!
           </Typography>
         )}
-        {!loading &&
-          !error &&
-          data &&
-          (console.log(data[0].users),
-          (
-            <DataGridComponent
-              data={data[0].users}
-              columnData={["_id", "name", "email"]}
-            />
-          ))}
+        {!loading && !error && data && (
+          <DataGridComponent data={data[0].users} />
+        )}
       </Box>
     </Box>
   );

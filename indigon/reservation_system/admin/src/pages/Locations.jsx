@@ -1,10 +1,14 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { Sidebar } from "../components/Sidebar";
 import { DataGridComponent } from "../components/DataGrid";
 import { PagesHeader } from "../components/PagesHeader";
-import { GridAddIcon } from "@mui/x-data-grid";
+import { useFetch } from "../hooks/useFetch";
 
 export const Locations = () => {
+  const { data, loading, error } = useFetch(
+    import.meta.env.VITE_API_BASE_URL + "/api/location/all"
+  );
+
   return (
     <Box sx={{ display: "flex" }}>
       <Sidebar headline="Locations" />
@@ -17,7 +21,15 @@ export const Locations = () => {
             </Button>
           }
         />
-        <DataGridComponent />
+        {loading && !error && (
+          <Typography component="h6">Please wait ...</Typography>
+        )}
+        {!loading && error && (
+          <Typography component="h6" color="darkred">
+            There was an error!!
+          </Typography>
+        )}
+        {!loading && !error && data && <DataGridComponent data={data} />}
       </Box>
     </Box>
   );
