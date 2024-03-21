@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import { InputComponent } from "./Input";
 import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useRegister } from "../queries/auth";
 
 export const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,8 @@ export const RegisterForm = () => {
     email: "",
     password: "",
   });
+
+  const { data, isError, isPending, mutate: doRegister } = useRegister();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -23,6 +26,7 @@ export const RegisterForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    doRegister(formData);
   };
 
   return (

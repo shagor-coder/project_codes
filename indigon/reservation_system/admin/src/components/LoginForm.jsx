@@ -3,13 +3,12 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import { InputComponent } from "./Input";
 import { Box, Typography } from "@mui/material";
-import { useAuth } from "../store/authStore";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useLogin } from "../queries/auth";
 
 export const LoginForm = () => {
   const navigate = useNavigate();
-  const setauthUser = useAuth((state) => state.setauthUser);
+  const { data, isPending, isError, mutate } = useLogin();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -26,23 +25,7 @@ export const LoginForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const request = await axios.post(
-        import.meta.env.VITE_API_BASE_URL + "/auth/login",
-        {
-          ...formData,
-        },
-        {
-          withCredentials: true,
-        }
-      );
-      const authUserData = await request.data;
-      console.log(authUserData);
-      setauthUser({ ...authUserData.data });
-      navigate("/dashboard");
-    } catch (error) {
-      console.log(error);
-    }
+    mutate(formData);
   };
 
   return (

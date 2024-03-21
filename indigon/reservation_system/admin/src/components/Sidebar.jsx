@@ -15,7 +15,6 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
-import { useAuth } from "../store/authStore";
 import { ProfileMenu } from "./ProfileMenu";
 import { MenuItem } from "./MenuItem";
 
@@ -90,8 +89,6 @@ export const Sidebar = ({ headline }) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
-  const authUser = useAuth((state) => state.authUser);
-
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -142,9 +139,8 @@ export const Sidebar = ({ headline }) => {
             name="Dashboard"
             path="/dashboard"
           />
-          {authUser.isAdmin && (
-            <MenuItem icon={<PeopleAltIcon />} name="Users" path="/users" />
-          )}
+          {/* Admin visible */}
+          <MenuItem icon={<PeopleAltIcon />} name="Users" path="/users" />
           <MenuItem
             icon={<LocationCityIcon />}
             name="Locations"

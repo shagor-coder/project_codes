@@ -5,13 +5,8 @@ import { DataGridComponent } from "../components/DataGrid";
 import { ButtonModal } from "../components/ButtonModal";
 import { GridAddIcon } from "@mui/x-data-grid";
 import { AddUserForm } from "../components/AddUserForm";
-import { useFetch } from "../hooks/useFetch";
 
 export const Users = () => {
-  const { data, loading, error } = useFetch(
-    import.meta.env.VITE_API_BASE_URL + "/api/user/all"
-  );
-
   return (
     <Box sx={{ display: "flex" }}>
       <Sidebar headline="Users" />
@@ -26,7 +21,7 @@ export const Users = () => {
             />
           }
         />
-        {loading && !error && (
+        {/* {loading && !error && (
           <Typography component="h6">Please wait ...</Typography>
         )}
         {!loading && error && (
@@ -36,7 +31,7 @@ export const Users = () => {
         )}
         {!loading && !error && data && (
           <DataGridComponent data={data[0].users} />
-        )}
+        )} */}
       </Box>
     </Box>
   );

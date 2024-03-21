@@ -1,15 +1,12 @@
 import { Avatar, Box, IconButton, Menu, Tooltip } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../store/authStore";
 import { MenuItem } from "./MenuItem";
 import PeopleAlt from "@mui/icons-material/PeopleAlt";
 import LogoutIcon from "@mui/icons-material/Logout";
 
 export const ProfileMenu = () => {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const authUser = useAuth((state) => state.authUser);
-  const removeauthUser = useAuth((state) => state.removeauthUser);
   const navigate = useNavigate();
 
   //   Handle the right menu open
@@ -25,15 +22,15 @@ export const ProfileMenu = () => {
 
   //   Logout current user
   const handleLogout = () => {
-    removeauthUser();
-    navigate("/login");
+    // removeauthUser();
+    // navigate("/login");
   };
 
   return (
     <Box sx={{ flexGrow: 0, marginLeft: "auto" }}>
       <Tooltip title="Open settings">
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-          <Avatar alt={authUser?.name} src="/static/images/avatar/2.jpg" />
+          <Avatar alt="Test" src="/static/images/avatar/2.jpg" />
         </IconButton>
       </Tooltip>
       <Menu
