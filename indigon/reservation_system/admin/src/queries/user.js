@@ -5,7 +5,7 @@ export const useGetCurrentUser = () => {
   const queryClient = useQueryClient();
 
   const user = useQuery({
-    queryKey: "currentuser",
+    queryKey: ["currentuser"],
     queryFn: getCurrentUser,
     onSuccess: async () => {
       await queryClient.cancelQueries({ queryKey: ["currentuser"] });
@@ -24,7 +24,7 @@ export const useGetAllUserForAdmin = () => {
   const queryClient = useQueryClient();
 
   const allusers = useQuery({
-    queryKey: "allusers",
+    queryKey: ["allusers"],
     queryFn: getAllUserForAdmin,
     onSuccess: async (data) => {
       console.log(data);

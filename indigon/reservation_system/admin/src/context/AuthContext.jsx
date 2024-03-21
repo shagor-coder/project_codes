@@ -1,9 +1,12 @@
 import React, { useContext, useReducer } from "react";
+import { ToastComponent } from "../components/Toast";
 
 const defaultContext = {
   isLoggedIn: false,
   authUser: null,
   showToast: false,
+  toastMessage: "Success!",
+  toastType: "success",
 };
 
 const AuthContext = React.createContext(null);
@@ -26,6 +29,16 @@ const authReducer = (state, action) => {
       return {
         ...state,
         showToast: true,
+        toastType: action.toastType,
+        toastMessage: action.message,
+      };
+
+    case "closeToast":
+      return {
+        ...state,
+        showToast: false,
+        toastType: "Success!",
+        toastMessage: "success",
       };
 
     default:
@@ -38,6 +51,13 @@ export const GetAuthContext = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ auth, dispatch }}>
+      {auth.showToast && (
+        <ToastComponent
+          message={auth.toastMessage}
+          toastType={auth.toastType}
+        />
+      )}
+
       {children}
     </AuthContext.Provider>
   );

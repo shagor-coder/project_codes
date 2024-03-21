@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import { InputComponent } from "./Input";
@@ -15,7 +15,7 @@ export const LoginForm = () => {
 
   const navigate = useNavigate();
   const { dispatch } = UseAuthContext();
-  const { mutate, isPending, isError, data } = useLogin();
+  const { mutate, isPending, isError, data, error } = useLogin();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -31,14 +31,28 @@ export const LoginForm = () => {
   };
 
   useEffect(() => {
-    if (data && !isError) {
+    if (data) {
       dispatch({
         type: "login",
         data: data,
       });
+
+      dispatch({
+        type: "showToast",
+        toastType: "success",
+        message: "Login was successful!",
+      });
       navigate("/dashboard");
     }
-  }, [data]);
+
+    if (isError) {
+      dispatch({
+        type: "showToast",
+        toastType: "error",
+        message: error.message || "There was an error!",
+      });
+    }
+  }, [data, isError]);
 
   return (
     <form onSubmit={handleSubmit}>

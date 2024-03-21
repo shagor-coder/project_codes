@@ -1,12 +1,17 @@
-import { Box, Typography } from "@mui/material";
+import { Backdrop, Box, CircularProgress, Typography } from "@mui/material";
 import { Sidebar } from "../components/Sidebar";
 import { PagesHeader } from "../components/PagesHeader";
 import { DataGridComponent } from "../components/DataGrid";
 import { ButtonModal } from "../components/ButtonModal";
 import { GridAddIcon } from "@mui/x-data-grid";
 import { AddUserForm } from "../components/AddUserForm";
+import { useGetAllUserForAdmin } from "../queries/user";
+import { UseAuthContext } from "../context/AuthContext";
 
 export const Users = () => {
+  const { dispatch } = UseAuthContext();
+  const { data, isLoading, isError } = useGetAllUserForAdmin();
+
   return (
     <Box sx={{ display: "flex" }}>
       <Sidebar headline="Users" />
@@ -21,17 +26,20 @@ export const Users = () => {
             />
           }
         />
-        {/* {loading && !error && (
-          <Typography component="h6">Please wait ...</Typography>
+        {isLoading && (
+          <Backdrop sx={{ color: "#fff", zIndex: 9999 }} open={isLoading}>
+            <CircularProgress color="info" />
+          </Backdrop>
         )}
-        {!loading && error && (
-          <Typography component="h6" color="darkred">
-            There was an error!!
-          </Typography>
-        )}
-        {!loading && !error && data && (
-          <DataGridComponent data={data[0].users} />
-        )} */}
+
+        {isError &&
+          dispatch({
+            type: "showToast",
+            toastType: "error",
+            message: "Failed to load users!",
+          })}
+
+        {data && <DataGridComponent data={data[0].users} />}
       </Box>
     </Box>
   );
