@@ -11,9 +11,9 @@ _Router.post("/login", loginUser);
 // Validate token
 _Router.get("/validate/token", verifyUser, (req, res) => {
   try {
-    if (req.user) res.code(200), json({ id: user.id });
+    if (req.user) res.status(200).json({ id: req.user.id });
   } catch (error) {
-    res.status(error.status).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 });
 

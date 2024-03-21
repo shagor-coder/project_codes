@@ -5,27 +5,27 @@ import {
   handleTokenValidation,
 } from "../api/auth";
 
-const queryClient = useQueryClient();
-
 export const useLogin = () => {
+  const queryClient = useQueryClient();
   const login = useMutation({
-    mutationKey: "login",
+    mutationKey: ["login"],
     mutationFn: handleLogin,
     onSuccess: async (data) => {
-      console.log(data);
       console.log("Login successful");
     },
     onError: async (error) => {
       console.log(error.message);
     },
+    retry: 0,
   });
 
   return login;
 };
 
 export const useRegister = () => {
+  const queryClient = useQueryClient();
   const register = useMutation({
-    mutationKey: "register",
+    mutationKey: ["register"],
     mutationFn: handleRegister,
     onSuccess: async () => {
       console.log("Registration successful!");
@@ -33,21 +33,17 @@ export const useRegister = () => {
     onError: async (error) => {
       console.log(error.message);
     },
+    retry: 0,
   });
 
   return register;
 };
 
 export const useTokenValidation = () => {
-  const validate = useMutation({
-    mutationKey: "tokenvalidation",
-    mutationFn: handleTokenValidation,
-    onSuccess: async () => {
-      console.log("Validation successful!");
-    },
-    onError: async (error) => {
-      console.log(error.message);
-    },
+  const validate = useQuery({
+    queryKey: ["tokenValidation"],
+    queryFn: handleTokenValidation,
+    retry: 0,
   });
 
   return validate;

@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import { InputComponent } from "./Input";
 import { Box, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useLogin } from "../queries/auth";
+import { UseAuthContext } from "../context/AuthContext";
 
 export const LoginForm = () => {
-  const navigate = useNavigate();
-  const { data, isPending, isError, mutate } = useLogin();
-
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
+  const { dispatch } = UseAuthContext();
+  const { mutate, isPending, isError, data } = useLogin();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -27,6 +29,16 @@ export const LoginForm = () => {
     event.preventDefault();
     mutate(formData);
   };
+
+  useEffect(() => {
+    if (data && !isError) {
+      dispatch({
+        type: "login",
+        data: data,
+      });
+      navigate("/dashboard");
+    }
+  }, [data]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -46,7 +58,12 @@ export const LoginForm = () => {
           value={formData.password}
         />
         <Grid item xs={12}>
-          <Button type="submit" variant="contained" color="primary">
+          <Button
+            type="submit"
+            variant="contained"
+            color={isError ? "warning" : "primary"}
+            disabled={isPending}
+          >
             Login
           </Button>
         </Grid>

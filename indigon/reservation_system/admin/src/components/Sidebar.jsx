@@ -1,4 +1,3 @@
-import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -17,6 +16,8 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import { ProfileMenu } from "./ProfileMenu";
 import { MenuItem } from "./MenuItem";
+import { useState } from "react";
+import { UseAuthContext } from "../context/AuthContext";
 
 const drawerWidth = 180;
 
@@ -87,7 +88,9 @@ const Drawer = styled(MuiDrawer, {
 
 export const Sidebar = ({ headline }) => {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const { auth } = UseAuthContext();
+  const { isAdmin } = auth?.authUser;
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -140,7 +143,9 @@ export const Sidebar = ({ headline }) => {
             path="/dashboard"
           />
           {/* Admin visible */}
-          <MenuItem icon={<PeopleAltIcon />} name="Users" path="/users" />
+          {isAdmin && (
+            <MenuItem icon={<PeopleAltIcon />} name="Users" path="/users" />
+          )}
           <MenuItem
             icon={<LocationCityIcon />}
             name="Locations"
