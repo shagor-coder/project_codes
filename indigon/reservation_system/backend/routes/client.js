@@ -6,7 +6,7 @@ import {
   createClient,
 } from "../controller/client.js";
 import { verifyUser } from "../utils/verifyToken.js";
-import { loginClient } from "../controller/auth.js";
+import { loginClient } from "../controller/authentication.js";
 
 const _Router = express.Router();
 

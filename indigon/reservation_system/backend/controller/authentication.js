@@ -38,7 +38,7 @@ export const loginUser = async (req, res, next) => {
 
     const { isAdmin, _id, password: hasedPassword, ...other } = isUser._doc;
 
-    const token = jwt.sign({ id: _id, isAdmin }, process.env.JWT_SECRET_STRING);
+    const token = jwt.sign({ id: _id, isAdmin }, process.env.JWT_SERVER_STRING);
 
     res.cookie("access_token", token, {
       sameSite: "none",
@@ -75,7 +75,7 @@ export const loginClient = async (req, res, next) => {
 
     const { id } = isUser;
 
-    const token = jwt.sign({ id }, process.env.JWT_SECRET_STRING);
+    const token = jwt.sign({ id }, process.env.JWT_SERVER_STRING);
 
     res
       .cookie("access_token", token, {
