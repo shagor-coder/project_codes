@@ -1,10 +1,11 @@
-import { Login } from "./pages/Login";
-import { Dashboard } from "./pages/Dashboard";
 import { Route, Routes } from "react-router-dom";
-import { PrivateRoutes } from "./components/Router";
-import { Register } from "./pages/Register";
-import { Users } from "./pages/Users";
-import { Locations } from "./pages/Locations";
+import { PrivateRoutes } from "./components/PrivateRoute";
+import { Login } from "./features/authentication/Login";
+import { Register } from "./features/authentication/Register";
+import { Dashboard } from "./features/dashboard/Dashboard";
+import { Users } from "./features/user/Users";
+import { Locations } from "./features/location/Locations";
+import NotFoundPage from "./404/NotFound";
 
 export const App = () => {
   return (
@@ -16,6 +17,7 @@ export const App = () => {
         <Route path="/users" element={<Users />} />
         <Route path="/locations" element={<Locations />} />
       </Route>
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };

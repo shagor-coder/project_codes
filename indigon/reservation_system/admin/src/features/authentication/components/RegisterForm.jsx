@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import { InputComponent } from "./Input";
+import { InputComponent } from "../../../components/Input";
 import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useRegister } from "../queries/auth";
+import { useRegister } from "../services/auth";
 
 export const RegisterForm = () => {
   const [formData, setFormData] = useState({

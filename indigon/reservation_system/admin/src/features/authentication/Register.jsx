@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
-import { CardComponent } from "../components/Card";
-import { LoginForm } from "../components/LoginForm";
+import { CardComponent } from "../../components/Card";
+import { RegisterForm } from "./components/RegisterForm";
 
-export const Login = () => {
+export const Register = () => {
   return (
     <div style={{ maxWidth: "650px", marginLeft: "auto", marginRight: "auto" }}>
       <Box
@@ -15,8 +15,8 @@ export const Login = () => {
         }}
       >
         <CardComponent
-          headline="Log in to your account"
-          cardcontent={<LoginForm />}
+          headline="Create a new account"
+          cardcontent={<RegisterForm />}
         ></CardComponent>
       </Box>
     </div>

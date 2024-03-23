@@ -6,4 +6,6 @@ dist
 .env
 .env.local
 API*
-api*
+api.js
+API_KEY.js
+API_KEY*

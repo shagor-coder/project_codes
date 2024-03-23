@@ -3,7 +3,7 @@ import {
   handleLogin,
   handleRegister,
   handleTokenValidation,
-} from "../api/auth";
+} from "../../../requests/authentication/auth";
 
 export const useLogin = () => {
   const queryClient = useQueryClient();

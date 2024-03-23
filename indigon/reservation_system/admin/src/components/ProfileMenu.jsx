@@ -34,7 +34,6 @@ export const ProfileMenu = () => {
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
           <Avatar
             alt={auth && auth.authUser ? auth.authUser.name : "John Doe"}
-            src="/static/images/avatar/2.jpg"
           />
         </IconButton>
       </Tooltip>

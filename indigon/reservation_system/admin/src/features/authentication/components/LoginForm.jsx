@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import { InputComponent } from "./Input";
+import { InputComponent } from "../../../components/Input";
 import { Box, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import { useLogin } from "../queries/auth";
-import { UseAuthContext } from "../context/AuthContext";
+import { useLogin } from "../services/auth";
+import { UseAuthContext } from "../../../context/AuthContext";
 
 export const LoginForm = () => {
   const [formData, setFormData] = useState({

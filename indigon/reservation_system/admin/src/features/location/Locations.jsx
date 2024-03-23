@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
-import { Sidebar } from "../components/Sidebar";
-import { DataGridComponent } from "../components/DataGrid";
-import { PagesHeader } from "../components/PagesHeader";
+import { Sidebar } from "../../components/Sidebar";
+import { DataGridComponent } from "../../components/DataGrid";
+import { PagesHeader } from "../../components/PagesHeader";
 
 export const Locations = () => {
   return (

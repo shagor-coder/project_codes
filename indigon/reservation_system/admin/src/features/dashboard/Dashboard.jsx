@@ -1,7 +1,7 @@
 import { Box, Grid } from "@mui/material";
-import { Sidebar } from "../components/Sidebar";
-import { StatisticsCard } from "../components/StatisticsCard";
-import { UseAuthContext } from "../context/AuthContext";
+import { Sidebar } from "../../components/Sidebar";
+import { StatisticsCard } from "./components/StatisticsCard";
+import { UseAuthContext } from "../../context/AuthContext";
 
 export const Dashboard = () => {
   const { auth } = UseAuthContext();

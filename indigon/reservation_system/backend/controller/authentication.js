@@ -36,9 +36,12 @@ export const loginUser = async (req, res, next) => {
     if (!isPassword)
       return next(createError(401, "email or password incorrect!"));
 
-    const { isAdmin, _id, password: hasedPassword, ...other } = isUser._doc;
+    const { isAdmin, _id } = isUser;
 
-    const token = jwt.sign({ id: _id, isAdmin }, process.env.JWT_SERVER_STRING);
+    const token = jwt.sign(
+      { id: _id, isAdmin: isAdmin },
+      process.env.JWT_SERVER_STRING
+    );
 
     res.cookie("access_token", token, {
       sameSite: "none",
@@ -46,13 +49,12 @@ export const loginUser = async (req, res, next) => {
       httpOnly: true,
       maxAge: 3600000,
       path: "/",
-      partitioned: true,
     });
 
     res.status(200).json({
       status: "success",
       message: "You're now authenticated!",
-      data: { isAdmin, id: _id, ...other },
+      data: { isAdmin, id: _id },
     });
   } catch (error) {
     next(createError(500, error.message));

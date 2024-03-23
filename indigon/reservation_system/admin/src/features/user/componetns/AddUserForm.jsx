@@ -1,5 +1,5 @@
 import { Button, Grid } from "@mui/material";
-import { InputComponent } from "./Input";
+import { InputComponent } from "../../../components/Input";
 import { useState } from "react";
 import axios from "axios";
 
