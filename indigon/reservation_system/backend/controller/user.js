@@ -5,13 +5,12 @@ import bcrypt from "bcrypt";
 // Get all user under admin
 export const getAllUser = async (req, res, next) => {
   try {
-    const currentAdmin = await UserModel.find({ _id: req.user.id })
+    const currentAdmin = await UserModel.findById(req.user.id)
       .select("-password")
       .populate("users", "-password");
-
-    if (!currentAdmin.length) return next(createError(404, "Users not found"));
-
-    res.status(200).json({ status: "success", data: currentAdmin });
+    if (!currentAdmin) return next(createError(404, "Users not found"));
+    const { users } = currentAdmin;
+    res.status(200).json({ status: "success", data: users });
   } catch (error) {
     next(createError(500, error.message));
   }
@@ -21,7 +20,7 @@ export const getAllUser = async (req, res, next) => {
 export const getUser = async (req, res, next) => {
   try {
     const user = await UserModel.findOne({
-      _id: req.params.id,
+      _id: req.user.id,
     })
       .populate("locations")
       .select("-password");
@@ -102,12 +101,9 @@ export const updateUser = async (req, res, next) => {
 // Delete user account
 export const deleteUser = async (req, res, next) => {
   try {
-    const findUser = await UserModel.findOne({ _id: req.user.id });
+    const findUser = await UserModel.findOne({ _id: req.params.id });
 
     if (!findUser) return next(createError(404, "User not available"));
-
-    if (findUser._id !== req.params.id)
-      return next(createError(403, "Bad request"));
 
     await findUser.deleteOne();
 
@@ -125,6 +121,7 @@ export const deleteUser = async (req, res, next) => {
     res.status(200).json({
       status: "success",
       message: "User deleted successfully",
+      data: { id: req.params.id },
     });
   } catch (error) {
     next(createError(500, error.message));

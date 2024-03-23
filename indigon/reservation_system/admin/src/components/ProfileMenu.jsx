@@ -4,6 +4,7 @@ import PeopleAlt from "@mui/icons-material/PeopleAlt";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useState } from "react";
 import { UseAuthContext } from "../context/AuthContext";
+import { handleLogout } from "../requests/authentication/auth";
 
 export const ProfileMenu = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -21,11 +22,22 @@ export const ProfileMenu = () => {
   };
 
   //   Logout current user
-  const handleLogout = () => {
-    dispatch({
-      type: "logout",
-      data: null,
-    });
+  const logOutUser = async () => {
+    try {
+      await handleLogout();
+
+      dispatch({
+        type: "logout",
+        data: null,
+      });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: "showToast",
+        message: "Couldn't log out!",
+        toastType: "error",
+      });
+    }
   };
 
   return (
@@ -33,6 +45,7 @@ export const ProfileMenu = () => {
       <Tooltip title="Open settings">
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
           <Avatar
+            src=""
             alt={auth && auth.authUser ? auth.authUser.name : "John Doe"}
           />
         </IconButton>
@@ -62,7 +75,7 @@ export const ProfileMenu = () => {
         <MenuItem
           icon={<LogoutIcon />}
           name="Logout"
-          handleClick={handleLogout}
+          handleClick={logOutUser}
         />
       </Menu>
     </Box>

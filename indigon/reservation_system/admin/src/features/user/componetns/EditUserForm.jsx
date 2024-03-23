@@ -1,17 +1,19 @@
 import { Button, Grid } from "@mui/material";
 import { InputComponent } from "../../../components/Input";
 import { useEffect, useState } from "react";
-import { useCreateUserForAdmin } from "../services/user";
 import { UseAuthContext } from "../../../context/AuthContext";
+import { useEditUser } from "../services/user";
 
-export const AddUserForm = () => {
+export const EditUserForm = ({ currentData }) => {
+  const { id, name, email, locations } = currentData?.row;
+
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
+    name: name || "",
+    email: email || "",
+    locations: locations || [],
   });
 
-  const { data, isPending, isError, mutate, error } = useCreateUserForAdmin();
+  const { data, isPending, isError, mutate, error } = useEditUser();
   const { dispatch } = UseAuthContext();
 
   const handleChange = (event) => {
@@ -24,7 +26,7 @@ export const AddUserForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    mutate(formData);
+    mutate({ id: id, formData: formData });
   };
 
   useEffect(() => {
@@ -39,7 +41,7 @@ export const AddUserForm = () => {
     if (data) {
       dispatch({
         type: "showToast",
-        message: "New user has been created!",
+        message: "New user has been updated!",
         toastType: "success",
       });
     }
@@ -62,13 +64,6 @@ export const AddUserForm = () => {
           handleChange={handleChange}
           value={formData.email}
         />
-        <InputComponent
-          label="Password"
-          type="password"
-          name="password"
-          handleChange={handleChange}
-          value={formData.password}
-        />
         <Grid item xs={12}>
           <Button
             type="submit"
@@ -76,7 +71,7 @@ export const AddUserForm = () => {
             color="primary"
             disabled={isPending}
           >
-            Add user
+            Edit user
           </Button>
         </Grid>
       </Grid>

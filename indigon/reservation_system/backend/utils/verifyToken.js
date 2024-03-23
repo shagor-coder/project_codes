@@ -6,7 +6,7 @@ export const verifyUser = (req, res, next) => {
 
   if (!token) return next(createError(401, "You're not authenticated!"));
 
-  jwt.verify(token, process.env.JWT_SECRET_STRING, (err, user) => {
+  jwt.verify(token, process.env.JWT_SERVER_STRING, (err, user) => {
     if (err) return next(createError(403, "Your token is invalid!"));
 
     req.user = user;

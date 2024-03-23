@@ -1,10 +1,16 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
-import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import { FormModal } from "./FormModal";
+import { useState } from "react";
 
 const ignoredFields = ["__v", "isAdmin", "users", "restaurant"];
 
-export const DataGridComponent = ({ data }) => {
+export const DataGridComponent = ({ data, handleDelete, EditForm }) => {
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const [currentData, setCurrentData] = useState(null);
+
   const updateData = data.map((d) => {
     return { ...d, id: d._id };
   });
@@ -29,20 +35,40 @@ export const DataGridComponent = ({ data }) => {
     return columns;
   };
 
+  const columns = getColumns();
+
+  columns.push({
+    field: "actions",
+    type: "actions",
+    width: 150,
+    getActions: (params) => [
+      <GridActionsCellItem
+        icon={<DeleteIcon />}
+        label="Delete"
+        onClick={() => handleDelete(params)}
+      />,
+      <GridActionsCellItem
+        icon={<EditIcon />}
+        label="Update User"
+        onClick={() => [setOpenEditModal(true), setCurrentData(params)]}
+      />,
+    ],
+  });
+
   return (
     <Box sx={{ height: 600, width: 1 }}>
       {data ? (
         <DataGrid
           rows={updateData}
-          columns={getColumns()}
+          columns={columns}
           initialState={{
             pagination: {
               paginationModel: {
-                pageSize: 5,
+                pageSize: 10,
               },
             },
           }}
-          pageSizeOptions={[5]}
+          pageSizeOptions={[10]}
           checkboxSelection
           disableRowSelectionOnClick
           slots={{ toolbar: GridToolbar }}
@@ -57,6 +83,15 @@ export const DataGridComponent = ({ data }) => {
         />
       ) : (
         "No data available"
+      )}
+
+      {openEditModal && (
+        <FormModal
+          modalHeadline="Edit now"
+          open={openEditModal}
+          setModalOpen={setOpenEditModal}
+          modalForm={<EditForm currentData={currentData} />}
+        />
       )}
     </Box>
   );

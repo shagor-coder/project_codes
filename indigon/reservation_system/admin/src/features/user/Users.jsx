@@ -6,12 +6,19 @@ import { ButtonModal } from "../../components/ButtonModal";
 import { GridAddIcon } from "@mui/x-data-grid";
 import { AddUserForm } from "./componetns/AddUserForm";
 import { UseAuthContext } from "../../context/AuthContext";
-import { useGetAllUserForAdmin } from "./services/user";
+import { useDeleteUser, useGetAllUserForAdmin } from "./services/user";
 import { useEffect } from "react";
+import { EditUserForm } from "./componetns/EditUserForm";
 
 export const Users = () => {
   const { dispatch } = UseAuthContext();
   const { data, isLoading, isError } = useGetAllUserForAdmin();
+  const {
+    isError: isDeleteError,
+    data: deletedUser,
+    error,
+    mutate,
+  } = useDeleteUser();
 
   let content = "";
 
@@ -23,15 +30,33 @@ export const Users = () => {
     );
 
   useEffect(() => {
-    if (isError)
+    if (isError || isDeleteError)
       dispatch({
         type: "showToast",
         toastType: "error",
-        message: "Failed to load users!",
+        message: isError ? "Failed to load user" : error.message,
       });
-  }, [isError]);
 
-  if (data) content = <DataGridComponent data={data[0].users} />;
+    if (deletedUser)
+      dispatch({
+        type: "showToast",
+        toastType: "success",
+        message: "User deleted!",
+      });
+  }, [isError, isDeleteError, deletedUser]);
+
+  const handleDeleteUser = (params) => {
+    mutate(params.id);
+  };
+
+  if (data)
+    content = (
+      <DataGridComponent
+        data={data}
+        EditForm={EditUserForm}
+        handleDelete={handleDeleteUser}
+      />
+    );
 
   return (
     <Box sx={{ display: "flex" }}>

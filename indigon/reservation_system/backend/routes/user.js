@@ -17,7 +17,7 @@ _Router.post("/", verifyAdmin, createUser);
 _Router.get("/all", verifyAdmin, getAllUser);
 
 // Get the current user
-_Router.get("/:id", verifyUser, getUser);
+_Router.get("/", verifyUser, getUser);
 
 // Update the current user
 _Router.put("/:id", verifyUser, updateUser);

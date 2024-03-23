@@ -28,14 +28,15 @@ export const handleRegister = async (formData = {}) => {
   }
 };
 
-export const handleTokenValidation = async () => {
+export const handleLogout = async () => {
   try {
-    const request = await axiosInstance.get(
-      import.meta.env.VITE_API_BASE_URL + "/auth/validate/token"
+    const request = await axiosInstance.post(
+      import.meta.env.VITE_API_BASE_URL + "/auth/logout",
+      {}
     );
-    const response = await request.data;
-    return response?.data;
+    return request;
   } catch (error) {
+    console.log(error);
     throw new Error(error?.response?.data);
   }
 };

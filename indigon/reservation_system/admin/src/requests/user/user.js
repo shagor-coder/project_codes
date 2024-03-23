@@ -1,9 +1,9 @@
 import { axiosInstance } from "../axios";
 
-export const getCurrentUser = async ({ id }) => {
+export const getCurrentUser = async () => {
   try {
     const request = await axiosInstance.get(
-      import.meta.env.VITE_API_BASE_URL + `/api/user/${id}`
+      import.meta.env.VITE_API_BASE_URL + `/api/user/`
     );
 
     const response = await request.data;
@@ -27,7 +27,7 @@ export const updateCurrentUser = async ({ id, formData }) => {
   }
 };
 
-export const deleteCurrentUser = async ({ id }) => {
+export const deleteCurrentUser = async (id) => {
   try {
     const request = await axiosInstance.delete(
       import.meta.env.VITE_API_BASE_URL + `/api/user/${id}`
@@ -53,7 +53,7 @@ export const getAllUserForAdmin = async () => {
   }
 };
 
-export const createUserForAdmin = async ({ formData }) => {
+export const createUserForAdmin = async (formData) => {
   try {
     const request = await axiosInstance.post(
       import.meta.env.VITE_API_BASE_URL + `/api/user/`,

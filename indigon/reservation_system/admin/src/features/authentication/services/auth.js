@@ -1,13 +1,11 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import {
   handleLogin,
   handleRegister,
-  handleTokenValidation,
 } from "../../../requests/authentication/auth";
 
 export const useLogin = () => {
-  const queryClient = useQueryClient();
-  const login = useMutation({
+  return useMutation({
     mutationKey: ["login"],
     mutationFn: handleLogin,
     onSuccess: async (data) => {
@@ -18,13 +16,10 @@ export const useLogin = () => {
     },
     retry: 0,
   });
-
-  return login;
 };
 
 export const useRegister = () => {
-  const queryClient = useQueryClient();
-  const register = useMutation({
+  return useMutation({
     mutationKey: ["register"],
     mutationFn: handleRegister,
     onSuccess: async () => {
@@ -35,16 +30,4 @@ export const useRegister = () => {
     },
     retry: 0,
   });
-
-  return register;
-};
-
-export const useTokenValidation = () => {
-  const validate = useQuery({
-    queryKey: ["tokenValidation"],
-    queryFn: handleTokenValidation,
-    retry: 0,
-  });
-
-  return validate;
 };

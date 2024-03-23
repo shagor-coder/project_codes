@@ -5,8 +5,7 @@ import { UseAuthContext } from "../../context/AuthContext";
 
 export const Dashboard = () => {
   const { auth } = UseAuthContext();
-
-  const { isAdmin } = auth?.authUser;
+  const { isAdmin } = auth.authUser;
 
   return (
     <Box sx={{ display: "flex" }}>

@@ -81,13 +81,37 @@ export const loginClient = async (req, res, next) => {
 
     res
       .cookie("access_token", token, {
+        sameSite: "none",
         secure: true,
         httpOnly: true,
+        maxAge: 3600000,
+        path: "/",
       })
       .status(200)
       .json({
         status: "success",
         message: "You're now authenticated!",
+      });
+  } catch (error) {
+    next(createError(500, error.message));
+  }
+};
+
+// Logout the user or client
+export const logout = async (req, res, next) => {
+  try {
+    res
+      .cookie("access_token", "", {
+        sameSite: "none",
+        secure: true,
+        httpOnly: true,
+        maxAge: 3600000,
+        path: "/",
+      })
+      .status(200)
+      .json({
+        status: "success",
+        message: "You're now logged out!",
       });
   } catch (error) {
     next(createError(500, error.message));
