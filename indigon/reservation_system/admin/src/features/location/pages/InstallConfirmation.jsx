@@ -1,10 +1,10 @@
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { UseAuthContext } from "../../context/AuthContext";
-import { useCreateLocation } from "./services/location";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { UseAuthContext } from "../../../context/AuthContext";
+import { useCreateLocation } from "../services/location";
 
-export const ThankMessage = () => {
+export const InstallConfirmation = () => {
   const navigate = useNavigate();
   const url = new URL(location.href);
   const code = url.searchParams.get("code");

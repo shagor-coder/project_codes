@@ -1,9 +1,9 @@
 import { axiosInstance } from "../axios";
 
-export const getCurrentLocation = async () => {
+export const getCurrentLocation = async (id) => {
   try {
     const request = await axiosInstance.get(
-      import.meta.env.VITE_API_BASE_URL + `/api/Location/`
+      import.meta.env.VITE_API_BASE_URL + `/api/location/${id}`
     );
 
     const response = await request.data;

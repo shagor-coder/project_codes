@@ -21,9 +21,7 @@ export const getUser = async (req, res, next) => {
   try {
     const user = await UserModel.findOne({
       _id: req.user.id,
-    })
-      .populate("locations")
-      .select("-password");
+    }).select("-password");
 
     if (!user) return next(createError(404, "User not found"));
     res.status(200).json({ status: "success", data: user });

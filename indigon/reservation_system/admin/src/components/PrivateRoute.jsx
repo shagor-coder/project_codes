@@ -4,7 +4,6 @@ import { UseAuthContext } from "../context/AuthContext";
 
 export const PrivateRoutes = () => {
   const { auth } = UseAuthContext();
-
   return auth && auth.isLoggedIn ? (
     <Outlet />
   ) : (

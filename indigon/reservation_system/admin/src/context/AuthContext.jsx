@@ -1,7 +1,7 @@
-import React, { useContext, useReducer } from "react";
-import { ToastComponent } from "../components/Toast";
 import { Backdrop, CircularProgress } from "@mui/material";
-import { useEffect } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import React, { useContext, useEffect, useReducer, useState } from "react";
+import { ToastComponent } from "../components/Toast";
 import { useGetCurrentUser } from "../features/user/services/user";
 
 const defaultContext = {
@@ -53,9 +53,20 @@ export const UseAuthContext = () => {
   return useContext(AuthContext);
 };
 
+export const useAppQueryClient = () => {
+  return useQueryClient();
+};
+
 export const AuthContextProvider = ({ children }) => {
+  const [isLoadFinished, setIsLoadFinished] = useState(false);
   const [auth, dispatch] = useReducer(authReducer, defaultContext);
-  const { data: userData, isError, isLoading, error } = useGetCurrentUser();
+  const {
+    data: userData,
+    isError,
+    error,
+    isFetched,
+    isPending,
+  } = useGetCurrentUser();
 
   useEffect(() => {
     if (isError) {
@@ -72,24 +83,29 @@ export const AuthContextProvider = ({ children }) => {
         data: userData,
       });
     }
-  }, [isError, userData, isLoading, error]);
 
-  if (isLoading)
+    if (isFetched) {
+      setIsLoadFinished(true);
+    }
+  }, [isError, userData, isPending, error, isFetched]);
+
+  if (isPending)
     return (
-      <Backdrop sx={{ color: "#fff", zIndex: 9999 }} open={isLoading}>
+      <Backdrop sx={{ color: "#fff", zIndex: 9999 }} open={isPending}>
         <CircularProgress color="info" />
       </Backdrop>
     );
 
-  return (
-    <AuthContext.Provider value={{ auth, dispatch }}>
-      {auth.showToast && (
-        <ToastComponent
-          message={auth.toastMessage}
-          toastType={auth.toastType}
-        />
-      )}
-      {children}
-    </AuthContext.Provider>
-  );
+  if (isLoadFinished)
+    return (
+      <AuthContext.Provider value={{ auth, dispatch }}>
+        {auth.showToast && (
+          <ToastComponent
+            message={auth.toastMessage}
+            toastType={auth.toastType}
+          />
+        )}
+        {children}
+      </AuthContext.Provider>
+    );
 };

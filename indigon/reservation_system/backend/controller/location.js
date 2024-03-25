@@ -1,7 +1,7 @@
+import bcrypt from "bcrypt";
 import { LocationModel } from "../models/Location.js";
 import { UserModel } from "../models/user.js";
 import { createError } from "../utils/error.js";
-import bcrypt from "bcrypt";
 import { getLocationAuthData } from "../utils/getLocationAuthData.js";
 
 // Create a new Location
@@ -70,9 +70,7 @@ export const getAllLocation = async (req, res, next) => {
 // Get location for current user
 export const getLocation = async (req, res, next) => {
   try {
-    const location = await LocationModel.findOne({
-      _id: req.params.id,
-    })
+    const location = await LocationModel.findById(req.params.id)
       .populate("restaurant")
       .select("-auth");
 
@@ -82,6 +80,7 @@ export const getLocation = async (req, res, next) => {
 
     res.status(200).json({ staus: "success", data: { ...other } });
   } catch (error) {
+    console.log(error);
     next(createError(500, error.message));
   }
 };

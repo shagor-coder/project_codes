@@ -6,10 +6,10 @@ import {
   getCurrentLocation,
 } from "../../../requests/location/location";
 
-export const useGetCurrentLocation = () => {
+export const useGetCurrentLocation = (id) => {
   return useQuery({
     queryKey: ["currentLocation"],
-    queryFn: getCurrentLocation,
+    queryFn: () => getCurrentLocation(id),
     retry: 0,
   });
 };

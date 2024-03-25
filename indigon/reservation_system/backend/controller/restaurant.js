@@ -51,12 +51,10 @@ export const getAllRestaurant = async (req, res, next) => {
 // Get Restaurant for current user
 export const getRestaurant = async (req, res, next) => {
   try {
-    const restaurant = await RestaurantModel.findOne({
-      _id: req.params.id,
-    }).populate("tables");
-
+    const restaurant = await RestaurantModel.findById(req.params.id).populate(
+      "tables"
+    );
     if (!restaurant) return next(createError(404, "Restaurant not found"));
-
     res.status(200).json({ staus: "success", data: restaurant });
   } catch (error) {
     next(createError(500, error.message));

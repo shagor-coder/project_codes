@@ -1,14 +1,15 @@
-import { Avatar, Box, IconButton, Menu, Tooltip } from "@mui/material";
-import { MenuItem } from "./MenuItem";
-import PeopleAlt from "@mui/icons-material/PeopleAlt";
 import LogoutIcon from "@mui/icons-material/Logout";
+import PeopleAlt from "@mui/icons-material/PeopleAlt";
+import { Avatar, Box, IconButton, Menu, Tooltip } from "@mui/material";
 import { useState } from "react";
-import { UseAuthContext } from "../context/AuthContext";
+import { UseAuthContext, useAppQueryClient } from "../context/AuthContext";
 import { handleLogout } from "../requests/authentication/auth";
+import { MenuItem } from "./MenuItem";
 
 export const ProfileMenu = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const { dispatch, auth } = UseAuthContext();
+  const queryClient = useAppQueryClient();
 
   //   Handle the right menu open
   const handleOpenUserMenu = (event) => {
@@ -25,6 +26,8 @@ export const ProfileMenu = () => {
   const logOutUser = async () => {
     try {
       await handleLogout();
+
+      queryClient.clear();
 
       dispatch({
         type: "logout",

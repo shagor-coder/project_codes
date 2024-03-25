@@ -9,13 +9,12 @@ export const Login = () => {
   const navigate = useNavigate();
   const { auth } = UseAuthContext();
   const { isLoggedIn, authUser } = auth;
-  console.log("Hello from login");
 
   useEffect(() => {
     if (authUser && isLoggedIn) {
       navigate("/dashboard");
     }
-  }, [authUser, isLoggedIn, navigate]);
+  }, [authUser, isLoggedIn]);
 
   return (
     <div style={{ maxWidth: "650px", marginLeft: "auto", marginRight: "auto" }}>

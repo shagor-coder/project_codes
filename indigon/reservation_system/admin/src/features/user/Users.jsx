@@ -1,4 +1,4 @@
-import { Backdrop, Box, CircularProgress, Typography } from "@mui/material";
+import { Backdrop, Box, CircularProgress } from "@mui/material";
 import { Sidebar } from "../../components/Sidebar";
 import { PagesHeader } from "../../components/PagesHeader";
 import { DataGridComponent } from "../../components/DataGrid";
@@ -49,12 +49,13 @@ export const Users = () => {
     mutate(params.id);
   };
 
-  if (data)
+  if (data && data.length)
     content = (
       <DataGridComponent
         data={data}
         EditForm={EditUserForm}
         handleDelete={handleDeleteUser}
+        actionNeeded={true}
       />
     );
 

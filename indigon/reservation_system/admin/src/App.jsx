@@ -6,7 +6,8 @@ import { Dashboard } from "./features/dashboard/Dashboard";
 import { Users } from "./features/user/Users";
 import { Locations } from "./features/location/Locations";
 import NotFoundPage from "./404/NotFound";
-import { ThankMessage } from "./features/location/ThankMessage";
+import { SingleLocation } from "./features/location/pages/SingleLocation";
+import { InstallConfirmation } from "./features/location/pages/InstallConfirmation";
 
 export const App = () => {
   return (
@@ -17,8 +18,9 @@ export const App = () => {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="users" element={<Users />} />
         <Route path="locations" element={<Locations />} />
+        <Route path="locations/:id" element={<SingleLocation />} />
       </Route>
-      <Route path="/locations/confirmation" element={<ThankMessage />} />
+      <Route path="/locations/confirmation" element={<InstallConfirmation />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

@@ -1,15 +1,29 @@
-import Box from "@mui/material/Box";
-import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import { FormModal } from "./FormModal";
+import Box from "@mui/material/Box";
+import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { FormModal } from "./FormModal";
 
-const ignoredFields = ["__v", "isAdmin", "users", "restaurant"];
+const ignoredFields = [
+  "__v",
+  "isAdmin",
+  "users",
+  "restaurant",
+  "_id",
+  "userId",
+];
 
-export const DataGridComponent = ({ data, handleDelete, EditForm }) => {
+export const DataGridComponent = ({
+  data,
+  handleDelete,
+  EditForm,
+  actionNeeded,
+}) => {
   const [openEditModal, setOpenEditModal] = useState(false);
   const [currentData, setCurrentData] = useState(null);
+  const navigate = useNavigate();
 
   const updateData = data.map((d) => {
     return { ...d, id: d._id };
@@ -37,27 +51,45 @@ export const DataGridComponent = ({ data, handleDelete, EditForm }) => {
 
   const columns = getColumns();
 
-  columns.push({
-    field: "actions",
-    type: "actions",
-    width: 150,
-    getActions: (params) => [
-      <GridActionsCellItem
-        icon={<DeleteIcon />}
-        label="Delete"
-        onClick={() => handleDelete(params)}
-      />,
-      <GridActionsCellItem
-        icon={<EditIcon />}
-        label="Update User"
-        onClick={() => [setOpenEditModal(true), setCurrentData(params)]}
-      />,
-    ],
-  });
+  {
+    actionNeeded
+      ? columns.push({
+          field: "actions",
+          type: "actions",
+          width: 150,
+          getActions: (params) => [
+            <GridActionsCellItem
+              icon={<DeleteIcon />}
+              label="Delete"
+              onClick={() => handleDelete(params)}
+            />,
+            <GridActionsCellItem
+              icon={<EditIcon />}
+              label="Update"
+              onClick={() => [setOpenEditModal(true), setCurrentData(params)]}
+            />,
+          ],
+        })
+      : columns.push({
+          field: "actions",
+          type: "actions",
+          width: 150,
+          getActions: (params) => [
+            <GridActionsCellItem
+              icon={<EditIcon />}
+              label="Update"
+              onClick={() => {
+                const { id } = params;
+                navigate(`/locations/${String(id)}`);
+              }}
+            />,
+          ],
+        });
+  }
 
   return (
     <Box sx={{ height: 600, width: 1 }}>
-      {data ? (
+      {data.length ? (
         <DataGrid
           rows={updateData}
           columns={columns}
@@ -85,7 +117,7 @@ export const DataGridComponent = ({ data, handleDelete, EditForm }) => {
         "No data available"
       )}
 
-      {openEditModal && (
+      {openEditModal && actionNeeded && (
         <FormModal
           modalHeadline="Edit now"
           open={openEditModal}

@@ -1,7 +1,6 @@
-import * as React from "react";
-import Button from "@mui/material/Button";
-import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
+import Snackbar from "@mui/material/Snackbar";
+import * as React from "react";
 import { UseAuthContext } from "../context/AuthContext";
 
 export const ToastComponent = ({ message, toastType }) => {
