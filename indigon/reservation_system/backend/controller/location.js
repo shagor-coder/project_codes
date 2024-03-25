@@ -2,27 +2,37 @@ import { LocationModel } from "../models/Location.js";
 import { UserModel } from "../models/user.js";
 import { createError } from "../utils/error.js";
 import bcrypt from "bcrypt";
+import { getLocationAuthData } from "../utils/getLocationAuthData.js";
 
 // Create a new Location
 export const createLocation = async (req, res, next) => {
-  const { access_token, refresh_token, expires_in } = req.body.auth;
-
-  const hasedAccessToken = await bcrypt.hash(access_token, 8);
-  const hasedRefreshToken = await bcrypt.hash(refresh_token, 8);
-
-  const newLocationData = {
-    ...req.body,
-    userId: req.user.id,
-    auth: {
-      access_token: hasedAccessToken,
-      refresh_token: hasedRefreshToken,
-      expires_in: expires_in,
-    },
-  };
-
-  const newLocation = new LocationModel(newLocationData);
-
   try {
+    const code = req.query.code;
+
+    const data = await getLocationAuthData("authorization_code", code);
+
+    if (!data) return next(createError("Invalid authorization code"));
+
+    const { access_token, refresh_token, expires_in, locationId } = data;
+
+    const hasedAccessToken = await bcrypt.hash(access_token, 8);
+    const hasedRefreshToken = await bcrypt.hash(refresh_token, 8);
+
+    const newLocationData = {
+      access_token,
+      refresh_token,
+      expires_in: new Date(Date.now() + expires_in),
+      locationId,
+      userId: req.user.id,
+      auth: {
+        access_token: hasedAccessToken,
+        refresh_token: hasedRefreshToken,
+        expires_in: expires_in,
+      },
+    };
+
+    const newLocation = new LocationModel(newLocationData);
+
     const savedLocation = await newLocation.save();
 
     await UserModel.updateOne(

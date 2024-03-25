@@ -9,6 +9,7 @@ export const Login = () => {
   const navigate = useNavigate();
   const { auth } = UseAuthContext();
   const { isLoggedIn, authUser } = auth;
+  console.log("Hello from login");
 
   useEffect(() => {
     if (authUser && isLoggedIn) {

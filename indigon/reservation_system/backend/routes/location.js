@@ -6,7 +6,8 @@ import {
   getLocation,
   updateLocation,
 } from "../controller/location.js";
-import { verifyAdmin, verifyUser } from "../utils/verifyToken.js";
+import { verifyUser } from "../utils/verifyToken.js";
+import { getLocationAuthData } from "../utils/getLocationAuthData.js";
 
 const _Router = express.Router();
 

@@ -38,6 +38,7 @@ export const RegisterForm = () => {
           name="name"
           handleChange={handleChange}
           value={formData.email}
+          autoComplete="autoComplete"
         />
         <InputComponent
           label="Enter your email"
@@ -45,6 +46,7 @@ export const RegisterForm = () => {
           name="email"
           handleChange={handleChange}
           value={formData.email}
+          autoComplete="autoComplete"
         />
         <InputComponent
           label="Enter your password"
@@ -52,6 +54,7 @@ export const RegisterForm = () => {
           name="password"
           handleChange={handleChange}
           value={formData.password}
+          autoComplete="autoComplete"
         />
         <Grid item xs={12}>
           <Button type="submit" variant="contained" color="primary">
