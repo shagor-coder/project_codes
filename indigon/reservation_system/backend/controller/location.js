@@ -11,7 +11,7 @@ export const createLocation = async (req, res, next) => {
 
     const data = await getLocationAuthData("authorization_code", code);
 
-    if (!data) return next(createError("Invalid authorization code"));
+    if (!data) return next(createError(402, "Invalid authorization code"));
 
     const { access_token, refresh_token, expires_in, locationId } = data;
 

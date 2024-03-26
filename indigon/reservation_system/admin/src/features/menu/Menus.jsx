@@ -6,19 +6,24 @@ import { DataGridComponent } from "../../components/DataGrid";
 import { Layout } from "../../components/Layout";
 import { PagesHeader } from "../../components/PagesHeader";
 import { UseAuthContext } from "../../context/AuthContext";
-import { AddUserForm } from "./componetns/AddUserForm";
-import { EditUserForm } from "./componetns/EditUserForm";
-import { useDeleteUser, useGetAllUserForAdmin } from "./services/user";
+import { AddMenuForm } from "./componetns/AddMenuForm";
+import { EditMenuForm } from "./componetns/EditMenuForm";
+import { useDeleteMenu, useGetAllMenus } from "./services/menu";
 
-export const Users = () => {
+export const Menus = () => {
   const { dispatch } = UseAuthContext();
-  const { data, isLoading, isError } = useGetAllUserForAdmin();
+  const {
+    data,
+    isLoading,
+    isError,
+    error: menuGettingError,
+  } = useGetAllMenus();
   const {
     isError: isDeleteError,
     data: deletedUser,
     error,
     mutate,
-  } = useDeleteUser();
+  } = useDeleteMenu();
 
   let content = "";
 
@@ -34,14 +39,14 @@ export const Users = () => {
       dispatch({
         type: "showToast",
         toastType: "error",
-        message: isError ? "Failed to load user" : error.message,
+        message: isError ? menuGettingError.message : error.message,
       });
 
     if (deletedUser)
       dispatch({
         type: "showToast",
         toastType: "success",
-        message: "User deleted!",
+        message: "Menu deleted!",
       });
   }, [isError, isDeleteError, deletedUser]);
 
@@ -53,21 +58,21 @@ export const Users = () => {
     content = (
       <DataGridComponent
         data={data}
-        EditForm={EditUserForm}
+        EditForm={EditMenuForm}
         handleDelete={handleDeleteUser}
         actionNeeded={true}
       />
     );
 
   return (
-    <Layout headline="Users">
+    <Layout headline="Menus">
       <PagesHeader
-        headline="See all your users"
+        headline="See all your Menus"
         IconButton={
           <ButtonModal
-            modalHeadline="Add a user"
+            modalHeadline="Create Menu"
             buttonIcon={<GridAddIcon />}
-            modalForm={<AddUserForm />}
+            modalForm={<AddMenuForm />}
           />
         }
       />

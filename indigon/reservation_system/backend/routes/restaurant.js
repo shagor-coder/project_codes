@@ -14,7 +14,7 @@ const _Router = express.Router();
 _Router.post("/:locationId", verifyUser, createRestaurant);
 
 // Get all the Restaurants
-_Router.get("/:locationId/all", getAllRestaurant);
+_Router.get("/:locationId/all", verifyUser, getAllRestaurant);
 
 // Get the current Restaurant
 _Router.get("/:locationId/:id", getRestaurant);

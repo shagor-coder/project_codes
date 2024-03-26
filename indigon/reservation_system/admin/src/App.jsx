@@ -8,6 +8,8 @@ import { Locations } from "./features/location/Locations";
 import NotFoundPage from "./404/NotFound";
 import { SingleLocation } from "./features/location/pages/SingleLocation";
 import { InstallConfirmation } from "./features/location/pages/InstallConfirmation";
+import { Restaurant } from "./features/restaurant/Restuarant";
+import { Menus } from "./features/menu/Menus";
 
 export const App = () => {
   return (
@@ -19,6 +21,8 @@ export const App = () => {
         <Route path="users" element={<Users />} />
         <Route path="locations" element={<Locations />} />
         <Route path="locations/:id" element={<SingleLocation />} />
+        <Route path="menus" element={<Menus />} />
+        <Route path="restaurant/:locationId" element={<Restaurant />} />
       </Route>
       <Route path="/locations/confirmation" element={<InstallConfirmation />} />
       <Route path="*" element={<NotFoundPage />} />

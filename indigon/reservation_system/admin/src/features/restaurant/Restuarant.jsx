@@ -1,16 +1,19 @@
-import { Backdrop, Box, Button, CircularProgress } from "@mui/material";
+import { Backdrop, Button, CircularProgress } from "@mui/material";
 import { useEffect } from "react";
-import { DataGridComponent } from "../../components/DataGrid";
+import { useParams } from "react-router-dom";
 import { Layout } from "../../components/Layout";
 import { PagesHeader } from "../../components/PagesHeader";
 import { UseAuthContext } from "../../context/AuthContext";
-import { useGetAllLocations } from "./services/location";
+import { useGetCurrentRestaurant } from "./services/restaurant";
 
-export const Locations = () => {
-  const { isLoading, isError, data, error } = useGetAllLocations();
+export const Restaurant = () => {
+  const { locationId, restaurantId } = useParams();
+
+  const { isLoading, isError, data, error } = useGetCurrentRestaurant({
+    locationId,
+    restaurantId,
+  });
   const { dispatch } = UseAuthContext();
-
-  const marketplaceLink = import.meta.env.VITE_GHL_APP_MARKETPLACE_URL;
 
   let content = "";
 
@@ -31,25 +34,23 @@ export const Locations = () => {
     }
   }, [isError, data]);
 
-  if (data && data.length) {
-    content = (
-      <DataGridComponent data={data} handleDelete={() => {}} EditForm={Box} />
-    );
+  if (data && data._id) {
+    content = "Hello this is a restaurant";
   }
 
   return (
-    <Layout headline="Locations">
+    <Layout headline="Restaurant">
       <PagesHeader
-        headline="See all your locations"
+        headline="See all your Restaurant"
         IconButton={
           <Button
             variant="contained"
             color="primary"
             onClick={() => {
-              window.open(marketplaceLink, "_blank");
+              window.open("/", "_blank");
             }}
           >
-            Add to a location
+            Hello
           </Button>
         }
       />

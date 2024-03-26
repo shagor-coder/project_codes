@@ -6,6 +6,62 @@ const RestaurantSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    description: {
+      type: String,
+      required: true,
+    },
+    additionalInfo: {
+      addressLine: {
+        type: String,
+        required: true,
+      },
+      priceRange: {
+        type: String,
+        required: true,
+      },
+      cuisines: {
+        type: String,
+        required: false,
+      },
+      diningStyle: {
+        type: String,
+        required: false,
+      },
+      dressCode: {
+        type: String,
+        required: false,
+      },
+      parkingDetails: {
+        type: String,
+        required: false,
+      },
+      executiveChef: {
+        type: String,
+        required: false,
+      },
+      paymentOptions: {
+        type: String,
+        required: false,
+      },
+      website: {
+        type: String,
+        required: false,
+      },
+      phone: {
+        type: String,
+        required: false,
+      },
+    },
+    photos: {
+      type: [String],
+      required: false,
+    },
+    menus: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Menu",
+      },
+    ],
     userId: [
       {
         type: mongoose.Types.ObjectId,

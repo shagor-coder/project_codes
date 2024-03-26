@@ -1,15 +1,15 @@
-import express, { urlencoded } from "express";
-
-import dotenv from "dotenv";
-import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
+import cors from "cors";
+import dotenv from "dotenv";
+import express, { urlencoded } from "express";
+import mongoose from "mongoose";
 import AuthRouter from "./routes/auth.js";
-import UserRouter from "./routes/user.js";
+import ClientRouter from "./routes/client.js";
 import LocationRouter from "./routes/location.js";
+import MenuRouter from "./routes/menu.js";
 import RestaurantRouter from "./routes/restaurant.js";
 import TableRouter from "./routes/table.js";
-import ClientRouter from "./routes/client.js";
-import cors from "cors";
+import UserRouter from "./routes/user.js";
 
 dotenv.config();
 const app = express();
@@ -30,6 +30,7 @@ app.use("/auth", AuthRouter);
 app.use("/api/user", UserRouter);
 app.use("/api/location", LocationRouter);
 app.use("/api/restaurant", RestaurantRouter);
+app.use("/api/menu", MenuRouter);
 app.use("/api/table", TableRouter);
 app.use("/api/client", ClientRouter);
 
