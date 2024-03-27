@@ -29,7 +29,7 @@ app.use(express.json());
 app.use("/auth", AuthRouter);
 app.use("/api/user", UserRouter);
 app.use("/api/location", LocationRouter);
-app.use("/api/restaurant", RestaurantRouter);
+app.use("/api/restuarant", RestaurantRouter);
 app.use("/api/menu", MenuRouter);
 app.use("/api/table", TableRouter);
 app.use("/api/client", ClientRouter);

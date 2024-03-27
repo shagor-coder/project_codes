@@ -7,9 +7,11 @@ export const MultiSelectComponent = ({
   handleChange,
   limit,
   name,
+  label,
+  size,
 }) => {
   return (
-    <Grid item xs={12} md={6}>
+    <Grid item xs={12} md={size}>
       <Autocomplete
         multiple
         limitTags={limit}
@@ -17,7 +19,7 @@ export const MultiSelectComponent = ({
         options={options}
         getOptionLabel={(option) => option.name}
         renderInput={(params) => (
-          <TextField {...params} label="multiselect" placeholder="Favorites" />
+          <TextField {...params} label={label} placeholder="Favorites" />
         )}
         filterSelectedOptions
         onChange={handleChange}

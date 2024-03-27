@@ -1,4 +1,13 @@
-import { Backdrop, Button, CircularProgress } from "@mui/material";
+import {
+  Backdrop,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CircularProgress,
+  Grid,
+} from "@mui/material";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Layout } from "../../components/Layout";
@@ -10,8 +19,8 @@ export const Restaurant = () => {
   const { locationId, restaurantId } = useParams();
 
   const { isLoading, isError, data, error } = useGetCurrentRestaurant({
-    locationId,
-    restaurantId,
+    locationId: locationId,
+    restaurantId: restaurantId,
   });
   const { dispatch } = UseAuthContext();
 
@@ -35,27 +44,43 @@ export const Restaurant = () => {
   }, [isError, data]);
 
   if (data && data._id) {
-    content = "Hello this is a restaurant";
+    const keys = Object.keys(data);
+    content = (
+      <Box>
+        <PagesHeader
+          headline={data?.name}
+          IconButton={
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                window.open("/", "_blank");
+              }}
+            >
+              Get Booking Link
+            </Button>
+          }
+        />
+        <Box component="section">
+          <Grid container spacing={2}>
+            {keys.map((key) => {
+              if (typeof key === "object") return null;
+              return (
+                <Grid item xs={12} md={6} lg={4} key={key}>
+                  <Card>
+                    <CardContent>
+                      <CardHeader title={key}></CardHeader>
+                      {JSON.stringify(data[key])}
+                    </CardContent>
+                  </Card>
+                </Grid>
+              );
+            })}
+          </Grid>
+        </Box>
+      </Box>
+    );
   }
 
-  return (
-    <Layout headline="Restaurant">
-      <PagesHeader
-        headline="See all your Restaurant"
-        IconButton={
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => {
-              window.open("/", "_blank");
-            }}
-          >
-            Hello
-          </Button>
-        }
-      />
-
-      {content}
-    </Layout>
-  );
+  return <Layout headline="Restaurant">{content}</Layout>;
 };

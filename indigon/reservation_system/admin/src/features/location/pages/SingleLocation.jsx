@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetCurrentLocation } from "../services/location";
 import { useEffect } from "react";
 import { UseAuthContext } from "../../../context/AuthContext";
@@ -8,12 +8,25 @@ import { AddRestaurantForm } from "../../restaurant/components/AddRestaurantForm
 import { PagesHeader } from "../../../components/PagesHeader";
 import { ButtonModal } from "../../../components/ButtonModal";
 import { GridAddIcon } from "@mui/x-data-grid";
+import { useGetAllRestaurant } from "../../restaurant/services/restaurant";
+import { DataGridComponent } from "../../../components/DataGrid";
 
 export const SingleLocation = () => {
-  const { id } = useParams();
+  const { id: locationId } = useParams();
   const { dispatch } = UseAuthContext();
+  const navigate = useNavigate();
 
-  const { data, isLoading, isError, error } = useGetCurrentLocation(id);
+  const { data, isLoading, isError, error } = useGetCurrentLocation(locationId);
+  const {
+    data: restaurants,
+    isLoading: isRestaurantsLoading,
+    isError: isRestaurantsError,
+    error: restaurantsError,
+  } = useGetAllRestaurant(locationId);
+
+  const handleNavigate = (id) => {
+    navigate(`/restaurants/${locationId}/${id}`);
+  };
 
   useEffect(() => {
     if (isError) {
@@ -23,7 +36,22 @@ export const SingleLocation = () => {
         toastType: "error",
       });
     }
-  }, [isError, data, isLoading, error]);
+
+    if (isRestaurantsError) {
+      dispatch({
+        type: "showToast",
+        message: restaurantsError.message,
+        toastType: "error",
+      });
+    }
+  }, [
+    isError,
+    data,
+    isLoading,
+    restaurants,
+    isRestaurantsLoading,
+    isRestaurantsError,
+  ]);
 
   let content = null;
 
@@ -34,16 +62,25 @@ export const SingleLocation = () => {
       </Backdrop>
     );
 
-  if (data && data._id)
+  if (restaurants && restaurants.length) {
+    const formattedData = restaurants.map((restaurant) => {
+      const singledOption = { ...restaurant, ...restaurant.additionalInfo };
+      delete singledOption.additionalInfo;
+      return singledOption;
+    });
+
     content = (
       <Box component="section">
-        <Grid container>
-          <Grid item sm={6}>
-            This location has total {data?.restaurant?.length} restaurants.
-          </Grid>
-        </Grid>
+        <DataGridComponent
+          actionNeeded={false}
+          handleDelete={() => {}}
+          EditForm={<Box></Box>}
+          data={formattedData}
+          handleNavigate={handleNavigate}
+        />
       </Box>
     );
+  }
 
   return (
     <Layout headline="Location">

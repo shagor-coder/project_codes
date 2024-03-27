@@ -12,7 +12,14 @@ export const createRestaurant = async (req, res, next) => {
 
     if (!isLocation) return next(createError(403, "Not Allowed!"));
 
-    const newRestaurant = new RestaurantModel(req.body);
+    const newRestaurantBody = {
+      ...req.body,
+      additionalInfo: { ...req.body.additionalInfo },
+      userId: req.user.id,
+      locationId: req.params.locationId,
+    };
+
+    const newRestaurant = new RestaurantModel(newRestaurantBody);
 
     const savedRestaurant = await newRestaurant.save();
 
@@ -51,9 +58,7 @@ export const getAllRestaurant = async (req, res, next) => {
 // Get Restaurant for current user
 export const getRestaurant = async (req, res, next) => {
   try {
-    const restaurant = await RestaurantModel.findById(req.params.id).populate(
-      "tables"
-    );
+    const restaurant = await RestaurantModel.findById(req.params.id);
     if (!restaurant) return next(createError(404, "Restaurant not found"));
     res.status(200).json({ staus: "success", data: restaurant });
   } catch (error) {

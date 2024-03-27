@@ -5,10 +5,16 @@ import { Layout } from "../../components/Layout";
 import { PagesHeader } from "../../components/PagesHeader";
 import { UseAuthContext } from "../../context/AuthContext";
 import { useGetAllLocations } from "./services/location";
+import { useNavigate } from "react-router-dom";
 
 export const Locations = () => {
   const { isLoading, isError, data, error } = useGetAllLocations();
   const { dispatch } = UseAuthContext();
+  const navigate = useNavigate();
+
+  const handleNavigate = (id) => {
+    navigate(`/locations/${id}`);
+  };
 
   const marketplaceLink = import.meta.env.VITE_GHL_APP_MARKETPLACE_URL;
 
@@ -33,7 +39,12 @@ export const Locations = () => {
 
   if (data && data.length) {
     content = (
-      <DataGridComponent data={data} handleDelete={() => {}} EditForm={Box} />
+      <DataGridComponent
+        actionNeeded={false}
+        handleNavigate={handleNavigate}
+        data={data}
+        handleDelete={() => {}}
+      />
     );
   }
 

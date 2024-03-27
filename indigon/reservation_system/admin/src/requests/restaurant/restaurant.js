@@ -4,7 +4,7 @@ export const getCurrentRestuarant = async ({ locationId, restaurantId }) => {
   try {
     const request = await axiosInstance.get(
       import.meta.env.VITE_API_BASE_URL +
-        `/api/restuarant/${locationId}/${restaurantId}}`
+        `/api/restuarant/${locationId}/${restaurantId}/`
     );
 
     const response = await request.data;

@@ -3,7 +3,6 @@ import EditIcon from "@mui/icons-material/Edit";
 import Box from "@mui/material/Box";
 import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { FormModal } from "./FormModal";
 
 const ignoredFields = [
@@ -20,10 +19,10 @@ export const DataGridComponent = ({
   handleDelete,
   EditForm,
   actionNeeded,
+  handleNavigate,
 }) => {
   const [openEditModal, setOpenEditModal] = useState(false);
   const [currentData, setCurrentData] = useState(null);
-  const navigate = useNavigate();
 
   const updateData = data.map((d) => {
     return { ...d, id: d._id };
@@ -39,7 +38,7 @@ export const DataGridComponent = ({
         field: "",
         headerName: "",
         type: "",
-        width: 150,
+        width: 200,
       };
       obj.field = k === "_id" ? k.replace("_", "") : k;
       obj.headerName = k.toString().toUpperCase();
@@ -80,7 +79,7 @@ export const DataGridComponent = ({
               label="Update"
               onClick={() => {
                 const { id } = params;
-                navigate(`/locations/${String(id)}`);
+                handleNavigate(id);
               }}
             />,
           ],
@@ -88,7 +87,7 @@ export const DataGridComponent = ({
   }
 
   return (
-    <Box sx={{ height: 600, width: 1 }}>
+    <Box sx={{ maxWidth: "calc(100vw - 230px)", height: "600px" }}>
       {data.length ? (
         <DataGrid
           rows={updateData}

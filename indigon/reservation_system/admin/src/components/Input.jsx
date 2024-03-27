@@ -14,9 +14,10 @@ export const InputComponent = ({
   handleChange,
   value,
   autoComplete,
+  size,
 }) => {
   return (
-    <Grid item xs={12} md={6}>
+    <Grid item xs={12} md={size}>
       <TextField
         fullWidth
         label={label}
@@ -37,9 +38,10 @@ export const TextareaComponent = ({
   type,
   handleChange,
   value,
+  size,
 }) => {
   return (
-    <Grid item xs={12} md={6}>
+    <Grid item xs={12} md={size}>
       <TextField
         fullWidth
         label={label}
@@ -60,9 +62,10 @@ export const SelectComponent = ({
   handleChange,
   value,
   options,
+  size,
 }) => {
   return (
-    <Grid item xs={12} md={6}>
+    <Grid item xs={12} md={size}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <Select

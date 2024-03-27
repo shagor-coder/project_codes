@@ -25,7 +25,7 @@ export const InstallConfirmation = () => {
     if (!code) {
       navigate("/locations");
     }
-    // mutate(code);
+    mutate(code);
   }, [code]);
 
   useEffect(() => {

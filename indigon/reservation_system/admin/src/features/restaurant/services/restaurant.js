@@ -36,7 +36,9 @@ export const useCreateRestaurant = () => {
       queryClient.setQueriesData(
         { queryKey: ["allRestaurants"] },
         (oldRestaurants) => {
-          return [...oldRestaurants, data];
+          const previousRestaurants =
+            oldRestaurants && oldRestaurants.length ? oldRestaurants : [];
+          return [...previousRestaurants, data];
         }
       );
     },

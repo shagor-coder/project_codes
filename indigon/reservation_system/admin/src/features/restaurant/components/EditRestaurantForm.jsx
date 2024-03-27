@@ -1,35 +1,51 @@
 import { Button, Grid } from "@mui/material";
 import { InputComponent, TextareaComponent } from "../../../components/Input";
 import { useEffect, useState } from "react";
-import { useCreateRestaurant } from "../services/restaurant";
+import { useEditRestaurant } from "../services/restaurant";
 import { UseAuthContext } from "../../../context/AuthContext";
 import { MultiSelectComponent } from "../../../components/MultiSelect";
 import { useParams } from "react-router-dom";
 import { useGetAllMenus } from "../../menu/services/menu";
 
-export const AddRestaurantForm = () => {
+export const EditRestaurantForm = ({ currentData }) => {
   const { id } = useParams();
 
+  const {
+    id: restuarntId,
+    name,
+    description,
+    addressLine,
+    priceRange,
+    cuisines,
+    diningStyle,
+    dressCode,
+    parkingDetails,
+    executiveChef,
+    paymentOptions,
+    website,
+    phone,
+    menus,
+    photos,
+  } = currentData.row;
+
   const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    additionalInfo: {
-      addressLine: "",
-      priceRange: "",
-      cuisines: "",
-      diningStyle: "",
-      dressCode: "",
-      parkingDetails: "",
-      executiveChef: "",
-      paymentOptions: "",
-      website: "",
-      phone: "",
-    },
-    menus: [],
-    photos: [],
+    name: name,
+    description: description,
+    addressLine: addressLine,
+    priceRange: priceRange,
+    cuisines: cuisines,
+    diningStyle: diningStyle,
+    dressCode: dressCode,
+    parkingDetails: parkingDetails,
+    executiveChef: executiveChef,
+    paymentOptions: paymentOptions,
+    website: website,
+    phone: phone,
+    menus: [...menus],
+    photos: [...photos],
   });
 
-  const { data, isPending, isError, mutate, error } = useCreateRestaurant();
+  const { data, isPending, isError, mutate, error } = useEditRestaurant();
   const {
     data: menusData,
     isLoading,
@@ -66,7 +82,7 @@ export const AddRestaurantForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    mutate({ locationId: id, formData: formData });
+    mutate({ locationId: id, restaurantId: restuarntId, formData: formData });
   };
 
   useEffect(() => {

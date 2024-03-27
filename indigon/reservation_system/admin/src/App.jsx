@@ -22,7 +22,10 @@ export const App = () => {
         <Route path="locations" element={<Locations />} />
         <Route path="locations/:id" element={<SingleLocation />} />
         <Route path="menus" element={<Menus />} />
-        <Route path="restaurant/:locationId" element={<Restaurant />} />
+        <Route
+          path="restaurants/:locationId/:restaurantId"
+          element={<Restaurant />}
+        />
       </Route>
       <Route path="/locations/confirmation" element={<InstallConfirmation />} />
       <Route path="*" element={<NotFoundPage />} />
