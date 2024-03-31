@@ -89,11 +89,12 @@ export const AddRestaurantForm = () => {
       formData.append(`additionalInfo[${key}]`, additionalInfo[key]);
     }
 
-    // Append photos
-    formData.append("photos", images);
-
     console.log(images);
 
+    // Append photos
+    Array.from(images)?.forEach((img) => {
+      formData.append("photos", img);
+    });
     // Call the mutate function with the formData
     mutate({ locationId: id, formData: formData });
   };

@@ -11,25 +11,40 @@ export const createRestaurant = async (req, res, next) => {
       $and: [{ _id: req.params.locationId }],
     });
 
-    if (!isLocation) return next(createError(403, "Not Allowed!"));
+    if (!isLocation) {
+      return next(createError(403, "Not Allowed!"));
+    }
 
     const images = req.files;
-    console.log(images);
+    const photoURLs = [];
 
-    let photoURLs = [];
+    async function uploadImages() {
+      await Promise.all(
+        images?.map(async (file) => {
+          const result = await new Promise((resolve, reject) => {
+            useCloudinary()
+              .uploader.upload_stream(
+                { resource_type: "raw", format: "png" },
+                (err, result) => {
+                  if (err) {
+                    reject(err);
+                  } else {
+                    resolve(result.secure_url);
+                  }
+                }
+              )
+              .end(file.buffer);
+          });
 
-    images?.forEach(async (file) => {
-      useCloudinary()
-        .uploader.upload_stream(
-          { resource_type: "raw", format: "png" },
-          (err, result) => {
-            if (err) return next(createError(500, "Couldn't upload"));
-            photoURLs.push(result.secure_url);
-          }
-        )
-        .end(file.buffer);
-    });
+          photoURLs.push(result);
+        })
+      );
+    }
 
+    // Call the function to upload images
+    await uploadImages();
+
+    // Create new Restaurant document with photo URLs
     const newRestaurantBody = {
       ...req.body,
       additionalInfo: { ...req.body.additionalInfo },
@@ -39,9 +54,9 @@ export const createRestaurant = async (req, res, next) => {
     };
 
     const newRestaurant = new RestaurantModel(newRestaurantBody);
-
     const savedRestaurant = await newRestaurant.save();
 
+    // Update Location document to include new Restaurant
     await isLocation.updateOne({
       _id: req.params.locationId,
       $push: {
@@ -55,7 +70,6 @@ export const createRestaurant = async (req, res, next) => {
       data: savedRestaurant,
     });
   } catch (error) {
-    console.log(error);
     next(createError(500, error.message));
   }
 };
