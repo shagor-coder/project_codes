@@ -8,7 +8,10 @@ import { AddRestaurantForm } from "../../restaurant/components/AddRestaurantForm
 import { PagesHeader } from "../../../components/PagesHeader";
 import { ButtonModal } from "../../../components/ButtonModal";
 import { GridAddIcon } from "@mui/x-data-grid";
-import { useGetAllRestaurant } from "../../restaurant/services/restaurant";
+import {
+  useDeleteRestaurant,
+  useGetAllRestaurant,
+} from "../../restaurant/services/restaurant";
 import { DataGridComponent } from "../../../components/DataGrid";
 
 export const SingleLocation = () => {
@@ -24,8 +27,22 @@ export const SingleLocation = () => {
     error: restaurantsError,
   } = useGetAllRestaurant(locationId);
 
+  const {
+    data: deleted,
+    isError: isDeletedError,
+    error: deleteError,
+    mutate,
+  } = useDeleteRestaurant();
+
   const handleNavigate = (id) => {
     navigate(`/restaurants/${locationId}/${id}`);
+  };
+
+  const handleRestaurantDelete = (params) => {
+    mutate({
+      locationId: locationId,
+      restaurantId: params.id,
+    });
   };
 
   useEffect(() => {
@@ -51,6 +68,9 @@ export const SingleLocation = () => {
     restaurants,
     isRestaurantsLoading,
     isRestaurantsError,
+    isDeletedError,
+    deleteError,
+    deleted,
   ]);
 
   let content = null;
@@ -73,7 +93,7 @@ export const SingleLocation = () => {
       <Box component="section">
         <DataGridComponent
           actionNeeded={false}
-          handleDelete={() => {}}
+          handleDelete={handleRestaurantDelete}
           EditForm={<Box></Box>}
           data={formattedData}
           handleNavigate={handleNavigate}

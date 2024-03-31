@@ -76,6 +76,11 @@ export const DataGridComponent = ({
           width: 150,
           getActions: (params) => [
             <GridActionsCellItem
+              icon={<DeleteIcon />}
+              label="Delete"
+              onClick={() => handleDelete(params)}
+            />,
+            <GridActionsCellItem
               icon={<VisibilityIcon />}
               label="Update"
               onClick={() => {

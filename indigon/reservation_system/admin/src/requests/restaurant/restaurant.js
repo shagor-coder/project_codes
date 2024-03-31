@@ -19,7 +19,7 @@ export const deleteCurrentRestuarant = async ({ locationId, restaurantId }) => {
   try {
     const request = await axiosInstance.delete(
       import.meta.env.VITE_API_BASE_URL +
-        `/api/restuarant/${locationId}/${restaurantId}}`
+        `/api/restuarant/${locationId}/${restaurantId}`
     );
 
     const response = await request.data;

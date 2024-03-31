@@ -133,7 +133,7 @@ export const updateRestaurant = async (req, res, next) => {
 export const deleteRestaurant = async (req, res, next) => {
   try {
     const findRestaurant = await RestaurantModel.findOne({
-      _id: req.user.id,
+      _id: req.params.id,
       $and: [
         { locationId: req.params.locationId },
         {
@@ -143,9 +143,6 @@ export const deleteRestaurant = async (req, res, next) => {
     });
 
     if (!findRestaurant) return next(createError(404, "Restaurant not Found"));
-
-    if (findRestaurant._id !== req.params.id)
-      return next(createError(403, "Bad request!!"));
 
     await findRestaurant.deleteOne();
 
@@ -162,7 +159,11 @@ export const deleteRestaurant = async (req, res, next) => {
 
     res
       .status(200)
-      .json({ status: "success", message: "Restaurant deleted successfully!" });
+      .json({
+        status: "success",
+        message: "Restaurant deleted successfully!",
+        data: { id: findRestaurant._id },
+      });
   } catch (error) {
     next(createError(500, "Restaurant not Deleted"));
   }

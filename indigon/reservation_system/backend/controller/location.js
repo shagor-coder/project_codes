@@ -70,9 +70,9 @@ export const getAllLocation = async (req, res, next) => {
 // Get location for current user
 export const getLocation = async (req, res, next) => {
   try {
-    const location = await LocationModel.findById(req.params.id)
-      .populate("restaurant")
-      .select("-auth");
+    const location = await LocationModel.findById(req.params.id).select(
+      "-auth"
+    );
 
     if (!location) return next(createError(404, "Location not found"));
 
