@@ -9,5 +9,5 @@ const validateFileType = (req, file, cb) => {
 };
 
 export const upload = multer({
-  fileFilter: validateFileType,
+  storage: multer.memoryStorage(),
 });

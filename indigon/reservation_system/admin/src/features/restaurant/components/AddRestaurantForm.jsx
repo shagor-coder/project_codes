@@ -14,7 +14,7 @@ import { useGetAllMenus } from "../../menu/services/menu";
 export const AddRestaurantForm = () => {
   const { id } = useParams();
 
-  const [formData, setFormData] = useState({
+  const [restaurantData, setRestaurantData] = useState({
     name: "Awesome restaurant 3",
     description: "The best restaurant",
     additionalInfo: {
@@ -30,8 +30,9 @@ export const AddRestaurantForm = () => {
       phone: "+8801742677273",
     },
     menus: [],
-    photos: [],
   });
+
+  const [images, setImages] = useState([]);
 
   const { data, isPending, isError, mutate, error } = useCreateRestaurant();
   const {
@@ -44,7 +45,7 @@ export const AddRestaurantForm = () => {
 
   const handleMultiSelectChange = (event, newValue) => {
     event.preventDefault();
-    setFormData((prevData) => ({
+    setRestaurantData((prevData) => ({
       ...prevData,
       menus: newValue,
     }));
@@ -52,21 +53,18 @@ export const AddRestaurantForm = () => {
 
   const handleFileUpload = (event) => {
     const { files } = event.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      photos: [...prevState.photos, ...files], // Add selected files to the array
-    }));
+    setImages(files);
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name === "name" || name === "description") {
-      setFormData((prevState) => ({
+      setRestaurantData((prevState) => ({
         ...prevState,
         [name]: value,
       }));
     } else {
-      setFormData((prevState) => ({
+      setRestaurantData((prevState) => ({
         ...prevState,
         additionalInfo: {
           ...prevState.additionalInfo,
@@ -78,6 +76,25 @@ export const AddRestaurantForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const formData = new FormData();
+
+    // Append top-level fields directly
+    formData.append("name", restaurantData.name);
+    formData.append("description", restaurantData.description);
+
+    // Append additionalInfo fields
+    const additionalInfo = restaurantData.additionalInfo;
+    for (const key in additionalInfo) {
+      formData.append(`additionalInfo[${key}]`, additionalInfo[key]);
+    }
+
+    // Append photos
+    formData.append("photos", images);
+
+    console.log(images);
+
+    // Call the mutate function with the formData
     mutate({ locationId: id, formData: formData });
   };
 
@@ -115,7 +132,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="name"
           handleChange={handleChange}
-          value={formData.name}
+          value={restaurantData.name}
           size={6}
         />
         <TextareaComponent
@@ -123,7 +140,7 @@ export const AddRestaurantForm = () => {
           type="textarea"
           name="description"
           handleChange={handleChange}
-          value={formData.description}
+          value={restaurantData.description}
           size={6}
         />
         <InputComponent
@@ -131,7 +148,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="addressLine"
           handleChange={handleChange}
-          value={formData.additionalInfo.addressLine}
+          value={restaurantData.additionalInfo.addressLine}
           size={6}
         />
         <InputComponent
@@ -139,7 +156,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="priceRange"
           handleChange={handleChange}
-          value={formData.additionalInfo.priceRange}
+          value={restaurantData.additionalInfo.priceRange}
           size={6}
         />
         <InputComponent
@@ -147,7 +164,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="cuisines"
           handleChange={handleChange}
-          value={formData.additionalInfo.cuisines}
+          value={restaurantData.additionalInfo.cuisines}
           size={6}
         />
         <InputComponent
@@ -155,7 +172,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="diningStyle"
           handleChange={handleChange}
-          value={formData.additionalInfo.diningStyle}
+          value={restaurantData.additionalInfo.diningStyle}
           size={6}
         />
         <InputComponent
@@ -163,7 +180,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="dressCode"
           handleChange={handleChange}
-          value={formData.additionalInfo.dressCode}
+          value={restaurantData.additionalInfo.dressCode}
           size={6}
         />
         <InputComponent
@@ -171,7 +188,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="parkingDetails"
           handleChange={handleChange}
-          value={formData.additionalInfo.parkingDetails}
+          value={restaurantData.additionalInfo.parkingDetails}
           size={6}
         />
         <InputComponent
@@ -179,7 +196,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="executiveChef"
           handleChange={handleChange}
-          value={formData.additionalInfo.executiveChef}
+          value={restaurantData.additionalInfo.executiveChef}
           size={6}
         />
         <InputComponent
@@ -187,7 +204,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="paymentOptions"
           handleChange={handleChange}
-          value={formData.additionalInfo.paymentOptions}
+          value={restaurantData.additionalInfo.paymentOptions}
           size={6}
         />
         <InputComponent
@@ -195,7 +212,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="website"
           handleChange={handleChange}
-          value={formData.additionalInfo.website}
+          value={restaurantData.additionalInfo.website}
           size={6}
         />
         <InputComponent
@@ -203,7 +220,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="phone"
           handleChange={handleChange}
-          value={formData.additionalInfo.phone}
+          value={restaurantData.additionalInfo.phone}
           size={6}
         />
 

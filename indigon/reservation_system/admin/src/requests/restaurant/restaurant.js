@@ -1,3 +1,4 @@
+import axios from "axios";
 import { axiosInstance } from "../axios";
 
 export const getCurrentRestuarant = async ({ locationId, restaurantId }) => {
@@ -43,10 +44,11 @@ export const getAllRestuarants = async (locationId) => {
 
 export const createRestuarant = async ({ locationId, formData }) => {
   try {
-    const request = await axiosInstance.post(
+    const request = await axios.post(
       import.meta.env.VITE_API_BASE_URL + `/api/restuarant/${locationId}`,
       formData,
       {
+        withCredentials: true,
         headers: {
           "Content-Type": "multipart/form-data",
         },

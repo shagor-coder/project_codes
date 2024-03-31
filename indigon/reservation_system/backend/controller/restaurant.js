@@ -1,13 +1,7 @@
 import { LocationModel } from "../models/Location.js";
 import { RestaurantModel } from "../models/Restaurant.js";
+import { useCloudinary } from "../utils/clodinary.js";
 import { createError } from "../utils/error.js";
-import { v2 as cloudinary } from "cloudinary";
-
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
 
 // Create a new Restaurant
 export const createRestaurant = async (req, res, next) => {
@@ -20,16 +14,16 @@ export const createRestaurant = async (req, res, next) => {
     if (!isLocation) return next(createError(403, "Not Allowed!"));
 
     const images = req.files;
+    console.log(images);
 
     let photoURLs = [];
 
     images?.forEach(async (file) => {
-      cloudinary.uploader
-        .upload_stream(
+      useCloudinary()
+        .uploader.upload_stream(
           { resource_type: "raw", format: "png" },
           (err, result) => {
             if (err) return next(createError(500, "Couldn't upload"));
-            console.log(result.secure_url);
             photoURLs.push(result.secure_url);
           }
         )
