@@ -1,5 +1,9 @@
 import { Button, Grid } from "@mui/material";
-import { InputComponent, TextareaComponent } from "../../../components/Input";
+import {
+  FileUploadComponent,
+  InputComponent,
+  TextareaComponent,
+} from "../../../components/Input";
 import { useEffect, useState } from "react";
 import { useCreateRestaurant } from "../services/restaurant";
 import { UseAuthContext } from "../../../context/AuthContext";
@@ -11,19 +15,19 @@ export const AddRestaurantForm = () => {
   const { id } = useParams();
 
   const [formData, setFormData] = useState({
-    name: "",
-    description: "",
+    name: "Awesome restaurant 3",
+    description: "The best restaurant",
     additionalInfo: {
-      addressLine: "",
-      priceRange: "",
-      cuisines: "",
-      diningStyle: "",
-      dressCode: "",
-      parkingDetails: "",
-      executiveChef: "",
-      paymentOptions: "",
-      website: "",
-      phone: "",
+      addressLine: "123 new york",
+      priceRange: "$10 - $100",
+      cuisines: "American",
+      diningStyle: "Casual",
+      dressCode: "Casual",
+      parkingDetails: "Basement",
+      executiveChef: "Shagor",
+      paymentOptions: "Mastercard",
+      website: "https://www.acmerestaurant.com",
+      phone: "+8801742677273",
     },
     menus: [],
     photos: [],
@@ -46,6 +50,14 @@ export const AddRestaurantForm = () => {
     }));
   };
 
+  const handleFileUpload = (event) => {
+    const { files } = event.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      photos: [...prevState.photos, ...files], // Add selected files to the array
+    }));
+  };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name === "name" || name === "description") {
@@ -64,7 +76,7 @@ export const AddRestaurantForm = () => {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     mutate({ locationId: id, formData: formData });
   };
@@ -194,6 +206,12 @@ export const AddRestaurantForm = () => {
           value={formData.additionalInfo.phone}
           size={6}
         />
+
+        <FileUploadComponent
+          name="photos"
+          size={6}
+          handleChange={handleFileUpload}
+        />
         {isLoading ? (
           "Menus Loading"
         ) : (
@@ -203,7 +221,7 @@ export const AddRestaurantForm = () => {
             options={menusData}
             limit={3}
             label="Menu Items"
-            size={12}
+            size={6}
           />
         )}
         <Grid item xs={12}>

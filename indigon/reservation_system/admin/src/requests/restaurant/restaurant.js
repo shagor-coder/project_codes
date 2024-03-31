@@ -45,11 +45,17 @@ export const createRestuarant = async ({ locationId, formData }) => {
   try {
     const request = await axiosInstance.post(
       import.meta.env.VITE_API_BASE_URL + `/api/restuarant/${locationId}`,
-      formData
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
     );
     const response = await request.data;
     return response.data;
   } catch (error) {
+    console.log(error);
     throw new Error(error?.response?.data);
   }
 };

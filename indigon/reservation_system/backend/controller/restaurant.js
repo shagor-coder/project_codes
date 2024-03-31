@@ -1,6 +1,13 @@
 import { LocationModel } from "../models/Location.js";
 import { RestaurantModel } from "../models/Restaurant.js";
 import { createError } from "../utils/error.js";
+import { v2 as cloudinary } from "cloudinary";
+
+cloudinary.config({
+  cloud_name: "deczwjgeh",
+  api_key: "354965859828935",
+  api_secret: "TiXkdYs7l1XsF1KX_iMB8TYed5c",
+});
 
 // Create a new Restaurant
 export const createRestaurant = async (req, res, next) => {
@@ -12,11 +19,27 @@ export const createRestaurant = async (req, res, next) => {
 
     if (!isLocation) return next(createError(403, "Not Allowed!"));
 
+    const images = req.files;
+
+    console.log(images);
+
+    let photoURLs = [];
+
+    const uploadPromises = images?.map((file) =>
+      cloudinary.uploader.upload(file.path)
+    );
+
+    const uploadResults = await Promise.all(uploadPromises);
+    photoURLs = uploadResults?.map((result) => result?.secure_url);
+
+    console.log(uploadResults);
+
     const newRestaurantBody = {
       ...req.body,
       additionalInfo: { ...req.body.additionalInfo },
       userId: req.user.id,
       locationId: req.params.locationId,
+      photos: photoURLs,
     };
 
     const newRestaurant = new RestaurantModel(newRestaurantBody);
@@ -36,6 +59,7 @@ export const createRestaurant = async (req, res, next) => {
       data: savedRestaurant,
     });
   } catch (error) {
+    console.log(error);
     next(createError(500, error.message));
   }
 };

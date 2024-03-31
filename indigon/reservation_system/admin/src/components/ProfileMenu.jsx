@@ -34,7 +34,6 @@ export const ProfileMenu = () => {
         data: null,
       });
     } catch (error) {
-      console.log(error);
       dispatch({
         type: "showToast",
         message: "Couldn't log out!",

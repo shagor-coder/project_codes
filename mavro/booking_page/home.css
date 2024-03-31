@@ -1,0 +1,597 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+html {
+  scroll-behavior: smooth !important;
+}
+
+body {
+  overflow-x: hidden !important;
+}
+
+#preview-container .hide-preview {
+  display: none !important;
+}
+
+/* Start Button */
+.btn-element {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: none !important;
+  border-radius: 5px !important;
+  border: none !important;
+  outline: none !important;
+  padding: 15px 25px !important;
+  font-family: "Montserrat", sans-serif !important;
+  cursor: pointer !important;
+}
+
+.btn-element .main-heading-group {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.btn-element .main-heading-group .main-heading-button {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.btn-element .main-heading-group .button-icon-start {
+  display: none !important;
+}
+
+.btn-element .main-heading-group .main-heading-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.btn-element.btn-element-icon .button-icon-end {
+  display: none !important;
+}
+
+/* End Button */
+
+/* Start Font  Weight */
+
+.font-w-300 * {
+  font-weight: 300 !important;
+}
+
+.font-w-400 * {
+  font-weight: 400 !important;
+}
+
+.font-w-500 * {
+  font-weight: 500 !important;
+}
+
+.font-w-600 * {
+  font-weight: 600 !important;
+}
+
+.font-w-700 * {
+  font-weight: 700 !important;
+}
+
+.font-w-800 * {
+  font-weight: 800 !important;
+}
+
+.font-w-900 * {
+  font-weight: 900 !important;
+}
+
+/* Start Line Height */
+.lh-35 * {
+  line-height: 35px !important;
+}
+
+.lh-30 * {
+  line-height: 30px !important;
+}
+
+.lh-32 * {
+  line-height: 32px !important;
+}
+
+.lh-45 * {
+  line-height: 45px !important;
+}
+
+/* Start Letter Spacing */
+.ls--05 * {
+  letter-spacing: -0.5px !important;
+}
+
+.ls--025 * {
+  letter-spacing: -0.25px !important;
+}
+
+.ls--002 * {
+  letter-spacing: -0.2px !important;
+}
+
+.ls--01 * {
+  letter-spacing: -1px !important;
+}
+
+.ls--02 * {
+  letter-spacing: -2px !important;
+}
+
+.ls-025 * {
+  letter-spacing: 0.25px !important;
+}
+
+.ls-05 * {
+  letter-spacing: 0.5px !important;
+}
+
+.ls-075 * {
+  letter-spacing: 0.75px !important;
+}
+
+.ls-001 * {
+  letter-spacing: 0.1px !important;
+}
+
+.ls-01 * {
+  letter-spacing: 1px !important;
+}
+
+.ls-15 * {
+  letter-spacing: 1.5px !important;
+}
+
+.ls-02 * {
+  letter-spacing: 2px !important;
+}
+
+/* Start Max Width */
+
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.ml-auto {
+  margin-left: auto !important;
+}
+
+.mr-a {
+  margin-right: auto !important;
+}
+
+.max-w-400 {
+  max-width: 400px !important;
+}
+
+.max-w-500 {
+  max-width: 500px !important;
+}
+
+.max-w-600 {
+  max-width: 600px !important;
+}
+
+.max-w-700 {
+  max-width: 700px !important;
+}
+
+.max-w-800 {
+  max-width: 800px !important;
+}
+
+.max-w-900 {
+  max-width: 900px !important;
+}
+
+.max-w-1020 {
+  max-width: 1020px !important;
+}
+
+.max-w-1100 {
+  max-width: 1100px !important;
+}
+
+.max-w-1200 {
+  max-width: 1200px !important;
+}
+
+/* Start Min Height */
+
+body .c-section > .inner {
+  max-width: 1240px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* ==== Start Hero Section ==== */
+
+.hero .c-nav-menu .nav-menu-wrapper > .nav-menu li {
+  height: auto !important;
+}
+
+#preview-container .hero {
+  padding-bottom: 0px !important;
+}
+
+#preview-container .hero .c-row:nth-child(2) {
+  padding-bottom: 0px !important;
+}
+/* ==== End Hero Section ==== */
+
+/* A Grip */
+.a-grip .feature-row .check-p {
+  background-image: url("https://storage.googleapis.com/msgsndr/TyAe1vO3PCuAbuCijYEf/media/64a08ef4e8a2e039a0c8d022.svg+xml") !important;
+  background-position: 10px center !important;
+  background-size: 24px !important;
+  background-repeat: no-repeat !important;
+}
+
+.a-grip .price-row .check-p {
+  background-image: url("https://storage.googleapis.com/msgsndr/TyAe1vO3PCuAbuCijYEf/media/64a08ef4e8a2e039a0c8d022.svg+xml") !important;
+  background-position: 0px 5px !important;
+  background-size: 18px !important;
+  background-repeat: no-repeat !important;
+}
+
+.a-grip .price-row .main-card .check-p {
+  background-image: url("https://storage.googleapis.com/msgsndr/TyAe1vO3PCuAbuCijYEf/media/64a094b87fa5d737f7dd39c9.svg+xml") !important;
+}
+
+#preview-container .a-grip .price-row .c-column {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+#preview-container .a-grip .price-row .c-column:not(:nth-child(2)) > .inner {
+  background-color: rgb(255, 255, 255) !important;
+  box-shadow: 0px 5px 18px 0px rgba(0, 0, 0, 0.08) !important;
+}
+
+#preview-container .a-grip .price-row .c-column:nth-child(2) {
+  transform: scale(1.05) !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+#preview-container .a-grip .price-row .c-column > .inner {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
+/* Dialer */
+
+.dialer .check-p {
+  background-image: url("https://storage.googleapis.com/msgsndr/TyAe1vO3PCuAbuCijYEf/media/64a08ef4e8a2e039a0c8d022.svg+xml") !important;
+  background-position: 0px 5px !important;
+  background-size: 18px !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Testimonial */
+
+.testimonial .testimonial-row .c-column > .inner {
+  position: relative !important;
+}
+
+.testimonial .testimonial-row .c-column > .inner::before {
+  content: "" !important;
+  position: absolute !important;
+  bottom: -32px !important;
+  width: calc(100% - 50px) !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  height: 40px !important;
+  background-color: #f9f8f8 !important;
+  opacity: 0.87 !important;
+  z-index: -1 !important;
+}
+
+/* Footer */
+.footer .c-button {
+  flex: 1 0 45px !important;
+  max-width: 45px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.footer .c-button .media-link {
+  width: 40px !important;
+  height: 40px !important;
+  background-color: #fff !important;
+  border: 2px solid #000 !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  transition: opacity 0.2s ease-in-out !important;
+}
+
+.footer .c-button .media-link .main-heading-group {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.footer .c-button .media-link .main-heading-group * {
+  color: #000 !important;
+  font-size: 16px !important;
+  margin-right: 0 !important;
+}
+
+.footer .c-button .media-link .main-heading-button,
+.footer .c-button .media-link .button-icon-end {
+  display: none !important;
+}
+
+.footer .c-button .media-link:hover {
+  opacity: 0.75 !important;
+}
+
+@media (max-width: 768px) {
+  /*  padding*/
+
+  .col-rv > .inner {
+    flex-direction: column-reverse !important;
+  }
+
+  .padding-t-m-0 {
+    padding-top: 0px !important;
+  }
+
+  .padding-t-m-20 {
+    padding-top: 20px !important;
+  }
+
+  .padding-t-m-30 {
+    padding-top: 30px !important;
+  }
+
+  .padding-t-m-40 {
+    padding-top: 40px !important;
+  }
+
+  .padding-t-m-50 {
+    padding-top: 50px !important;
+  }
+
+  .padding-t-m-60 {
+    padding-top: 60px !important;
+  }
+
+  .padding-t-m-70 {
+    padding-top: 70px !important;
+  }
+
+  .padding-t-m-80 {
+    padding-top: 80px !important;
+  }
+
+  .padding-t-m-160 {
+    padding-top: 160px !important;
+  }
+
+  /* padding bottom start*/
+
+  .padding-b-m-20 {
+    padding-bottom: 20px !important;
+  }
+
+  .padding-b-m-30 {
+    padding-bottom: 30px !important;
+  }
+
+  .padding-b-m-40 {
+    padding-bottom: 40px !important;
+  }
+
+  .padding-b-m-50 {
+    padding-bottom: 50px !important;
+  }
+
+  .padding-b-m-60 {
+    padding-bottom: 60px !important;
+  }
+
+  .padding-b-m-70 {
+    padding-bottom: 70px !important;
+  }
+
+  .padding-b-m-80 {
+    padding-bottom: 80px !important;
+  }
+
+  .padding-b-m-90 {
+    padding-bottom: 90px !important;
+  }
+
+  /* Start  margin   */
+
+  .margin-t-m-0 {
+    margin-top: 0px !important;
+  }
+
+  .margin-t-m-10 {
+    margin-top: 10px !important;
+  }
+
+  .margin-t-m-15 {
+    margin-top: 15px !important;
+  }
+
+  .margin-t-m-20 {
+    margin-top: 20px !important;
+  }
+
+  .margin-t-m-30 {
+    margin-top: 30px !important;
+  }
+
+  .margin-t-m-40 {
+    margin-top: 40px !important;
+  }
+
+  .margin-t-m-50 {
+    margin-top: 50px !important;
+  }
+
+  .margin-t-m-60 {
+    margin-top: 60px !important;
+  }
+
+  .margin-t-m-70 {
+    margin-top: 70px !important;
+  }
+
+  .margin-t-m-120 {
+    margin-top: 120px !important;
+  }
+
+  .margin-b-m-0 {
+    margin-bottom: 0px !important;
+  }
+
+  .margin-b-m-10 {
+    margin-bottom: 10px !important;
+  }
+
+  .margin-b-m-20 {
+    margin-bottom: 20px !important;
+  }
+
+  .margin-b-m-30 {
+    margin-bottom: 30px !important;
+  }
+
+  .margin-b-m-40 {
+    margin-bottom: 40px !important;
+  }
+
+  body .c-section > .inner {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  body .c-section .c-row {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  body .c-section.btn-element-center .c-button {
+    text-align: center !important;
+  }
+
+  body .c-section.title-element-center .c-heading *,
+  body .c-section.title-element-center .c-sub-heading * {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  body .c-section.para-element-center .c-paragraph * {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  body .c-section.d-center .c-divider * {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  body .c-section.img-left .c-image .image-container {
+    text-align: left !important;
+  }
+
+  .btn-element {
+    min-height: 55px !important;
+  }
+}
+/* CSS FOR CALENDAR */
+#appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--neo-calendar-logo {
+  width: 200px !important;
+  height: unset !important;
+}
+
+#appointment_widgets--revamp .booking-info--duration svg path,
+#appointment_widgets--revamp .booking-info--datetime svg path,
+#appointment_widgets--revamp .booking-info--timezone svg path {
+  stroke: #daac36 !important;
+}
+
+#appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-date-block
+  .vdpHeadCell {
+  padding: 5px 8px !important;
+  background-color: #daac36 !important;
+  border-radius: 3px !important;
+  color: #000 !important;
+  font-weight: 700 !important;
+}
+
+#appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-slot-block
+  .widgets-time-slots
+  .widgets-time-slot
+  > span {
+  background-color: #daac368b !important;
+  color: #000 !important;
+}
+
+#appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-slot-block
+  .widgets-time-slots
+  .widgets-time-slot.actived
+  > span {
+  background-color: #daac36 !important;
+}
+
+#appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-slot-block
+  .widgets-time-slots
+  .widgets-time-slot.actived
+  button {
+  color: #000 !important;
+}
+
+.calendarVdpComponent .vdpCellContent {
+  border-radius: 4px !important;
+}
+
+@media (max-width: 768px) {
+  #appointment_widgets--revamp
+    .appointment_widgets--revamp--booking
+    .appointment_widgets--revamp--neo-calendar-logo {
+    width: 100px !important;
+    height: unset !important;
+  }
+
+  #appointment_widgets--revamp
+    .appointment_widgets--revamp--booking
+    .appointment_widgets--revamp--steps
+    .widgets-date-block
+    .vdpHeadCell {
+    padding: 3px 4px !important;
+  }
+}

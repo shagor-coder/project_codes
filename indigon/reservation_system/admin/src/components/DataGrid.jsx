@@ -1,5 +1,6 @@
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import Box from "@mui/material/Box";
 import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
 import { useState } from "react";
@@ -75,7 +76,7 @@ export const DataGridComponent = ({
           width: 150,
           getActions: (params) => [
             <GridActionsCellItem
-              icon={<EditIcon />}
+              icon={<VisibilityIcon />}
               label="Update"
               onClick={() => {
                 const { id } = params;

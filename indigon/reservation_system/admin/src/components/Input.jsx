@@ -1,4 +1,5 @@
 import {
+  Button,
   FormControl,
   Grid,
   InputLabel,
@@ -6,6 +7,8 @@ import {
   Select,
   TextField,
 } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 export const InputComponent = ({
   label,
@@ -86,6 +89,46 @@ export const SelectComponent = ({
             })}
         </Select>
       </FormControl>
+    </Grid>
+  );
+};
+
+const VisuallyHiddenInput = styled("input")({
+  clip: "rect(0 0 0 0)",
+  clipPath: "inset(50%)",
+  height: 1,
+  overflow: "hidden",
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  whiteSpace: "nowrap",
+  width: 1,
+});
+
+export const FileUploadComponent = ({
+  name,
+  buttonText,
+  handleChange,
+  size,
+}) => {
+  return (
+    <Grid item xs={12} md={size}>
+      <Button
+        sx={{ width: "100%", height: "100%" }}
+        component="label"
+        variant="contained"
+        tabIndex={-1}
+        startIcon={<CloudUploadIcon />}
+      >
+        {buttonText}
+        <VisuallyHiddenInput
+          name={name}
+          onChange={handleChange}
+          type="file"
+          multiple={true}
+          accept="image/*"
+        />
+      </Button>
     </Grid>
   );
 };

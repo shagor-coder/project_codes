@@ -7,11 +7,17 @@ import {
   updateRestaurant,
 } from "../controller/restaurant.js";
 import { verifyUser } from "../utils/verifyToken.js";
+import { upload } from "../utils/validateFileType.js";
 
 const _Router = express.Router();
 
 // Create a Restaurant
-_Router.post("/:locationId", verifyUser, createRestaurant);
+_Router.post(
+  "/:locationId",
+  verifyUser,
+  upload.array("photos"),
+  createRestaurant
+);
 
 // Get all the Restaurants
 _Router.get("/:locationId/all", verifyUser, getAllRestaurant);

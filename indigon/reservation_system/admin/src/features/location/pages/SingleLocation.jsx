@@ -64,9 +64,9 @@ export const SingleLocation = () => {
 
   if (restaurants && restaurants.length) {
     const formattedData = restaurants.map((restaurant) => {
-      const singledOption = { ...restaurant, ...restaurant.additionalInfo };
-      delete singledOption.additionalInfo;
-      return singledOption;
+      const { _id, name, createdAt, updatedAt, description } = restaurant;
+
+      return { _id, name, description, createdAt, updatedAt };
     });
 
     content = (
