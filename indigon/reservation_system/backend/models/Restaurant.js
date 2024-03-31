@@ -13,11 +13,11 @@ const RestaurantSchema = new mongoose.Schema(
     additionalInfo: {
       addressLine: {
         type: String,
-        required: true,
+        required: false,
       },
       priceRange: {
         type: String,
-        required: true,
+        required: false,
       },
       cuisines: {
         type: String,
@@ -58,7 +58,7 @@ const RestaurantSchema = new mongoose.Schema(
     },
     menus: [
       {
-        type: mongoose.Types.ObjectId,
+        type: Object,
         ref: "Menu",
       },
     ],

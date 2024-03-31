@@ -4,9 +4,9 @@ import { createError } from "../utils/error.js";
 import { v2 as cloudinary } from "cloudinary";
 
 cloudinary.config({
-  cloud_name: "deczwjgeh",
-  api_key: "354965859828935",
-  api_secret: "TiXkdYs7l1XsF1KX_iMB8TYed5c",
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 // Create a new Restaurant
@@ -21,18 +21,20 @@ export const createRestaurant = async (req, res, next) => {
 
     const images = req.files;
 
-    console.log(images);
-
     let photoURLs = [];
 
-    const uploadPromises = images?.map((file) =>
-      cloudinary.uploader.upload(file.path)
-    );
-
-    const uploadResults = await Promise.all(uploadPromises);
-    photoURLs = uploadResults?.map((result) => result?.secure_url);
-
-    console.log(uploadResults);
+    images?.forEach(async (file) => {
+      cloudinary.uploader
+        .upload_stream(
+          { resource_type: "raw", format: "png" },
+          (err, result) => {
+            if (err) return next(createError(500, "Couldn't upload"));
+            console.log(result.secure_url);
+            photoURLs.push(result.secure_url);
+          }
+        )
+        .end(file.buffer);
+    });
 
     const newRestaurantBody = {
       ...req.body,
