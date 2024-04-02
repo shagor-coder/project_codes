@@ -19,6 +19,7 @@ import { ProfileMenu } from "./ProfileMenu";
 import { MenuItem } from "./MenuItem";
 import { useState } from "react";
 import { UseAuthContext } from "../context/AuthContext";
+import { useLocation } from "react-router-dom";
 
 const drawerWidth = 180;
 
@@ -90,6 +91,7 @@ const Drawer = styled(MuiDrawer, {
 export const Sidebar = ({ headline }) => {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
   const { auth } = UseAuthContext();
   const { isAdmin } = auth?.authUser;
 
@@ -99,6 +101,10 @@ export const Sidebar = ({ headline }) => {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const activeLink = (linkName) => {
+    return pathname.includes(linkName) ? true : false;
   };
 
   return (
@@ -142,17 +148,24 @@ export const Sidebar = ({ headline }) => {
             icon={<DashboardIcon />}
             name="Dashboard"
             path="/dashboard"
+            isActive={activeLink("/dashboard")}
           />
           {/* Admin visible */}
           {isAdmin && (
-            <MenuItem icon={<PeopleAltIcon />} name="Users" path="/users" />
+            <MenuItem
+              icon={<PeopleAltIcon />}
+              name="Users"
+              path="/users"
+              isActive={activeLink("/users")}
+            />
           )}
           <MenuItem
             icon={<LocationCityIcon />}
             name="Locations"
             path="/locations"
+            isActive={activeLink("/locations")}
           />
-          <MenuItem icon={<MenuBookIcon />} name="Menus" path="/menus" />
+          {/* <MenuItem icon={<MenuBookIcon />} name="Menus" path="/menus" /> */}
         </List>
       </Drawer>
     </Box>

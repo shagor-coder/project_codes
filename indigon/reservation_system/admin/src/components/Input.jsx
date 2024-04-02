@@ -54,6 +54,7 @@ export const TextareaComponent = ({
         onChange={handleChange}
         required
         multiline
+        minRows={4}
       />
     </Grid>
   );

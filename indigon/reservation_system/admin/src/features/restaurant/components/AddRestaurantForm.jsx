@@ -12,14 +12,14 @@ import { useParams } from "react-router-dom";
 import { useGetAllMenus } from "../../menu/services/menu";
 
 export const AddRestaurantForm = () => {
-  const { id } = useParams();
+  const { locationId } = useParams();
 
   const [restaurantData, setRestaurantData] = useState({
     name: "Awesome restaurant 3",
     description: "The best restaurant",
+    addressLine: "123 new york",
+    priceRange: "$10 - $100",
     additionalInfo: {
-      addressLine: "123 new york",
-      priceRange: "$10 - $100",
       cuisines: "American",
       diningStyle: "Casual",
       dressCode: "Casual",
@@ -29,27 +29,12 @@ export const AddRestaurantForm = () => {
       website: "https://www.acmerestaurant.com",
       phone: "+8801742677273",
     },
-    menus: [],
   });
 
   const [images, setImages] = useState([]);
 
   const { data, isPending, isError, mutate, error } = useCreateRestaurant();
-  const {
-    data: menusData,
-    isLoading,
-    isError: isMenuLoadingError,
-    error: menusError,
-  } = useGetAllMenus();
   const { dispatch } = UseAuthContext();
-
-  const handleMultiSelectChange = (event, newValue) => {
-    event.preventDefault();
-    setRestaurantData((prevData) => ({
-      ...prevData,
-      menus: newValue,
-    }));
-  };
 
   const handleFileUpload = (event) => {
     const { files } = event.target;
@@ -108,18 +93,10 @@ export const AddRestaurantForm = () => {
       });
     }
 
-    if (isMenuLoadingError) {
-      dispatch({
-        type: "showToast",
-        message: menusError.message,
-        toastType: "error",
-      });
-    }
-
     if (data) {
       dispatch({
         type: "showToast",
-        message: "New user has been created!",
+        message: "Restaurant has been addded!",
         toastType: "success",
       });
     }
@@ -142,14 +119,14 @@ export const AddRestaurantForm = () => {
           name="description"
           handleChange={handleChange}
           value={restaurantData.description}
-          size={6}
+          size={9}
         />
         <InputComponent
           label="Full Address"
           type="text"
           name="addressLine"
           handleChange={handleChange}
-          value={restaurantData.additionalInfo.addressLine}
+          value={restaurantData.addressLine}
           size={6}
         />
         <InputComponent
@@ -157,7 +134,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="priceRange"
           handleChange={handleChange}
-          value={restaurantData.additionalInfo.priceRange}
+          value={restaurantData.priceRange}
           size={6}
         />
         <InputComponent
@@ -230,18 +207,6 @@ export const AddRestaurantForm = () => {
           size={6}
           handleChange={handleFileUpload}
         />
-        {isLoading ? (
-          "Menus Loading"
-        ) : (
-          <MultiSelectComponent
-            name="menus"
-            handleChange={handleMultiSelectChange}
-            options={menusData}
-            limit={3}
-            label="Menu Items"
-            size={6}
-          />
-        )}
         <Grid item xs={12}>
           <Button
             type="submit"

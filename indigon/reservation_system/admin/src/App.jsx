@@ -10,6 +10,7 @@ import { SingleLocation } from "./features/location/pages/SingleLocation";
 import { InstallConfirmation } from "./features/location/pages/InstallConfirmation";
 import { Restaurant } from "./features/restaurant/Restuarant";
 import { Menus } from "./features/menu/Menus";
+import { AddRestaurant } from "./features/restaurant/pages/AddRestaurant";
 
 export const App = () => {
   return (
@@ -22,6 +23,11 @@ export const App = () => {
         <Route path="locations" element={<Locations />} />
         <Route path="locations/:id" element={<SingleLocation />} />
         <Route path="menus" element={<Menus />} />
+        {/* Route For Adding New Restaurant */}
+        <Route
+          path="restaurants/:locationId/new-restaurant"
+          element={<AddRestaurant />}
+        />
         <Route
           path="restaurants/:locationId/:restaurantId"
           element={<Restaurant />}

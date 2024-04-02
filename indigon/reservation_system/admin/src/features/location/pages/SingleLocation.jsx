@@ -4,9 +4,7 @@ import { useEffect } from "react";
 import { UseAuthContext } from "../../../context/AuthContext";
 import { Backdrop, Box, CircularProgress, Grid } from "@mui/material";
 import { Layout } from "../../../components/Layout";
-import { AddRestaurantForm } from "../../restaurant/components/AddRestaurantForm";
 import { PagesHeader } from "../../../components/PagesHeader";
-import { ButtonModal } from "../../../components/ButtonModal";
 import { GridAddIcon } from "@mui/x-data-grid";
 import {
   useDeleteRestaurant,
@@ -107,12 +105,12 @@ export const SingleLocation = () => {
       <PagesHeader
         headline="All restaurant in this location"
         IconButton={
-          <ButtonModal
-            minWid={800}
-            modalHeadline="Create Restaurant"
-            buttonIcon={<GridAddIcon />}
-            modalForm={<AddRestaurantForm />}
-          />
+          <GridAddIcon
+            sx={{ cursor: "pointer" }}
+            onClick={() =>
+              navigate(`/restaurants/${locationId}/new-restaurant`)
+            }
+          ></GridAddIcon>
         }
       />
       {content}

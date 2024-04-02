@@ -7,11 +7,11 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
-export const MenuItem = ({ path, icon, name, handleClick }) => {
+export const MenuItem = ({ path, icon, name, handleClick, isActive }) => {
   return (
     <Tooltip title={name} placement="right">
       <ListItem disablePadding sx={{ display: "block" }} onClick={handleClick}>
-        <Link to={path} style={{ color: "#000000de" }}>
+        <Link to={path} style={{ color: "#0000006e" }}>
           <ListItemButton
             sx={{
               minHeight: 48,
@@ -24,6 +24,7 @@ export const MenuItem = ({ path, icon, name, handleClick }) => {
                 minWidth: 0,
                 mr: open ? 3 : "auto",
                 justifyContent: "center",
+                color: !isActive ? "#0000006e" : "seagreen",
               }}
             >
               {icon}
