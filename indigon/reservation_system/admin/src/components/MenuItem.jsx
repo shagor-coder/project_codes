@@ -24,12 +24,18 @@ export const MenuItem = ({ path, icon, name, handleClick, isActive }) => {
                 minWidth: 0,
                 mr: open ? 3 : "auto",
                 justifyContent: "center",
-                color: !isActive ? "#0000006e" : "seagreen",
+                color: !isActive ? "#000000e6" : "seagreen",
               }}
             >
               {icon}
             </ListItemIcon>
-            <ListItemText primary={name} sx={{ opacity: open ? 1 : 0 }} />
+            <ListItemText
+              primary={name}
+              sx={{
+                opacity: open ? 1 : 0,
+                color: !isActive ? "#000000e6" : "seagreen",
+              }}
+            />
           </ListItemButton>
         </Link>
       </ListItem>

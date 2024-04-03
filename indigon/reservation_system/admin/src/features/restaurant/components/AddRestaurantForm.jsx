@@ -38,10 +38,8 @@ export const AddRestaurantForm = () => {
 
   const handleFileUpload = (event) => {
     const { files } = event.target;
-    // setImages(files);
-
     setImages((prevState) => {
-      return [...prevState, Array.from(files)];
+      return [...Array.from(prevState), ...Array.from(files)];
     });
   };
 
@@ -68,24 +66,22 @@ export const AddRestaurantForm = () => {
 
     const formData = new FormData();
 
-    // Append top-level fields directly
     formData.append("name", restaurantData.name);
     formData.append("description", restaurantData.description);
+    formData.append("adressLine", restaurantData.addressLine);
+    formData.append("openingHours", restaurantData.openingHours);
+    formData.append("closingHours", restaurantData.closingHours);
+    formData.append("priceRange", restaurantData.priceRange);
 
-    // Append additionalInfo fields
     const additionalInfo = restaurantData.additionalInfo;
     for (const key in additionalInfo) {
       formData.append(`additionalInfo[${key}]`, additionalInfo[key]);
     }
 
-    console.log(images);
-
-    // Append photos
-    Array.from(images)?.forEach((img) => {
+    images?.forEach((img) => {
       formData.append("photos", img);
     });
-    // Call the mutate function with the formData
-    // mutate({ locationId: locationId, formData: formData });
+    mutate({ locationId: locationId, formData: formData });
   };
 
   useEffect(() => {
@@ -233,8 +229,8 @@ export const AddRestaurantForm = () => {
           <ImageList sx={{ width: "100%" }} cols={3}>
             {images?.map((file) => {
               return (
-                <ImageListItem key={file[0]?.name} sx={{ maxWidth: "250px" }}>
-                  <img src={URL.createObjectURL(file[0])} alt={file[0]?.name} />
+                <ImageListItem key={file?.name} sx={{ maxWidth: "250px" }}>
+                  <img src={URL.createObjectURL(file)} alt={file?.name} />
                 </ImageListItem>
               );
             })}

@@ -29,7 +29,10 @@ export const createRestaurant = async (req, res, next) => {
                   if (err) {
                     reject(err);
                   } else {
-                    resolve(result.secure_url);
+                    resolve({
+                      photoURL: result.secure_url,
+                      photoId: result.public_id,
+                    });
                   }
                 }
               )
@@ -146,6 +149,20 @@ export const deleteRestaurant = async (req, res, next) => {
 
     await findRestaurant.deleteOne();
 
+    const uploadedImagesId =
+      findRestaurant.photos?.map((photos) => photos.photoId) || [];
+
+    uploadedImagesId.length &&
+      useCloudinary()
+        .api.delete_resources(uploadedImagesId, {
+          type: "upload",
+          resource_type: "raw",
+        })
+        .then((data) => console.log(data))
+        .catch((error) => {
+          throw new Error(error);
+        });
+
     await LocationModel.updateOne(
       {
         _id: req.params.locationId,
@@ -157,13 +174,11 @@ export const deleteRestaurant = async (req, res, next) => {
       }
     );
 
-    res
-      .status(200)
-      .json({
-        status: "success",
-        message: "Restaurant deleted successfully!",
-        data: { id: findRestaurant._id },
-      });
+    res.status(200).json({
+      status: "success",
+      message: "Restaurant deleted successfully!",
+      data: { id: findRestaurant._id },
+    });
   } catch (error) {
     next(createError(500, "Restaurant not Deleted"));
   }
