@@ -115,7 +115,7 @@ export const FileUploadComponent = ({
   return (
     <Grid item xs={12} md={size}>
       <Button
-        sx={{ width: "100%", height: "100%" }}
+        sx={{ width: "100%", height: "56px" }}
         component="label"
         variant="contained"
         tabIndex={-1}

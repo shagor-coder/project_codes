@@ -1,4 +1,4 @@
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, ImageList, ImageListItem } from "@mui/material";
 import {
   FileUploadComponent,
   InputComponent,
@@ -7,9 +7,7 @@ import {
 import { useEffect, useState } from "react";
 import { useCreateRestaurant } from "../services/restaurant";
 import { UseAuthContext } from "../../../context/AuthContext";
-import { MultiSelectComponent } from "../../../components/MultiSelect";
 import { useParams } from "react-router-dom";
-import { useGetAllMenus } from "../../menu/services/menu";
 
 export const AddRestaurantForm = () => {
   const { locationId } = useParams();
@@ -19,6 +17,8 @@ export const AddRestaurantForm = () => {
     description: "The best restaurant",
     addressLine: "123 new york",
     priceRange: "$10 - $100",
+    openingHours: "9.00am",
+    closingHours: "5.00pm",
     additionalInfo: {
       cuisines: "American",
       diningStyle: "Casual",
@@ -38,7 +38,11 @@ export const AddRestaurantForm = () => {
 
   const handleFileUpload = (event) => {
     const { files } = event.target;
-    setImages(files);
+    // setImages(files);
+
+    setImages((prevState) => {
+      return [...prevState, Array.from(files)];
+    });
   };
 
   const handleChange = (event) => {
@@ -81,7 +85,7 @@ export const AddRestaurantForm = () => {
       formData.append("photos", img);
     });
     // Call the mutate function with the formData
-    mutate({ locationId: id, formData: formData });
+    // mutate({ locationId: locationId, formData: formData });
   };
 
   useEffect(() => {
@@ -113,14 +117,6 @@ export const AddRestaurantForm = () => {
           value={restaurantData.name}
           size={6}
         />
-        <TextareaComponent
-          label="Description"
-          type="textarea"
-          name="description"
-          handleChange={handleChange}
-          value={restaurantData.description}
-          size={9}
-        />
         <InputComponent
           label="Full Address"
           type="text"
@@ -136,6 +132,30 @@ export const AddRestaurantForm = () => {
           handleChange={handleChange}
           value={restaurantData.priceRange}
           size={6}
+        />
+        <InputComponent
+          label="Opening Hours"
+          type="text"
+          name="openniHours"
+          handleChange={handleChange}
+          value={restaurantData.openingHours}
+          size={3}
+        />
+        <InputComponent
+          label="Closing Hours"
+          type="text"
+          name="closingHours"
+          handleChange={handleChange}
+          value={restaurantData.closingHours}
+          size={3}
+        />
+        <TextareaComponent
+          label="Description"
+          type="textarea"
+          name="description"
+          handleChange={handleChange}
+          value={restaurantData.description}
+          size={12}
         />
         <InputComponent
           label="Cuisines"
@@ -191,7 +211,7 @@ export const AddRestaurantForm = () => {
           name="website"
           handleChange={handleChange}
           value={restaurantData.additionalInfo.website}
-          size={6}
+          size={4}
         />
         <InputComponent
           label="Phone Number"
@@ -199,23 +219,38 @@ export const AddRestaurantForm = () => {
           name="phone"
           handleChange={handleChange}
           value={restaurantData.additionalInfo.phone}
-          size={6}
+          size={4}
         />
 
         <FileUploadComponent
+          buttonText="Add Photos"
           name="photos"
-          size={6}
+          size={4}
           handleChange={handleFileUpload}
         />
+
         <Grid item xs={12}>
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            disabled={isPending}
-          >
-            Add Restaurant
-          </Button>
+          <ImageList sx={{ width: "100%" }} cols={3}>
+            {images?.map((file) => {
+              return (
+                <ImageListItem key={file[0]?.name} sx={{ maxWidth: "250px" }}>
+                  <img src={URL.createObjectURL(file[0])} alt={file[0]?.name} />
+                </ImageListItem>
+              );
+            })}
+          </ImageList>
+        </Grid>
+
+        <Grid item xs={12}>
+          {isPending ? (
+            <Button type="button" variant="contained" color="info" disabled>
+              Please Wait...
+            </Button>
+          ) : (
+            <Button type="submit" variant="contained" color="primary">
+              Add Restaurant
+            </Button>
+          )}
         </Grid>
       </Grid>
     </form>
