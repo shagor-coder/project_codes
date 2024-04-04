@@ -6,7 +6,10 @@ import {
   MenuItem,
   Select,
   TextField,
+  FormGroup,
 } from "@mui/material";
+import { FormControlLabel } from "@mui/material";
+import { Switch } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
@@ -130,6 +133,27 @@ export const FileUploadComponent = ({
           accept="image/*"
         />
       </Button>
+    </Grid>
+  );
+};
+
+export const ToggleSwitchComponent = ({
+  label,
+  name,
+  handleChange,
+  value,
+  size,
+}) => {
+  return (
+    <Grid item xs={12} md={size}>
+      <FormGroup>
+        <FormControlLabel
+          control={
+            <Switch checked={value} onChange={handleChange} name={name} />
+          }
+          label={label}
+        />
+      </FormGroup>
     </Grid>
   );
 };

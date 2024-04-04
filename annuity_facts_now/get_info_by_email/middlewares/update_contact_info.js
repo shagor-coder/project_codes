@@ -1,63 +1,99 @@
-function process_atd_info(request, response) {
+const axios = require("axios").default;
+const FormData = require("form-data");
+const change_info_text_case = require("./change_info_case");
+
+async function update_contact_info(request, response) {
+  const { email, location_id, surveyId, checkout_page, location_name } =
+    request.formatted_data;
+
+  const fData = new FormData();
+
   const {
-    postal_address,
-    net_worth,
-    rfm_online_avg_days,
+    postal_first_name,
+    postal_last_name,
+    address,
+    city,
+    state,
+    zip,
     household_income,
+    net_worth,
     home_owner_status,
-    rfm_offline_avg_days,
     home_market_value,
     length_of_residence,
+    rfm_online_avg_days,
+    rfm_offline_avg_days,
     rfm_avg_dollars,
-  } = request.atd_response_data;
+  } = request.atd_info;
 
-  if (!postal_address) {
-    const atd_info = {
-      postal_first_name: "",
-      postal_last_name: "",
-      address: "",
-      city: "",
-      state: "",
-      zip: "",
-      household_income: household_income ? household_income : "",
-      net_worth: net_worth ? net_worth : "",
-      home_owner_status: home_owner_status ? home_owner_status : "",
-      home_market_value: home_market_value ? home_market_value : "",
-      length_of_residence: length_of_residence ? length_of_residence : "",
-      rfm_online_avg_days: rfm_online_avg_days ? rfm_offline_avg_days : "",
-      rfm_offline_avg_days: rfm_offline_avg_days ? rfm_offline_avg_days : "",
-      rfm_avg_dollars: rfm_avg_dollars ? rfm_avg_dollars : "",
+  const atd_info_obj = {
+    postal_first_name,
+    postal_last_name,
+    postal__street: address,
+    postal__city: city,
+    postal__state: state,
+    postal__postal_code: zip,
+    household_income,
+    net_worth,
+    home_owner_status,
+    home_market_value,
+    length_of_residence,
+    rfm_online_avg_days,
+    rfm_offline_avg_days,
+    rfm_avg_dollars,
+  };
+
+  const eventData = {
+    source: "direct",
+    page: {
+      url: checkout_page,
+      title: location_name,
+    },
+    timestamp: new Date().getTime(),
+    type: "page-visit",
+    domain: "https://www.annuityanswersnow.com/",
+  };
+
+  let formData = {
+    email: email,
+    formId: surveyId.trim(),
+    location_id: location_id.trim(),
+    eventData: eventData,
+  };
+
+  const keys = Object.keys(atd_info_obj);
+
+  keys.forEach((key) => {
+    if (!atd_info_obj[key] || atd_info_obj[key] === "") return;
+    if (key === "state") return (formData[key] = atd_info_obj[key]);
+    formData[key] = change_info_text_case(atd_info_obj[key]);
+  });
+
+  fData.append("formData", JSON.stringify(formData));
+
+  try {
+    const config = {
+      method: "post",
+      url: "https://services.leadconnectorhq.com/surveys/submit",
+      headers: {
+        ...fData.getHeaders(),
+      },
+      data: fData,
+      maxBodyLength: Infinity, // Move maxBodyLength here
     };
-    return (request.atd_info = atd_info);
-  } else {
-    const {
-      first_name,
-      last_name,
-      address,
-      city,
-      state,
-      zip: long_zip,
-    } = postal_address;
 
-    const atd_info = {
-      postal_first_name: first_name ? first_name : "",
-      postal_last_name: last_name ? last_name : "",
-      address: address ? address : "",
-      city: city ? city : "",
-      state: state ? state : "",
-      zip: long_zip ? long_zip : "",
-      household_income: household_income ? household_income : "",
-      net_worth: net_worth ? net_worth : "",
-      home_owner_status: home_owner_status ? home_owner_status : "",
-      home_market_value: home_market_value ? home_market_value : "",
-      length_of_residence: length_of_residence ? length_of_residence : "",
-      rfm_online_avg_days: rfm_online_avg_days ? rfm_offline_avg_days : "",
-      rfm_offline_avg_days: rfm_offline_avg_days ? rfm_offline_avg_days : "",
-      rfm_avg_dollars: rfm_avg_dollars ? rfm_avg_dollars : "",
-    };
+    const contact = await axios.request(config);
 
-    return (request.atd_info = atd_info);
+    return response.status(200).json({
+      message: "The contact successfully updated!!",
+      contact: contact.data,
+    });
+  } catch (error) {
+    console.error(error);
+    return response.status(404).json({
+      message: "Contact not updated!!",
+      err: error.message,
+    });
   }
 }
 
-module.exports = process_atd_info;
+module.exports = update_contact_info;

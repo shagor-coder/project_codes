@@ -1,23 +1,36 @@
 import { Button, Grid } from "@mui/material";
-import { InputComponent } from "../../../components/Input";
+import {
+  InputComponent,
+  ToggleSwitchComponent,
+} from "../../../components/Input";
 import { useEffect, useState } from "react";
 import { UseAuthContext } from "../../../context/AuthContext";
 import { useEditUser } from "../services/user";
 
 export const EditUserForm = ({ currentData }) => {
-  const { id, name, email, locations } = currentData?.row;
+  const { id, name, email, locations, isActive } = currentData?.row;
 
   const [formData, setFormData] = useState({
     name: name || "",
     email: email || "",
     locations: locations || [],
+    isActive: isActive || true,
   });
 
   const { data, isPending, isError, mutate, error } = useEditUser();
   const { dispatch } = UseAuthContext();
 
+  const handleSwitch = (event) => {
+    const { name, checked } = event.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: checked,
+    }));
+  };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log({ name, value });
     setFormData((prevState) => ({
       ...prevState,
       [name]: value,
@@ -64,6 +77,13 @@ export const EditUserForm = ({ currentData }) => {
           handleChange={handleChange}
           value={formData.email}
         />
+        <ToggleSwitchComponent
+          label="Active"
+          name="isActive"
+          handleChange={handleSwitch}
+          value={formData.isActive}
+        />
+
         <Grid item xs={12}>
           <Button
             type="submit"

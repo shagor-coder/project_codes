@@ -13,6 +13,9 @@ const ignoredFields = [
   "restaurant",
   "_id",
   "userId",
+  "isActive",
+  "updatedAt",
+  "createdAt",
 ];
 
 export const DataGridComponent = ({
@@ -42,7 +45,7 @@ export const DataGridComponent = ({
         width: 200,
       };
       obj.field = k === "_id" ? k.replace("_", "") : k;
-      obj.headerName = k.toString().toUpperCase();
+      obj.headerName = k.toString();
       obj.type = typeof k;
       columns.push(obj);
     });

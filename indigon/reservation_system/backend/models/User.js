@@ -33,6 +33,10 @@ const UserSchema = new mongoose.Schema(
         ref: "Location",
       },
     ],
+    isActive: {
+      type: Boolean,
+      default: true,
+    },
   },
   { timestamps: true }
 );
