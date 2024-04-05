@@ -15,7 +15,10 @@ const _Router = express.Router();
 _Router.post(
   "/:locationId",
   verifyUser,
-  upload.array("photos"),
+  upload.fields([
+    { name: "photos", maxCount: 10 },
+    { name: "featuredImage", maxCount: 1 },
+  ]),
   createRestaurant
 );
 
@@ -23,12 +26,12 @@ _Router.post(
 _Router.get("/:locationId/all", verifyUser, getAllRestaurant);
 
 // Get the current Restaurant
-_Router.get("/:locationId/:id", getRestaurant);
+_Router.get("/:id", getRestaurant);
 
 // Update the current Restaurant
-_Router.put("/:locationId/:id", verifyUser, updateRestaurant);
+_Router.put("/:id", verifyUser, updateRestaurant);
 
 // Delete the current Restaurant
-_Router.delete("/:locationId/:id", verifyUser, deleteRestaurant);
+_Router.delete("/:id", verifyUser, deleteRestaurant);
 
 export default _Router;

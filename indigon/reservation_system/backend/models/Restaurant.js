@@ -12,7 +12,7 @@ const RestaurantSchema = new mongoose.Schema(
     },
     addressLine: {
       type: String,
-      required: false,
+      required: true,
     },
     openingHours: {
       type: String,
@@ -25,6 +25,10 @@ const RestaurantSchema = new mongoose.Schema(
     priceRange: {
       type: String,
       required: false,
+    },
+    bookingDuration: {
+      type: String,
+      required: true,
     },
     additionalInfo: {
       cuisines: {
@@ -58,6 +62,16 @@ const RestaurantSchema = new mongoose.Schema(
       phone: {
         type: String,
         required: false,
+      },
+    },
+    featuredImage: {
+      photoId: {
+        type: String,
+        required: true,
+      },
+      photoURL: {
+        type: String,
+        required: true,
       },
     },
     photos: [

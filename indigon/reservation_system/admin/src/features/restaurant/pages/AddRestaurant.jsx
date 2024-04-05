@@ -1,9 +1,9 @@
-import { Grid } from "@mui/material";
-import { Layout } from "../../../components/Layout";
-import { AddRestaurantForm } from "../components/AddRestaurantForm";
-import { MenuItem } from "../../../components/MenuItem";
 import ChevronLeft from "@mui/icons-material/ChevronLeft";
+import { Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
+import { Layout } from "../../../components/Layout";
+import { MenuItem } from "../../../components/MenuItem";
+import { AddRestaurantForm } from "../components/AddRestaurantForm";
 
 export const AddRestaurant = () => {
   const { locationId } = useParams();

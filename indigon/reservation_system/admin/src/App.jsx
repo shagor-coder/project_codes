@@ -11,6 +11,7 @@ import { InstallConfirmation } from "./features/location/pages/InstallConfirmati
 import { Restaurant } from "./features/restaurant/Restuarant";
 import { Menus } from "./features/menu/Menus";
 import { AddRestaurant } from "./features/restaurant/pages/AddRestaurant";
+import { EditRestaurant } from "./features/restaurant/pages/EditRestaurant";
 
 export const App = () => {
   return (
@@ -29,9 +30,10 @@ export const App = () => {
           element={<AddRestaurant />}
         />
         <Route
-          path="restaurants/:locationId/:restaurantId"
-          element={<Restaurant />}
+          path="restaurants/:restaurantId/edit-restaurant"
+          element={<EditRestaurant />}
         />
+        <Route path="restaurants/:restaurantId" element={<Restaurant />} />
       </Route>
       <Route path="/locations/confirmation" element={<InstallConfirmation />} />
       <Route path="*" element={<NotFoundPage />} />

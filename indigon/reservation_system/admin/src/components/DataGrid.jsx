@@ -85,7 +85,7 @@ export const DataGridComponent = ({
             />,
             <GridActionsCellItem
               icon={<VisibilityIcon />}
-              label="Update"
+              label="Go to"
               onClick={() => {
                 const { id } = params;
                 handleNavigate(id);

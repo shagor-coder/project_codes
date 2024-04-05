@@ -1,29 +1,24 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { useGetCurrentLocation } from "../services/location";
+import { Backdrop, Box, CircularProgress } from "@mui/material";
+import { GridAddIcon } from "@mui/x-data-grid";
 import { useEffect } from "react";
-import { UseAuthContext } from "../../../context/AuthContext";
-import { Backdrop, Box, CircularProgress, Grid } from "@mui/material";
+import { useNavigate, useParams } from "react-router-dom";
+import { DataGridComponent } from "../../../components/DataGrid";
 import { Layout } from "../../../components/Layout";
 import { PagesHeader } from "../../../components/PagesHeader";
-import { GridAddIcon } from "@mui/x-data-grid";
+import { UseAuthContext } from "../../../context/AuthContext";
 import {
   useDeleteRestaurant,
   useGetAllRestaurant,
 } from "../../restaurant/services/restaurant";
-import { DataGridComponent } from "../../../components/DataGrid";
 
 export const SingleLocation = () => {
   const { id: locationId } = useParams();
   const { dispatch } = UseAuthContext();
   const navigate = useNavigate();
 
-  const { data, isLoading, isError, error } = useGetCurrentLocation(locationId);
-  const {
-    data: restaurants,
-    isLoading: isRestaurantsLoading,
-    isError: isRestaurantsError,
-    error: restaurantsError,
-  } = useGetAllRestaurant(locationId);
+  // const { data, isLoading, isError, error } = useGetCurrentLocation(locationId);
+  const { data: restaurants, isLoading: isRestaurantsLoading } =
+    useGetAllRestaurant(locationId);
 
   const {
     data: deleted,
@@ -33,7 +28,7 @@ export const SingleLocation = () => {
   } = useDeleteRestaurant();
 
   const handleNavigate = (id) => {
-    navigate(`/restaurants/${locationId}/${id}`);
+    navigate(`/restaurants/${id}`);
   };
 
   const handleRestaurantDelete = (params) => {
@@ -44,47 +39,56 @@ export const SingleLocation = () => {
   };
 
   useEffect(() => {
-    if (isError) {
+    if (deleted) {
       dispatch({
         type: "showToast",
-        message: error.message,
-        toastType: "error",
+        message: "Restaurant has been deleted!",
+        toastType: "success",
       });
     }
 
-    if (isRestaurantsError) {
+    if (isDeletedError) {
       dispatch({
         type: "showToast",
-        message: restaurantsError.message,
+        message: deleteError.message,
         toastType: "error",
       });
     }
-  }, [
-    isError,
-    data,
-    isLoading,
-    restaurants,
-    isRestaurantsLoading,
-    isRestaurantsError,
-    isDeletedError,
-    deleteError,
-    deleted,
-  ]);
+  }, [restaurants, isRestaurantsLoading, isDeletedError, deleteError, deleted]);
 
   let content = null;
 
-  if (isLoading)
+  if (isRestaurantsLoading)
     content = (
-      <Backdrop sx={{ color: "#fff", zIndex: 9999 }} open={isLoading}>
+      <Backdrop
+        sx={{ color: "#fff", zIndex: 9999 }}
+        open={isRestaurantsLoading}
+      >
         <CircularProgress color="info" />
       </Backdrop>
     );
 
   if (restaurants && restaurants.length) {
     const formattedData = restaurants.map((restaurant) => {
-      const { _id, name, createdAt, updatedAt, description } = restaurant;
+      const {
+        _id,
+        name,
+        description,
+        openingHours,
+        closingHours,
+        bookingDuration,
+        addressLine,
+      } = restaurant;
 
-      return { _id, name, description, createdAt, updatedAt };
+      return {
+        _id,
+        name,
+        description,
+        openingHours,
+        closingHours,
+        bookingDuration,
+        addressLine,
+      };
     });
 
     content = (

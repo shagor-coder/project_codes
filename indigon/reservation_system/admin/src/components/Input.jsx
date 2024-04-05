@@ -113,6 +113,7 @@ export const FileUploadComponent = ({
   name,
   buttonText,
   handleChange,
+  multiple,
   size,
 }) => {
   return (
@@ -129,7 +130,7 @@ export const FileUploadComponent = ({
           name={name}
           onChange={handleChange}
           type="file"
-          multiple={true}
+          multiple={multiple}
           accept="image/*"
         />
       </Button>

@@ -1,13 +1,13 @@
 import { Button, Grid, ImageList, ImageListItem } from "@mui/material";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import {
   FileUploadComponent,
   InputComponent,
   TextareaComponent,
 } from "../../../components/Input";
-import { useEffect, useState } from "react";
-import { useCreateRestaurant } from "../services/restaurant";
 import { UseAuthContext } from "../../../context/AuthContext";
-import { useParams } from "react-router-dom";
+import { useCreateRestaurant } from "../services/restaurant";
 
 export const AddRestaurantForm = () => {
   const { locationId } = useParams();
@@ -19,6 +19,7 @@ export const AddRestaurantForm = () => {
     priceRange: "$10 - $100",
     openingHours: "9.00am",
     closingHours: "5.00pm",
+    bookingDuration: "60min",
     additionalInfo: {
       cuisines: "American",
       diningStyle: "Casual",
@@ -32,12 +33,14 @@ export const AddRestaurantForm = () => {
   });
 
   const [images, setImages] = useState([]);
+  const [featuredImage, setFeaturedImage] = useState(null);
 
   const { data, isPending, isError, mutate, error } = useCreateRestaurant();
   const { dispatch } = UseAuthContext();
 
   const handleFileUpload = (event) => {
-    const { files } = event.target;
+    const { files, name } = event.target;
+    if (name === "featuredImage") return setFeaturedImage(files[0]);
     setImages((prevState) => {
       return [...Array.from(prevState), ...Array.from(files)];
     });
@@ -45,7 +48,15 @@ export const AddRestaurantForm = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    if (name === "name" || name === "description") {
+    if (
+      name === "name" ||
+      name === "description" ||
+      name === "addressLine" ||
+      name === "openingHours" ||
+      name === "closingHours" ||
+      name === "bookingDuration" ||
+      name === "priceRange"
+    ) {
       setRestaurantData((prevState) => ({
         ...prevState,
         [name]: value,
@@ -63,15 +74,14 @@ export const AddRestaurantForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     const formData = new FormData();
-
     formData.append("name", restaurantData.name);
     formData.append("description", restaurantData.description);
-    formData.append("adressLine", restaurantData.addressLine);
+    formData.append("addressLine", restaurantData.addressLine);
     formData.append("openingHours", restaurantData.openingHours);
     formData.append("closingHours", restaurantData.closingHours);
     formData.append("priceRange", restaurantData.priceRange);
+    formData.append("bookingDuration", restaurantData.bookingDuration);
 
     const additionalInfo = restaurantData.additionalInfo;
     for (const key in additionalInfo) {
@@ -81,6 +91,8 @@ export const AddRestaurantForm = () => {
     images?.forEach((img) => {
       formData.append("photos", img);
     });
+    formData.append("featuredImage", featuredImage);
+
     mutate({ locationId: locationId, formData: formData });
   };
 
@@ -132,7 +144,7 @@ export const AddRestaurantForm = () => {
         <InputComponent
           label="Opening Hours"
           type="text"
-          name="openniHours"
+          name="openingHours"
           handleChange={handleChange}
           value={restaurantData.openingHours}
           size={3}
@@ -191,7 +203,7 @@ export const AddRestaurantForm = () => {
           name="executiveChef"
           handleChange={handleChange}
           value={restaurantData.additionalInfo.executiveChef}
-          size={6}
+          size={4}
         />
         <InputComponent
           label="Payment Options"
@@ -199,7 +211,15 @@ export const AddRestaurantForm = () => {
           name="paymentOptions"
           handleChange={handleChange}
           value={restaurantData.additionalInfo.paymentOptions}
-          size={6}
+          size={4}
+        />
+        <InputComponent
+          label="Booking Duration in minutes"
+          type="text"
+          name="bookingDuration"
+          handleChange={handleChange}
+          value={restaurantData.bookingDuration}
+          size={4}
         />
         <InputComponent
           label="Website"
@@ -207,7 +227,7 @@ export const AddRestaurantForm = () => {
           name="website"
           handleChange={handleChange}
           value={restaurantData.additionalInfo.website}
-          size={4}
+          size={6}
         />
         <InputComponent
           label="Phone Number"
@@ -215,21 +235,42 @@ export const AddRestaurantForm = () => {
           name="phone"
           handleChange={handleChange}
           value={restaurantData.additionalInfo.phone}
+          size={6}
+        />
+        <FileUploadComponent
+          buttonText="Featured Photo"
+          name="featuredImage"
           size={4}
+          handleChange={handleFileUpload}
+          multiple={false}
         />
 
         <FileUploadComponent
           buttonText="Add Photos"
           name="photos"
-          size={4}
+          size={8}
           handleChange={handleFileUpload}
+          multiple={true}
         />
 
-        <Grid item xs={12}>
+        <Grid item xs={6}>
+          {featuredImage && (
+            <ImageList sx={{ width: "100%" }} cols={3}>
+              <ImageListItem sx={{ maxWidth: "350px" }}>
+                <img
+                  src={URL.createObjectURL(featuredImage)}
+                  alt={featuredImage?.name}
+                />
+              </ImageListItem>
+            </ImageList>
+          )}
+        </Grid>
+
+        <Grid item xs={6}>
           <ImageList sx={{ width: "100%" }} cols={3}>
             {images?.map((file) => {
               return (
-                <ImageListItem key={file?.name} sx={{ maxWidth: "250px" }}>
+                <ImageListItem key={file?.name} sx={{ maxWidth: "350px" }}>
                   <img src={URL.createObjectURL(file)} alt={file?.name} />
                 </ImageListItem>
               );

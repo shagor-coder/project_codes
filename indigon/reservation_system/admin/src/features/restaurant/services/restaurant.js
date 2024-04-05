@@ -8,10 +8,10 @@ import {
   updateRestuarant,
 } from "../../../requests/restaurant/restaurant";
 
-export const useGetCurrentRestaurant = ({ locationId, restaurantId }) => {
+export const useGetCurrentRestaurant = ({ restaurantId }) => {
   return useQuery({
     queryKey: ["currentRestaurant"],
-    queryFn: () => getCurrentRestuarant({ locationId, restaurantId }),
+    queryFn: () => getCurrentRestuarant({ restaurantId }),
     retry: 0,
   });
 };

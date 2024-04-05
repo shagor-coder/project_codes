@@ -9,20 +9,20 @@ import {
   Grid,
 } from "@mui/material";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Layout } from "../../components/Layout";
 import { PagesHeader } from "../../components/PagesHeader";
 import { UseAuthContext } from "../../context/AuthContext";
 import { useGetCurrentRestaurant } from "./services/restaurant";
 
 export const Restaurant = () => {
-  const { locationId, restaurantId } = useParams();
+  const { restaurantId } = useParams();
 
   const { isLoading, isError, data, error } = useGetCurrentRestaurant({
-    locationId: locationId,
     restaurantId: restaurantId,
   });
   const { dispatch } = UseAuthContext();
+  const navigate = useNavigate();
 
   let content = "";
 
@@ -50,15 +50,26 @@ export const Restaurant = () => {
         <PagesHeader
           headline={data?.name}
           IconButton={
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => {
-                window.open("/", "_blank");
-              }}
-            >
-              Get Booking Link
-            </Button>
+            <Grid>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  navigate(`/restaurants/${restaurantId}/edit-restaurant`);
+                }}
+              >
+                Edit Restaurant
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  window.open("/", "_blank");
+                }}
+              >
+                Get Booking Link
+              </Button>
+            </Grid>
           }
         />
         <Box component="section">

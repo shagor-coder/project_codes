@@ -1,6 +1,6 @@
 import { LocationModel } from "../models/Location.js";
 import { RestaurantModel } from "../models/Restaurant.js";
-import { useCloudinary } from "../utils/clodinary.js";
+import { deletePhoto, uploadPhoto } from "../utils/clodinary.js";
 import { createError } from "../utils/error.js";
 
 // Create a new Restaurant
@@ -15,37 +15,22 @@ export const createRestaurant = async (req, res, next) => {
       return next(createError(403, "Not Allowed!"));
     }
 
-    const images = req.files;
+    const photos = req.files["photos"] || [];
+    const featuredImages = req.files["featuredImage"] || [];
     const photoURLs = [];
 
-    async function uploadImages() {
+    const uploadPhotos = async () => {
       await Promise.all(
-        images?.map(async (file) => {
-          const result = await new Promise((resolve, reject) => {
-            useCloudinary()
-              .uploader.upload_stream(
-                { resource_type: "raw", format: "png" },
-                (err, result) => {
-                  if (err) {
-                    reject(err);
-                  } else {
-                    resolve({
-                      photoURL: result.secure_url,
-                      photoId: result.public_id,
-                    });
-                  }
-                }
-              )
-              .end(file.buffer);
-          });
-
+        photos?.map(async (file) => {
+          const result = await uploadPhoto(file);
           photoURLs.push(result);
         })
       );
-    }
+    };
 
-    // Call the function to upload images
-    await uploadImages();
+    await uploadPhotos();
+
+    const featuredImage = await uploadPhoto(featuredImages[0]);
 
     // Create new Restaurant document with photo URLs
     const newRestaurantBody = {
@@ -54,6 +39,7 @@ export const createRestaurant = async (req, res, next) => {
       userId: req.user.id,
       locationId: req.params.locationId,
       photos: photoURLs,
+      featuredImage: { ...featuredImage },
     };
 
     const newRestaurant = new RestaurantModel(newRestaurantBody);
@@ -109,7 +95,6 @@ export const updateRestaurant = async (req, res, next) => {
     const updatedRestaurant = await RestaurantModel.findOneAndUpdate(
       {
         _id: req.params.id,
-        $and: [{ locationId: req.params.locationId }],
       },
       {
         $set: req.body,
@@ -138,7 +123,6 @@ export const deleteRestaurant = async (req, res, next) => {
     const findRestaurant = await RestaurantModel.findOne({
       _id: req.params.id,
       $and: [
-        { locationId: req.params.locationId },
         {
           userId: req.user.id,
         },
@@ -152,16 +136,11 @@ export const deleteRestaurant = async (req, res, next) => {
     const uploadedImagesId =
       findRestaurant.photos?.map((photos) => photos.photoId) || [];
 
-    uploadedImagesId.length &&
-      useCloudinary()
-        .api.delete_resources(uploadedImagesId, {
-          type: "upload",
-          resource_type: "raw",
-        })
-        .then((data) => console.log(data))
-        .catch((error) => {
-          throw new Error(error);
-        });
+    findRestaurant.featuredImage
+      ? uploadedImagesId.push(findRestaurant.featuredImage?.photoId)
+      : null;
+
+    uploadedImagesId.length && deletePhoto(uploadedImagesId);
 
     await LocationModel.updateOne(
       {

@@ -9,3 +9,39 @@ export const useCloudinary = () => {
 
   return cloudinary;
 };
+
+export const uploadPhoto = (photoFile) => {
+  const fileFormat = photoFile.mimetype.split("/")[1] || "png";
+  return new Promise((resolve, reject) => {
+    useCloudinary()
+      .uploader.upload_stream(
+        { resource_type: "raw", format: fileFormat },
+        (err, result) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve({
+              photoURL: result.secure_url,
+              photoId: result.public_id,
+            });
+          }
+        }
+      )
+      .end(photoFile.buffer);
+  });
+};
+
+export const deletePhoto = async (uploadedImagesId = []) => {
+  try {
+    const data = await useCloudinary().api.delete_resources(
+      [...uploadedImagesId],
+      {
+        type: "upload",
+        resource_type: "raw",
+      }
+    );
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};

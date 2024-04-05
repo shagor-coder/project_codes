@@ -16,7 +16,7 @@ export const ToastComponent = ({ message, toastType }) => {
     <div>
       <Snackbar
         open={auth.showToast}
-        autoHideDuration={6000}
+        autoHideDuration={4000}
         onClose={handleClose}
       >
         <Alert
