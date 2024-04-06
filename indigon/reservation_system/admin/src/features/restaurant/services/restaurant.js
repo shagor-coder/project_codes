@@ -6,6 +6,8 @@ import {
   getAllRestuarants,
   getCurrentRestuarant,
   updateRestuarant,
+  deleteRestuarantImage,
+  deleteRestuarantFeaturedImage,
 } from "../../../requests/restaurant/restaurant";
 
 export const useGetCurrentRestaurant = ({ restaurantId }) => {
@@ -81,17 +83,54 @@ export const useEditRestaurant = () => {
     mutationKey: ["updateRestaurant"],
     mutationFn: updateRestuarant,
     onSuccess: async (data) => {
-      await queryClient.invalidateQueries({ queryKey: ["upadateRestaurant"] });
-      queryClient.setQueriesData(
-        { queryKey: ["allRestaurants"] },
-        (oldRestaurants) => {
-          const updatedRestaurants = oldRestaurants.filter(
-            (restaurant) => restaurant._id !== data._id
-          );
-          updatedRestaurants.push(data);
-          return updatedRestaurants;
-        }
-      );
+      await queryClient.invalidateQueries({
+        queryKey: ["updateRestaurant"],
+      });
+      queryClient.setQueriesData({ queryKey: ["currentRestaurant"] }, () => {
+        return data;
+      });
+    },
+    onError: async (error) => {
+      console.log(error);
+    },
+    retry: 0,
+  });
+};
+
+export const useDeleteRestaurantImage = () => {
+  const queryClient = useAppQueryClient();
+
+  return useMutation({
+    mutationKey: ["deleteRestaurantImage"],
+    mutationFn: deleteRestuarantImage,
+    onSuccess: async (data) => {
+      await queryClient.invalidateQueries({
+        queryKey: ["deleteRestaurantImage"],
+      });
+      queryClient.setQueriesData({ queryKey: ["currentRestaurant"] }, () => {
+        return data;
+      });
+    },
+    onError: async (error) => {
+      console.log(error);
+    },
+    retry: 0,
+  });
+};
+
+export const useDeleteRestaurantFeaturedImage = () => {
+  const queryClient = useAppQueryClient();
+
+  return useMutation({
+    mutationKey: ["deleteRestaurantFeaturedImage"],
+    mutationFn: deleteRestuarantFeaturedImage,
+    onSuccess: async (data) => {
+      await queryClient.invalidateQueries({
+        queryKey: ["deleteRestaurantFeaturedImage"],
+      });
+      queryClient.setQueriesData({ queryKey: ["currentRestaurant"] }, () => {
+        return data;
+      });
     },
     onError: async (error) => {
       console.log(error);

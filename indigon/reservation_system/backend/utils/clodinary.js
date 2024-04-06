@@ -11,8 +11,9 @@ export const useCloudinary = () => {
 };
 
 export const uploadPhoto = (photoFile) => {
-  const fileFormat = photoFile.mimetype.split("/")[1] || "png";
   return new Promise((resolve, reject) => {
+    if (!photoFile) resolve(null);
+    const fileFormat = photoFile.mimetype.split("/")[1] || "png";
     useCloudinary()
       .uploader.upload_stream(
         { resource_type: "raw", format: fileFormat },
@@ -31,17 +32,20 @@ export const uploadPhoto = (photoFile) => {
   });
 };
 
-export const deletePhoto = async (uploadedImagesId = []) => {
+export const deletePhoto = async (uploadedImagesId) => {
+  const ids =
+    typeof uploadedImagesId === "string"
+      ? [uploadedImagesId]
+      : [...uploadedImagesId];
+
   try {
-    const data = await useCloudinary().api.delete_resources(
-      [...uploadedImagesId],
-      {
-        type: "upload",
-        resource_type: "raw",
-      }
-    );
+    const data = await useCloudinary().api.delete_resources([...ids], {
+      type: "upload",
+      resource_type: "raw",
+    });
     return data;
   } catch (error) {
+    console.log(error);
     throw new Error(error.message);
   }
 };

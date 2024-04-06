@@ -75,6 +75,10 @@ export const AuthContextProvider = ({ children }) => {
         message: error.message,
         toastType: "error",
       });
+
+      dispatch({
+        type: "logout",
+      });
     }
 
     if (userData) {

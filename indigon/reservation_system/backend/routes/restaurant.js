@@ -1,7 +1,9 @@
 import express from "express";
 import {
   createRestaurant,
+  deleteFeaturedImage,
   deleteRestaurant,
+  deleteRestaurantImage,
   getAllRestaurant,
   getRestaurant,
   updateRestaurant,
@@ -29,9 +31,23 @@ _Router.get("/:locationId/all", verifyUser, getAllRestaurant);
 _Router.get("/:id", getRestaurant);
 
 // Update the current Restaurant
-_Router.put("/:id", verifyUser, updateRestaurant);
+_Router.put(
+  "/:id/update",
+  verifyUser,
+  upload.fields([
+    { name: "photos", maxCount: 10 },
+    { name: "featuredImage", maxCount: 1 },
+  ]),
+  updateRestaurant
+);
 
 // Delete the current Restaurant
 _Router.delete("/:id", verifyUser, deleteRestaurant);
+
+// Delete the current Restaurant
+_Router.delete("/:id/deleteImage/", verifyUser, deleteRestaurantImage);
+
+// Delete the current Restaurant
+_Router.delete("/:id/deleteFeaturedImage/", verifyUser, deleteFeaturedImage);
 
 export default _Router;
