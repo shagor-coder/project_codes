@@ -6,18 +6,13 @@ import { createError } from "../utils/error.js";
 // Create a new Table
 export const createTable = async (req, res, next) => {
   try {
-    const isRestaurant = await RestaurantModel.findOne({
-      userId: req.user.id,
-      $and: [{ _id: req.params.restaurantId }],
+    const newTable = new TableModel({
+      ...req.body,
+      restaurantId: req.params.restaurantId,
     });
-
-    if (!isRestaurant) return next(createError(403, "Not Allowed!"));
-
-    const newTable = new TableModel(req.body);
-
     const savedTable = await newTable.save();
-
-    await isRestaurant.updateOne({
+    await RestaurantModel.updateOne({
+      _id: req.params.restaurantId,
       $push: {
         tables: savedTable._id,
       },
@@ -95,22 +90,15 @@ export const updateTable = async (req, res, next) => {
 // Delete current Table
 export const deleteTable = async (req, res, next) => {
   try {
-    const findTable = await TableModel.findOne({
-      _id: req.user.id,
-      $and: [{ restaurantId: req.params.restaurantId }],
-    });
+    const findTable = await TableModel.findById(req.params.id);
 
     if (!findTable) return next(createError(404, "Table not Found"));
-
-    if (findTable._id !== req.params.id)
-      return next(createError(403, "Bad request!!"));
 
     await findTable.deleteOne();
 
     await RestaurantModel.updateOne(
       {
-        userId: req.user.id,
-        $and: [{ restaurantId: req.params.restaurantId }],
+        _id: findTable.restaurantId,
       },
       {
         $pull: {
@@ -121,7 +109,11 @@ export const deleteTable = async (req, res, next) => {
 
     res
       .status(200)
-      .json({ status: "success", message: "Table deleted successfully!" });
+      .json({
+        status: "success",
+        message: "Table deleted successfully!",
+        data: { id: findTable._id },
+      });
   } catch (error) {
     next(createError(500, "Table not Deleted"));
   }

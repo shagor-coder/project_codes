@@ -109,7 +109,7 @@ export const updateRestaurant = async (req, res, next) => {
       );
     };
 
-    await uploadPhotos();
+    photos && (await uploadPhotos());
 
     const featuredImage = await uploadPhoto(
       featuredImages ? featuredImages[0] : null

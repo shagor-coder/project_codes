@@ -16,6 +16,7 @@ const ignoredFields = [
   "isActive",
   "updatedAt",
   "createdAt",
+  "bookedTimes",
 ];
 
 export const DataGridComponent = ({

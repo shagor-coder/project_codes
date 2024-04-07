@@ -22,7 +22,7 @@ _Router.get("/:restaurantId/all", getAllTable);
 _Router.get("/:id", getTable);
 
 // Update the current Table
-_Router.put("/:restaurantId/:id", verifyUser, updateTable);
+_Router.put("/:id", verifyUser, updateTable);
 
 // Book a Table
 _Router.post("/:id/book", verifyUser, bookTable);
@@ -31,6 +31,6 @@ _Router.post("/:id/book", verifyUser, bookTable);
 _Router.post("/:id/cancel", verifyUser, cancelBooking);
 
 // Delete the current Table
-_Router.delete("/:restaurantId/:id", verifyUser, deleteTable);
+_Router.delete("/:id", verifyUser, deleteTable);
 
 export default _Router;

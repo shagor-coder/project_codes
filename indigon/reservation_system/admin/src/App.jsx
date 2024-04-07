@@ -12,6 +12,7 @@ import { Restaurant } from "./features/restaurant/Restuarant";
 import { Menus } from "./features/menu/Menus";
 import { AddRestaurant } from "./features/restaurant/pages/AddRestaurant";
 import { EditRestaurant } from "./features/restaurant/pages/EditRestaurant";
+import { AddTable } from "./features/table/AddTable";
 
 export const App = () => {
   return (
@@ -34,6 +35,7 @@ export const App = () => {
           element={<EditRestaurant />}
         />
         <Route path="restaurants/:restaurantId" element={<Restaurant />} />
+        <Route path="tables/:restaurantId/add-table" element={<AddTable />} />
       </Route>
       <Route path="/locations/confirmation" element={<InstallConfirmation />} />
       <Route path="*" element={<NotFoundPage />} />

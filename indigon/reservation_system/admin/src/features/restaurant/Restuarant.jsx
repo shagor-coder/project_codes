@@ -14,24 +14,33 @@ import { Layout } from "../../components/Layout";
 import { PagesHeader } from "../../components/PagesHeader";
 import { UseAuthContext } from "../../context/AuthContext";
 import { useGetCurrentRestaurant } from "./services/restaurant";
+import { useDeleteTable, useGetAllTable } from "../table/services/table";
+import { DataGridComponent } from "../../components/DataGrid";
 
 export const Restaurant = () => {
   const { restaurantId } = useParams();
+  const { dispatch } = UseAuthContext();
+  const navigate = useNavigate();
 
   const { isLoading, isError, data, error } = useGetCurrentRestaurant({
     restaurantId: restaurantId,
   });
-  const { dispatch } = UseAuthContext();
-  const navigate = useNavigate();
 
-  let content = "";
+  const { data: tables, isLoading: isTableLoading } = useGetAllTable({
+    restaurantId: restaurantId,
+  });
 
-  if (isLoading)
-    content = (
-      <Backdrop sx={{ color: "#fff", zIndex: 9999 }} open={isLoading}>
-        <CircularProgress color="info" />
-      </Backdrop>
-    );
+  const {
+    data: deletedTable,
+    isPending,
+    isError: isTableDeleteError,
+    error: tableDeleteError,
+    mutate,
+  } = useDeleteTable();
+
+  const handleDelete = (data) => {
+    mutate({ tableId: data.id });
+  };
 
   useEffect(() => {
     if (isError) {
@@ -41,53 +50,93 @@ export const Restaurant = () => {
         message: error.message,
       });
     }
+    if (isTableDeleteError) {
+      dispatch({
+        type: "showToast",
+        toastType: "error",
+        message: tableDeleteError.message,
+      });
+    }
+
+    if (deletedTable) {
+      dispatch({
+        type: "showToast",
+        toastType: "success",
+        message: "Table has been deleted!",
+      });
+    }
   }, [isError, data]);
 
-  if (data && data._id) {
-    const keys = Object.keys(data);
+  let content = "";
+
+  if (isLoading || isTableLoading)
+    content = (
+      <Backdrop sx={{ color: "#fff", zIndex: 9999 }} open={isLoading}>
+        <CircularProgress color="info" />
+      </Backdrop>
+    );
+
+  if (data && tables) {
     content = (
       <Box>
         <PagesHeader
           headline={data?.name}
           IconButton={
-            <Grid>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => {
-                  navigate(`/restaurants/${restaurantId}/edit-restaurant`);
-                }}
-              >
-                Edit Restaurant
-              </Button>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => {
-                  window.open("/", "_blank");
-                }}
-              >
-                Get Booking Link
-              </Button>
+            <Grid container spacing={1}>
+              <Grid item>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => navigate(`/locations/${data.locationId[0]}`)}
+                >
+                  Go back
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    navigate(`/restaurants/${restaurantId}/edit-restaurant`);
+                  }}
+                >
+                  Edit
+                </Button>
+              </Grid>
+
+              <Grid item>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    navigate(`/tables/${restaurantId}/add-table`);
+                  }}
+                >
+                  Add Table
+                </Button>
+              </Grid>
+
+              <Grid item>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    window.open("/", "_blank");
+                  }}
+                >
+                  Get Link
+                </Button>
+              </Grid>
             </Grid>
           }
         />
         <Box component="section">
-          <Grid container spacing={2}>
-            {keys.map((key) => {
-              if (typeof key === "object") return null;
-              return (
-                <Grid item xs={12} md={6} lg={4} key={key}>
-                  <Card>
-                    <CardContent>
-                      <CardHeader title={key}></CardHeader>
-                      {JSON.stringify(data[key])}
-                    </CardContent>
-                  </Card>
-                </Grid>
-              );
-            })}
-          </Grid>
+          <DataGridComponent
+            data={tables}
+            actionNeeded={false}
+            handleDelete={handleDelete}
+            handleNavigate={() => {}}
+          />
         </Box>
       </Box>
     );

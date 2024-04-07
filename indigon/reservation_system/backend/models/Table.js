@@ -29,6 +29,10 @@ const TableSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    tableLocation: {
+      type: String,
+      required: true,
+    },
     restaurantId: [
       {
         type: mongoose.Types.ObjectId,
