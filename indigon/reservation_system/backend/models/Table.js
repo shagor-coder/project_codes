@@ -13,6 +13,11 @@ const bookingSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  bookingStatus: {
+    type: String,
+    default: "confirmed",
+    enum: ["confirmed", "cancelled", "no-show"],
+  },
   clientId: {
     type: mongoose.Types.ObjectId,
     ref: "Client",

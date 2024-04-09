@@ -1,13 +1,4 @@
-import {
-  Backdrop,
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CircularProgress,
-  Grid,
-} from "@mui/material";
+import { Backdrop, Box, Button, CircularProgress, Grid } from "@mui/material";
 import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Layout } from "../../components/Layout";
@@ -40,6 +31,10 @@ export const Restaurant = () => {
 
   const handleDelete = (data) => {
     mutate({ tableId: data.id });
+  };
+
+  const handleNavigate = (id) => {
+    navigate(`/tables/${id}/bookings`);
   };
 
   useEffect(() => {
@@ -76,7 +71,64 @@ export const Restaurant = () => {
       </Backdrop>
     );
 
-  if (data && tables) {
+  if (data) {
+    content = (
+      <Box>
+        <PagesHeader
+          headline={data?.name}
+          IconButton={
+            <Grid container spacing={1}>
+              <Grid item>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => navigate(`/locations/${data.locationId[0]}`)}
+                >
+                  Go back
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    navigate(`/restaurants/${restaurantId}/edit-restaurant`);
+                  }}
+                >
+                  Edit
+                </Button>
+              </Grid>
+
+              <Grid item>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    navigate(`/tables/${restaurantId}/add-table`);
+                  }}
+                >
+                  Add Table
+                </Button>
+              </Grid>
+
+              <Grid item>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    window.open("/", "_blank");
+                  }}
+                >
+                  Get Link
+                </Button>
+              </Grid>
+            </Grid>
+          }
+        />
+      </Box>
+    );
+  }
+  if (tables && tables.length) {
     content = (
       <Box>
         <PagesHeader
@@ -135,7 +187,7 @@ export const Restaurant = () => {
             data={tables}
             actionNeeded={false}
             handleDelete={handleDelete}
-            handleNavigate={() => {}}
+            handleNavigate={handleNavigate}
           />
         </Box>
       </Box>

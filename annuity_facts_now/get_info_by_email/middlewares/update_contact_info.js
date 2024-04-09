@@ -64,7 +64,7 @@ async function update_contact_info(request, response) {
 
   keys.forEach((key) => {
     if (!atd_info_obj[key] || atd_info_obj[key] === "") return;
-    if (key === "state") return (formData[key] = atd_info_obj[key]);
+    if (key === "postal__state") return (formData[key] = atd_info_obj[key]);
     formData[key] = change_info_text_case(atd_info_obj[key]);
   });
 

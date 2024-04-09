@@ -8,10 +8,10 @@ import {
   updateTable,
 } from "../../../requests/table/table";
 
-export const useGetCurrentTable = ({ TableId }) => {
+export const useGetCurrentTable = ({ tableId }) => {
   return useQuery({
     queryKey: ["currentTable"],
-    queryFn: () => getCurrentTable({ TableId }),
+    queryFn: () => getCurrentTable({ tableId }),
     retry: 0,
   });
 };

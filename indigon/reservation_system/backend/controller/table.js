@@ -2,6 +2,7 @@ import { ClientModel } from "../models/Client.js";
 import { RestaurantModel } from "../models/Restaurant.js";
 import { TableModel } from "../models/Table.js";
 import { createError } from "../utils/error.js";
+import { format, parseISO } from "date-fns";
 
 // Create a new Table
 export const createTable = async (req, res, next) => {
@@ -51,8 +52,30 @@ export const getTable = async (req, res, next) => {
 
     if (!table) return next(createError(404, "Table not found"));
 
-    res.status(200).json({ staus: "success", data: table });
+    if (table.bookedTimes) {
+      const infos = JSON.parse(JSON.stringify(table.bookedTimes));
+
+      const updatedBookingInfo = infos.map((bt) => {
+        let obj = { ...bt };
+
+        obj.startTime = format(bt.startTime, "h.mm a d MMMM yyyy");
+        obj.endTime = format(bt.endTime, "h.mm a d MMMM yyyy");
+
+        return obj;
+      });
+
+      res.status(200).json({
+        status: "success",
+        data: { ...table._doc, bookedTimes: updatedBookingInfo },
+      });
+    } else {
+      res.status(200).json({
+        status: "success",
+        data: table,
+      });
+    }
   } catch (error) {
+    console.log(error);
     next(createError(500, error.message));
   }
 };
@@ -107,13 +130,11 @@ export const deleteTable = async (req, res, next) => {
       }
     );
 
-    res
-      .status(200)
-      .json({
-        status: "success",
-        message: "Table deleted successfully!",
-        data: { id: findTable._id },
-      });
+    res.status(200).json({
+      status: "success",
+      message: "Table deleted successfully!",
+      data: { id: findTable._id },
+    });
   } catch (error) {
     next(createError(500, "Table not Deleted"));
   }

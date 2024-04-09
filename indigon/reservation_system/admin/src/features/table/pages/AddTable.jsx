@@ -1,7 +1,7 @@
 import { Box, Button } from "@mui/material";
-import { Layout } from "../../components/Layout";
-import { PagesHeader } from "../../components/PagesHeader";
-import { AddTableForm } from "./components/AddTableForm";
+import { Layout } from "../../../components/Layout";
+import { PagesHeader } from "../../../components/PagesHeader";
+import { AddTableForm } from "../components/AddTableForm";
 import { useParams, useNavigate } from "react-router-dom";
 
 export const AddTable = () => {
