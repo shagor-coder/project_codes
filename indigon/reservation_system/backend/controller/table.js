@@ -56,10 +56,11 @@ export const getTable = async (req, res, next) => {
       const infos = JSON.parse(JSON.stringify(table.bookedTimes));
 
       const updatedBookingInfo = infos.map((bt) => {
+        console.log(bt);
         let obj = { ...bt };
 
-        obj.startTime = format(bt.startTime, "h.mm a d MMMM yyyy");
-        obj.endTime = format(bt.endTime, "h.mm a d MMMM yyyy");
+        obj.startTime = format(bt.startTime, "d MMM yy h.mm a");
+        obj.endTime = format(bt.endTime, "d MMM yy h.mm a");
 
         return obj;
       });

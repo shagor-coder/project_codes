@@ -103,7 +103,7 @@ export const AddTableForm = () => {
             </Button>
           ) : (
             <Button type="submit" variant="contained" color="primary">
-              Add Restaurant
+              Add Table
             </Button>
           )}
         </Grid>

@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
 import { useState } from "react";
 import { FormModal } from "./FormModal";
+import { capitalizeText } from "../utils/capitalizeText";
 
 const ignoredFields = [
   "__v",
@@ -17,6 +18,7 @@ const ignoredFields = [
   "updatedAt",
   "createdAt",
   "bookedTimes",
+  "clientId",
 ];
 
 export const DataGridComponent = ({
@@ -45,8 +47,8 @@ export const DataGridComponent = ({
         type: "",
         width: 200,
       };
-      obj.field = k === "_id" ? k.replace("_", "") : k;
-      obj.headerName = k.toString();
+      obj.field = k;
+      obj.headerName = capitalizeText(k.toString());
       obj.type = typeof k;
       columns.push(obj);
     });

@@ -23,6 +23,7 @@ async function update_contact_info(request, response) {
     rfm_online_avg_days,
     rfm_offline_avg_days,
     rfm_avg_dollars,
+    age,
   } = request.atd_info;
 
   const atd_info_obj = {
@@ -32,6 +33,7 @@ async function update_contact_info(request, response) {
     postal__city: city,
     postal__state: state,
     postal__postal_code: zip,
+    postal__age: age,
     household_income,
     net_worth,
     home_owner_status,

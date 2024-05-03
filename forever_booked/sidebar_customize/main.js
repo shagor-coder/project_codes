@@ -10,6 +10,9 @@ let settings_visited = false;
 const stylesheet = document.createElement("style");
 stylesheet.innerHTML = styles;
 
+// const customScript = document.querySelector(".sidber_script");
+// customScript ? customScript.remove() : null;
+
 const initiate_observer = async () => {
   let current_url = new URL(location.href);
   current_path = current_url.pathname.trim();
@@ -37,7 +40,7 @@ const initiate_observer = async () => {
   if (current_path.toString().includes("/emails/create/"))
     return (settings_visited = true);
 
-  if (current_path.toString().includes("/campaigns/create/"))
+  if (current_path.toString().includes("/campaigns/create"))
     return (settings_visited = true);
 
   if (current_path.toString().includes("/customers/detail/"))

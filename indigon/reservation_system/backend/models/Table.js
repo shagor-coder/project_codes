@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const bookingSchema = new mongoose.Schema({
+  tableName: {
+    type: String,
+    required: true,
+  },
   startTime: {
     type: Date,
     required: true,
