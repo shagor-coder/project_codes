@@ -27,54 +27,40 @@ a {
 }
 
 #ppc_table_container {
-  max-height: calc(100vh - 40px);
+  max-height: calc(100vh - 20px);
   overflow-y: auto;
-  scroll-margin: 16px;
   background-color: #fff;
 }
 
 #ppc_table_container .ppc_table {
-  max-height: calc(100vh - 60px);
+  max-height: calc(100vh - 30px);
   overflow-y: auto;
 }
 
 .ppc_table {
   display: flex;
   width: 100%;
-  flex-direction: row;
-  gap: 50px;
+  flex-direction: column;
+  gap: 10px;
   position: relative;
-  padding-top: 10px;
-  margin-top: 10px;
   background-color: #fff;
 }
 
 .ppc_table .collapsible {
   justify-content: flex-end;
+  min-width: 100px;
 }
 
 .ppc_table.collapse .collapsible {
   display: none;
 }
 
-.ppc_table.collapse .ppc_table_normal {
-  max-width: 350px;
+.collapsible:nth-child(7) {
+  margin-right: 50px;
 }
 
-.ppc_table_normal {
-  width: 100%;
-  max-width: 65%;
-  height: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-
-.ppc_table_heatmap {
-  width: 100%;
-  height: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  transition: all 0.3s ease-in-out;
+.ppc_table.collapse .collapsible:nth-child() {
+  display: none;
 }
 
 .ppc_table_header {
@@ -89,6 +75,10 @@ a {
   min-width: 250px;
 }
 
+.ppc_table.collapse .ppc_table_header > :nth-child(2) {
+  margin-right: 40px;
+}
+
 .ppc_table_header p {
   display: inline-flex;
   width: 100%;
@@ -99,17 +89,11 @@ a {
   font-weight: 700;
   white-space: nowrap;
   text-transform: uppercase;
+  min-width: 100px;
+  background-color: #fff;
 }
 
-.ppc_table_heatmap_header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.ppc_table_heatmap_header p {
+.ppc_table_header p.dates {
   display: inline-flex;
   flex-direction: column;
   width: 100%;
@@ -122,6 +106,18 @@ a {
   text-align: center;
   min-width: 70px;
   white-space: nowrap;
+  position: relative;
+}
+
+.ppc_table_header p.dates::before {
+  content: "";
+  position: absolute;
+  width: calc(100% + 10px);
+  height: calc(100% + 20px);
+  left: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: -1;
 }
 
 .ppc_table_header p .sort {
@@ -141,23 +137,37 @@ a {
   min-width: 250px;
 }
 
-.ppc_table_heatmap_data {
-  width: 100%;
-  display: flex;
-  align-items: stretch;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 15px;
+.ppc_table.collapse .ppc_table_row > :nth-child(2) {
+  margin-right: 40px;
 }
 
 .ppc_table_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 11px;
   padding: 6px 0px;
   border-bottom: 1px solid #eee;
   min-height: 53px;
 }
 
-.ppc_table_heatmap_data .ppc_table_row span {
-  background-color: rgb(172, 172, 172);
+.ppc_table_row span {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  min-width: 70px;
+}
+
+.ppc_table_row span:first-child {
+  justify-content: flex-start;
+}
+
+.ppc_table_row span.heatmap_cell {
   width: 100%;
   min-width: 70px;
   height: 40px;
@@ -166,36 +176,19 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  color: #282727;
 }
 
-.ppc_table_row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  gap: 10px;
-}
-
-.ppc_table_row span {
-  display: inline-flex;
-  width: 100%;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 5px;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.ppc_utils {
+/* .ppc_utils {
   position: absolute;
   left: 5px;
   top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-width: 340px;
+  width: 100%;
   gap: 10px;
-}
+} */
 
 .ppc_utils .ppc_search_container {
   display: flex;
@@ -274,4 +267,23 @@ a {
 
 .ppc_utils .collapse_btn.collapsed i {
   transform: rotate(45deg);
+}
+
+.ppc_table_header {
+  position: sticky !important;
+  position: -webkit-sticky !important;
+  top: 20px !important;
+  background-color: #fff !important;
+}
+
+.ppc_utils {
+  position: sticky !important;
+  position: -webkit-sticky !important;
+  top: 0px !important;
+  background-color: #fff !important;
+  z-index: 1 !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 415px;
 }

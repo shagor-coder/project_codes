@@ -5080,8 +5080,8 @@ ppcTableContainer.appendChild(ppcTable);
 
 function createPpcTableStructure() {
   ppcTable.innerHTML = `
-  <div class="ppc_utils">
-    <div class="ppc_search_container">
+    <div class="ppc_utils">
+     <div class="ppc_search_container">
         <input type="text" placeholder="Search by KW"/>
         <button type="button" class="clear_btn">
         <i class="fa fa-times"></i>
@@ -5089,20 +5089,15 @@ function createPpcTableStructure() {
         <button type="button" class="search_btn">
         <i class="fa fa-search"></i>
         </button>
-    </div>
-    <button type="button" class="collapse_btn">
-     <i class="fa fa-plus-circle"></i>
-    </button>
-  </div>
- <div class="ppc_table_normal">
-     <div class="ppc_table_header"></div>
-     <div class="ppc_table_data"></div>
- </div>
- <div class="ppc_table_heatmap">
-     <div class="ppc_table_heatmap_header"></div>
-     <div class="ppc_table_heatmap_data"></div>
- </div>
-`;
+     </div>
+     <button type="button" class="collapse_btn">
+      <i class="fa fa-plus-circle"></i>
+     </button>
+   </div>
+   <div class="ppc_table_header">
+   </div>
+   <div class="ppc_table_data"></div>
+ `;
 }
 
 function setupCollapseButton() {
@@ -5113,13 +5108,21 @@ function setupCollapseButton() {
 function setUpSearchInput() {
   const searchBtn = ppcTable.querySelector(".ppc_search_container .search_btn");
   const clearBtn = ppcTable.querySelector(".ppc_search_container .clear_btn");
-  searchBtn.addEventListener("click", handlePPCSearch(ppcTable, true));
-  clearBtn.addEventListener("click", handlePPCSearch(ppcTable, false));
+  searchBtn.addEventListener("click", handlePpcSearch(ppcTable, true));
+  clearBtn.addEventListener("click", handlePpcSearch(ppcTable, false));
 }
 
 function setupTableHeader(tableData) {
   const ppcTableHeader = ppcTable.querySelector(".ppc_table_header");
-  const tableHeaders = ["KWs", ...Object.keys(tableData.poker[0])];
+
+  const heatmapHeaderObjs = [...tableData.poker].slice(1);
+  const heatmapHeaders = heatmapHeaderObjs.map((hmObj) => hmObj["x"]);
+
+  const tableHeaders = [
+    "KWs",
+    ...Object.keys(tableData.poker[0]),
+    ...heatmapHeaders,
+  ];
 
   tableHeaders.forEach((th) => addHeaderCell(th, ppcTableHeader));
 }
@@ -5129,17 +5132,23 @@ function addHeaderCell(headerText, ppcTableHeader) {
   if (headerText.trim() !== "KWs" && headerText.trim() !== "sv") {
     p.classList = "collapsible";
   }
-  p.innerHTML =
-    headerText === "sv"
-      ? `<span>${headerText.trim()}
+
+  if (headerText.trim().includes("/")) {
+    p.classList.remove("collapsible");
+    p.classList.add("dates");
+    p.innerHTML = convertDateFormatWithDay(headerText.trim());
+  } else {
+    p.innerHTML = headerText.trim();
+  }
+
+  if (headerText === "sv") {
+    p.innerHTML = `<span>${headerText.trim()}
             <span>
              <i class="fa-solid fa-arrow-up sort" data-type="asc"></i>
              <i class="fa-solid fa-arrow-down sort" data-type="dsc"></i>
             </span>
-           </span>`
-      : headerText.trim();
+           </span>`;
 
-  if (headerText === "sv") {
     const sortEls = [...p.querySelectorAll(".sort")];
     sortEls.forEach((sortEl) => {
       sortEl.addEventListener("click", (e) => {
@@ -5172,57 +5181,14 @@ function addTableRow(keyword, rowData, ppcTableData) {
         tableRow.innerHTML += `<span class="${
           rowKey !== "sv" ? "collapsible" : ""
         }">${cellValue}</span>`;
+      } else if (rowKey == "y") {
+        const cellValue = rd[rowKey] ? rd[rowKey] : "-";
+        tableRow.innerHTML += `<span style="background-color: ${selectBgColorForHeatmapData(
+          rd["y"]
+        )}" class="heatmap_cell">${cellValue}</span>`;
       }
     });
   });
-}
-
-function setupHeatmapHeader(heatmapHeaders) {
-  const ppcTableHeatmapHeader = ppcTable.querySelector(
-    ".ppc_table_heatmap_header"
-  );
-
-  heatmapHeaders.forEach((th) => {
-    const p = document.createElement("p");
-    p.innerHTML = convertDateFormatWithDay(th.trim());
-    ppcTableHeatmapHeader.append(p);
-  });
-}
-
-function setupHeatmapData(tableData) {
-  const ppcTableHeatmapData = ppcTable.querySelector(".ppc_table_heatmap_data");
-  const keyWords = Object.keys(tableData);
-
-  keyWords.forEach((key) => {
-    addHeatmapDataRow(tableData[key], ppcTableHeatmapData);
-  });
-}
-
-function addHeatmapDataRow(rowData, ppcTableHeatmapData) {
-  const tableRow = document.createElement("div");
-  tableRow.className = "ppc_table_row";
-  ppcTableHeatmapData.appendChild(tableRow);
-
-  const row = rowData.slice(1);
-
-  row.forEach((rd) => {
-    tableRow.innerHTML += `<span style="background-color: ${selectBgColorForHeatmapData(
-      rd["y"]
-    )}">${rd["y"] ? rd["y"] : "-"}</span>`;
-  });
-}
-
-function createPpcTable(tableData) {
-  createPpcTableStructure();
-  setupCollapseButton();
-  setUpSearchInput();
-  setupTableHeader(tableData);
-  setupTableData(tableData);
-
-  const heatmapHeaderObjs = [...tableData.poker].slice(1);
-  const heatmapHeaders = heatmapHeaderObjs.map((hmObj) => hmObj["x"]);
-  setupHeatmapHeader(heatmapHeaders);
-  setupHeatmapData(tableData);
 }
 
 function selectBgColorForHeatmapData(heatValue) {
@@ -5295,23 +5261,20 @@ function handleCollapseClick(ppcTable) {
   };
 }
 
-function handlePPCSearch(ppcTable, isSearch) {
+function handlePpcSearch(ppcTable, isSearch) {
   return (e) => {
     e.preventDefault();
     const searchInput = ppcTable.querySelector(".ppc_search_container input");
     const searchText = searchInput.value;
+
+    !isSearch && (searchInput.value = "");
+
     if (!searchText && isSearch) return;
     const ppcTableDataRows = [
       ...ppcTable.querySelectorAll(".ppc_table_data .ppc_table_row"),
     ];
-    const ppcTableHeatmapRows = [
-      ...ppcTable.querySelectorAll(".ppc_table_heatmap_data .ppc_table_row"),
-    ];
 
     ppcTableDataRows.forEach((row) => {
-      row.style.display = "";
-    });
-    ppcTableHeatmapRows.forEach((row) => {
       row.style.display = "";
     });
 
@@ -5322,8 +5285,6 @@ function handlePPCSearch(ppcTable, isSearch) {
       });
 
       unMatchedRows.forEach((umRow) => {
-        const index = ppcTableDataRows.indexOf(umRow);
-        ppcTableHeatmapRows[index].style.display = "none";
         umRow.style.display = "none";
       });
     }
@@ -5344,6 +5305,14 @@ function handleSortClick(sortType) {
   });
 
   createPpcTable(sortedData);
+}
+
+function createPpcTable(tableData) {
+  createPpcTableStructure();
+  setupCollapseButton();
+  setUpSearchInput();
+  setupTableHeader(tableData);
+  setupTableData(tableData);
 }
 
 createPpcTable(data);
