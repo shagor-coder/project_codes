@@ -64,7 +64,7 @@ ppcTable.className = "ppc_table";
 
 ppcTableContainer.appendChild(ppcTable);
 
-function createPpcTAble(tableData) {
+function createPpcTableStructure() {
   ppcTable.innerHTML = `
   <button type="button" class="collapse_btn">
     <i class="fa fa-plus-circle"></i>
@@ -78,87 +78,118 @@ function createPpcTAble(tableData) {
      <div class="ppc_table_heatmap_data"></div>
  </div>
 `;
+}
 
-  const keyWords = Object.keys(tableData);
-
-  const heatmapHeaderObjs = [...tableData.poker].slice(1);
-  const heatmapHeaders = heatmapHeaderObjs.map((hmObj) => hmObj["x"]);
-
-  const tableHeaders = [...ppcTableHeaders, ...Object.keys(tableData.poker[0])];
-
-  const ppcTableHeader = ppcTable.querySelector(".ppc_table_header");
-  const ppcTableData = ppcTable.querySelector(".ppc_table_data");
-  const ppcTableHeatmapHeader = ppcTable.querySelector(
-    ".ppc_table_heatmap_header"
-  );
-  const ppcTableHeatmapData = ppcTable.querySelector(".ppc_table_heatmap_data");
+function setupCollapseButton() {
   const collapse_btn = ppcTable.querySelector(".collapse_btn");
   collapse_btn.addEventListener("click", handleCollapseClick(ppcTable));
+}
 
-  tableHeaders.forEach((th) => {
-    const p = document.createElement("p");
-    if (th.trim() !== "KWs" && th.trim() !== "sv") {
-      p.classList = "collapsible";
-    }
-    p.innerHTML =
-      th === "sv"
-        ? `<span>${th.trim()}
+function setupTableHeader(tableData) {
+  const ppcTableHeader = ppcTable.querySelector(".ppc_table_header");
+  const tableHeaders = [...ppcTableHeaders, ...Object.keys(tableData.poker[0])];
+
+  tableHeaders.forEach((th) => addHeaderCell(th, ppcTableHeader));
+}
+
+function addHeaderCell(headerText, ppcTableHeader) {
+  const p = document.createElement("p");
+  if (headerText.trim() !== "KWs" && headerText.trim() !== "sv") {
+    p.classList = "collapsible";
+  }
+  p.innerHTML =
+    headerText === "sv"
+      ? `<span>${headerText.trim()}
             <span>
              <i class="fa-solid fa-arrow-up sort" data-type="asc"></i>
              <i class="fa-solid fa-arrow-down sort" data-type="dsc"></i>
             </span>
            </span>`
-        : th.trim();
+      : headerText.trim();
 
-    if (th === "sv") {
-      const sortEls = [...p.querySelectorAll(".sort")];
-      sortEls.forEach((sortEl) => {
-        sortEl.addEventListener("click", (e) => {
-          e.preventDefault();
-          handleSortClick(e.target.dataset.type);
-        });
-      });
-    }
-
-    ppcTableHeader.append(p);
-  });
-
-  keyWords.forEach((kw) => {
-    const row = Array.from(tableData[kw]);
-    const tableRow = document.createElement("div");
-    tableRow.className = "ppc_table_row";
-    tableRow.innerHTML = `<span>${kw}</span>`;
-    ppcTableData.appendChild(tableRow);
-    row.forEach((rd) => {
-      const rowKeys = Object.keys(rd);
-      rowKeys.forEach((rowKey) => {
-        if (rowKey === "x" || rowKey === "y") return;
-        tableRow.innerHTML += `<span class="${
-          rowKey !== "sv" ? "collapsible" : ""
-        }">${rd[rowKey] ? rd[rowKey] : "-"}</span>`;
+  if (headerText === "sv") {
+    const sortEls = [...p.querySelectorAll(".sort")];
+    sortEls.forEach((sortEl) => {
+      sortEl.addEventListener("click", (e) => {
+        handleSortClick(e.target.dataset.type);
       });
     });
+  }
+
+  ppcTableHeader.append(p);
+}
+
+function setupTableData(tableData) {
+  const ppcTableData = ppcTable.querySelector(".ppc_table_data");
+  const keyWords = Object.keys(tableData);
+
+  keyWords.forEach((kw) => addTableRow(kw, tableData[kw], ppcTableData));
+}
+
+function addTableRow(keyword, rowData, ppcTableData) {
+  const row = Array.from(rowData);
+  const tableRow = document.createElement("div");
+  tableRow.className = "ppc_table_row";
+  tableRow.innerHTML = `<span>${keyword}</span>`;
+  ppcTableData.appendChild(tableRow);
+  row.forEach((rd) => {
+    const rowKeys = Object.keys(rd);
+    rowKeys.forEach((rowKey) => {
+      if (rowKey !== "x" && rowKey !== "y") {
+        const cellValue = rd[rowKey] ? rd[rowKey] : "-";
+        tableRow.innerHTML += `<span class="${
+          rowKey !== "sv" ? "collapsible" : ""
+        }">${cellValue}</span>`;
+      }
+    });
   });
+}
+
+function setupHeatmapHeader(heatmapHeaders) {
+  const ppcTableHeatmapHeader = ppcTable.querySelector(
+    ".ppc_table_heatmap_header"
+  );
 
   heatmapHeaders.forEach((th) => {
     const p = document.createElement("p");
     p.innerHTML = convertDateFormatWithDay(th.trim());
     ppcTableHeatmapHeader.append(p);
   });
+}
+
+function setupHeatmapData(tableData) {
+  const ppcTableHeatmapData = ppcTable.querySelector(".ppc_table_heatmap_data");
+  const keyWords = Object.keys(tableData);
 
   keyWords.forEach((key) => {
-    const tableRow = document.createElement("div");
-    tableRow.className = "ppc_table_row";
-    ppcTableHeatmapData.appendChild(tableRow);
-
-    const row = tableData[key].slice(1);
-
-    row.forEach((rd) => {
-      tableRow.innerHTML += `<span style="background-color: ${selectBgColorForHeatmapData(
-        rd["y"]
-      )}">${rd["y"] ? rd["y"] : "-"}</span>`;
-    });
+    addHeatmapDataRow(tableData[key], ppcTableHeatmapData);
   });
+}
+
+function addHeatmapDataRow(rowData, ppcTableHeatmapData) {
+  const tableRow = document.createElement("div");
+  tableRow.className = "ppc_table_row";
+  ppcTableHeatmapData.appendChild(tableRow);
+
+  const row = rowData.slice(1);
+
+  row.forEach((rd) => {
+    tableRow.innerHTML += `<span style="background-color: ${selectBgColorForHeatmapData(
+      rd["y"]
+    )}">${rd["y"] ? rd["y"] : "-"}</span>`;
+  });
+}
+
+function createPpcTable(tableData) {
+  createPpcTableStructure();
+  setupCollapseButton();
+  setupTableHeader(tableData);
+  setupTableData(tableData);
+
+  const heatmapHeaderObjs = [...tableData.poker].slice(1);
+  const heatmapHeaders = heatmapHeaderObjs.map((hmObj) => hmObj["x"]);
+  setupHeatmapHeader(heatmapHeaders);
+  setupHeatmapData(tableData);
 }
 
 function selectBgColorForHeatmapData(heatValue) {
@@ -244,7 +275,7 @@ function handleSortClick(sortType) {
     sortedData[key] = data[key];
   });
 
-  createPpcTAble(sortedData);
+  createPpcTable(sortedData);
 }
 
-createPpcTAble(data);
+createPpcTable(data);

@@ -49,6 +49,20 @@ header nav ul {
   width: 100%;
   flex-direction: row;
   gap: 50px;
+  position: relative;
+}
+
+.ppc_table.collapse .collapsible {
+  display: none;
+}
+
+.ppc_table.collapse .ppc_table_normal {
+  max-width: 350px;
+}
+
+.collapse_btn {
+  position: absolute;
+  left: 360px;
 }
 
 .ppc_table_normal {
@@ -58,8 +72,8 @@ header nav ul {
 
 .ppc_table_heatmap {
   width: 100%;
-  max-width: 32%;
   overflow: auto;
+  transition: all 0.3s ease-in-out;
 }
 
 .ppc_table_header {
@@ -107,6 +121,10 @@ header nav ul {
   text-align: center;
   min-width: 70px;
   white-space: nowrap;
+}
+
+.ppc_table_header p .sort {
+  cursor: pointer;
 }
 
 .ppc_table_data {
@@ -185,4 +203,31 @@ header nav ul {
   padding: 5px;
   font-size: 16px;
   font-weight: 600;
+}
+
+.collapse_btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.3s ease;
+}
+
+.collapse_btn i {
+  color: #333;
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.collapse_btn:hover i {
+  color: #555;
+}
+
+.collapse_btn:active i {
+  color: #222;
+}
+
+/* Optional: If you want to rotate the icon when clicked */
+.collapse_btn.collapsed i {
+  transform: rotate(45deg);
 }
