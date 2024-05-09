@@ -145,6 +145,7 @@ export const ToggleSwitchComponent = ({
   value,
   size,
 }) => {
+  console.log(value);
   return (
     <Grid item xs={12} md={size}>
       <FormGroup>

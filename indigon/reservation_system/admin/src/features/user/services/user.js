@@ -73,8 +73,7 @@ export const useEditUser = () => {
       await queryClient.invalidateQueries({ queryKey: ["deleteuser"] });
       queryClient.setQueriesData({ queryKey: ["allusers"] }, (oldUsers) => {
         const updatedUsers = oldUsers.filter((user) => user._id !== data._id);
-        updatedUsers.push(data);
-        return updatedUsers;
+        return [data, ...updatedUsers];
       });
     },
     onError: async (error) => {

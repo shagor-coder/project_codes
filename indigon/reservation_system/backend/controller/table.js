@@ -2,7 +2,7 @@ import { ClientModel } from "../models/Client.js";
 import { RestaurantModel } from "../models/Restaurant.js";
 import { TableModel } from "../models/Table.js";
 import { createError } from "../utils/error.js";
-import { format, parseISO } from "date-fns";
+import { format } from "date-fns";
 
 // Create a new Table
 export const createTable = async (req, res, next) => {
@@ -56,12 +56,9 @@ export const getTable = async (req, res, next) => {
       const infos = JSON.parse(JSON.stringify(table.bookedTimes));
 
       const updatedBookingInfo = infos.map((bt) => {
-        console.log(bt);
         let obj = { ...bt };
-
         obj.startTime = format(bt.startTime, "d MMM yy h.mm a");
         obj.endTime = format(bt.endTime, "d MMM yy h.mm a");
-
         return obj;
       });
 

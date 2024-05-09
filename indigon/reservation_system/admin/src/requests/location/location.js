@@ -16,7 +16,7 @@ export const getCurrentLocation = async (id) => {
 export const deleteCurrentLocation = async (id) => {
   try {
     const request = await axiosInstance.delete(
-      import.meta.env.VITE_API_BASE_URL + `/api/Location/${id}`
+      import.meta.env.VITE_API_BASE_URL + `/api/location/${id}`
     );
 
     const response = await request.data;

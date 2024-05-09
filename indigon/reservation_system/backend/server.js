@@ -6,7 +6,6 @@ import mongoose from "mongoose";
 import AuthRouter from "./routes/auth.js";
 import ClientRouter from "./routes/client.js";
 import LocationRouter from "./routes/location.js";
-import MenuRouter from "./routes/menu.js";
 import RestaurantRouter from "./routes/restaurant.js";
 import TableRouter from "./routes/table.js";
 import UserRouter from "./routes/user.js";
@@ -30,8 +29,8 @@ app.use("/auth", AuthRouter);
 app.use("/api/user", UserRouter);
 app.use("/api/location", LocationRouter);
 app.use("/api/restuarant", RestaurantRouter);
-app.use("/api/menu", MenuRouter);
 app.use("/api/table", TableRouter);
+app.use("/api/booking", TableRouter);
 app.use("/api/client", ClientRouter);
 
 app.use((err, req, res, next) => {

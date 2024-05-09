@@ -14,7 +14,6 @@ const ignoredFields = [
   "restaurant",
   "_id",
   "userId",
-  "isActive",
   "updatedAt",
   "createdAt",
   "bookedTimes",

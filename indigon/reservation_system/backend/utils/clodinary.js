@@ -16,7 +16,7 @@ export const uploadPhoto = (photoFile) => {
     const fileFormat = photoFile.mimetype.split("/")[1] || "png";
     useCloudinary()
       .uploader.upload_stream(
-        { resource_type: "raw", format: fileFormat },
+        { resource_type: "image", format: fileFormat },
         (err, result) => {
           if (err) {
             reject(err);
@@ -41,7 +41,7 @@ export const deletePhoto = async (uploadedImagesId) => {
   try {
     const data = await useCloudinary().api.delete_resources([...ids], {
       type: "upload",
-      resource_type: "raw",
+      resource_type: "image",
     });
     return data;
   } catch (error) {

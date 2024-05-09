@@ -14,7 +14,7 @@ export const EditUserForm = ({ currentData }) => {
     name: name || "",
     email: email || "",
     locations: locations || [],
-    isActive: isActive || true,
+    isActive: isActive ? true : false,
   });
 
   const { data, isPending, isError, mutate, error } = useEditUser();
@@ -54,7 +54,7 @@ export const EditUserForm = ({ currentData }) => {
     if (data) {
       dispatch({
         type: "showToast",
-        message: "New user has been updated!",
+        message: "User has been updated!",
         toastType: "success",
       });
     }

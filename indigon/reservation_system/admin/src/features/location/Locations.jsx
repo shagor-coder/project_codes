@@ -4,16 +4,27 @@ import { DataGridComponent } from "../../components/DataGrid";
 import { Layout } from "../../components/Layout";
 import { PagesHeader } from "../../components/PagesHeader";
 import { UseAuthContext } from "../../context/AuthContext";
-import { useGetAllLocations } from "./services/location";
+import { useDeleteLocation, useGetAllLocations } from "./services/location";
 import { useNavigate } from "react-router-dom";
 
 export const Locations = () => {
   const { isLoading, isError, data, error } = useGetAllLocations();
+  const {
+    isPending,
+    isError: isDeleteError,
+    error: deleteError,
+    data: isDeleted,
+    mutate,
+  } = useDeleteLocation();
   const { dispatch } = UseAuthContext();
   const navigate = useNavigate();
 
   const handleNavigate = (id) => {
     navigate(`/locations/${id}`);
+  };
+
+  const handleDeleteLocation = (params) => {
+    mutate(params.id);
   };
 
   const marketplaceLink = import.meta.env.VITE_GHL_APP_MARKETPLACE_URL;
@@ -28,14 +39,21 @@ export const Locations = () => {
     );
 
   useEffect(() => {
-    if (isError) {
+    if (isError || isDeleteError) {
       dispatch({
         type: "showToast",
         toastType: "error",
         message: error.message,
       });
     }
-  }, [isError, data]);
+    if (isDeleted) {
+      dispatch({
+        type: "showToast",
+        toastType: "success",
+        message: "Location has been deleted!!",
+      });
+    }
+  }, [isError, isDeleteError, isDeleted]);
 
   if (data && data.length) {
     content = (
@@ -43,7 +61,7 @@ export const Locations = () => {
         actionNeeded={false}
         handleNavigate={handleNavigate}
         data={data}
-        handleDelete={() => {}}
+        handleDelete={handleDeleteLocation}
       />
     );
   }
@@ -54,6 +72,7 @@ export const Locations = () => {
         headline="See all your locations"
         IconButton={
           <Button
+            disabled={data ? true : false}
             variant="contained"
             color="primary"
             onClick={() => {
@@ -64,7 +83,6 @@ export const Locations = () => {
           </Button>
         }
       />
-
       {content}
     </Layout>
   );

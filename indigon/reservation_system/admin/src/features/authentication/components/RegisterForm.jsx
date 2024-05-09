@@ -37,7 +37,7 @@ export const RegisterForm = () => {
           type="text"
           name="name"
           handleChange={handleChange}
-          value={formData.email}
+          value={formData.name}
           autoComplete="autoComplete"
         />
         <InputComponent
