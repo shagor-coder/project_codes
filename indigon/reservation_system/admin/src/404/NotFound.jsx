@@ -23,7 +23,7 @@ const NotFoundPage = () => {
         <Typography variant="subtitle1">
           Oops! We can't seem to find the page you're looking for.
         </Typography>
-        <Button variant="contained" onClick={() => navigate("/")}>
+        <Button variant="contained" onClick={() => navigate("/dashboard")}>
           Go Back Home
         </Button>
       </Stack>

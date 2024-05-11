@@ -9,6 +9,7 @@ import LocationRouter from "./routes/location.js";
 import RestaurantRouter from "./routes/restaurant.js";
 import TableRouter from "./routes/table.js";
 import UserRouter from "./routes/user.js";
+import BookingRouter from "./routes/booking.js";
 
 dotenv.config();
 const app = express();
@@ -30,7 +31,7 @@ app.use("/api/user", UserRouter);
 app.use("/api/location", LocationRouter);
 app.use("/api/restuarant", RestaurantRouter);
 app.use("/api/table", TableRouter);
-app.use("/api/booking", TableRouter);
+app.use("/api/booking", BookingRouter);
 app.use("/api/client", ClientRouter);
 
 app.use((err, req, res, next) => {

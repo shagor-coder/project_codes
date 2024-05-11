@@ -14,7 +14,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
+import BookOnlineIcon from "@mui/icons-material/BookOnline";
 import { ProfileMenu } from "./ProfileMenu";
 import { MenuItem } from "./MenuItem";
 import { useState } from "react";
@@ -165,7 +165,12 @@ export const Sidebar = ({ headline }) => {
             path="/locations"
             isActive={activeLink("/locations")}
           />
-          {/* <MenuItem icon={<MenuBookIcon />} name="Menus" path="/menus" /> */}
+          <MenuItem
+            icon={<BookOnlineIcon />}
+            name="Bookings"
+            path="/bookings"
+            isActive={activeLink("/bookings")}
+          />
         </List>
       </Drawer>
     </Box>

@@ -136,18 +136,23 @@ export const deleteLocation = async (req, res, next) => {
     const locationResatuarant = await RestaurantModel.findOne({
       locationId: req.params.id,
     });
-    await locationResatuarant.deleteOne();
+    locationResatuarant && (await locationResatuarant.deleteOne());
 
     const uploadedImagesId =
-      locationResatuarant.photos?.map((photos) => photos.photoId) || [];
+      locationResatuarant?.photos?.map((photos) => photos.photoId) || [];
 
-    locationResatuarant.featuredImage
+    locationResatuarant?.featuredImage
       ? uploadedImagesId.push(locationResatuarant.featuredImage?.photoId)
       : null;
 
-    uploadedImagesId.length && deletePhoto(uploadedImagesId);
+    locationResatuarant &&
+      uploadedImagesId.length &&
+      deletePhoto(uploadedImagesId);
 
-    await TableModel.deleteMany({ restaurantId: locationResatuarant._id });
+    locationResatuarant &&
+      (await TableModel.findByIdAndDelete({
+        restaurantId: locationResatuarant._id,
+      }));
 
     res.status(200).json({
       status: "success",
@@ -155,6 +160,7 @@ export const deleteLocation = async (req, res, next) => {
       data: { id: req.params.id },
     });
   } catch (error) {
+    console.log(error);
     next(createError(500, "Location not Deleted"));
   }
 };

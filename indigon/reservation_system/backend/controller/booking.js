@@ -7,7 +7,8 @@ export const getAllBookingForAdmin = async (req, res, next) => {
     const allBookings = await BookingModel.find({
       locationId: req.params.locationId,
     });
-    if (!allBookings) return next(createError(404, "Bookings not found"));
+    if (!allBookings.length)
+      return next(createError(404, "Bookings not found"));
     res.status(200).json({ status: "success", data: allBookings });
   } catch (error) {
     next(createError(500, error.message));
