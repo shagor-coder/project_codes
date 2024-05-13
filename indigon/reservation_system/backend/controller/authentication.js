@@ -36,7 +36,7 @@ export const loginUser = async (req, res, next) => {
     if (!isPassword)
       return next(createError(401, "email or password incorrect!"));
 
-    const { isAdmin, _id } = isUser;
+    const { isAdmin, _id, locations, name, email: userEmail } = isUser;
 
     const token = jwt.sign(
       { id: _id, isAdmin: isAdmin },
@@ -54,7 +54,13 @@ export const loginUser = async (req, res, next) => {
     res.status(200).json({
       status: "success",
       message: "You're now authenticated!",
-      data: { isAdmin, id: _id },
+      data: {
+        isAdmin,
+        id: _id,
+        locations: [...locations],
+        name,
+        email: userEmail,
+      },
     });
   } catch (error) {
     next(createError(500, error.message));

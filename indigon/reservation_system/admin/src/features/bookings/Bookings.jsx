@@ -15,6 +15,8 @@ export const Bookings = () => {
   const navigate = useNavigate();
   const { dispatch, auth } = UseAuthContext();
 
+  console.log(auth);
+
   const { data, isError, isLoading, error } = useGetAllBooking({
     locationId: auth?.authUser?.locations[0],
   });
