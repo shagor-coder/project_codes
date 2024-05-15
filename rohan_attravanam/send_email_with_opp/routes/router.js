@@ -1,13 +1,16 @@
 const express = require("express");
-const path = require("path");
+const { createUser } = require("../middlewares/create-user");
+const { addOpportunity } = require("../middlewares/add-opportunity");
+const { sendEmail } = require("../middlewares/send-email");
+const { clearOpportunity } = require("../middlewares/clear-opportunity");
+const formatRequest = require("../helpers/format-request");
+const addNewUser = require("../firebase/db");
+
 const _Router = express.Router();
 
-_Router.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/index.html"));
-});
-
-_Router.get("/auth/callback", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/callback.html"));
-});
+_Router.post("/create-user", formatRequest, addNewUser);
+// _Router.post("/add-opportunity", addOpportunity);
+// _Router.post("/send-email", sendEmail);
+// _Router.post("/clear-opportunity", clearOpportunity);
 
 module.exports = _Router;
