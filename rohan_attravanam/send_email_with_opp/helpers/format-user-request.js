@@ -1,4 +1,4 @@
-const formatRequest = (request, response, next) => {
+const formatUserRequest = (request, response, next) => {
   try {
     const {
       "Sub-Account Name": locationName,
@@ -24,4 +24,4 @@ const formatRequest = (request, response, next) => {
   }
 };
 
-module.exports = formatRequest;
+module.exports = formatUserRequest;
