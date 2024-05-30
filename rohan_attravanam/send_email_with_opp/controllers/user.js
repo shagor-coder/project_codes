@@ -2,14 +2,12 @@ const UserModel = require("../models/User");
 
 const createUser = async (request, response) => {
   try {
-    const { locationName, locationId, emailTo, emailFrom } =
-      request.formattedBody;
+    const { locationName, locationId, emailTo } = request.formattedBody;
 
     const user = new UserModel({
       locationName,
       locationId,
       emailTo,
-      emailFrom,
     });
 
     const savedUser = await user.save();

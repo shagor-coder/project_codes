@@ -4,10 +4,9 @@ const formatUserRequest = (request, response, next) => {
       "Sub-Account Name": locationName,
       "Sub-Account ID": locationId,
       "Admin Email": emailTo,
-      "Account Email": emailFrom,
     } = request.body;
 
-    if (!locationName || !locationId || !emailTo || !emailFrom)
+    if (!locationName || !locationId || !emailTo)
       return response
         .status(403)
         .json({ message: "On or more fields are missing" });
@@ -16,7 +15,6 @@ const formatUserRequest = (request, response, next) => {
       locationName: locationName,
       locationId: locationId,
       emailTo: emailTo,
-      emailFrom: emailFrom,
     };
     next();
   } catch (error) {
