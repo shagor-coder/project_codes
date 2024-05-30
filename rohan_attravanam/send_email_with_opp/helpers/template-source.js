@@ -1,4 +1,5 @@
-<html
+const templateSource = `
+  <html
   lang="und"
   dir="auto"
   xmlns="http://www.w3.org/1999/xhtml"
@@ -387,27 +388,27 @@
               <tr>
                 <td
                   style="
-                  direction: ltr;
-                  font-size: 0px;
-                  padding: 20px 0;
-                  padding-bottom: 10px;
-                  padding-left: 20px;
-                  padding-right: 20px;
-                  padding-top: 10px;
-                  text-align: center;
-                "
+          direction: ltr;
+          font-size: 0px;
+          padding: 20px 0;
+          padding-bottom: 10px;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 10px;
+          text-align: center;
+        "
                 >
                   <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:336px;" ><![endif]-->
                   <div
                     class="mj-column-per-20 mj-outlook-group-fix"
                     style="
-                    font-size: 0px;
-                    text-align: left;
-                    direction: ltr;
-                    display: inline-block;
-                    vertical-align: middle;
-                    width: 100%;
-                  "
+            font-size: 0px;
+            text-align: left;
+            direction: ltr;
+            display: inline-block;
+            vertical-align: middle;
+            width: 100%;
+          "
                   >
                     <table
                       border="0"
@@ -421,14 +422,14 @@
                           <td
                             align="center"
                             style="
-                            font-size: 0px;
-                            padding: 10px 25px;
-                            padding-top: 10px;
-                            padding-right: 20px;
-                            padding-bottom: 10px;
-                            padding-left: 20px;
-                            word-break: break-word;
-                          "
+                    font-size: 0px;
+                    padding: 10px 25px;
+                    padding-top: 10px;
+                    padding-right: 20px;
+                    padding-bottom: 10px;
+                    padding-left: 20px;
+                    word-break: break-word;
+                  "
                           >
                             <table
                               border="0"
@@ -436,9 +437,9 @@
                               cellspacing="0"
                               role="presentation"
                               style="
-                              border-collapse: collapse;
-                              border-spacing: 0px;
-                            "
+                      border-collapse: collapse;
+                      border-spacing: 0px;
+                    "
                             >
                               <tbody>
                                 <tr>
@@ -446,7 +447,15 @@
                                     <img
                                       alt=""
                                       src="https://ci3.googleusercontent.com/meips/ADKq_NZwif-QmJIPI5W80sUM5dAl7S0JjrFqtbSFTXOI_CWvtRJh_gEu9kymTJoI9SgaOywcnmHALRU6jy7EzTXNJhktMRJpCVzD4UDpyOaXJ8lvOWliRXAdh9oPzQZ0cBIh9rKukOYlVXvgYKRj_eA712LPcOyC=s0-d-e1-ft#https://storage.googleapis.com/msgsndr/XuqRXK2aMJFTIGJOg9f6/media/6655f04a4215bcc7a622975e.png"
-                                      style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                      style="
+                              border: 0;
+                              display: block;
+                              outline: none;
+                              text-decoration: none;
+                              height: auto;
+                              width: 100%;
+                              font-size: 13px;
+                            "
                                       width="80"
                                       height="auto"
                                       class="CToWUd"
@@ -465,13 +474,13 @@
                   <div
                     class="mj-column-per-50 mj-outlook-group-fix"
                     style="
-                    font-size: 0px;
-                    text-align: left;
-                    direction: ltr;
-                    display: inline-block;
-                    vertical-align: middle;
-                    width: 100%;
-                  "
+            font-size: 0px;
+            text-align: left;
+            direction: ltr;
+            display: inline-block;
+            vertical-align: middle;
+            width: 100%;
+          "
                   >
                     <table
                       border="0"
@@ -484,12 +493,12 @@
                         <tr>
                           <td
                             style="
-                            vertical-align: top;
-                            padding-top: 0px;
-                            padding-right: 0px;
-                            padding-bottom: 0px;
-                            padding-left: 0px;
-                          "
+                    vertical-align: top;
+                    padding-top: 0px;
+                    padding-right: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                  "
                           >
                             <table
                               border="0"
@@ -504,31 +513,31 @@
                                   <td
                                     align="left"
                                     style="
-                                    font-size: 0px;
-                                    padding: 10px 10px;
-                                    padding-top: 0px;
-                                    padding-right: 24px;
-                                    padding-bottom: 0px;
-                                    padding-left: 24px;
-                                    word-break: break-word;
-                                  "
+                            font-size: 0px;
+                            padding: 10px 10px;
+                            padding-top: 0px;
+                            padding-right: 24px;
+                            padding-bottom: 0px;
+                            padding-left: 24px;
+                            word-break: break-word;
+                          "
                                   >
                                     <div
                                       style="
-                                      font-family: arial, helvetica, sans-serif;
-                                      font-size: 14px;
-                                      line-height: 1.25;
-                                      text-align: left;
-                                      color: #000000;
-                                    "
+                              font-family: arial, helvetica, sans-serif;
+                              font-size: 14px;
+                              line-height: 1.25;
+                              text-align: left;
+                              color: #000000;
+                            "
                                     >
                                       <h2
                                         style="
-                                        line-height: 1.15;
-                                        text-align: left;
-                                        font-size: 16px;
-                                        font-weight: 500;
-                                      "
+                                line-height: 1.15;
+                                text-align: left;
+                                font-size: 16px;
+                                font-weight: 500;
+                              "
                                       >
                                         {{first_name}}
                                         {{last_name}}
@@ -558,13 +567,13 @@
                   <div
                     class="mj-column-per-30 mj-outlook-group-fix"
                     style="
-                    font-size: 0px;
-                    text-align: left;
-                    direction: ltr;
-                    display: inline-block;
-                    vertical-align: middle;
-                    width: 100%;
-                  "
+            font-size: 0px;
+            text-align: left;
+            direction: ltr;
+            display: inline-block;
+            vertical-align: middle;
+            width: 100%;
+          "
                   >
                     <table
                       border="0"
@@ -577,12 +586,12 @@
                         <tr>
                           <td
                             style="
-                            vertical-align: top;
-                            padding-top: 0px;
-                            padding-right: 0px;
-                            padding-bottom: 0px;
-                            padding-left: 0px;
-                          "
+                    vertical-align: top;
+                    padding-top: 0px;
+                    padding-right: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                  "
                           >
                             <table
                               border="0"
@@ -598,14 +607,14 @@
                                     align="right"
                                     class="mj-small-device-button"
                                     style="
-                                    font-size: 0px;
-                                    padding: 10px 25px;
-                                    padding-top: 10px;
-                                    padding-right: 24px;
-                                    padding-bottom: 10px;
-                                    padding-left: 24px;
-                                    word-break: break-word;
-                                  "
+                            font-size: 0px;
+                            padding: 10px 25px;
+                            padding-top: 10px;
+                            padding-right: 24px;
+                            padding-bottom: 10px;
+                            padding-left: 24px;
+                            word-break: break-word;
+                          "
                                   >
                                     <table
                                       border="0"
@@ -613,9 +622,9 @@
                                       cellspacing="0"
                                       role="presentation"
                                       style="
-                                      border-collapse: separate;
-                                      line-height: 100%;
-                                    "
+                              border-collapse: separate;
+                              line-height: 100%;
+                            "
                                     >
                                       <tbody>
                                         <tr>
@@ -624,32 +633,32 @@
                                             bgcolor="#2196F3"
                                             role="presentation"
                                             style="
-                                            border: 0px solid #00a4bd;
-                                            border-radius: 10px;
-                                            cursor: auto;
-                                            mso-padding-alt: 10px 25px;
-                                            background: #2196f3;
-                                          "
+                                    border: 0px solid #00a4bd;
+                                    border-radius: 10px;
+                                    cursor: auto;
+                                    mso-padding-alt: 10px 25px;
+                                    background: #2196f3;
+                                  "
                                             valign="middle"
                                           >
                                             <a
                                               href="https://app.gohighlevel.com/v2/location/{{locationId}}/contacts/detail/{{contact_id}}"
                                               style="
-                                              display: inline-block;
-                                              background: #2196f3;
-                                              color: #ffffff;
-                                              font-family: arial, helvetica,
-                                                sans-serif;
-                                              font-size: 14px;
-                                              font-weight: bold;
-                                              line-height: 1.25;
-                                              margin: 0;
-                                              text-decoration: none;
-                                              text-transform: none;
-                                              padding: 7px 15px;
-                                              mso-padding-alt: 0px;
-                                              border-radius: 5px;
-                                            "
+                                      display: inline-block;
+                                      background: #2196f3;
+                                      color: #ffffff;
+                                      font-family: arial, helvetica,
+                                        sans-serif;
+                                      font-size: 14px;
+                                      font-weight: bold;
+                                      line-height: 1.25;
+                                      margin: 0;
+                                      text-decoration: none;
+                                      text-transform: none;
+                                      padding: 7px 15px;
+                                      mso-padding-alt: 0px;
+                                      border-radius: 5px;
+                                    "
                                             >
                                               View Contact
                                             </a>
@@ -672,6 +681,7 @@
               </tr>
             {{/each}}
           </tbody>
+
         </table>
       </div>
 
@@ -873,3 +883,6 @@
     </div>
   </body>
 </html>
+`;
+
+module.exports = templateSource;

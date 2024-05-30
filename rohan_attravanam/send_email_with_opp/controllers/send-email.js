@@ -1,4 +1,3 @@
-const db = require("../firebase/app");
 const createEmailTemplate = require("../helpers/create-template");
 const {
   mailerSend,
@@ -6,11 +5,26 @@ const {
   EmailParams,
   Sender,
 } = require("../helpers/mailer-send-instance");
+const OpportunityModel = require("../models/Opportunity");
+const UserModel = require("../models/User");
 
 const sendEmailToAdmin = async (request, response) => {
   try {
-    const user = request.user;
-    const opportunities = request.opportunities;
+    const locationId = request.query.locationId;
+
+    const user = await UserModel.findOne({
+      locationId: locationId,
+    });
+
+    if (!user) return response.status(404).json({ message: "User not found!" });
+
+    const opportunities = await OpportunityModel.find({
+      locationId: locationId,
+    });
+
+    if (!opportunities.length)
+      return response.status(404).json({ message: "Opportunity not found!" });
+
     const recipients = [new Recipient(user.emailTo)];
     const sentFrom = new Sender(
       "contact@trial-zr6ke4nj879gon12.mlsender.net",
