@@ -40,7 +40,7 @@ const clearOpportunities = async (request, response) => {
     }).deleteMany();
 
     response.status(200).json({
-      message: "Opportunity added successfully",
+      message: "Opportunity cleared successfully",
     });
   } catch (error) {
     response.status(500).json({ message: "Something went wrong!" });
