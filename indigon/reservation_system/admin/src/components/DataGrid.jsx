@@ -18,6 +18,7 @@ const ignoredFields = [
   "createdAt",
   "bookedTimes",
   "clientId",
+  "tableId",
 ];
 
 export const DataGridComponent = ({

@@ -1,15 +1,27 @@
 import { BookingModel } from "../models/Booking.js";
 import { createError } from "../utils/error.js";
+import { format } from "date-fns";
 
 // Get all bookings for a table
 export const getAllBookingForAdmin = async (req, res, next) => {
   try {
+    const currentTime = new Date();
     const allBookings = await BookingModel.find({
       locationId: req.params.locationId,
+      startTime: { $gte: currentTime },
     });
+
     if (!allBookings.length)
       return next(createError(404, "Bookings not found"));
-    res.status(200).json({ status: "success", data: allBookings });
+
+    // Format the dates
+    const formattedBookings = allBookings.map((booking) => ({
+      ...booking._doc,
+      startTime: format(new Date(booking.startTime), "dd-MM-yy hh:mm a"),
+      endTime: format(new Date(booking.endTime), "dd-MM-yy hh:mm a"),
+    }));
+
+    res.status(200).json({ status: "success", data: formattedBookings });
   } catch (error) {
     next(createError(500, error.message));
   }

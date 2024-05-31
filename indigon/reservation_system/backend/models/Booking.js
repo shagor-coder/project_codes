@@ -8,10 +8,22 @@ const BookingSchema = new mongoose.Schema({
   startTime: {
     type: Date,
     required: true,
+    validate: {
+      validator: function (value) {
+        return value > new Date();
+      },
+      message: "Start time must be in the future",
+    },
   },
   endTime: {
     type: Date,
     required: true,
+    validate: {
+      validator: function (value) {
+        return value > this.startTime;
+      },
+      message: "End time must be after start time",
+    },
   },
   clientName: {
     type: String,
@@ -25,11 +37,6 @@ const BookingSchema = new mongoose.Schema({
   locationId: {
     type: mongoose.Types.ObjectId,
     ref: "Location",
-  },
-
-  tableId: {
-    type: mongoose.Types.ObjectId,
-    ref: "Table",
   },
   clientId: {
     type: mongoose.Types.ObjectId,

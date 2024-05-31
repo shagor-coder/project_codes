@@ -15,8 +15,6 @@ export const Bookings = () => {
   const navigate = useNavigate();
   const { dispatch, auth } = UseAuthContext();
 
-  console.log(auth);
-
   const { data, isError, isLoading, error } = useGetAllBooking({
     locationId: auth?.authUser?.locations[0],
   });
@@ -37,7 +35,7 @@ export const Bookings = () => {
     content =
       data && data.length ? (
         <DataGridComponent
-          data={data.bookedTimes}
+          data={data}
           handleDelete={() => {}}
           actionNeeded={true}
           EditForm={EditBookingInfo}
