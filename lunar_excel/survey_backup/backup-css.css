@@ -1,0 +1,738 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+/* Start Root CSS */
+:root {
+  --main-container-max-width: 800px;
+  --main-container-background-color: #fff;
+  --main-container-border: 1px solid var(--main-brand-color);
+
+  --main-brand-color: #4c43b3;
+  --input-bg-color: #fff;
+  --input-hover-bg-color: #fff;
+  --all-input-border-color: var(--main-brand-color);
+  --all-input-border-hover: var(--main-brand-color);
+  --all-input-max-height: 45px;
+  --all-input-min-height: 45px;
+  --all-input-max-width: 465px;
+  --main-label-font-weight: 400;
+  --main-label-color: #000000;
+  --main-label-font-size: 20px;
+  --main-label-font-family: "Montserrat", sans-serif;
+
+  --placeholder-font-color: #000;
+  --main-placeholder-font-size: 16px;
+  --placeholder-font-weight: 400;
+  --input-placeholder-font-family: "Montserrat", sans-serif;
+
+  --checkbox-font-color: #000;
+  --checkbox-font-size: 16px;
+  --checkbox-font-weight: 500;
+  --checkbox-font-family: "Montserrat", sans-serif;
+  --checkbox-border: 1px solid var(--main-brand-color);
+  --checkbox-before-bg-color: var(--main-brand-color);
+  --checkbox-answer-font-color: #111111;
+  --checkbox-answer-font-size: 16px;
+  --checkbox-answer-font-weight: 500;
+  --checkbox-answer-font-family: "Montserrat", sans-serif;
+
+  --multi-select-font-size: 16px;
+  --multi-select-font-weight: 500;
+  --multi-select-placeholder-font-size: 18px;
+  --multi-select-option-font-size: 18px;
+  --multi-select-option-font-color: #000;
+  --multiselect-tags-bg-color: var(--main-brand-color);
+  --multiselect-tag-icon-color: #fff;
+  --multiselect-font-family: "Montserrat", sans-serif;
+  --multiselect-option-hover-bg: #4c43b36f;
+  --multiselect-option-bg: #4c43b36f;
+
+  --input-font-color: #000;
+  --input-font-size: 16px;
+  --input-font-weight: 500;
+  --input-font-family: "Montserrat", sans-serif;
+  --all-border-radius: 5px;
+  --all-inputs-border: 1px solid var(--all-input-border-color);
+
+  /* Date Time CSS */
+  --date-box-header-bg: #f5f5f5;
+  --date-box-next-prev-icon-color: var(--main-brand-color);
+  --date-box-header-days-font-size: 12px;
+  --date-box-header-months-font-size: 14px;
+  --date-box-date-font-size: 12px;
+  --date-box-date-font-weight: 400;
+  --date-box-date-font-color: var(--main-brand-color);
+  --date-box-date-seleted-font-color: #fff;
+  --date-box-date-seleted-bg-color: var(--main-brand-color);
+
+  --footer-button-next: "Next";
+  --footer-button-prev: "Go Back";
+  --footer-button-next-icon: "\f061";
+  --footer-button-prev-icon: "\f060";
+  --footer-button-next-bg: var(--main-brand-color);
+  --footer-button-next-hover-bg: #ffdbcb;
+  --footer-button-next-hover-font-color: #fff;
+  --footer-button-next-font-color: #ffffff;
+  --footer-button-next-icon-color: #ffffff;
+  --footer-bg-color: transparent;
+  --footer-button-font-size: 16px;
+  --footer-button-font-weight: 700;
+  --footer-button-font-family: "Montserrat", sans-serif;
+  --footer-button-font-color: #fff;
+  --footer-button-border-radius: 5px;
+
+  --transition-all: all 0.3s ease-in-out;
+  --transition-border: border-color 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+  --input-hover-box-shadow: none;
+  --input-font-size: 16px;
+
+  --h1-font-family: "Montserrat", sans-serif;
+  --h1-font-size: 25px;
+  --h1-font-color: #1f1d37;
+  --h1-font-weight: 700;
+  --h1-max-width: 450px;
+
+  --error-font-size: 18px;
+  --error-font-weight: 400;
+  --error-font-family: "Montserrat", sans-serif;
+  --error-container-text-align: center;
+  --error-font-color: #d11010;
+
+  /* Dot Progress Color */
+  --progressbar-line-color: #4c43b3;
+  --progressbar-dot-bg-color: #4c43b3;
+  --progressbar-dot-active-bg-color: var(--main-brand-color);
+  --progressbar-top: 23px;
+  --progressbar-bottom: unset;
+  --progressbar-max-width: 565px;
+
+  /* Neutral Color */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --accent-color: var(--main-brand-color);
+  --icon-weight-bold: 700;
+  /* Neutral Color */
+}
+
+/* End Root CSS */
+
+/* Start Parent CSS */
+button {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+input:not(input[type="checkbox"], input[type="radio"]) {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+.hl-app,
+#form-builder.hl_wrapper--inner,
+.hl_form-builder--main,
+.ghl-form-wrap,
+#_builder-form.ghl-survey-form {
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  border: none !important;
+  background: transparent !important;
+  max-width: var(--main-container-max-width) !important;
+}
+
+/* #_builder-form.ghl-survey-form {
+  background: var(--main-container-background-color) !important;
+  max-width: var(--main-container-max-width) !important;
+  border-radius: 10px !important;
+} */
+
+.hl_form-builder--main {
+  position: relative;
+  margin-bottom: 0 !important;
+  margin-top: 0px !important;
+  padding-bottom: 10px !important;
+  padding-top: 10px !important;
+}
+.hl-app .ghl-form-wrap {
+  border-radius: 0 !important;
+}
+.hl-app .hl_form-builder--main .ghl-form-wrap {
+  max-width: var(--main-container-max-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.hl-app #_builder-form.ghl-survey-form {
+  max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 80px 16px 80px !important;
+  z-index: 10 !important;
+  position: relative !important;
+}
+.hl-app .ghl-question-set {
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  z-index: 100 !important;
+  position: relative !important;
+}
+.hl-app .ghl-question {
+  padding: 0 !important;
+}
+.hl-app .fields-container.row {
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+.hl-app .ghl-question .fields-container.row {
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+.hl-app
+  .ghl-question
+  .fields-container.row
+  .form-field-container
+  div
+  .form-builder--item {
+  width: 100% !important;
+  margin: 0 auto !important;
+  margin-bottom: 1rem !important;
+  padding: 0 !important;
+}
+
+/* End Parent CSS  Resets */
+
+/* Start H1 CSS */
+.hl-app #_builder-form .form-builder--item > h1 {
+  font-size: var(--h1-font-size) !important;
+  color: var(--h1-font-color) !important;
+  font-weight: var(--h1-font-weight) !important;
+  font-family: var(--h1-font-family) !important;
+  text-align: center !important;
+  max-width: var(--h1-max-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+/* End H1 CSS */
+
+/* ==== Start Error Text CSS ==== */
+#_builder-form .alert {
+  border-left: none !important;
+}
+
+#_builder-form .alert ul {
+  list-style: none !important;
+}
+
+#_builder-form .alert.alert-danger {
+  text-align: var(--error-container-text-align) !important;
+  font-size: var(--error-font-size) !important;
+  font-weight: var(--error-font-weight) !important;
+  font-family: var(--error-font-family) !important;
+  color: var(--error-font-color) !important;
+  display: none !important;
+}
+
+#_builder-form .alert.alert-danger span {
+  border-left: 5px solid #ff4747 !important;
+}
+/* ==== End Error Text CSS ==== */
+
+/* Start Common Inputs CSS */
+
+.hl-app #_builder-form .form-builder--item > label {
+  font-size: var(--main-label-font-size) !important;
+  font-weight: var(--main-label-font-weight) !important;
+  font-family: var(--main-label-font-family) !important;
+  color: var(--main-label-color) !important;
+  text-align: left !important;
+  margin-bottom: 15px !important;
+}
+
+.hl-app #_builder-form .form-builder--item {
+  padding-left: 5px !important ;
+  padding-right: 5px !important ;
+}
+
+.hl-app
+  #_builder-form
+  .form-builder--item
+  input:not(input[type="checkbox"], input[type="radio"]) {
+  background: var(--input-bg-color) !important;
+  transition: var(--transition-border) !important;
+  font-size: var(--input-font-size) !important;
+  color: var(--input-font-color) !important;
+  font-family: var(--input-font-family) !important;
+  font-weight: var(--input-font-weight) !important;
+  border-radius: var(--all-border-radius) !important;
+}
+
+.hl-app #_builder-form input:-internal-autofill-selected {
+  background: var(--input-hover-bg-color) !important;
+}
+
+.hl-app #_builder-form :nth-child(2) .form-builder--item > label {
+  margin-top: 10px !important;
+}
+
+.hl-app #_builder-form .form-builder--item input::placeholder {
+  font-size: var(--main-placeholder-font-size) !important;
+  color: var(--placeholder-font-color) !important;
+  font-weight: var(--placeholder-font-weight) !important;
+  font-family: var(--input-placeholder-font-family) !important;
+}
+.hl-app #_builder-form .form-builder--item .form-control:not(textarea),
+.hl-app #_builder-form .countryphone,
+body
+  .c-survey
+  #_builder-form
+  .form-builder--item
+  input[type="text"][class="form-control"] {
+  background-color: var(--input-bg-color) !important;
+  border: var(--all-inputs-border) !important;
+  min-height: var(--all-input-min-height) !important;
+  max-height: var(--all-input-max-height) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  transition: var(--transition-border) !important;
+  font-size: var(--input-font-size) !important;
+  color: var(--input-font-color) !important;
+  font-family: var(--input-font-family) !important;
+  font-weight: var(--input-font-weight) !important;
+  border-radius: var(--all-border-radius) !important;
+}
+.hl-app #_builder-form .form-builder--item .form-control:hover,
+.hl-app #_builder-form .countryphone:hover,
+.hl-app #_builder-form .form-builder--item .form-control:focus,
+.hl-app #_builder-form .countryphone:focus,
+body
+  .c-survey
+  #_builder-form
+  .form-builder--item
+  input[type="text"][class="form-control"]:hover,
+body
+  .c-survey
+  #_builder-form
+  .form-builder--item
+  input[type="text"][class="form-control"]:focus {
+  border-color: var(--all-input-border-hover) !important;
+  box-shadow: var(--input-hover-box-shadow) !important;
+  background-color: var(--input-hover-bg-color) !important;
+}
+
+.hl-app #_builder-form .form-builder--item textarea.form-control {
+  background-color: var(--input-bg-color) !important;
+  border: var(--all-inputs-border) !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  transition: var(--transition-border) !important;
+  font-size: var(--input-font-size) !important;
+  color: var(--input-font-color) !important;
+  font-family: var(--input-font-family) !important;
+  font-weight: var(--input-font-weight) !important;
+  border-radius: var(--all-border-radius) !important;
+}
+
+.hl-app #_builder-form .form-builder--item textarea::placeholder {
+  font-size: var(--main-placeholder-font-size) !important;
+  color: var(--placeholder-font-color) !important;
+  font-weight: var(--placeholder-font-weight) !important;
+  font-family: var(--input-placeholder-font-family) !important;
+}
+
+/* Phone Input Fix */
+.hl-app #_builder-form .form-builder--item .iti--allow-dropdown {
+  display: block !important;
+  max-width: var(--all-input-max-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+/* End Inputs CSS */
+
+/* Radio Input Styles */
+.hl-app input[type="radio"],
+.hl-app input[type="checkbox"] {
+  accent-color: var(--accent-color) !important ;
+}
+
+.hl-app #_builder-form .in-r-c,
+.hl-app #_builder-form .option-radio {
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+}
+
+.hl-app .in-r-c input[type="checkbox"],
+.hl-app #_builder-form .option-radio input[type="radio"] {
+  margin-top: 0px !important;
+  display: none !important;
+}
+
+.hl-app #_builder-form .option-radio > div {
+  width: 100% !important;
+}
+
+.hl-app #_builder-form .option-radio > div > label,
+.hl-app #_builder-form .in-r-c > label {
+  margin-top: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 30px !important;
+  position: relative !important;
+  padding-left: 0px !important;
+  padding: 8px 16px !important;
+  border: 1px solid var(--main-brand-color) !important;
+  border-radius: var(--all-border-radius) !important;
+  transition: var(--transition-all) !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+}
+
+.hl-app #_builder-form .option-radio:not(:last-child),
+.hl-app #_builder-form .in-r-c:not(:last-child) {
+  margin-bottom: 10px !important;
+}
+
+.hl-app #_builder-form .option-radio > div > label,
+.hl-app #_builder-form .in-r-c > label {
+  font-size: var(--checkbox-answer-font-size) !important;
+  font-weight: var(--checkbox-answer-font-weight) !important;
+  color: var(--checkbox-answer-font-color) !important;
+  font-family: var(--checkbox-answer-font-family) !important;
+  cursor: pointer !important;
+}
+
+.hl-app .in-r-c:hover label,
+.hl-app #_builder-form .option-radio:hover label {
+  background-color: var(--main-brand-color) !important;
+  color: #fff !important;
+}
+
+.hl-app .in-r-c input[type="checkbox"]:checked ~ div label,
+.hl-app #_builder-form .option-radio input[type="radio"]:checked ~ label {
+  background-color: var(--main-brand-color) !important;
+  color: #fff !important;
+}
+
+.hl-app .option label::before,
+.hl-app .option-radio label::before {
+  display: none !important;
+}
+
+.hl-app .option label::after,
+.option-radio label::after {
+  display: none !important;
+}
+/* End Radio Input Styles */
+
+/* Start Footer Button CSS  */
+.hl-app .ghl-footer .ghl-button-bar {
+  display: flex !important;
+  width: 100% !important;
+  height: 100% !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin: 0 auto !important;
+  z-index: 1 !important;
+  position: relative !important;
+  direction: initial !important;
+  flex-direction: row-reverse !important;
+}
+
+.hl-app .ghl-footer .ghl-btn-align {
+  height: 100% !important;
+  margin: 0 !important;
+  float: initial !important;
+  top: 0 !important;
+  width: auto !important;
+}
+.hl-app .ghl-footer .ghl-button-bar .ghl-button {
+  margin: 0 auto !important;
+  float: initial !important;
+  min-height: 50px !important;
+  min-width: 150px !important;
+  width: 100% !important;
+  max-width: 465px !important;
+  padding: 10px 25px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  max-height: 100% !important;
+  position: relative !important;
+  z-index: 10 !important;
+  border-radius: var(--footer-button-border-radius) !important;
+  color: var(--color-white) !important;
+  line-height: 0 !important;
+  border-radius: var(--footer-button-border-radius) !important;
+  background-color: var(--footer-button-next-bg) !important;
+}
+
+.hl-app .ghl-footer .ghl-button-bar .ghl-next-button {
+  background-color: var(--footer-button-next-bg) !important;
+}
+
+.hl-app .ghl-footer .ghl-button-bar .ghl-btn-submit input.ghl-next-button {
+  margin: 0 !important;
+  float: initial !important;
+  min-height: 50px !important;
+  width: 100% !important;
+  max-width: 465px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: var(--footer-button-font-size) !important;
+  font-family: var(--footer-button-font-family) !important;
+  font-weight: var(--footer-button-font-weight) !important;
+  letter-spacing: 1px !important;
+  max-height: 100% !important;
+  color: var(--color-white) !important;
+  line-height: 0 !important;
+  border-radius: var(--footer-button-border-radius) !important;
+  background-color: var(--footer-button-next-bg) !important;
+}
+
+.hl-app .ghl-footer .ghl-button-bar .ghl-button span {
+  display: flex !important;
+  align-items: center !important;
+  line-height: 0 !important;
+}
+
+.hl-app .ghl-footer .ghl-button-bar .ghl-button span::after {
+  content: "" !important;
+  font-family: var(--footer-button-font-family) !important;
+  font-size: var(--footer-button-font-size) !important;
+  font-weight: var(--footer-button-font-weight) !important;
+  background-color: transparent !important;
+  letter-spacing: 1px !important;
+  color: var(--color-white) !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.hl-app .ghl-footer .ghl-button-bar .ghl-button.ghl-next-button span {
+  font-family: var(--footer-button-font-family) !important;
+  font-size: var(--footer-button-font-size) !important;
+  font-weight: var(--footer-button-font-weight) !important;
+  letter-spacing: 1px !important;
+  color: var(--footer-button-next-font-color) !important;
+}
+
+.hl-app .ghl-footer .ghl-button-bar .ghl-button.ghl-next-button span::after {
+  content: var(--footer-button-next) !important;
+}
+
+.hl-app .ghl-footer .ghl-button-bar .ghl-button.ghl-back-button span::after {
+  content: var(--footer-button-prev) !important;
+}
+
+.hl-app .ghl-footer .ghl-button-bar .ghl-button.ghl-back-button {
+  display: flex !important;
+}
+
+.hl-app
+  .ghl-footer
+  .ghl-button-bar
+  .ghl-button.ghl-next-button:hover
+  span::after {
+  color: var(--footer-button-next-hover-font-color) !important;
+}
+
+/* End Footer Button CSS  */
+
+/* Start Footer Reset CSS */
+.hl-app .ghl-footer,
+.hl-app .ghl-footer.ghl-footer-preview {
+  position: absolute !important;
+  bottom: 10px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: var(--footer-bg-color) !important;
+  box-shadow: none !important;
+  height: 100% !important;
+  max-height: 66px !important;
+  z-index: 9999 !important;
+}
+
+.hl-app .ghl-footer .ghl-progress-bar,
+.hl-app .ghl-footer.ghl-footer-preview .ghl-progress-bar {
+  display: none;
+}
+/* End Footer Reset CSS */
+
+/*Start Bottom Progress CSS */
+.hl-app #_builder-form .prev-btn {
+  position: absolute !important;
+  top: 25px !important;
+  left: 80px !important;
+  width: 30px !important;
+  height: 30px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: transparent !important;
+  cursor: pointer !important;
+}
+
+.hl-app #_builder-form {
+  position: relative !important;
+}
+
+.hl-app #_builder-form .percent-container {
+  position: absolute !important;
+  top: var(--progressbar-top) !important;
+  bottom: var(--progressbar-bottom) !important;
+  display: flex !important;
+  width: calc(100% - 32px) !important;
+  align-items: stretch !important;
+  justify-content: space-between !important;
+  padding-left: 0 !important;
+  list-style: none !important;
+  left: 50% !important;
+  min-height: 25px !important;
+  max-width: var(--progressbar-max-width) !important;
+  transform: translateX(-50%) !important;
+  border-radius: var(--all-border-radius) !important;
+  padding: 0px !important;
+
+  background-color: #f5f5f5 !important;
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 10%) !important;
+}
+
+.hl-app #_builder-form .percent-container .percent-preview {
+  height: auto !important;
+  background-color: var(--progressbar-dot-bg-color) !important;
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 40px 40px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  color: transparent !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 10 !important;
+  transition: var(--transition-all) !important;
+  border-radius: var(--all-border-radius) !important;
+}
+
+/* End Bottom Progress CSS*/
+
+/* For Mobile responsive */
+
+@media (max-width: 768px) {
+  .hl-app .ghl-question {
+    padding: 0 !important;
+  }
+  .hl-app #_builder-form .prev-btn {
+    left: 3px !important;
+  }
+
+  .hl-app #_builder-form .percent-container {
+    width: calc(100% - 60px) !important;
+  }
+}
+
+/* Start Thank you CSS */
+
+.hl-app #_builder-form > .row > div h3 {
+  font-size: 25px !important;
+  font-family: "Roboto", sans-serif !important;
+  color: #000 !important;
+  text-align: center !important;
+  margin-top: 50px !important;
+}
+
+.hl-app #_builder-form > .row + .ghl-footer {
+  display: none !important;
+}
+#_builder-form > .row + .percent-container {
+  display: none !important;
+}
+
+/* End Thank you CSS */
+
+/* Animation */
+/*.hl-app .ghl-page-rotateSlideOutNext {
+  display: none !important;
+}
+.hl-app .ghl-page-rotateSlideInNext {
+  -webkit-animation: rotateFadeInNext 2s ease both !important;
+  animation: rotateFadeInNext 2s ease both !important;
+}
+.hl-app .ghl-page-rotateSlideOutPrev {
+  display: none !important;
+}
+.hl-app .ghl-page-rotateSlideInPrev {
+  -webkit-animation: rotateFadeInPrev 2s ease-out !important;
+  animation: rotateFadeInPrev 2s ease-out !important;
+}
+
+@-webkit-keyframes rotateFadeInNext {
+  0%,
+  25% {
+    position: relative;
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes rotateFadeInNext {
+  0%,
+  25% {
+    position: relative;
+    opacity:  1;
+  }
+  75% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes rotateFadeInPrev {
+  0%,
+  25% {
+    position: relative;
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes rotateFadeInPrev {
+  0%,
+  25% {
+    position: relative;
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+*/

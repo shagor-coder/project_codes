@@ -92,3 +92,31 @@
   font-variant: small-caps;
   font-family: "Roboto", sans-serif;
 }
+
+/* === Main Dropdown Buttons Bg & Font Color & Font Family === */
+.hlmx-dropdown_main > p {
+  background-color: #33b194 !important;
+  color: #fff !important;
+  font-family: "Roboto", sans-serif !important;
+  font-variant: small-caps !important;
+}
+
+/* === Dropdown Items Buttons Bg & Font Color & Font Family === */
+.hlmx-dropdown_link {
+  background-color: #e1b40b !important;
+  color: #111 !important;
+  font-family: "Roboto", sans-serif !important;
+  font-variant: small-caps !important;
+}
+
+.hlmx-dropdown_link:hover {
+  background-color: #f6c618 !important;
+}
+
+/* === Dropdown Links Buttons Bg & Font Color & Font Family === */
+.hlmx-dropdown_item_text {
+  background-color: #33b194 !important;
+  color: #fff !important;
+  font-family: "Roboto", sans-serif !important;
+  font-variant: small-caps !important;
+}

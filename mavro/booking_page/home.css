@@ -18,12 +18,11 @@ body {
   align-items: center !important;
   justify-content: center !important;
   border: none !important;
-  border-radius: 5px !important;
-  border: none !important;
+  border-radius: 3px !important;
   outline: none !important;
-  padding: 15px 25px !important;
-  font-family: "Montserrat", sans-serif !important;
+  padding: 20px 45px !important;
   cursor: pointer !important;
+  box-shadow: 0 4px 4px 0px rgb(255 255 255 / 15%) !important;
 }
 
 .btn-element .main-heading-group {
@@ -47,6 +46,7 @@ body {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  font-size: 14px !important;
 }
 
 .btn-element.btn-element-icon .button-icon-end {
@@ -166,176 +166,106 @@ body {
   margin-right: auto !important;
 }
 
+.max-w-300 {
+  max-width: 300px !important;
+}
+
+.max-w-360 {
+  max-width: 360px !important;
+}
+
 .max-w-400 {
   max-width: 400px !important;
+}
+
+.max-w-420 {
+  max-width: 420px !important;
+}
+
+.max-w-450 {
+  max-width: 450px !important;
+}
+
+.max-w-440 {
+  max-width: 440px !important;
+}
+
+.max-w-470 {
+  max-width: 470px !important;
 }
 
 .max-w-500 {
   max-width: 500px !important;
 }
 
+.max-w-530 {
+  max-width: 530px !important;
+}
+
+.max-w-590 {
+  max-width: 590px !important;
+}
+
 .max-w-600 {
   max-width: 600px !important;
 }
 
-.max-w-700 {
-  max-width: 700px !important;
+.max-w-650 {
+  max-width: 650px !important;
 }
 
-.max-w-800 {
-  max-width: 800px !important;
-}
-
-.max-w-900 {
-  max-width: 900px !important;
+.max-w-950 {
+  max-width: 950px !important;
 }
 
 .max-w-1020 {
   max-width: 1020px !important;
 }
 
+.max-w-1040 {
+  max-width: 1040px !important;
+}
+
+.max-w-1050 {
+  max-width: 1050px !important;
+}
+
+.max-w-1080 {
+  max-width: 1080px !important;
+}
+
 .max-w-1100 {
   max-width: 1100px !important;
+}
+
+.max-w-1150 {
+  max-width: 1150px !important;
+}
+
+.max-w-1180 {
+  max-width: 1180px !important;
 }
 
 .max-w-1200 {
   max-width: 1200px !important;
 }
 
+.max-w-1240 {
+  max-width: 1240px !important;
+}
+
+.max-w-1290 {
+  max-width: 1290px !important;
+}
+
 /* Start Min Height */
 
 body .c-section > .inner {
-  max-width: 1240px !important;
+  max-width: 1440px !important;
   padding-left: 16px !important;
   padding-right: 16px !important;
   margin-left: auto !important;
   margin-right: auto !important;
-}
-
-/* ==== Start Hero Section ==== */
-
-.hero .c-nav-menu .nav-menu-wrapper > .nav-menu li {
-  height: auto !important;
-}
-
-#preview-container .hero {
-  padding-bottom: 0px !important;
-}
-
-#preview-container .hero .c-row:nth-child(2) {
-  padding-bottom: 0px !important;
-}
-/* ==== End Hero Section ==== */
-
-/* A Grip */
-.a-grip .feature-row .check-p {
-  background-image: url("https://storage.googleapis.com/msgsndr/TyAe1vO3PCuAbuCijYEf/media/64a08ef4e8a2e039a0c8d022.svg+xml") !important;
-  background-position: 10px center !important;
-  background-size: 24px !important;
-  background-repeat: no-repeat !important;
-}
-
-.a-grip .price-row .check-p {
-  background-image: url("https://storage.googleapis.com/msgsndr/TyAe1vO3PCuAbuCijYEf/media/64a08ef4e8a2e039a0c8d022.svg+xml") !important;
-  background-position: 0px 5px !important;
-  background-size: 18px !important;
-  background-repeat: no-repeat !important;
-}
-
-.a-grip .price-row .main-card .check-p {
-  background-image: url("https://storage.googleapis.com/msgsndr/TyAe1vO3PCuAbuCijYEf/media/64a094b87fa5d737f7dd39c9.svg+xml") !important;
-}
-
-#preview-container .a-grip .price-row .c-column {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-#preview-container .a-grip .price-row .c-column:not(:nth-child(2)) > .inner {
-  background-color: rgb(255, 255, 255) !important;
-  box-shadow: 0px 5px 18px 0px rgba(0, 0, 0, 0.08) !important;
-}
-
-#preview-container .a-grip .price-row .c-column:nth-child(2) {
-  transform: scale(1.05) !important;
-  position: relative !important;
-  z-index: 1 !important;
-}
-
-#preview-container .a-grip .price-row .c-column > .inner {
-  padding-left: 20px !important;
-  padding-right: 20px !important;
-}
-
-/* Dialer */
-
-.dialer .check-p {
-  background-image: url("https://storage.googleapis.com/msgsndr/TyAe1vO3PCuAbuCijYEf/media/64a08ef4e8a2e039a0c8d022.svg+xml") !important;
-  background-position: 0px 5px !important;
-  background-size: 18px !important;
-  background-repeat: no-repeat !important;
-}
-
-/* Testimonial */
-
-.testimonial .testimonial-row .c-column > .inner {
-  position: relative !important;
-}
-
-.testimonial .testimonial-row .c-column > .inner::before {
-  content: "" !important;
-  position: absolute !important;
-  bottom: -32px !important;
-  width: calc(100% - 50px) !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  height: 40px !important;
-  background-color: #f9f8f8 !important;
-  opacity: 0.87 !important;
-  z-index: -1 !important;
-}
-
-/* Footer */
-.footer .c-button {
-  flex: 1 0 45px !important;
-  max-width: 45px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.footer .c-button .media-link {
-  width: 40px !important;
-  height: 40px !important;
-  background-color: #fff !important;
-  border: 2px solid #000 !important;
-  border-radius: 50% !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 0 !important;
-  transition: opacity 0.2s ease-in-out !important;
-}
-
-.footer .c-button .media-link .main-heading-group {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.footer .c-button .media-link .main-heading-group * {
-  color: #000 !important;
-  font-size: 16px !important;
-  margin-right: 0 !important;
-}
-
-.footer .c-button .media-link .main-heading-button,
-.footer .c-button .media-link .button-icon-end {
-  display: none !important;
-}
-
-.footer .c-button .media-link:hover {
-  opacity: 0.75 !important;
 }
 
 @media (max-width: 768px) {
@@ -518,7 +448,15 @@ body .c-section > .inner {
     min-height: 55px !important;
   }
 }
+
 /* CSS FOR CALENDAR */
+
+body #appointment_widgets--revamp {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  overflow: hidden !important;
+}
+
 #appointment_widgets--revamp
   .appointment_widgets--revamp--booking
   .appointment_widgets--revamp--neo-calendar-logo {
@@ -529,16 +467,31 @@ body .c-section > .inner {
 #appointment_widgets--revamp .booking-info--duration svg path,
 #appointment_widgets--revamp .booking-info--datetime svg path,
 #appointment_widgets--revamp .booking-info--timezone svg path {
-  stroke: #daac36 !important;
+  stroke: #7dceff !important;
 }
 
-#appointment_widgets--revamp
+body
+  #appointment_widgets--revamp
   .appointment_widgets--revamp--booking
   .appointment_widgets--revamp--steps
   .widgets-date-block
   .vdpHeadCell {
   padding: 5px 8px !important;
-  background-color: #daac36 !important;
+  background-color: #7dceff !important;
+  border-radius: 3px !important;
+  color: #000 !important;
+  font-weight: 700 !important;
+}
+
+body
+  #appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-date-block
+  .vdpCell.selectable.selected
+  .vdpCellContent {
+  padding: 5px 8px !important;
+  background-color: #7dceff !important;
   border-radius: 3px !important;
   color: #000 !important;
   font-weight: 700 !important;
@@ -551,8 +504,30 @@ body .c-section > .inner {
   .widgets-time-slots
   .widgets-time-slot
   > span {
-  background-color: #daac368b !important;
+  background-color: #7dceff8b !important;
   color: #000 !important;
+}
+
+body
+  #appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-slot-block
+  .widgets-time-slots
+  .widgets-time-slot
+  > span:hover {
+  border: 2px solid #58a4d3 !important;
+}
+
+body
+  #appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-slot-block
+  .widgets-time-slots
+  .widgets-time-slot
+  > span {
+  border: 1px solid #58a4d3 !important;
 }
 
 #appointment_widgets--revamp
@@ -562,7 +537,7 @@ body .c-section > .inner {
   .widgets-time-slots
   .widgets-time-slot.actived
   > span {
-  background-color: #daac36 !important;
+  background-color: #7dceff !important;
 }
 
 #appointment_widgets--revamp
@@ -573,21 +548,54 @@ body .c-section > .inner {
   .widgets-time-slot.actived
   button {
   color: #000 !important;
+  font-weight: 700 !important;
+}
+
+body
+  #appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-slot-block
+  .widgets-time-slots
+  .widgets-time-slot.actived
+  button {
+  background-color: #7dceff !important;
+  border-color: #58a4d3 !important;
 }
 
 .calendarVdpComponent .vdpCellContent {
   border-radius: 4px !important;
 }
 
-@media (max-width: 768px) {
+#appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .widgets-action-buttons
+  > button {
+  background-color: #d60000 !important;
+  border-color: #d60000 !important;
+}
+
+body
   #appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-date-block
+  .vdpCell
+  .vdpCellContent {
+  color: #1c1f63 !important;
+}
+
+@media (max-width: 768px) {
+  body
+    #appointment_widgets--revamp
     .appointment_widgets--revamp--booking
     .appointment_widgets--revamp--neo-calendar-logo {
     width: 100px !important;
     height: unset !important;
   }
 
-  #appointment_widgets--revamp
+  body
+    #appointment_widgets--revamp
     .appointment_widgets--revamp--booking
     .appointment_widgets--revamp--steps
     .widgets-date-block
