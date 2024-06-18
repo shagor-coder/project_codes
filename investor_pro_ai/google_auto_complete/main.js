@@ -7,7 +7,7 @@ const main = () => {
   document.querySelector("head").appendChild(google_api_script);
 
   google_api_script.addEventListener("load", () => {
-    const adress_input = document.getElementById("address");
+    const adress_input = document.querySelector('[data-q="property_address"]');
     const options = {
       componentRestrictions: { country: "us" },
       fields: ["address_components", "geometry", "icon", "name"],
@@ -28,4 +28,6 @@ const main = () => {
   });
 };
 
-main();
+window.addEventListener("hydrationDone", () => {
+  main();
+});
