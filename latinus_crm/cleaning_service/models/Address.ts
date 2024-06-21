@@ -1,40 +1,45 @@
 import { DataTypes, ModelDefined, Optional } from "sequelize";
 import { sequelize } from "../db";
 
-interface UserAttributes {
+interface AddressAttributes {
   id?: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
+  address: string;
+  city: string;
+  state: string;
+  zip: string;
+  user_id?: string;
 }
 
-export const UserModel: ModelDefined<
-  UserAttributes,
-  Optional<UserAttributes, "id">
+export const AddressModel: ModelDefined<
+  AddressAttributes,
+  Optional<AddressAttributes, "id">
 > = sequelize.define(
-  "User",
+  "Address",
   {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    firstName: {
+    address: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    lastName: {
+    city: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
+    state: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    phone: {
+    zip: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    user_id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
     },
   },
   {
