@@ -5,28 +5,31 @@ form_container.innerHTML = `
   <div class="form_container">
         <div class="form_container_header">Please Choose Your Offer</div>
         <div class="form_container_body">
+          <form class="booster_shot_form">
+            <label for="business_name">Business Name</label>
+            <input type="text" id="business_name" class="business_name"  required/>
+
+            <label for="launch_date">Launch Date</label>
+            <input type="text" id="launch_date" class="launch_date" required/>
+
             <label for="offer_category">Offer Category:</label>
-            <select id="offer_category" class="offer_category">
+            <select id="offer_category" class="offer_category" required>
                 <option value="">Please choose an option</option>
             </select>
 
             <label for="offer_name">Offer Name:</label>
-            <select id="offer_name" class="offer_name">
+            <select id="offer_name" class="offer_name" required>
                 <option value="">Please choose an option</option>
             </select>
 
-            <label for="offer_bonus">Offer Bonus:</label>
-            <select id="offer_bonus" class="offer_bonus">
-                <option value="">Please choose an option</option>
-            </select>
+            <label for="offer_explaination">Explaination:</label>
+            <textarea id="offer_explaination" class="offer_explaination" disabled required></textarea>
 
-            <label for="offer_upsell">Offer Upsell:</label>
-            <select id="offer_upsell" class="offer_upsell">
-                <option value="">Please choose an option</option>
-            </select>
+            <label for="text_preview">Text Preview:</label>
+            <textarea id="text_preview" class="text_preview" content-editable="true" required></textarea>
 
-            <label for="offer_text">Offer Text:</label>
-            <textarea id="offer_text" class="offer_text" content-editable="true"></textarea>
+            <button id="submit" type="submit" class="form_button">Submit</button>
+          </form>
         </div>
         <div class="form_container_footer">
             <p class="form_container_text">Copyright © 2024 Forever Booked</p>
@@ -38,11 +41,48 @@ export const form_container_body = form_container.querySelector(
   ".form_container_body"
 );
 
-const offer_select = form_container_body.querySelector(".offer_category");
+const business_name = form_container.querySelector(".business_name");
+const launch_date = form_container.querySelector(".launch_date");
+const offer_category = form_container_body.querySelector(".offer_category");
 const offer_name = form_container_body.querySelector(".offer_name");
-const offer_bonus = form_container_body.querySelector(".offer_bonus");
-const offer_upsell = form_container_body.querySelector(".offer_upsell");
-const offer_text = form_container_body.querySelector(".offer_text");
+const offer_explaination = form_container_body.querySelector(
+  ".offer_explaination"
+);
+const text_preview = form_container_body.querySelector(".text_preview");
+const booster_shot_form =
+  form_container_body.querySelector(".booster_shot_form");
+
+booster_shot_form.addEventListener("submit", async (e) => {
+  try {
+    e.preventDefault();
+
+    const request_options = {
+      method: "POST",
+      redirect: "follow",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        business_name: business_name.value,
+        launch_date: launch_date.value,
+        offer_category: offer_category.value,
+        offer_name: offer_name.value,
+        offer_explaination: offer_explaination.value,
+        text_preview: text_preview.value,
+      }),
+    };
+
+    const request = await fetch(
+      "https://backend.leadconnectorhq.com/hooks/3ph7NZx2kybPjT6R8uJc/webhook-trigger/9a852a76-3172-4b61-98da-640a200a508e",
+      request_options
+    );
+    const response = await request.json();
+    if (response.status === 200)
+      window.open("{{ custom_values.booster_shot_redirect_url }}", "_self");
+  } catch (error) {
+    throw new Error(error);
+  }
+});
 
 const create_select_options = (data, c, index) => {
   const category_option = document.createElement("option");
@@ -54,13 +94,11 @@ const create_select_options = (data, c, index) => {
   return category_option;
 };
 
-const handle_offer_select = (e) => {
-  offer_bonus.innerHTML = `<option value="">Please choose an option</option>`;
-  offer_upsell.innerHTML = `<option value="">Please choose an option</option>`;
+const handle_offer_category = (e) => {
   offer_name.innerHTML = `<option value="">Please choose an option</option>`;
-  offer_text.innerHTML = "";
+  text_preview.innerHTML = "";
 
-  const selected_option = offer_select.options[e.target.selectedIndex];
+  const selected_option = offer_category.options[e.target.selectedIndex];
   const category_index = selected_option.dataset.index;
 
   if (!category_index) return;
@@ -78,50 +116,7 @@ const handle_offer_select = (e) => {
 };
 
 const handle_name_select = (e) => {
-  offer_bonus.innerHTML = `<option value="">Please choose an option</option>`;
-  offer_upsell.innerHTML = `<option value="">Please choose an option</option>`;
-  offer_text.innerHTML = ``;
-
-  const selected_option = offer_name.options[e.target.selectedIndex];
-  const category_index = selected_option.dataset.index;
-
-  if (!category_index) return;
-
-  const data = selected_option.form_data;
-
-  data.forEach((d, index) => {
-    const category_name_option = create_select_options(
-      data,
-      d.Recommended_Bonuses,
-      index
-    );
-    offer_bonus.append(category_name_option);
-  });
-};
-
-const handle_bonus_select = (e) => {
-  offer_upsell.innerHTML = `<option value="">Please choose an option</option>`;
-  offer_text.innerHTML = ``;
-
-  const selected_option = offer_name.options[e.target.selectedIndex];
-  const category_index = selected_option.dataset.index;
-
-  if (!category_index) return;
-
-  const data = selected_option.form_data;
-
-  data.forEach((d, index) => {
-    const category_name_option = create_select_options(
-      data,
-      d.Recommended_Upsell_Package,
-      index
-    );
-    offer_upsell.append(category_name_option);
-  });
-};
-
-const handle_upsell_select = (e) => {
-  offer_text.innerHTML = ``;
+  text_preview.innerHTML = ``;
 
   const selected_option = offer_name.options[e.target.selectedIndex];
   const category_index = selected_option.dataset.index;
@@ -129,19 +124,19 @@ const handle_upsell_select = (e) => {
   if (!category_index) return;
 
   const data = selected_option.form_data[Number(category_index)];
-  offer_text.textContent = data.Text_Preview;
+
+  offer_explaination.innerHTML = data.Explanation;
+  text_preview.innerHTML = data.Text_Preview;
 };
 
-offer_select.addEventListener("change", handle_offer_select);
+offer_category.addEventListener("change", handle_offer_category);
 offer_name.addEventListener("change", handle_name_select);
-offer_bonus.addEventListener("change", handle_bonus_select);
-offer_upsell.addEventListener("change", handle_upsell_select);
 
 export const create_form_html = (data = [], categories = []) => {
-  offer_select.innerHTML = `<option value="">Please choose an option</option>`;
+  offer_category.innerHTML = `<option value="">Please choose an option</option>`;
 
   categories.forEach((c, index) => {
     const category_option = create_select_options(data, c, index);
-    offer_select.append(category_option);
+    offer_category.append(category_option);
   });
 };

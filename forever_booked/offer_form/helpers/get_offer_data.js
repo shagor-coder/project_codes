@@ -1,7 +1,6 @@
 export const get_offer_data = async () => {
   try {
-    const sheet_url =
-      "https://script.google.com/macros/s/AKfycbxuI8W0DmS0cznJy5uhS2xHmBQ5iwWofRq1VkLDnGJeyRBIH33f3xWUPsYAsWjF5Q-xSw/exec?sheet=0";
+    const sheet_url = "{{ custom_values.sheets_url }}?sheet=0";
 
     const request_options = {
       redirect: "follow",
