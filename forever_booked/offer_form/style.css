@@ -30,8 +30,12 @@
   display: inline-flex;
 }
 
-.form_container_body label:not(:first-child) {
+.form_container_body input {
   margin-top: 16px;
+}
+
+.form_container_body select {
+  margin-bottom: 16px;
 }
 
 .form_container_body input[type="text"],

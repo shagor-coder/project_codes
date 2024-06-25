@@ -3,30 +3,27 @@ form_container.className = "form_container";
 
 form_container.innerHTML = `
   <div class="form_container">
-        <div class="form_container_header">Please Choose Your Offer</div>
         <div class="form_container_body">
           <form class="booster_shot_form">
-            <label for="business_name">Business Name</label>
-            <input type="text" id="business_name" class="business_name"  required/>
 
-            <label for="launch_date">Launch Date</label>
-            <input type="text" id="launch_date" class="launch_date" required/>
-
-            <label for="offer_category">Offer Category:</label>
+            <label style="margin-bottom: 16px;" for="offer_category">Browse Offers</label>
+            
             <select id="offer_category" class="offer_category" required>
-                <option value="">Please choose an option</option>
-            </select>
+                <option value="">1. Select Category</option>
+             </select>
+             <select id="offer_name" class="offer_name" required>
+                <option value="">2. Select Offer</option>
+             </select>
 
-            <label for="offer_name">Offer Name:</label>
-            <select id="offer_name" class="offer_name" required>
-                <option value="">Please choose an option</option>
-            </select>
-
-            <label for="offer_explaination">Explaination:</label>
+            <label for="offer_explaination">Offer Details</label>
             <textarea id="offer_explaination" class="offer_explaination" disabled required></textarea>
 
-            <label for="text_preview">Text Preview:</label>
+            <label for="text_preview">Text Message</label>
             <textarea id="text_preview" class="text_preview" content-editable="true" required></textarea>
+
+            <input type="text" id="business_name" class="business_name" placeholder="Input your business name here…"  required/>
+
+            <input type="text" id="launch_date" class="launch_date" placeholder="Input requested launch date here…" required/>
 
             <button id="submit" type="submit" class="form_button">Submit</button>
           </form>
@@ -77,8 +74,7 @@ booster_shot_form.addEventListener("submit", async (e) => {
       request_options
     );
     const response = await request.json();
-    if (response.status === 200)
-      window.open("{{ custom_values.booster_shot_redirect_url }}", "_self");
+    window.open("{{ custom_values.booster_shot_redirect_url }}", "_self");
   } catch (error) {
     throw new Error(error);
   }
@@ -95,8 +91,9 @@ const create_select_options = (data, c, index) => {
 };
 
 const handle_offer_category = (e) => {
-  offer_name.innerHTML = `<option value="">Please choose an option</option>`;
+  offer_name.innerHTML = `<option value="">Select Offer</option>`;
   text_preview.innerHTML = "";
+  offer_explaination.innerHTML = "";
 
   const selected_option = offer_category.options[e.target.selectedIndex];
   const category_index = selected_option.dataset.index;
@@ -117,6 +114,7 @@ const handle_offer_category = (e) => {
 
 const handle_name_select = (e) => {
   text_preview.innerHTML = ``;
+  offer_explaination.innerHTML = "";
 
   const selected_option = offer_name.options[e.target.selectedIndex];
   const category_index = selected_option.dataset.index;
@@ -133,7 +131,7 @@ offer_category.addEventListener("change", handle_offer_category);
 offer_name.addEventListener("change", handle_name_select);
 
 export const create_form_html = (data = [], categories = []) => {
-  offer_category.innerHTML = `<option value="">Please choose an option</option>`;
+  offer_category.innerHTML = `<option value="">Select Category</option>`;
 
   categories.forEach((c, index) => {
     const category_option = create_select_options(data, c, index);

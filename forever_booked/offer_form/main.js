@@ -10,12 +10,13 @@ style_tag.innerHTML = styles;
 document.head.appendChild(style_tag);
 
 const main = async () => {
-  const app = document.getElementById("app");
+  const app = document.getElementById("booster_shot");
   const data = await get_offer_data();
   const { offer_names, offer_categories_array } = format_offer_data(data);
 
   create_form_html(offer_names, offer_categories_array);
 
+  app.innerHTML = "";
   app.appendChild(form_container);
 };
 
