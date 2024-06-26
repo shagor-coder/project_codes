@@ -6,6 +6,7 @@
   width: 100%;
   padding: 20px;
   margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
 }
 
 .form_container_header {
@@ -28,6 +29,10 @@
   margin-bottom: 8px;
   color: #555;
   display: inline-flex;
+}
+
+.form_container label[for="text_preview"] {
+  margin-top: 16px;
 }
 
 .form_container_body input {
@@ -59,6 +64,22 @@
   border-color: #007bff;
   outline: none;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.form_container_body .resource_docs a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #007bff;
+  font-size: 16px;
+  font-weight: 400;
+  transition: all 0.3s ease-out;
+  margin-bottom: 16px;
+  display: inline-flex;
+  line-height: 1;
+}
+
+.form_container_body .resource_docs a:hover {
+  text-decoration: underline;
 }
 
 .form_container_body textarea {

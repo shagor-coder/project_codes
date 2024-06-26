@@ -8,15 +8,17 @@ form_container.innerHTML = `
 
             <label style="margin-bottom: 16px;" for="offer_category">Browse Offers</label>
             
-            <select id="offer_category" class="offer_category" required>
+            <select id="offer_category" class="offer_category">
                 <option value="">1. Select Category</option>
              </select>
-             <select id="offer_name" class="offer_name" required>
+             <select id="offer_name" class="offer_name">
                 <option value="">2. Select Offer</option>
              </select>
 
+            <p style="display:none;" class="resource_docs"></p> 
+
             <label for="offer_explaination">Offer Details</label>
-            <textarea id="offer_explaination" class="offer_explaination" disabled required></textarea>
+            <textarea id="offer_explaination" class="offer_explaination" disabled></textarea>
 
             <label for="text_preview">Text Message</label>
             <textarea id="text_preview" class="text_preview" content-editable="true" required></textarea>
@@ -42,6 +44,7 @@ const business_name = form_container.querySelector(".business_name");
 const launch_date = form_container.querySelector(".launch_date");
 const offer_category = form_container_body.querySelector(".offer_category");
 const offer_name = form_container_body.querySelector(".offer_name");
+const resource_docs = form_container_body.querySelector(".resource_docs");
 const offer_explaination = form_container_body.querySelector(
   ".offer_explaination"
 );
@@ -91,7 +94,9 @@ const create_select_options = (data, c, index) => {
 };
 
 const handle_offer_category = (e) => {
-  offer_name.innerHTML = `<option value="">Select Offer</option>`;
+  offer_name.innerHTML = `<option value="">2. Select Offer</option>`;
+  resource_docs.innerHTML = "";
+  resource_docs.style.display = "none";
   text_preview.innerHTML = "";
   offer_explaination.innerHTML = "";
 
@@ -113,6 +118,8 @@ const handle_offer_category = (e) => {
 };
 
 const handle_name_select = (e) => {
+  resource_docs.innerHTML = "";
+  resource_docs.style.display = "none";
   text_preview.innerHTML = ``;
   offer_explaination.innerHTML = "";
 
@@ -123,6 +130,12 @@ const handle_name_select = (e) => {
 
   const data = selected_option.form_data[Number(category_index)];
 
+  const doc_link = data.Resource_Document ? data.Resource_Document : null;
+
+  if (doc_link)
+    (resource_docs.innerHTML = `<a class="resource_link" href=${doc_link} target="_blank">Resource Document</a>`),
+      (resource_docs.style.display = "block");
+
   offer_explaination.innerHTML = data.Explanation;
   text_preview.innerHTML = data.Text_Preview;
 };
@@ -131,7 +144,7 @@ offer_category.addEventListener("change", handle_offer_category);
 offer_name.addEventListener("change", handle_name_select);
 
 export const create_form_html = (data = [], categories = []) => {
-  offer_category.innerHTML = `<option value="">Select Category</option>`;
+  offer_category.innerHTML = `<option value="">1. Select Category</option>`;
 
   categories.forEach((c, index) => {
     const category_option = create_select_options(data, c, index);
