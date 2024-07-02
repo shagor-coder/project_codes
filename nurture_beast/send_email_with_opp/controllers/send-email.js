@@ -26,10 +26,7 @@ const sendEmailToAdmin = async (request, response) => {
       return response.status(404).json({ message: "Opportunity not found!" });
 
     const recipients = [new Recipient(user.emailTo)];
-    const sentFrom = new Sender(
-      "contact@trial-zr6ke4nj879gon12.mlsender.net",
-      "Shagor Hossain"
-    );
+    const sentFrom = new Sender("contact@devshagor.site", "Shagor Hossain");
 
     const html = createEmailTemplate(opportunities);
 

@@ -1,17 +1,9 @@
-const fs = require("fs");
-const path = require("path");
-const exphbs = require("express-handlebars");
+const { create } = require("express-handlebars");
 const templateSource = require("./template-source");
 
-const createTemplate = (opportunities) => {
-  // const templatePath = path.join(
-  //   __dirname,
-  //   "../views",
-  //   `email-template.handlebars`
-  // );
-  // const templateSource = fs.readFileSync(templatePath, "utf-8");
-  const compiledTemplate = exphbs.create().handlebars.compile(templateSource);
+const compiledTemplate = create().handlebars.compile(templateSource);
 
+const createTemplate = (opportunities) => {
   const flattenedOpportunities = opportunities?.map((opp) => {
     const {
       contact_id,
@@ -32,9 +24,16 @@ const createTemplate = (opportunities) => {
     };
   });
 
-  const html = compiledTemplate(flattenedOpportunities, {
-    allowedProtoProperties: true,
-  });
+  const html = compiledTemplate(
+    { opportunities: flattenedOpportunities },
+    {
+      allowedProtoProperties: true,
+      helpers: {
+        slice: (array) => array.slice(0, 4),
+        length: (array) => array.length > 4,
+      },
+    }
+  );
   return html;
 };
 
