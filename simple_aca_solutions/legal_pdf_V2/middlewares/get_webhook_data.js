@@ -28,6 +28,7 @@ function get_webhook_data(request, response) {
     national_producer_number,
     agent_email,
     upload_field_key,
+    agent_termination_pdf,
   } = customData;
 
   if (
@@ -71,6 +72,7 @@ function get_webhook_data(request, response) {
     national_producer_number,
     agent_email,
     upload_field_key,
+    agent_termination_pdf,
     ...filtered_custom_fields,
   };
 

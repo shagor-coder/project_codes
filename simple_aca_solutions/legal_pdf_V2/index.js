@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
-app.use("/create", router);
+app.use(router);
 
 app.listen(PORT, HOST, () => {
   console.log(`Port running at http://localhost:${PORT}`);

@@ -3,26 +3,7 @@ const { default: axios } = require("axios");
 
 async function createPdfWithAgentSignature(request, response) {
   try {
-    const {
-      authorizationSignature,
-      ip,
-      full_name,
-      phone,
-      city,
-      state,
-      country,
-      name,
-      contact_id,
-      email,
-      location_id,
-      surveyId,
-      surveypage_url,
-      agent_name,
-      agent_phone_number,
-      national_producer_number,
-      agent_email,
-      upload_field_key,
-    } = request.formatted_data;
+    const { authorizationSignature, name, agent_name } = request.formatted_data;
 
     const imageResponse = await axios.get(authorizationSignature.url, {
       responseType: "arraybuffer",
@@ -63,12 +44,24 @@ async function createPdfWithAgentSignature(request, response) {
 
     const pdfDefinition = {
       content: [
-        `Date: ${new Date().toDateString()}`,
+        `Agent/Agency Termination Request`,
+        "\n",
+        "\n",
+        "\n",
 
-        `Name of Primary Writing Agent: ${agent_name}
-			Agent National Producer Number: ${national_producer_number}
-			Phone Number: ${agent_phone_number}
-			Email Address: ${agent_email}`,
+        `From ${name}`,
+        `${new Date().toDateString()}`,
+        "\n",
+        "\n",
+        `To ${agent_name}`,
+        "\n",
+        "\n",
+        `Hello ${agent_name}. Thank you for your previous assistance. I have choosen to proceed with another agent named ${agent_name}, for my marketplace Health Insurance application. Please ensure all my personal information is deleted and refrain from accessing my marketplace application.`,
+        "\n",
+        "\n",
+        `Best Regards`,
+        { image, width: 200, height: 120 },
+        `${new Date().toDateString()}`,
       ],
       defaultStyle: {
         font: "Helvetica",
@@ -85,4 +78,4 @@ async function createPdfWithAgentSignature(request, response) {
   }
 }
 
-module.exports = createPdfWithSignature;
+module.exports = createPdfWithAgentSignature;

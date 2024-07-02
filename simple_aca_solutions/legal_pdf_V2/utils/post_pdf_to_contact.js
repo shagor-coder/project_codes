@@ -11,6 +11,7 @@ async function post_pdf_to_contact(request, response) {
       surveyId,
       surveypage_url,
       upload_field_key,
+      agent_termination_pdf,
     } = request.formatted_data;
     const pdfDoc = request.pdfDoc;
 
@@ -43,10 +44,14 @@ async function post_pdf_to_contact(request, response) {
 
       try {
         fData.append("formData", JSON.stringify(fd));
-        fData.append(upload_field_key, pdfReadableStream, {
-          filename: `${full_name}.pdf`,
-          contentType: "application/pdf",
-        });
+        fData.append(
+          agent_termination_pdf ? agent_termination_pdf : upload_field_key,
+          pdfReadableStream,
+          {
+            filename: `${full_name}.pdf`,
+            contentType: "application/pdf",
+          }
+        );
 
         let config = {
           method: "post",
