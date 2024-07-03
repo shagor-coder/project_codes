@@ -27,6 +27,8 @@ function filter_empty_custom_fields(obj = {}) {
     "attributionSource",
     "contact",
     "triggerData",
+    "Agent Termination PDF",
+    "Final Attestation PDF",
   ];
 
   const object_keys = Object.keys(obj);

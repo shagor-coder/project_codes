@@ -23,6 +23,7 @@ async function createPdfWithSignature(request, response) {
       national_producer_number,
       agent_email,
       upload_field_key,
+      agent_termination_pdf,
       ...rest
     } = request.formatted_data;
 

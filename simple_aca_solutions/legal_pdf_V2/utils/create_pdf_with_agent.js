@@ -3,7 +3,7 @@ const { default: axios } = require("axios");
 
 async function createPdfWithAgentSignature(request, response) {
   try {
-    const { authorizationSignature, name, agent_name } = request.formatted_data;
+    const { authorizationSignature, full_name } = request.formatted_data;
 
     const imageResponse = await axios.get(authorizationSignature.url, {
       responseType: "arraybuffer",
@@ -44,23 +44,19 @@ async function createPdfWithAgentSignature(request, response) {
 
     const pdfDefinition = {
       content: [
-        `Agent/Agency Termination Request`,
+        `Revocation of Consent for ${full_name}`,
         "\n",
         "\n",
         "\n",
-
-        `From ${name}`,
-        `${new Date().toDateString()}`,
+        `${new Date().toDateString()} I ${full_name} am officially informing you or any agents connected with your company or agency that I no longer permit you in any matter to access my information in my Marketplace plan. This also includes any previously given consent you or your agency may have in assisting me in getting health insurance.  Please remove my information from your system.`,
         "\n",
         "\n",
-        `To ${agent_name}`,
+        `Thank You`,
         "\n",
         "\n",
-        `Hello ${agent_name}. Thank you for your previous assistance. I have choosen to proceed with another agent named ${agent_name}, for my marketplace Health Insurance application. Please ensure all my personal information is deleted and refrain from accessing my marketplace application.`,
-        "\n",
-        "\n",
-        `Best Regards`,
         { image, width: 200, height: 120 },
+        "\n",
+        `${full_name}`,
         `${new Date().toDateString()}`,
       ],
       defaultStyle: {
@@ -73,7 +69,6 @@ async function createPdfWithAgentSignature(request, response) {
     var pdfDoc = printer.createPdfKitDocument(pdfDefinition);
     request.pdfDoc = pdfDoc;
   } catch (error) {
-    console.log(error);
     throw new Error("Failed to create PDF!!");
   }
 }
