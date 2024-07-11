@@ -1,11 +1,12 @@
 import express, { Request, Response } from "express";
-import { create_user } from "../controller/User";
-import { create_address } from "../controller/Address";
+import { createUser, getUser } from "../controller/User";
+import { addAddress } from "../controller/Address";
 
 const Router = express.Router();
 
 Router.get("/");
-Router.post("/user", create_user);
-Router.post("/address", create_address);
+Router.get("/user", getUser);
+Router.post("/user", createUser);
+Router.post("/address", addAddress);
 
 export default Router;

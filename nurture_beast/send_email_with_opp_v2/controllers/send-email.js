@@ -1,4 +1,3 @@
-const { raw } = require("express");
 const createEmailTemplate = require("../helpers/create-template");
 const {
   mailerSend,
@@ -14,8 +13,8 @@ const sendEmailToAdmin = async (request, response) => {
     const locationId = request.query.locationId;
 
     const user = await UserModel.findOne({
-      locationId: locationId,
       raw: true,
+      where: { locationId: locationId },
     });
 
     if (!user) return response.status(404).json({ message: "User not found!" });
@@ -29,6 +28,7 @@ const sendEmailToAdmin = async (request, response) => {
     //   return response.status(404).json({ message: "Opportunity not found!" });
 
     const recipients = [new Recipient(user.emailTo)];
+    const cc = [new Recipient("contact@developershagor.com")];
     const sentFrom = new Sender(
       "contact@hotsheet.nurturebeast.com",
       "nurtureBeast"
@@ -40,6 +40,7 @@ const sendEmailToAdmin = async (request, response) => {
       .setFrom(sentFrom)
       .setTo(recipients)
       .setReplyTo(sentFrom)
+      .setCc(ccc)
       .setSubject("nurtureBeast Hot Sheet")
       .setHtml(html);
 
@@ -49,6 +50,7 @@ const sendEmailToAdmin = async (request, response) => {
       message: "Email sent successfully!",
     });
   } catch (error) {
+    console.log(error);
     response.status(500).json({ message: error.message });
   }
 };

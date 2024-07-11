@@ -3,10 +3,10 @@ import { sequelize } from "../db";
 
 interface ServicesAttributes {
   id?: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
+  cleanType: string;
+  additionalRoom: string;
+  additionalBathroom: string;
+  userId?: string;
 }
 
 export const ServicesModel: ModelDefined<
@@ -33,14 +33,16 @@ export const ServicesModel: ModelDefined<
       ],
     },
     additionalRoom: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: 0,
     },
     additionalBathroom: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: 0,
+    },
+    userId: {
+      type: DataTypes.UUID,
+      allowNull: false,
     },
   },
   {

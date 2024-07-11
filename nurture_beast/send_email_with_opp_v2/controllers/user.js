@@ -17,7 +17,7 @@ const createUser = async (request, response) => {
       data: savedUser,
     });
   } catch (error) {
-    response.status(500).json({ message: "Something went wrong!" });
+    response.status(500).json({ message: error.message });
   }
 };
 
