@@ -1,5 +1,4 @@
-const templateSource = `
-<html
+const templateSource = `<html
   lang="und"
   dir="auto"
   xmlns="http://www.w3.org/1999/xhtml"
@@ -42,6 +41,10 @@ const templateSource = `
         margin: 5px 0;
       }
       h2 {
+        display: block;
+        margin: 0 0 7px 0 !important;
+      }
+      h4 {
         display: block;
         margin: 0 0 7px 0 !important;
       }
@@ -444,8 +447,7 @@ const templateSource = `
                                         text-align: left;
                                       "
                                     >
-                                      nurtureBeast Hot Sheet:
-                                      {{right_now.year}}
+                                      nurtureBeast Hot Sheet
                                     </h2>
                                     <p>
                                       Connect with these people today to improve
@@ -470,7 +472,7 @@ const templateSource = `
       </div>
 
       <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-
+      {{#if (length birthday)}}
       <div
         style="
           background: #ffffff;
@@ -588,7 +590,7 @@ const templateSource = `
           </tbody>
         </table>
       </div>
-
+      {{/if}}
       <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
       <div
         style="
@@ -863,7 +865,7 @@ const templateSource = `
                                           valign="middle"
                                         >
                                           <a
-                                            href="https://app.gohighlevel.com/v2/location/{{locationId}}/contacts/detail/{{contact_id}}"
+                                            href="https://crm.nurturebeast.com/v2/location/{{locationId}}/contacts/detail/{{contact_id}}"
                                             style="
                                               display: inline-block;
                                               background: #001f3f;
@@ -975,7 +977,7 @@ const templateSource = `
                                 valign="middle"
                               >
                                 <a
-                                  href="https://app.gohighlevel.com/v2/location/{{getLocationId birthday}}/contacts/smart_list/All"
+                                  href="https://crm.nurturebeast.com/v2/location/{{getLocationId birthday}}/contacts/smart_list/All"
                                   style="
                                     display: inline-block;
                                     background: #001f3f;
@@ -1011,7 +1013,7 @@ const templateSource = `
       {{/if}}
 
       <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
-
+      {{#if (length touchbase)}}
       <div
         style="
           background: #ffffff;
@@ -1129,7 +1131,7 @@ const templateSource = `
           </tbody>
         </table>
       </div>
-
+      {{/if}}
       <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
       <div
         style="
@@ -1404,7 +1406,7 @@ const templateSource = `
                                           valign="middle"
                                         >
                                           <a
-                                            href="https://app.gohighlevel.com/v2/location/{{locationId}}/contacts/detail/{{contact_id}}"
+                                            href="https://crm.nurturebeast.com/v2/location/{{locationId}}/contacts/detail/{{contact_id}}"
                                             style="
                                               display: inline-block;
                                               background: #001f3f;
@@ -1518,7 +1520,550 @@ const templateSource = `
                                 valign="middle"
                               >
                                 <a
-                                  href="https://app.gohighlevel.com/v2/location/{{getLocationId birthday}}/contacts/smart_list/All"
+                                  href="https://crm.nurturebeast.com/v2/location/{{getLocationId touchbase}}/contacts/smart_list/All"
+                                  style="
+                                    display: inline-block;
+                                    background: #001f3f;
+                                    color: #ffffff;
+                                    font-family: arial, helvetica, sans-serif;
+                                    font-size: 14px;
+                                    font-weight: bold;
+                                    line-height: 1.25;
+                                    margin: 0;
+                                    text-decoration: none;
+                                    text-transform: none;
+                                    padding: 9px 20px;
+                                    mso-padding-alt: 0px;
+                                    border-radius: 5px;
+                                    max-width: 220px;
+                                    margin: 0 auto;
+                                  "
+                                  >See All Opportunities</a
+                                >
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      {{/if}}
+
+      <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+      {{#if (length touchbase)}}
+      <div
+        style="
+          background: #ffffff;
+          background-color: #ffffff;
+          margin: 0px auto;
+          max-width: 600px;
+        "
+      >
+        <table
+          align="center"
+          border="0"
+          cellpadding="0"
+          cellspacing="0"
+          role="presentation"
+          style="background: #ffffff; background-color: #ffffff; width: 100%"
+        >
+          <tbody>
+            <tr>
+              <td
+                style="
+                  direction: ltr;
+                  font-size: 0px;
+                  padding: 20px 0;
+                  padding-bottom: 10px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 10px;
+                  text-align: center;
+                "
+              >
+                <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:560px;" ><![endif]-->
+
+                <div
+                  class="mj-column-per-300 mj-outlook-group-fix"
+                  style="
+                    font-size: 0px;
+                    text-align: left;
+                    direction: ltr;
+                    display: inline-block;
+                    vertical-align: top;
+                    width: 100%;
+                  "
+                >
+                  <table
+                    border="0"
+                    cellpadding="0"
+                    cellspacing="0"
+                    role="presentation"
+                    width="100%"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            vertical-align: top;
+                            padding-top: 0px;
+                            padding-right: 0px;
+                            padding-bottom: 0px;
+                            padding-left: 0px;
+                          "
+                        >
+                          <table
+                            border="0"
+                            cellpadding="0"
+                            cellspacing="0"
+                            role="presentation"
+                            style=""
+                            width="100%"
+                          >
+                            <tbody>
+                              <tr>
+                                <td
+                                  align="left"
+                                  style="
+                                    font-size: 0px;
+                                    padding: 10px 25px;
+                                    padding-top: 12px;
+                                    padding-right: 24px;
+                                    padding-bottom: 12px;
+                                    padding-left: 24px;
+                                    word-break: break-word;
+                                  "
+                                >
+                                  <div
+                                    style="
+                                      font-family: arial, helvetica, sans-serif;
+                                      font-size: 14px;
+                                      line-height: 1.25;
+                                      text-align: left;
+                                      color: #000000;
+                                    "
+                                  >
+                                    <h4
+                                      style="
+                                        line-height: 1.15;
+                                        text-align: left;
+                                      "
+                                    >
+                                      New Leads
+                                    </h4>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!--[if mso | IE]></td></tr></table><![endif]-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      {{/if}}
+      <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" bgcolor="#ffffff" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+      <div
+        style="
+          background: #ffffff;
+          background-color: #ffffff;
+          margin: 0px auto;
+          max-width: 600px;
+        "
+      >
+        <table
+          align="center"
+          border="0"
+          cellpadding="0"
+          cellspacing="0"
+          role="presentation"
+          style="background: #ffffff; background-color: #ffffff; width: 100%"
+        >
+          <tbody>
+            {{#each (slice newlead)}}
+            <tr>
+              <td
+                style="
+                  direction: ltr;
+                  font-size: 0px;
+                  padding: 20px 0;
+                  padding-bottom: 10px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 10px;
+                  text-align: center;
+                "
+              >
+                <!-- Column 1: Image -->
+                <div
+                  class="mj-column-per-20 mj-outlook-group-fix"
+                  style="
+                    font-size: 0px;
+                    text-align: left;
+                    direction: ltr;
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 100%;
+                  "
+                >
+                  <table
+                    border="0"
+                    cellpadding="0"
+                    cellspacing="0"
+                    role="presentation"
+                    width="100%"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          align="center"
+                          style="
+                            font-size: 0px;
+                            padding: 10px 25px;
+                            padding-top: 10px;
+                            padding-right: 20px;
+                            padding-bottom: 10px;
+                            padding-left: 20px;
+                            word-break: break-word;
+                          "
+                        >
+                          <table
+                            border="0"
+                            cellpadding="0"
+                            cellspacing="0"
+                            role="presentation"
+                            style="
+                              border-collapse: collapse;
+                              border-spacing: 0px;
+                            "
+                          >
+                            <tbody>
+                              <tr>
+                                <td style="width: 80px">
+                                  <img
+                                    alt=""
+                                    src="https://ci3.googleusercontent.com/meips/ADKq_NZwif-QmJIPI5W80sUM5dAl7S0JjrFqtbSFTXOI_CWvtRJh_gEu9kymTJoI9SgaOywcnmHALRU6jy7EzTXNJhktMRJpCVzD4UDpyOaXJ8lvOWliRXAdh9oPzQZ0cBIh9rKukOYlVXvgYKRj_eA712LPcOyC=s0-d-e1-ft#https://storage.googleapis.com/msgsndr/XuqRXK2aMJFTIGJOg9f6/media/6655f04a4215bcc7a622975e.png"
+                                    style="
+                                      border: 0;
+                                      display: block;
+                                      outline: none;
+                                      text-decoration: none;
+                                      height: auto;
+                                      width: 100%;
+                                      font-size: 13px;
+                                    "
+                                    width="80"
+                                    height="auto"
+                                    class="CToWUd"
+                                    data-bit="iit"
+                                  />
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- Column 2: Contact Info -->
+                <div
+                  class="mj-column-per-50 mj-outlook-group-fix"
+                  style="
+                    font-size: 0px;
+                    text-align: left;
+                    direction: ltr;
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 100%;
+                  "
+                >
+                  <table
+                    border="0"
+                    cellpadding="0"
+                    cellspacing="0"
+                    role="presentation"
+                    width="100%"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            vertical-align: top;
+                            padding-top: 0px;
+                            padding-right: 0px;
+                            padding-bottom: 0px;
+                            padding-left: 0px;
+                          "
+                        >
+                          <table
+                            border="0"
+                            cellpadding="0"
+                            cellspacing="0"
+                            role="presentation"
+                            style=""
+                            width="100%"
+                          >
+                            <tbody>
+                              <tr>
+                                <td
+                                  align="left"
+                                  style="
+                                    font-size: 0px;
+                                    padding: 10px 10px;
+                                    padding-top: 0px;
+                                    padding-right: 24px;
+                                    padding-bottom: 0px;
+                                    padding-left: 24px;
+                                    word-break: break-word;
+                                  "
+                                >
+                                  <div
+                                    style="
+                                      font-family: arial, helvetica, sans-serif;
+                                      font-size: 14px;
+                                      line-height: 1.25;
+                                      text-align: left;
+                                      color: #000000;
+                                    "
+                                  >
+                                    <h2
+                                      style="
+                                        line-height: 1.15;
+                                        text-align: left;
+                                        font-size: 16px;
+                                        font-weight: 500;
+                                      "
+                                    >
+                                      {{first_name}} {{last_name}}
+                                    </h2>
+                                    <p
+                                      style="line-height: 1.25; font-size: 13px"
+                                    >
+                                      Event: {{opportunityType}}
+                                    </p>
+                                    <p
+                                      style="line-height: 1.25; font-size: 13px"
+                                    >
+                                      Email: {{email}}
+                                    </p>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- Column 3: View Contact Button -->
+                <div
+                  class="mj-column-per-30 mj-outlook-group-fix"
+                  style="
+                    font-size: 0px;
+                    text-align: left;
+                    direction: ltr;
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 100%;
+                  "
+                >
+                  <table
+                    border="0"
+                    cellpadding="0"
+                    cellspacing="0"
+                    role="presentation"
+                    width="100%"
+                  >
+                    <tbody>
+                      <tr>
+                        <td
+                          style="
+                            vertical-align: top;
+                            padding-top: 0px;
+                            padding-right: 0px;
+                            padding-bottom: 0px;
+                            padding-left: 0px;
+                          "
+                        >
+                          <table
+                            border="0"
+                            cellpadding="0"
+                            cellspacing="0"
+                            role="presentation"
+                            style=""
+                            width="100%"
+                          >
+                            <tbody>
+                              <tr>
+                                <td
+                                  align="right"
+                                  class="mj-small-device-button"
+                                  style="
+                                    font-size: 0px;
+                                    padding: 10px 25px;
+                                    padding-top: 10px;
+                                    padding-right: 24px;
+                                    padding-bottom: 10px;
+                                    padding-left: 24px;
+                                    word-break: break-word;
+                                  "
+                                >
+                                  <table
+                                    border="0"
+                                    cellpadding="0"
+                                    cellspacing="0"
+                                    role="presentation"
+                                    style="
+                                      border-collapse: separate;
+                                      line-height: 100%;
+                                    "
+                                  >
+                                    <tbody>
+                                      <tr>
+                                        <td
+                                          align="center"
+                                          bgcolor="#001f3f"
+                                          role="presentation"
+                                          style="
+                                            border: 0px solid #001f3f;
+                                            border-radius: 10px;
+                                            cursor: auto;
+                                            mso-padding-alt: 10px 25px;
+                                            background: #001f3f;
+                                          "
+                                          valign="middle"
+                                        >
+                                          <a
+                                            href="https://crm.nurturebeast.com/v2/location/{{locationId}}/contacts/detail/{{contact_id}}"
+                                            style="
+                                              display: inline-block;
+                                              background: #001f3f;
+                                              color: #ffffff;
+                                              font-family: arial, helvetica,
+                                                sans-serif;
+                                              font-size: 14px;
+                                              font-weight: bold;
+                                              line-height: 1.25;
+                                              margin: 0;
+                                              text-decoration: none;
+                                              text-transform: none;
+                                              padding: 7px 15px;
+                                              mso-padding-alt: 0px;
+                                              border-radius: 5px;
+                                            "
+                                            >View Contact</a
+                                          >
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      {{#if (length newlead)}}
+      <div
+        style="
+          background: #ffffff;
+          background-color: #ffffff;
+          margin: 0px auto;
+          max-width: 600px;
+          mso-padding-alt: 0px;
+          padding-bottom: 30px;
+        "
+      >
+        <table
+          align="center"
+          border="0"
+          cellpadding="0"
+          cellspacing="0"
+          role="presentation"
+          style="background: #ffffff; background-color: #ffffff; width: 100%"
+        >
+          <tbody>
+            <tr>
+              <td
+                style="
+                  vertical-align: top;
+                  padding-top: 0px;
+                  padding-right: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                "
+              >
+                <table
+                  border="0"
+                  cellpadding="0"
+                  cellspacing="0"
+                  role="presentation"
+                  style=""
+                  width="100%"
+                >
+                  <tbody>
+                    <tr>
+                      <td
+                        align="center"
+                        class="mj-small-device-button"
+                        style="
+                          font-size: 0px;
+                          padding: 10px 25px;
+                          padding-top: 10px;
+                          padding-right: 24px;
+                          padding-bottom: 10px;
+                          padding-left: 24px;
+                          word-break: break-word;
+                        "
+                      >
+                        <table
+                          border="0"
+                          cellpadding="0"
+                          cellspacing="0"
+                          role="presentation"
+                          style="border-collapse: separate; line-height: 100%"
+                        >
+                          <tbody>
+                            <tr>
+                              <td
+                                align="center"
+                                bgcolor="#001f3f"
+                                role="presentation"
+                                style="
+                                  border: 0px solid #001f3f;
+                                  border-radius: 10px;
+                                  cursor: auto;
+                                  mso-padding-alt: 10px 25px;
+                                  background: #001f3f;
+                                "
+                                valign="middle"
+                              >
+                                <a
+                                  href="https://crm.nurturebeast.com/v2/location/{{getLocationId newlead}}/contacts/smart_list/All"
                                   style="
                                     display: inline-block;
                                     background: #001f3f;
@@ -1713,6 +2258,5 @@ const templateSource = `
     </div>
   </body>
 </html>
-
 `;
 module.exports = templateSource;

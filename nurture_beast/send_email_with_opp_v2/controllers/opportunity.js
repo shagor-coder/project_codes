@@ -27,8 +27,7 @@ const addOpportunity = async (request, response) => {
       data: savedOpportunity,
     });
   } catch (error) {
-    console.log(error);
-    response.status(500).json({ message: "Something went wrong!" });
+    response.status(500).json({ message: error.message });
   }
 };
 
@@ -36,15 +35,15 @@ const clearOpportunities = async (request, response) => {
   try {
     const locationId = request.query.locationId;
 
-    await OpportunityModel.find({
-      locationId: locationId,
-    }).deleteMany();
+    await OpportunityModel.destroy({
+      where: { locationId: locationId },
+    });
 
     response.status(200).json({
       message: "Opportunity cleared successfully",
     });
   } catch (error) {
-    response.status(500).json({ message: "Something went wrong!" });
+    response.status(500).json({ message: error.message });
   }
 };
 

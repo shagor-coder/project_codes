@@ -1,33 +1,39 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, UUIDV4 } = require("sequelize");
 const sequelize = require("../db/db_config");
 
 const OpportunitySchema = sequelize.define(
   "Opportunities",
   {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: UUIDV4,
+      primaryKey: true,
+    },
     contact_id: {
       type: DataTypes.STRING,
-      required: true,
+      allowNull: false,
+      unique: true,
     },
     first_name: {
       type: DataTypes.STRING,
-      required: true,
+      allowNull: false,
     },
     last_name: {
       type: DataTypes.STRING,
-      required: true,
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
-      required: true,
-      unique: true,
+      allowNull: false,
     },
     opportunityType: {
       type: DataTypes.STRING,
-      required: true,
+      allowNull: false,
     },
     locationId: {
       type: DataTypes.STRING,
-      required: true,
+      allowNull: false,
+      unique: false,
     },
   },
   { timestamps: true }

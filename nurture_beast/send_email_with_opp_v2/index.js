@@ -19,8 +19,7 @@ const connectToDB = async () => {
     await sequelize.sync({ alter: true });
     console.log("DB Authentication successful!!");
   } catch (error) {
-    console.log(error);
-    throw new Error(error.message);
+    throw new Error(error);
   }
 };
 

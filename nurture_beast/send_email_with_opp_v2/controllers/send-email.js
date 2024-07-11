@@ -1,3 +1,4 @@
+const { raw } = require("express");
 const createEmailTemplate = require("../helpers/create-template");
 const {
   mailerSend,
@@ -14,12 +15,14 @@ const sendEmailToAdmin = async (request, response) => {
 
     const user = await UserModel.findOne({
       locationId: locationId,
+      raw: true,
     });
 
     if (!user) return response.status(404).json({ message: "User not found!" });
 
-    const opportunities = await OpportunityModel.find({
-      locationId: locationId,
+    const opportunities = await OpportunityModel.findAll({
+      raw: true,
+      where: { locationId: locationId },
     });
 
     // if (!opportunities.length)
@@ -46,8 +49,7 @@ const sendEmailToAdmin = async (request, response) => {
       message: "Email sent successfully!",
     });
   } catch (error) {
-    response.status(500).json({ message: "Something went wrong!!" });
-    console.log(error);
+    response.status(500).json({ message: error.message });
   }
 };
 

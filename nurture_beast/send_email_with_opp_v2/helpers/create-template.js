@@ -9,6 +9,9 @@ const createTemplate = (opportunities = []) => {
   const touchbases =
     opportunities.filter((opp) => opp.opportunityType === "Touch Base") || [];
 
+  const newleads =
+    opportunities.filter((opp) => opp.opportunityType === "New Lead") || [];
+
   const flattenedBirthdayOpportunities = birthdays?.map((opp) => {
     const {
       contact_id,
@@ -49,10 +52,31 @@ const createTemplate = (opportunities = []) => {
     };
   });
 
+  const flattenedNewleadOpportunities = newleads?.map((opp) => {
+    const {
+      contact_id,
+      first_name,
+      last_name,
+      email,
+      opportunityType,
+      locationId,
+    } = opp;
+
+    return {
+      contact_id,
+      first_name,
+      last_name,
+      email,
+      opportunityType,
+      locationId,
+    };
+  });
+
   const html = compiledTemplate(
     {
       birthday: flattenedBirthdayOpportunities,
       touchbase: flattenedTouchbaseOpportunities,
+      newlead: flattenedNewleadOpportunities,
     },
     {
       allowedProtoProperties: true,
