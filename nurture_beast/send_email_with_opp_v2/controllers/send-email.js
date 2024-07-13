@@ -40,7 +40,7 @@ const sendEmailToAdmin = async (request, response) => {
       .setFrom(sentFrom)
       .setTo(recipients)
       .setReplyTo(sentFrom)
-      .setCc(ccc)
+      .setCc(cc)
       .setSubject("nurtureBeast Hot Sheet")
       .setHtml(html);
 

@@ -23,6 +23,15 @@ export const addAddress = async (request: Request, response: Response) => {
       return response.status(404).json({ message: "User not found!" });
     }
 
+    const addressPresent = await AddressModel.findOne({
+      raw: true,
+      where: { userId: user.id },
+    });
+
+    if (addressPresent) {
+      return response.status(401).json({ message: "Address already added!!" });
+    }
+
     const newAddress = await AddressModel.create({
       address: address,
       city: city,

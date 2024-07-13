@@ -3,9 +3,9 @@ import { BookingModel } from "./Bookings";
 import { ServicesModel } from "./Services";
 import { UserModel } from "./User";
 
-UserModel.hasOne(ServicesModel, { foreignKey: "userId", as: "service" });
 UserModel.hasOne(AddressModel, { foreignKey: "userId", as: "address" });
-UserModel.hasOne(BookingModel, { foreignKey: "userId", as: "booking" });
+UserModel.hasMany(ServicesModel, { foreignKey: "userId", as: "services" });
+UserModel.hasMany(BookingModel, { foreignKey: "userId", as: "bookings" });
 
 ServicesModel.belongsTo(UserModel, { foreignKey: "userId", as: "user" });
 AddressModel.belongsTo(UserModel, { foreignKey: "userId", as: "user" });

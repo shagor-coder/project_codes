@@ -13,7 +13,7 @@ export const ServicesModel: ModelDefined<
   ServicesAttributes,
   Optional<ServicesAttributes, "id">
 > = sequelize.define(
-  "Services",
+  "Service",
   {
     id: {
       type: DataTypes.UUID,
@@ -21,7 +21,7 @@ export const ServicesModel: ModelDefined<
       primaryKey: true,
     },
     cleanType: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM,
       allowNull: false,
       values: [
         "Regular Clean",

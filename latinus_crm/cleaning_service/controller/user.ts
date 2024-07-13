@@ -1,5 +1,10 @@
 import { Request, Response } from "express";
-import { AddressModel, UserModel } from "../models";
+import {
+  AddressModel,
+  BookingModel,
+  ServicesModel,
+  UserModel,
+} from "../models";
 
 export const createUser = async (request: Request, response: Response) => {
   const { first_name, last_name, phone, email } = request.body;
@@ -27,7 +32,7 @@ export const getUser = async (request: Request, response: Response) => {
 
   try {
     const user = await UserModel.findOne({
-      raw: true,
+      nest: true,
       where: { email: email as string },
       include: [
         {
@@ -35,12 +40,42 @@ export const getUser = async (request: Request, response: Response) => {
           as: "address",
           attributes: ["address", "city", "state", "zip"],
         },
+        {
+          model: ServicesModel,
+          as: "services",
+          attributes: ["cleanType", "additionalRoom", "additionalBathroom"],
+        },
+        {
+          model: BookingModel,
+          as: "bookings",
+          attributes: ["bookedTime"],
+        },
       ],
     });
 
     if (!user) {
       return response.status(404).json({ message: "No user found!" });
     }
+    response.status(200).json({ message: "Success!", data: user.toJSON() });
+  } catch (error: any) {
+    response.status(500).json({ error: error?.message as string });
+  }
+};
+
+export const deleteUser = async (request: Request, response: Response) => {
+  const email = request.query.email;
+  try {
+    const user = await UserModel.findOne({
+      raw: true,
+      where: { email: email as string },
+    });
+
+    await user?.destroy();
+
+    if (!user) {
+      return response.status(404).json({ message: "No user found!" });
+    }
+
     response.status(200).json({ message: "Success!", data: user });
   } catch (error: any) {
     response.status(500).json({ error: error?.message as string });

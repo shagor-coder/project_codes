@@ -1,7 +1,10 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
-import Router from "./router";
 import { sequelize } from "./db";
+import { UserRouter } from "./router/User";
+import { AddressRouter } from "./router/Address";
+import { ServiceRouter } from "./router/Service";
+import { BookingRouter } from "./router/Booking";
 
 dotenv.config();
 
@@ -11,7 +14,10 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(Router);
+app.use(UserRouter);
+app.use(AddressRouter);
+app.use(ServiceRouter);
+app.use(BookingRouter);
 
 const connect_with_db = async () => {
   try {
