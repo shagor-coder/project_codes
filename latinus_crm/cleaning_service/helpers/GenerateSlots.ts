@@ -1,3 +1,5 @@
+import moment from "moment-timezone";
+
 // Define the working hours
 export const WORKING_HOURS_START = 9; // 9 AM
 export const WORKING_HOURS_END = 17; // 5 PM
@@ -6,7 +8,7 @@ export const WORKING_HOURS_END = 17; // 5 PM
 export const generateSlots = () => {
   const slots = [];
   for (let hour = WORKING_HOURS_START; hour < WORKING_HOURS_END; hour++) {
-    slots.push(`${hour}:00 - ${hour + 1}:00`);
+    slots.push(hour);
   }
   return slots;
 };
@@ -15,10 +17,9 @@ export const generateSlots = () => {
 export const getFreeSlotsFromBookings = (bookings: any[]) => {
   const allSlots = generateSlots();
   const bookedHours = bookings.map((booking) =>
-    new Date(booking.bookedTime).getHours()
+    moment(booking.bookedTime).hours()
   );
-  const freeSlots = allSlots.filter(
-    (slot, index) => !bookedHours.includes(WORKING_HOURS_START + index)
-  );
+
+  const freeSlots = allSlots.filter((slot) => !bookedHours.includes(slot));
   return freeSlots;
 };

@@ -6,12 +6,14 @@ import {
   WORKING_HOURS_END,
   WORKING_HOURS_START,
 } from "../helpers/GenerateSlots";
-
+import moment from "moment-timezone";
 interface bookingAttributes {
   id?: string;
   bookedTime: string;
   userId?: string;
 }
+
+const TIME_ZONE = "Asia/Dhaka";
 
 export const addbooking = async (request: Request, response: Response) => {
   const { bookedTime, email } = request.body;
@@ -35,7 +37,10 @@ export const addbooking = async (request: Request, response: Response) => {
     // Ensure the booked time is within working hours
     const bookedHour = bookedDateTime.getHours();
 
-    if (bookedHour < WORKING_HOURS_START || bookedHour >= WORKING_HOURS_END) {
+    if (
+      bookedHour < Number(WORKING_HOURS_START) ||
+      bookedHour >= Number(WORKING_HOURS_END)
+    ) {
       return response
         .status(400)
         .json({ message: "You can only book within working hours!" });
@@ -71,15 +76,19 @@ export const addbooking = async (request: Request, response: Response) => {
 export const getFreeSlots = async (request: Request, response: Response) => {
   try {
     const { date } = request.query;
+    // Set your desired time zone
+    const startDate = moment
+      .tz(`${date}T0${WORKING_HOURS_START}:00:00`, TIME_ZONE)
+      .toISOString();
+    const endDate = moment
+      .tz(`${date}T${WORKING_HOURS_END}:00:00`, TIME_ZONE)
+      .toISOString();
 
     // Fetch all existing bookings for the specified date
     const existingBookings = await BookingModel.findAll({
       where: {
         bookedTime: {
-          [Op.between]: [
-            new Date(`${date}T${WORKING_HOURS_START}:00:00`),
-            new Date(`${date}T${WORKING_HOURS_END}:00:00`),
-          ],
+          [Op.between]: [startDate, endDate],
         },
       },
     });

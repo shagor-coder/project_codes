@@ -2,22 +2,38 @@
 import React from "react";
 
 const PersonalInfo = ({ nextStep, handleChange, values }) => {
-  const { name, email } = values;
+  const { firstName, lastName, email, phone } = values;
 
   return (
     <div>
       <h2>Step 1: Personal Information</h2>
       <label>
-        Name:
-        <input type="text" value={name} onChange={handleChange("name")} />
+        First Name:
+        <input
+          type="text"
+          value={firstName}
+          onChange={handleChange("firstName")}
+        />
+      </label>
+      <label>
+        First Name:
+        <input
+          type="text"
+          value={lastName}
+          onChange={handleChange("lastName")}
+        />
       </label>
       <br />
       <label>
         Email:
         <input type="email" value={email} onChange={handleChange("email")} />
       </label>
+      <label>
+        Phone:
+        <input type="text" value={phone} onChange={handleChange("phone")} />
+      </label>
       <br />
-      <button onClick={nextStep}>Next</button>
+      <button onClick={nextStep}>Proceed!</button>
     </div>
   );
 };

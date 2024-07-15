@@ -24,13 +24,15 @@ const sendEmailToAdmin = async (request, response) => {
       where: { locationId: locationId },
     });
 
-    // if (!opportunities.length)
-    //   return response.status(404).json({ message: "Opportunity not found!" });
+    if (!opportunities.length)
+      return response.status(404).json({ message: "Opportunity not found!" });
 
     const recipients = [new Recipient(user.emailTo)];
-    const cc = [new Recipient("contact@developershagor.com")];
+
+    const cc = [new Recipient("support@nurturebeast.com")];
+
     const sentFrom = new Sender(
-      "contact@hotsheet.nurturebeast.com",
+      "contact@connect.nurturebeast.com",
       "nurtureBeast"
     );
 
@@ -51,7 +53,7 @@ const sendEmailToAdmin = async (request, response) => {
     });
   } catch (error) {
     console.log(error);
-    response.status(500).json({ message: error.message });
+    response.status(500).json({ message: error });
   }
 };
 
