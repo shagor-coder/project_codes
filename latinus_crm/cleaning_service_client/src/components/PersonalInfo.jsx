@@ -5,35 +5,47 @@ const PersonalInfo = ({ nextStep, handleChange, values }) => {
   const { firstName, lastName, email, phone } = values;
 
   return (
-    <div>
+    <div className="formStep">
       <h2>Step 1: Personal Information</h2>
-      <label>
-        First Name:
+      <div className="formInputCon">
         <input
+          required
           type="text"
+          placeholder="enter your first name"
           value={firstName}
           onChange={handleChange("firstName")}
         />
-      </label>
-      <label>
-        First Name:
+      </div>
+      <div className="formInputCon">
         <input
+          required
           type="text"
+          placeholder="enter your last name"
           value={lastName}
           onChange={handleChange("lastName")}
         />
-      </label>
-      <br />
-      <label>
-        Email:
-        <input type="email" value={email} onChange={handleChange("email")} />
-      </label>
-      <label>
-        Phone:
-        <input type="text" value={phone} onChange={handleChange("phone")} />
-      </label>
-      <br />
-      <button onClick={nextStep}>Proceed!</button>
+      </div>
+      <div className="formInputCon">
+        <input
+          required
+          type="email"
+          placeholder="enter your email"
+          value={email}
+          onChange={handleChange("email")}
+        />
+      </div>
+      <div className="formInputCon">
+        <input
+          required
+          type="text"
+          placeholder="enter your phone with code"
+          value={phone}
+          onChange={handleChange("phone")}
+        />
+      </div>
+      <div className="formButtonCon">
+        <button onClick={nextStep}>Proceed!</button>
+      </div>
     </div>
   );
 };

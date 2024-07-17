@@ -13,6 +13,8 @@ const BookingCalendar = ({ prevStep, values }) => {
   const [freeSlots, setFreeSlots] = useState([]);
   const [isBooked, setIsBooked] = useState(false);
 
+  console.log(values);
+
   useEffect(() => {
     const formattedDate = moment(date).tz(TIME_ZONE).format("YYYY-MM-DD");
 
@@ -66,7 +68,7 @@ const BookingCalendar = ({ prevStep, values }) => {
   };
 
   return (
-    <div>
+    <div className="formStep">
       <h2>Select a Date and Time</h2>
       <DatePicker
         selected={date}
@@ -75,15 +77,19 @@ const BookingCalendar = ({ prevStep, values }) => {
         filterDate={(date) => !isPastDate(date)}
       />
       <h3>Available Slots</h3>
-      <ul>
+      <ul className="formSlotCon">
         {freeSlots.map((slot, index) => (
-          <li key={index}>
-            {formatSlotTime(slot)}
-            <button onClick={() => handleBooking(slot)}>Book</button>
+          <li key={index} className="formSlot">
+            <span className="slotTime">{formatSlotTime(slot)}</span>
+            <button onClick={() => handleBooking(slot)} className="slotButton">
+              Reserve
+            </button>
           </li>
         ))}
       </ul>
-      <button onClick={prevStep}>Back</button>
+      <div className="formButtonCon">
+        <button onClick={prevStep}>Back</button>
+      </div>
     </div>
   );
 };

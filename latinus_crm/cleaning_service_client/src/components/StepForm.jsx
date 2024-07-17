@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import PersonalInfo from "./PersonalInfo.jsx";
 import ServiceDetails from "./ServiceDetail.jsx";
-import Confirmation from "./Confirmation.jsx";
 import Calendar from "./Calendar.jsx";
 import Address from "./Address.jsx";
 
@@ -30,8 +29,6 @@ const StepForm = () => {
     additionalBathRoom: "",
     hepa: "",
     wallsCleaning: "",
-    date: null,
-    time: "",
   });
 
   const nextStep = () => setStep(step + 1);
@@ -54,6 +51,7 @@ const StepForm = () => {
       return (
         <Address
           nextStep={nextStep}
+          prevStep={prevStep}
           handleChange={handleChange}
           values={formData}
         />
@@ -68,14 +66,6 @@ const StepForm = () => {
         />
       );
     case 4:
-      return (
-        <Confirmation
-          nextStep={nextStep}
-          prevStep={prevStep}
-          values={formData}
-        />
-      );
-    case 5:
       return <Calendar prevStep={prevStep} values={formData} />;
     default:
       return null;

@@ -82,7 +82,8 @@ const createTemplate = (opportunities = []) => {
       allowedProtoProperties: true,
       helpers: {
         slice: (array) => array.slice(0, 3),
-        length: (array) => array.length > 2,
+        length: (array) => array.length > 1,
+        btnlength: (array) => array.length > 3,
         objkeys: (obj) => Object.keys(obj),
         getLocationId: (array) => {
           if (array.length) {

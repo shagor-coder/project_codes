@@ -1,0 +1,235 @@
+.App * {
+  box-sizing: border-box !important;
+  margin: 0;
+  padding: 0;
+}
+
+.App h2 {
+  font-size: 26px;
+  color: #001224;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.App h3 {
+  font-size: 22px;
+  color: #001224;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.formStep {
+  max-width: 600px;
+  width: 100%;
+  background-color: #aeaeae54;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.formInputCon {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.formInputCon input[type="text"],
+.formInputCon input[type="email"],
+.formInputCon select {
+  display: inline-flex;
+  width: 100%;
+  padding: 10px 16px;
+  outline: none;
+  border-radius: 3px;
+  border: 1px solid #01081029;
+  appearance: none;
+  -webkit-appearance: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #001224;
+  min-height: 48px;
+  transition: border-color 0.3s ease-in;
+}
+.formInputCon input[type="text"]::placeholder,
+.formInputCon input[type="email"]::placeholder {
+  font-size: 16px;
+  font-weight: 500;
+  color: #001224;
+  min-height: 48px;
+  text-transform: capitalize;
+}
+
+.formInputCon input[type="text"]:hover,
+.formInputCon input[type="email"]:hover,
+.formInputCon select:hover {
+  border-color: #01081078;
+}
+
+.formInputCon input[type="text"]:focus,
+.formInputCon input[type="email"]:focus,
+.formInputCon select:hover {
+  border-color: #01081078;
+}
+
+.formButtonCon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.formButtonCon button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 0px;
+  appearance: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #4817eb;
+  padding: 10px 25px;
+  cursor: pointer;
+}
+
+.formButtonCon button:nth-child(2) {
+  border-left: 1px solid #f9f9f9;
+}
+
+/* Date Picker Styles */
+.react-datepicker-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.react-datepicker__input-container input {
+  display: inline-flex;
+  width: 100%;
+  padding: 10px 16px;
+  outline: none;
+  border-radius: 3px;
+  border: 1px solid #01081029;
+  appearance: none;
+  -webkit-appearance: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #001224;
+  min-height: 48px;
+  transition: border-color 0.3s ease-in;
+}
+
+.react-datepicker__input-container input:hover,
+.react-datepicker__input-container input:focus {
+  border-color: #01081078;
+}
+
+.react-datepicker__input-container input:focus {
+  border-color: #007bff;
+}
+
+.formSlotCon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 0;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.formSlotCon .formSlot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 8px;
+  min-width: 140px;
+  border: 1px solid rgba(19, 8, 109, 0.1);
+}
+
+.formSlotCon .formSlot .slotTime {
+  font-size: 14px;
+  color: #001224;
+  font-weight: 400;
+  white-space: nowrap;
+  display: inline-flex;
+  margin-right: 10px;
+  min-width: 58px;
+}
+
+.formSlotCon .formSlot .slotButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 0px;
+  appearance: none;
+  font-size: 12px;
+  font-weight: 400;
+  color: #ffffff;
+  background-color: #4817eb;
+  padding: 5px 9px;
+  cursor: pointer;
+}
+
+.previewInfo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 0;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.formStep .extraOption {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 12px;
+}
+.formStep .extraOption input[type="checkbox"] {
+  accent-color: #0d56d4;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  margin-right: 10px;
+}
+
+.formStep .extraOption input[type="checkbox"] {
+  font-size: 14px;
+  color: #001224;
+  font-weight: 400;
+}
+
+.formStep .extraOption .optionText {
+  font-size: 14px;
+  color: #001224;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.formStep .extraOption input[type="text"] {
+  min-height: 24px;
+  padding: 3px 8px;
+  max-width: calc(100% - 256px);
+  display: inline-flex;
+  margin-left: 10px;
+  font-size: 12px;
+  color: #001224;
+  font-weight: 400;
+}
+
+.formStep .extraOption input[type="text"]::placeholder {
+  font-size: 12px;
+  color: #001224;
+  font-weight: 400;
+}
