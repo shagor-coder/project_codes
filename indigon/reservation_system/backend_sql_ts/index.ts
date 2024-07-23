@@ -35,13 +35,17 @@ app.use("/api/table", TableRouter);
 app.use("/api/booking", BookingRouter);
 app.use("/api/client", ClientRouter);
 
-app.use(
-  (err: any, request: Request, response: Response, next: NextFunction) => {
-    const errorStatus = err.status || 500;
-    const errorMessage = err.message || "Something went wrong";
-    response.status(errorStatus).send(errorMessage);
-  }
-);
+const errorHandler = (err: any, response: any) => {
+  const errorStatus: number = err.status || 500;
+  const errorMessage: string = err.message || "Something went wrong";
+
+  response.status(errorStatus).json({
+    status: errorStatus,
+    message: errorMessage,
+  });
+};
+
+app.use(errorHandler);
 
 const connect_with_db = async () => {
   try {

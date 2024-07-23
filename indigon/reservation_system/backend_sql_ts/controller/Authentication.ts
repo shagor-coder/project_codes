@@ -62,7 +62,7 @@ export const loginUser = async (
 
     const token = jwt.sign(
       { id: id, isAdmin: isAdmin },
-      process.env.JWT_SERVER_STRING
+      process.env.JWT_SERVER_STRING as string
     );
 
     response.cookie("access_token", token, {
@@ -111,7 +111,7 @@ export const loginClient = async (
     if (!isPassword)
       return next(createError(401, "email or password incorrect!"));
 
-    const token = jwt.sign({ id }, process.env.JWT_SERVER_STRING);
+    const token = jwt.sign({ id }, process.env.JWT_SERVER_STRING as string);
 
     response
       .cookie("access_token", token, {

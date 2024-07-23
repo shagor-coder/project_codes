@@ -1,10 +1,6 @@
 import express from "express";
-import {
-  loginUser,
-  logout,
-  registerUser,
-} from "../controller/Authentication.js";
-import { verifyUser } from "../utils/verifyToken.js";
+import { loginUser, logout, registerUser } from "../controller/Authentication";
+import { verifyUser } from "../utils/verifyToken";
 
 const _Router = express.Router();
 

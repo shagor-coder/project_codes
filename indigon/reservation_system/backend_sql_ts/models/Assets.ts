@@ -19,6 +19,7 @@ export const AssetsModel: ModelDefined<
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
+      primaryKey: true,
     },
     restaurantId: {
       type: DataTypes.UUID,
