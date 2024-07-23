@@ -39,7 +39,6 @@ export const addAddress = async (request: Request, response: Response) => {
       zip: zip,
       userId: user.id,
     });
-
     await newAddress.save();
     response.status(200).json({ message: "Success!", data: newAddress });
   } catch (error: any) {

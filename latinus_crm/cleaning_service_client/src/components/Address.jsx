@@ -3,6 +3,7 @@ import React from "react";
 
 const Address = ({ nextStep, handleChange, values, prevStep }) => {
   const { address, city, state, zip } = values;
+  const isFilled = !address || !city || !state || !zip;
 
   return (
     <div className="formStep">
@@ -45,7 +46,9 @@ const Address = ({ nextStep, handleChange, values, prevStep }) => {
       </div>
       <div className="formButtonCon">
         <button onClick={prevStep}>Back</button>
-        <button onClick={nextStep}>Proceed!</button>
+        <button disabled={isFilled} onClick={nextStep}>
+          Next
+        </button>
       </div>
     </div>
   );

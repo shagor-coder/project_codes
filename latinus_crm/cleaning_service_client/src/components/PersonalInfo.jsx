@@ -4,6 +4,8 @@ import React from "react";
 const PersonalInfo = ({ nextStep, handleChange, values }) => {
   const { firstName, lastName, email, phone } = values;
 
+  const isFilled = !firstName || !lastName || !email || !phone;
+
   return (
     <div className="formStep">
       <h2>Step 1: Personal Information</h2>
@@ -44,7 +46,9 @@ const PersonalInfo = ({ nextStep, handleChange, values }) => {
         />
       </div>
       <div className="formButtonCon">
-        <button onClick={nextStep}>Proceed!</button>
+        <button disabled={isFilled} onClick={nextStep}>
+          Next
+        </button>
       </div>
     </div>
   );

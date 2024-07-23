@@ -4,6 +4,7 @@ import PersonalInfo from "./PersonalInfo.jsx";
 import ServiceDetails from "./ServiceDetail.jsx";
 import Calendar from "./Calendar.jsx";
 import Address from "./Address.jsx";
+import { Progressbar } from "./Progressbar.jsx";
 
 const StepForm = () => {
   const [step, setStep] = useState(1);
@@ -29,6 +30,7 @@ const StepForm = () => {
     additionalBathRoom: "",
     hepa: "",
     wallsCleaning: "",
+    totalPrice: "",
   });
 
   const nextStep = () => setStep(step + 1);
@@ -41,32 +43,48 @@ const StepForm = () => {
   switch (step) {
     case 1:
       return (
-        <PersonalInfo
-          nextStep={nextStep}
-          handleChange={handleChange}
-          values={formData}
-        />
+        <>
+          <Progressbar step={step} />
+          <PersonalInfo
+            nextStep={nextStep}
+            handleChange={handleChange}
+            values={formData}
+          />
+        </>
       );
     case 2:
       return (
-        <Address
-          nextStep={nextStep}
-          prevStep={prevStep}
-          handleChange={handleChange}
-          values={formData}
-        />
+        <>
+          <Progressbar step={step} />
+
+          <Address
+            nextStep={nextStep}
+            prevStep={prevStep}
+            handleChange={handleChange}
+            values={formData}
+          />
+        </>
       );
     case 3:
       return (
-        <ServiceDetails
-          nextStep={nextStep}
-          prevStep={prevStep}
-          handleChange={handleChange}
-          values={formData}
-        />
+        <>
+          <Progressbar step={step} />
+
+          <ServiceDetails
+            nextStep={nextStep}
+            prevStep={prevStep}
+            handleChange={handleChange}
+            values={formData}
+          />
+        </>
       );
     case 4:
-      return <Calendar prevStep={prevStep} values={formData} />;
+      return (
+        <>
+          <Progressbar step={step} />
+          <Calendar prevStep={prevStep} values={formData} />
+        </>
+      );
     default:
       return null;
   }

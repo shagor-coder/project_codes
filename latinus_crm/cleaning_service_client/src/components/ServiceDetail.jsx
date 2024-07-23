@@ -1,5 +1,6 @@
 // src/components/ServiceDetails.js
 import React from "react";
+import Price from "./Price";
 
 const ServiceDetails = ({ nextStep, prevStep, handleChange, values }) => {
   const { serviceType, roomNumberAndSize } = values;
@@ -64,12 +65,18 @@ const ServiceDetails = ({ nextStep, prevStep, handleChange, values }) => {
   return (
     <div className="formStep">
       <h2>Step 3: Service Details</h2>
+
+      <div className="formInputCon">
+        <Price formData={values} />
+      </div>
+
       <div className="formInputCon">
         <select
           name="serviceType"
           value={serviceType}
           onChange={handleChange("serviceType")}
         >
+          <option defaultValue>Select a service</option>
           <option value="Regular Clean">Regular Clean</option>
           <option value="Deep Cleaning">Deep Cleaning</option>
           <option value="Professional Deep Clean">
@@ -89,6 +96,7 @@ const ServiceDetails = ({ nextStep, prevStep, handleChange, values }) => {
           value={roomNumberAndSize}
           onChange={handleChange("roomNumberAndSize")}
         >
+          <option defaultValue>Select room size and number</option>
           <option value="600 sqft - 1 Room">600 sqft - 1 Room</option>
           <option value="601 - 800 sqft - 1 Room">
             601 - 800 sqft - 1 Room
@@ -130,8 +138,11 @@ const ServiceDetails = ({ nextStep, prevStep, handleChange, values }) => {
               type="checkbox"
               checked={values[extra.id] || false}
               onChange={handleCheckboxChange(extra.id)}
+              id={extra.id}
             />
-            <span className="optionText">{extra.label}</span>
+            <label htmlFor={extra.id} className="optionText">
+              {extra.label}
+            </label>
             {extra.quantityBased && values[extra.id] && (
               <input
                 type="number"
