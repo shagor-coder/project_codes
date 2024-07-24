@@ -85,7 +85,7 @@ export const deleteClient = async (
   next: NextFunction
 ) => {
   try {
-    const findClient = await ClientModel.destroy({
+    await ClientModel.destroy({
       where: { id: request?.params?.id as string },
     });
 

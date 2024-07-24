@@ -19,6 +19,8 @@ LocationModel.hasMany(RestaurantModel, {
   foreignKey: "locationId",
   as: "restaurants",
 });
+
+// Restaurant To Location Relationship
 RestaurantModel.belongsTo(LocationModel, {
   foreignKey: "locationId",
   as: "location",
@@ -29,6 +31,7 @@ RestaurantModel.hasMany(TableModel, {
   foreignKey: "restaurantId",
   as: "tables",
 });
+
 TableModel.belongsTo(RestaurantModel, {
   foreignKey: "restaurantId",
   as: "restaurant",
@@ -39,6 +42,7 @@ RestaurantModel.hasMany(BookingModel, {
   foreignKey: "restaurantId",
   as: "bookings",
 });
+
 BookingModel.belongsTo(RestaurantModel, {
   foreignKey: "restaurantId",
   as: "restaurant",
@@ -49,6 +53,7 @@ RestaurantModel.hasMany(AssetsModel, {
   foreignKey: "restaurantId",
   as: "assets",
 });
+
 AssetsModel.belongsTo(RestaurantModel, {
   foreignKey: "restaurantId",
   as: "restaurant",

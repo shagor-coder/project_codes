@@ -40,10 +40,12 @@ export const UserModel: ModelDefined<
     },
     isAdmin: {
       type: DataTypes.BOOLEAN,
+      allowNull: false,
       defaultValue: false,
     },
     isActive: {
       type: DataTypes.BOOLEAN,
+      allowNull: false,
       defaultValue: true,
     },
   },

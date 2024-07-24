@@ -35,25 +35,28 @@ app.use("/api/table", TableRouter);
 app.use("/api/booking", BookingRouter);
 app.use("/api/client", ClientRouter);
 
-const errorHandler = (err: any, response: any) => {
-  const errorStatus: number = err.status || 500;
-  const errorMessage: string = err.message || "Something went wrong";
+// const errorHandler = (err: any, response: any) => {
+//   const errorStatus: number = err.status || 500;
+//   const errorMessage: string = err.message || "Something went wrong";
 
-  response.status(errorStatus).json({
-    status: errorStatus,
-    message: errorMessage,
-  });
-};
+//   response.status(errorStatus).send(errorMessage);
+// };
 
-app.use(errorHandler);
+//@ts-ignore
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  const errorStatus = err.status || 500;
+  const errorMessage = err.message || "Something went wrong";
+  //@ts-ignore
+  res.status(errorStatus).send(errorMessage);
+});
 
 const connect_with_db = async () => {
   try {
     await sequelize.authenticate();
+    await sequelize.sync({ alter: true });
     console.log("DB Authentication successful!!");
-    // await sequelize.sync({ force: true });
   } catch (error: any) {
-    throw new Error(error.message);
+    throw new Error(error);
   }
 };
 

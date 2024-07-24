@@ -56,9 +56,9 @@ export const useDeleteLocation = () => {
       queryClient.setQueriesData(
         { queryKey: ["allLocations"] },
         (oldLocations) => {
-          const updatedLocations = oldLocations.filter(
-            (Location) => Location._id !== data.id
-          );
+          const updatedLocations = oldLocations.filter((Location) => {
+            Location.id !== data.id;
+          });
           return updatedLocations;
         }
       );

@@ -17,7 +17,6 @@ export const ClientModel: ModelDefined<
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      allowNull: false,
       primaryKey: true,
     },
     name: {

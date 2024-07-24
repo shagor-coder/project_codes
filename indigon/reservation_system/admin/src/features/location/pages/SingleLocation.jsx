@@ -71,7 +71,7 @@ export const SingleLocation = () => {
   if (restaurants && restaurants.length) {
     const formattedData = restaurants.map((restaurant) => {
       const {
-        _id,
+        id,
         name,
         description,
         openingHours,
@@ -81,7 +81,7 @@ export const SingleLocation = () => {
       } = restaurant;
 
       return {
-        _id,
+        id,
         name,
         description,
         openingHours,

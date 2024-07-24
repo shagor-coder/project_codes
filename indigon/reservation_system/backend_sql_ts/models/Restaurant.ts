@@ -8,10 +8,10 @@ interface RestaurantAttributes {
   name: string;
   description: string;
   addressLine: string;
-  openingHours: number;
-  closingHours: number;
+  openingHours: string;
+  closingHours: string;
   priceRange: string;
-  bookingDuration: number;
+  bookingDuration: string;
 }
 
 export const RestaurantModel: ModelDefined<
@@ -39,11 +39,11 @@ export const RestaurantModel: ModelDefined<
       allowNull: false,
     },
     openingHours: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     closingHours: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     priceRange: {
@@ -51,7 +51,7 @@ export const RestaurantModel: ModelDefined<
       allowNull: false,
     },
     bookingDuration: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
   },

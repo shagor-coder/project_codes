@@ -8,11 +8,10 @@ import { FormModal } from "./FormModal";
 import { capitalizeText } from "../utils/capitalizeText";
 
 const ignoredFields = [
-  "__v",
   "isAdmin",
   "users",
   "restaurant",
-  "_id",
+  "id",
   "userId",
   "updatedAt",
   "createdAt",
@@ -32,7 +31,7 @@ export const DataGridComponent = ({
   const [currentData, setCurrentData] = useState(null);
 
   const updateData = data.map((d) => {
-    return { ...d, id: d._id };
+    return { ...d, id: d.id };
   });
 
   const getColumns = () => {

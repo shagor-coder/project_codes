@@ -63,7 +63,7 @@ export const useDeleteRestaurant = () => {
         { queryKey: ["allRestaurants"] },
         (oldRestaurants) => {
           const updatedRestaurants = oldRestaurants.filter(
-            (restaurant) => restaurant._id !== data.id
+            (restaurant) => restaurant.id !== data.id
           );
           return updatedRestaurants;
         }

@@ -18,7 +18,7 @@ export const getLocationAuthData = async (
     encodedParams.set("code", type_str);
 
     const request = await axios.post(
-      process.env.GHL_AUTH_POST_URL,
+      process.env.GHL_AUTH_POST_URL as string,
       encodedParams,
       {
         headers: {

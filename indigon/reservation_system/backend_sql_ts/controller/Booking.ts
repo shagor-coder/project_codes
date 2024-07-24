@@ -14,6 +14,7 @@ type RequestBody = {
   tableId: string;
   bookingStatus: string;
   restaurantId: string;
+  numberOfGuest: string;
 };
 
 // Get all bookings for a table
@@ -63,7 +64,9 @@ export const getBooking = async (
   next: NextFunction
 ) => {
   try {
-    const booking = await BookingModel.findByPk(request.params.id as string);
+    const booking = await BookingModel.findByPk(request.params.id as string, {
+      attributes: { exclude: ["restaurantId", "locationId"] },
+    });
     if (!booking) return next(createError(404, "Booking not found"));
     response.status(200).json({ status: "success", data: booking });
   } catch (error: any) {
@@ -95,14 +98,15 @@ export const updateBooking = async (
   response: Response,
   next: NextFunction
 ) => {
-  const { bookingStatus, startTime, endTime, id } = request.body as RequestBody;
+  const { bookingStatus, startTime, endTime } = request.body as RequestBody;
 
   try {
     const updatedBooking = await BookingModel.update(
-      { id: id },
+      { id: request.params.id as string },
       {
         fields: {
-          bookingStatus: bookingStatus,
+          //@ts-ignore
+          bookingStatus: bookingStatus as string,
           endTime: endTime,
           startTime: startTime,
         },
@@ -126,8 +130,8 @@ export const deleteBooking = async (
   next: NextFunction
 ) => {
   try {
-    const findBooking = await BookingModel.destroy({
-      where: { id: request.params.id },
+    await BookingModel.destroy({
+      where: { id: request.params.id as string },
     });
     response.status(200).json({
       status: "success",

@@ -23,6 +23,7 @@ type BookingRequestBody = {
   tableId: string;
   bookingStatus: string;
   restaurantId: string;
+  numberOfGuest: string;
 };
 
 // Create a new Table
@@ -148,6 +149,7 @@ export const bookTable = async (
     request.body as BookingRequestBody;
 
   try {
+    // @ts-ignore
     const client = await ClientModel.findByPk(request.user.id as string);
 
     if (!client) return next(createError(404, "Client not found!"));

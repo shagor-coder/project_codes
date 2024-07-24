@@ -7,10 +7,11 @@ interface BookingAttributes {
   startTime: Date;
   endTime: Date;
   clientName: string;
+  bookingStatus: string;
+  numberOfGuest: string;
   clientId: string;
   locationId: string;
   tableId: string;
-  bookingStatus: string;
   restaurantId: string;
 }
 
@@ -69,6 +70,10 @@ export const BookingModel: ModelDefined<
     },
     clientId: {
       type: DataTypes.UUID,
+      allowNull: false,
+    },
+    numberOfGuest: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
   },

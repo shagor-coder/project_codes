@@ -1,9 +1,9 @@
 import bcrypt from "bcrypt";
 import { LocationModel, TableModel } from "../models";
-import { createError } from "../utils/error.js";
 import { RestaurantModel } from "../models";
 import { Request, Response, NextFunction } from "express";
 import { getLocationAuthData } from "../utils/getLocationAuthData";
+import { createError } from "../utils/error";
 
 // Create a new Location
 export const createLocation = async (
@@ -25,6 +25,7 @@ export const createLocation = async (
       refresh_token: refresh_token as string,
       expires_in: new Date(expires_in),
       locationId: locationId as string,
+      // @ts-ignore
       userId: request.user.id as string,
     });
 
@@ -41,11 +42,12 @@ export const getAllLocation = async (
   next: NextFunction
 ) => {
   try {
-    const locations = await LocationModel.findOne({
+    const locations = await LocationModel.findAll({
+      // @ts-ignore
       where: { userId: request.user.id },
     });
 
-    if (!locations) return next(createError(404, "Locations not found"));
+    if (!locations.length) return next(createError(404, "Locations not found"));
     response.status(200).json({ staus: "success", data: locations });
   } catch (error: any) {
     next(createError(500, error.message as string));
@@ -60,6 +62,7 @@ export const getLocation = async (
 ) => {
   try {
     const locations = await LocationModel.findOne({
+      // @ts-ignore
       where: { userId: request.user.id },
     });
 

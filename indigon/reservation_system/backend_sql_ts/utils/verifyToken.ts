@@ -17,6 +17,7 @@ export const verifyUser = (
     (err: any, user: any) => {
       if (err) return next(createError(403, "Your token is invalid!"));
 
+      // @ts-ignore
       request.user = user;
       next();
     }
@@ -39,6 +40,7 @@ export const verifyAdmin = (
       if (err) return next(createError(403, "Your token is invalid!"));
       if (!user.isAdmin)
         return next(createError(403, "Only admins can access!"));
+      // @ts-ignore
       request.user = user;
       next();
     }

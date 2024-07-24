@@ -1,9 +1,9 @@
 import { AssetsModel, LocationModel } from "../models";
 import { RestaurantModel } from "../models";
-import { deletePhoto, uploadPhoto } from "../utils/clodinary.js";
 import { Request, Response, NextFunction } from "express";
-import { createError } from "../utils/error.js";
 import { where } from "sequelize";
+import { deletePhoto, uploadPhoto } from "../utils/clodinary";
+import { createError } from "../utils/error";
 
 type RequestBody = {
   id?: string;
@@ -12,10 +12,10 @@ type RequestBody = {
   name: string;
   description: string;
   addressLine: string;
-  openingHours: number;
-  closingHours: number;
+  openingHours: string;
+  closingHours: string;
   priceRange: string;
-  bookingDuration: number;
+  bookingDuration: string;
 };
 
 // Create a new Restaurant
@@ -27,7 +27,9 @@ export const createRestaurant = async (
   const { userId, locationId, ...other } = request.body as RequestBody;
 
   try {
+    // @ts-ignore
     const photos = request.files["photos"] || [];
+    // @ts-ignore
     const featuredImages = request.files["featuredImage"] || [];
     const photoURLs = [] as { photoURL: string; photoId: string }[];
     let photoURLPromises = [] as Promise<any>[];
@@ -36,6 +38,7 @@ export const createRestaurant = async (
       await Promise.all(
         photos?.map(async (file: any) => {
           const result = await uploadPhoto(file);
+          // @ts-ignore
           photoURLs.push(result);
         })
       );
@@ -51,6 +54,7 @@ export const createRestaurant = async (
     // Create new Restaurant document with photo URLs
     const newRestaurantBody = {
       ...request.body,
+      // @ts-ignore
       userId: request.user.id as string,
       locationId: request.params.locationId,
     };
@@ -70,12 +74,12 @@ export const createRestaurant = async (
 
     await Promise.all(photoURLPromises);
 
-    await AssetsModel.create({
-      isFeatured: true,
-      photoId: featuredImage?.photoId as string,
-      photoURL: featuredImage?.photoURL as string,
-      restaurantId: newRestaurant.toJSON().id as string,
-    });
+    // await AssetsModel.create({
+    //   isFeatured: true,
+    //   photoId: featuredImage?.photoId as string,
+    //   photoURL: featuredImage?.photoURL as string,
+    //   restaurantId: newRestaurant.toJSON().id as string,
+    // });
 
     response.status(200).json({
       status: "success",
@@ -100,7 +104,7 @@ export const getAllRestaurant = async (
       include: [
         {
           model: AssetsModel,
-          as: "photos",
+          as: "assets",
         },
       ],
     });
@@ -127,7 +131,7 @@ export const getRestaurant = async (
         include: [
           {
             model: AssetsModel,
-            as: "photos",
+            as: "assets",
           },
         ],
       }
@@ -151,8 +155,10 @@ export const updateRestaurant = async (
     );
     if (!restaurant) return next(createError(404, "Restaurant not Found!!"));
 
+    // @ts-ignore
     const photos = request.files["photos"] || null;
 
+    // @ts-ignore
     const featuredImages = request.files["featuredImage"] || null;
     const photoURLs = [] as string[];
 
@@ -160,6 +166,7 @@ export const updateRestaurant = async (
       await Promise.all(
         photos?.map(async (file: any) => {
           const result = await uploadPhoto(file);
+          // @ts-ignore
           photoURLs.push(result);
         })
       );
@@ -188,20 +195,21 @@ export const deleteRestaurant = async (
   next: NextFunction
 ) => {
   try {
-    const findRestaurant = await RestaurantModel.destroy({
+    await RestaurantModel.destroy({
       where: {
         id: request.params.id as string,
       },
     });
 
-    const uploadedImagesId =
-      findRestaurant.photos?.map((photos) => photos.photoId) || [];
+    // const uploadedImagesId =
 
-    findRestaurant.featuredImage
-      ? uploadedImagesId.push(findRestaurant.featuredImage?.photoId)
-      : null;
+    //   findRestaurant.photos?.map((photos) => photos.photoId) || [];
 
-    uploadedImagesId.length && deletePhoto(uploadedImagesId);
+    // findRestaurant.featuredImage
+    //   ? uploadedImagesId.push(findRestaurant.featuredImage?.photoId)
+    //   : null;
+
+    // uploadedImagesId.length && deletePhoto(uploadedImagesId);
 
     response.status(200).json({
       status: "success",

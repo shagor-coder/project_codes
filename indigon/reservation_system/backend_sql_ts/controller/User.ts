@@ -18,7 +18,9 @@ export const getAllUser = async (
 ) => {
   try {
     const users = await UserModel.findAll({
+      // @ts-ignore
       where: { id: request.user.id as string },
+      attributes: { exclude: ["password"] },
     });
     if (!users.length) return next(createError(404, "Users not found"));
     response.status(200).json({ status: "success", data: users });
@@ -35,12 +37,13 @@ export const getUser = async (
 ) => {
   try {
     const user = await UserModel.findOne({
+      // @ts-ignore
       where: { id: request.user.id as string },
-      raw: true,
+      attributes: { exclude: ["password"] },
     });
 
     if (!user) return next(createError(404, "User not found"));
-    response.status(200).json({ status: "success", data: user });
+    response.status(200).json({ status: "success", data: user.toJSON() });
   } catch (error: any) {
     next(createError(500, error.message as string));
   }

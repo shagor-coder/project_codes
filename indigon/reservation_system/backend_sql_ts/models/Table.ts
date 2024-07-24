@@ -20,8 +20,8 @@ export const TableModel: ModelDefined<
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      allowNull: false,
       primaryKey: true,
+      allowNull: false,
     },
     name: {
       type: DataTypes.STRING,
@@ -36,7 +36,7 @@ export const TableModel: ModelDefined<
       allowNull: false,
     },
     restaurantId: {
-      type: DataTypes.UUIDV4,
+      type: DataTypes.UUID,
       allowNull: false,
     },
     maxPeople: {

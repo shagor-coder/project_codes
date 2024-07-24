@@ -10,7 +10,7 @@ type RequestBody = {
   name: string;
   email: string;
   password: string;
-  isActive: boolean;
+  isActive?: boolean;
 };
 
 // Sign up for a new account
@@ -20,14 +20,15 @@ export const registerUser = async (
   next: NextFunction
 ) => {
   try {
-    const requestBody = request.body as RequestBody;
+    const { isActive, password, ...rest } = request.body as RequestBody;
 
-    const hasedPassword = await bcrypt.hash(requestBody.password, 8);
+    const hasedPassword = await bcrypt.hash(password, 8);
     const newAdmin = await UserModel.create({
-      ...request.body,
+      ...rest,
+      isActive: true,
       password: hasedPassword,
     });
-    const { password, ...other } = newAdmin.toJSON();
+    const { password: dbPassword, ...other } = newAdmin.toJSON();
     response.status(200).json({
       status: "success",
       message: "User created successfully!",
