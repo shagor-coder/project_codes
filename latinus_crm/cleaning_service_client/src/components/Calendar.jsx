@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import moment from "moment-timezone";
 import { isBefore, isToday } from "date-fns";
+import { useNavigate } from "react-router-dom";
 
 const TIME_ZONE = "Asia/Dhaka"; // Set your desired time zone
 
@@ -12,8 +13,7 @@ const BookingCalendar = ({ prevStep, values }) => {
   const [date, setDate] = useState(new Date());
   const [freeSlots, setFreeSlots] = useState([]);
   const [isBooked, setIsBooked] = useState(false);
-
-  console.log(values);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const formattedDate = moment(date).tz(TIME_ZONE).format("YYYY-MM-DD");
@@ -47,12 +47,11 @@ const BookingCalendar = ({ prevStep, values }) => {
       })
       .then((response) => {
         console.log(response);
-        alert("Booking successful!");
-        setIsBooked(true);
+        localStorage.setItem("user_data", JSON.stringify(values));
+        navigate("/confirmation");
       })
       .catch((error) => {
         console.error(error);
-        alert("Booking failed!");
       });
   };
 

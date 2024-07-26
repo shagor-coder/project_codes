@@ -6,6 +6,7 @@ import { UserRouter } from "./router/User";
 import { AddressRouter } from "./router/Address";
 import { ServiceRouter } from "./router/Service";
 import { BookingRouter } from "./router/Booking";
+import { SessionRouter } from "./router/Session";
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(UserRouter);
 app.use(AddressRouter);
 app.use(ServiceRouter);
 app.use(BookingRouter);
+app.use(SessionRouter);
 
 const connect_with_db = async () => {
   try {
