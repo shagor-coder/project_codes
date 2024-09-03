@@ -54,6 +54,39 @@ export const RestaurantModel: ModelDefined<
       type: DataTypes.STRING,
       allowNull: false,
     },
+
+    cuisines: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    diningStyle: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    dressCode: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    parkingDetails: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    executiveChef: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    paymentOptions: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    website: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    phone: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   { timestamps: true }
 );

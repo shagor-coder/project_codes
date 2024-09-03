@@ -1,0 +1,55 @@
+meta {
+  name: Get all location
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:3001/api/location/all
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "userId": "65f3745c1ff49da901045afb",
+      "locationId": "123234234",
+      "auth": {
+          "access_token": "12313133",
+          "refresh_token": "yjfghgfhfgh",
+          "expires_in": 122432424324
+      }
+  }
+}
+
+tests {
+  test("Response status code is 200", function () {
+    expect(res.getStatus()).to.equal(200);
+  });
+  
+  
+  test("Response has required fields - status and data", function () {
+      const responseData = res.getBody();
+  
+      expect(responseData).to.be.an('object');
+      expect(responseData).to.have.property('status');
+      expect(responseData).to.have.property('data');
+  });
+  
+  
+  test("Verify the data array is not empty", function () {
+    const responseData = res.getBody();
+    
+    expect(responseData.data).to.be.an('array').that.is.not.empty;
+  });
+  
+  
+  test("Verify the restaurant field is an array and is not empty", function () {
+      const responseData = res.getBody();
+      
+      expect(responseData.data).to.be.an('array');
+      responseData.data.forEach(function(item) {
+          expect(item.restaurant).to.be.an('array').and.to.have.lengthOf.at.least(1, "Restaurant field should not be empty");
+      });
+  });
+}

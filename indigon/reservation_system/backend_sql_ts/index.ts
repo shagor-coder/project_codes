@@ -35,13 +35,6 @@ app.use("/api/table", TableRouter);
 app.use("/api/booking", BookingRouter);
 app.use("/api/client", ClientRouter);
 
-// const errorHandler = (err: any, response: any) => {
-//   const errorStatus: number = err.status || 500;
-//   const errorMessage: string = err.message || "Something went wrong";
-
-//   response.status(errorStatus).send(errorMessage);
-// };
-
 //@ts-ignore
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   const errorStatus = err.status || 500;

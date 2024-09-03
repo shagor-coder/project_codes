@@ -20,16 +20,14 @@ export const AddRestaurantForm = () => {
     openingHours: "9.00am",
     closingHours: "5.00pm",
     bookingDuration: "60min",
-    additionalInfo: {
-      cuisines: "American",
-      diningStyle: "Casual",
-      dressCode: "Casual",
-      parkingDetails: "Basement",
-      executiveChef: "Shagor",
-      paymentOptions: "Mastercard",
-      website: "https://www.acmerestaurant.com",
-      phone: "+8801742677273",
-    },
+    cuisines: "American",
+    diningStyle: "Casual",
+    dressCode: "Casual",
+    parkingDetails: "Basement",
+    executiveChef: "Shagor",
+    paymentOptions: "Mastercard",
+    website: "https://www.acmerestaurant.com",
+    phone: "+8801742677273",
   });
 
   const [images, setImages] = useState([]);
@@ -48,44 +46,18 @@ export const AddRestaurantForm = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    if (
-      name === "name" ||
-      name === "description" ||
-      name === "addressLine" ||
-      name === "openingHours" ||
-      name === "closingHours" ||
-      name === "bookingDuration" ||
-      name === "priceRange"
-    ) {
-      setRestaurantData((prevState) => ({
-        ...prevState,
-        [name]: value,
-      }));
-    } else {
-      setRestaurantData((prevState) => ({
-        ...prevState,
-        additionalInfo: {
-          ...prevState.additionalInfo,
-          [name]: value,
-        },
-      }));
-    }
+    setRestaurantData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("name", restaurantData.name);
-    formData.append("description", restaurantData.description);
-    formData.append("addressLine", restaurantData.addressLine);
-    formData.append("openingHours", restaurantData.openingHours);
-    formData.append("closingHours", restaurantData.closingHours);
-    formData.append("priceRange", restaurantData.priceRange);
-    formData.append("bookingDuration", restaurantData.bookingDuration);
 
-    const additionalInfo = restaurantData.additionalInfo;
-    for (const key in additionalInfo) {
-      formData.append(`additionalInfo[${key}]`, additionalInfo[key]);
+    for (const key in restaurantData) {
+      formData.append(`${key}`, restaurantData[key]);
     }
 
     images?.forEach((img) => {
@@ -170,7 +142,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="cuisines"
           handleChange={handleChange}
-          value={restaurantData.additionalInfo.cuisines}
+          value={restaurantData.cuisines}
           size={6}
         />
         <InputComponent
@@ -178,7 +150,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="diningStyle"
           handleChange={handleChange}
-          value={restaurantData.additionalInfo.diningStyle}
+          value={restaurantData.diningStyle}
           size={6}
         />
         <InputComponent
@@ -186,7 +158,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="dressCode"
           handleChange={handleChange}
-          value={restaurantData.additionalInfo.dressCode}
+          value={restaurantData.dressCode}
           size={6}
         />
         <InputComponent
@@ -194,7 +166,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="parkingDetails"
           handleChange={handleChange}
-          value={restaurantData.additionalInfo.parkingDetails}
+          value={restaurantData.parkingDetails}
           size={6}
         />
         <InputComponent
@@ -202,7 +174,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="executiveChef"
           handleChange={handleChange}
-          value={restaurantData.additionalInfo.executiveChef}
+          value={restaurantData.executiveChef}
           size={4}
         />
         <InputComponent
@@ -210,7 +182,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="paymentOptions"
           handleChange={handleChange}
-          value={restaurantData.additionalInfo.paymentOptions}
+          value={restaurantData.paymentOptions}
           size={4}
         />
         <InputComponent
@@ -226,7 +198,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="website"
           handleChange={handleChange}
-          value={restaurantData.additionalInfo.website}
+          value={restaurantData.website}
           size={6}
         />
         <InputComponent
@@ -234,7 +206,7 @@ export const AddRestaurantForm = () => {
           type="text"
           name="phone"
           handleChange={handleChange}
-          value={restaurantData.additionalInfo.phone}
+          value={restaurantData.phone}
           size={6}
         />
         <FileUploadComponent

@@ -42,13 +42,9 @@ export const EditRestaurantForm = ({ data: currentData }) => {
     priceRange,
     openingHours,
     closingHours,
-    additionalInfo,
     bookingDuration,
     featuredImage,
-    photos,
-  } = currentData;
-
-  const {
+    assets,
     cuisines,
     diningStyle,
     dressCode,
@@ -57,7 +53,7 @@ export const EditRestaurantForm = ({ data: currentData }) => {
     paymentOptions,
     website,
     phone,
-  } = additionalInfo;
+  } = currentData;
 
   const [restaurantData, setRestaurantData] = useState({
     name: name,
@@ -67,16 +63,14 @@ export const EditRestaurantForm = ({ data: currentData }) => {
     openingHours: openingHours,
     closingHours: closingHours,
     bookingDuration: bookingDuration,
-    additionalInfo: {
-      cuisines: cuisines,
-      diningStyle: diningStyle,
-      dressCode: dressCode,
-      parkingDetails: parkingDetails,
-      executiveChef: executiveChef,
-      paymentOptions: paymentOptions,
-      website: website,
-      phone: phone,
-    },
+    cuisines: cuisines,
+    diningStyle: diningStyle,
+    dressCode: dressCode,
+    parkingDetails: parkingDetails,
+    executiveChef: executiveChef,
+    paymentOptions: paymentOptions,
+    website: website,
+    phone: phone,
   });
 
   const handleFileUpload = (event) => {
@@ -89,27 +83,10 @@ export const EditRestaurantForm = ({ data: currentData }) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    if (
-      name === "name" ||
-      name === "description" ||
-      name === "openingHours" ||
-      name === "closingHours" ||
-      name === "bookingDuration" ||
-      name === "priceRange"
-    ) {
-      setRestaurantData((prevState) => ({
-        ...prevState,
-        [name]: value,
-      }));
-    } else {
-      setRestaurantData((prevState) => ({
-        ...prevState,
-        additionalInfo: {
-          ...prevState.additionalInfo,
-          [name]: value,
-        },
-      }));
-    }
+    setRestaurantData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   const handleFeaturedImageDelete = () => {
@@ -130,17 +107,8 @@ export const EditRestaurantForm = ({ data: currentData }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("name", restaurantData.name);
-    formData.append("description", restaurantData.description);
-    formData.append("addressLine", restaurantData.addressLine);
-    formData.append("openingHours", restaurantData.openingHours);
-    formData.append("closingHours", restaurantData.closingHours);
-    formData.append("priceRange", restaurantData.priceRange);
-    formData.append("bookingDuration", restaurantData.bookingDuration);
-
-    const additionalInfo = restaurantData.additionalInfo;
-    for (const key in additionalInfo) {
-      formData.append(`additionalInfo[${key}]`, additionalInfo[key]);
+    for (const key in restaurantData) {
+      formData.append(`${key}`, restaurantData[key]);
     }
 
     uploadedImages?.forEach((img) => {
@@ -161,6 +129,11 @@ export const EditRestaurantForm = ({ data: currentData }) => {
     }
   }, [, isEditError, isEditPending, error]);
 
+  const oldFeaturedImage = assets.find((as) => as.isFeatured);
+  const oldPhotos = assets.filter((as) => !as.isFeatured);
+
+  console.log(oldFeaturedImage, oldPhotos);
+
   return (
     <Grid container spacing={1}>
       <Grid item xs={12} md={3}>
@@ -176,8 +149,8 @@ export const EditRestaurantForm = ({ data: currentData }) => {
             }}
           >
             <img
-              src={featuredImage?.photoURL}
-              alt={featuredImage?.alt || "Featured Image"}
+              src={oldFeaturedImage.photoURL}
+              alt={"Featured Image"}
               loading="lazy"
               style={{
                 width: "100%",
@@ -207,7 +180,7 @@ export const EditRestaurantForm = ({ data: currentData }) => {
             Restaurant Photos
           </Typography>
           <ImageList sx={{ wrestaurantIdth: "100%" }} cols={3}>
-            {photos?.map((photo) => {
+            {oldPhotos?.map((photo) => {
               return (
                 <ImageListItem
                   key={photo?.photoId}
@@ -305,7 +278,7 @@ export const EditRestaurantForm = ({ data: currentData }) => {
                 type="text"
                 name="cuisines"
                 handleChange={handleChange}
-                value={restaurantData.additionalInfo.cuisines}
+                value={restaurantData.cuisines}
                 size={6}
               />
               <InputComponent
@@ -313,7 +286,7 @@ export const EditRestaurantForm = ({ data: currentData }) => {
                 type="text"
                 name="diningStyle"
                 handleChange={handleChange}
-                value={restaurantData.additionalInfo.diningStyle}
+                value={restaurantData.diningStyle}
                 size={6}
               />
               <InputComponent
@@ -321,7 +294,7 @@ export const EditRestaurantForm = ({ data: currentData }) => {
                 type="text"
                 name="dressCode"
                 handleChange={handleChange}
-                value={restaurantData.additionalInfo.dressCode}
+                value={restaurantData.dressCode}
                 size={6}
               />
               <InputComponent
@@ -329,7 +302,7 @@ export const EditRestaurantForm = ({ data: currentData }) => {
                 type="text"
                 name="parkingDetails"
                 handleChange={handleChange}
-                value={restaurantData.additionalInfo.parkingDetails}
+                value={restaurantData.parkingDetails}
                 size={6}
               />
               <InputComponent
@@ -337,7 +310,7 @@ export const EditRestaurantForm = ({ data: currentData }) => {
                 type="text"
                 name="executiveChef"
                 handleChange={handleChange}
-                value={restaurantData.additionalInfo.executiveChef}
+                value={restaurantData.executiveChef}
                 size={4}
               />
               <InputComponent
@@ -345,7 +318,7 @@ export const EditRestaurantForm = ({ data: currentData }) => {
                 type="text"
                 name="paymentOptions"
                 handleChange={handleChange}
-                value={restaurantData.additionalInfo.paymentOptions}
+                value={restaurantData.paymentOptions}
                 size={4}
               />
               <InputComponent
@@ -361,7 +334,7 @@ export const EditRestaurantForm = ({ data: currentData }) => {
                 type="text"
                 name="website"
                 handleChange={handleChange}
-                value={restaurantData.additionalInfo.website}
+                value={restaurantData.website}
                 size={6}
               />
               <InputComponent
@@ -369,7 +342,7 @@ export const EditRestaurantForm = ({ data: currentData }) => {
                 type="text"
                 name="phone"
                 handleChange={handleChange}
-                value={restaurantData.additionalInfo.phone}
+                value={restaurantData.phone}
                 size={6}
               />
               <FileUploadComponent

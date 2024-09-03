@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction, ErrorRequestHandler } from "express";
 
-import { ClientModel } from "../models";
+import { ClientModel, LocationModel } from "../models";
 import { UserModel } from "../models";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
@@ -50,6 +50,24 @@ export const loginUser = async (
   try {
     const isUser = await UserModel.findOne({
       where: { email: email },
+      include: [
+        {
+          model: LocationModel,
+          as: "location",
+          attributes: {
+            exclude: [
+              "id",
+              "userId",
+              "access_token",
+              "refresh_token",
+              "expires_in",
+              "createdAt",
+              "updatedAt",
+            ],
+          },
+        },
+      ],
+      nest: true,
     });
 
     if (!isUser) return next(createError(404, "No user found!"));
@@ -105,7 +123,8 @@ export const loginClient = async (
 
     if (!isUser) return next(createError(404, "No user found!"));
 
-    const { password: dbPassword, id } = isUser.toJSON();
+    // @ts-ignore
+    const { password: dbPassword, id } = isUser;
 
     const isPassword = await bcrypt.compare(password, dbPassword);
 

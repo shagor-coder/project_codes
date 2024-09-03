@@ -3,6 +3,7 @@ import { verifyUser } from "../utils/verifyToken";
 import {
   createBooking,
   deleteBooking,
+  getAllBookingForAdmin,
   getAllBookingForClient,
   getBooking,
   updateBooking,
@@ -14,7 +15,7 @@ const _Router = express.Router();
 _Router.post("/", verifyUser, createBooking);
 
 // Get all the Bookings For A Admin
-_Router.get("/:locationId/all", verifyUser, getAllBookingForClient);
+_Router.get("/:locationId/all", verifyUser, getAllBookingForAdmin);
 
 // Get the current Booking
 _Router.get("/:id", getBooking);

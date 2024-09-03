@@ -7,8 +7,6 @@ import { createError } from "../utils/error";
 
 type RequestBody = {
   id?: string;
-  locationId: string;
-  userId: string;
   name: string;
   description: string;
   addressLine: string;
@@ -24,7 +22,7 @@ export const createRestaurant = async (
   response: Response,
   next: NextFunction
 ) => {
-  const { userId, locationId, ...other } = request.body as RequestBody;
+  const body = request.body as RequestBody;
 
   try {
     // @ts-ignore
@@ -53,7 +51,7 @@ export const createRestaurant = async (
 
     // Create new Restaurant document with photo URLs
     const newRestaurantBody = {
-      ...request.body,
+      ...body,
       // @ts-ignore
       userId: request.user.id as string,
       locationId: request.params.locationId,
@@ -74,12 +72,12 @@ export const createRestaurant = async (
 
     await Promise.all(photoURLPromises);
 
-    // await AssetsModel.create({
-    //   isFeatured: true,
-    //   photoId: featuredImage?.photoId as string,
-    //   photoURL: featuredImage?.photoURL as string,
-    //   restaurantId: newRestaurant.toJSON().id as string,
-    // });
+    await AssetsModel.create({
+      isFeatured: true,
+      photoId: featuredImage?.photoId as string,
+      photoURL: featuredImage?.photoURL as string,
+      restaurantId: newRestaurant.toJSON().id as string,
+    });
 
     response.status(200).json({
       status: "success",
@@ -87,6 +85,8 @@ export const createRestaurant = async (
       data: newRestaurant.toJSON(),
     });
   } catch (error: any) {
+    console.log(error);
+
     next(createError(500, error.message as string));
   }
 };

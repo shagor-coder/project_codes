@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import { Request, Response, NextFunction } from "express";
 import { BookingModel } from "../models";
 import { createError } from "../utils/error";
+import { Op } from "sequelize";
 
 type RequestBody = {
   id?: string;
@@ -33,7 +34,7 @@ export const getAllBookingForAdmin = async (
     if (!allBookings.length)
       return next(createError(404, "Bookings not found"));
 
-    response.status(200).json({ status: "success", data: "" });
+    response.status(200).json({ status: "success", data: allBookings });
   } catch (error: any) {
     next(createError(500, error.message as string));
   }
@@ -81,14 +82,46 @@ export const createBooking = async (
   next: NextFunction
 ) => {
   try {
-    const newBooking = await BookingModel.create(request.body as RequestBody);
-    response.status(200).json({
-      status: "success",
-      message: "Booking have been created!",
-      data: newBooking,
+    const { startTime } = request.body as RequestBody;
+
+    const bookedDateTime = new Date(startTime);
+
+    if (new Date() >= bookedDateTime) {
+      return response
+        .status(403)
+        .json({ message: "You cannot book a time in the past!" });
+    }
+
+    // Ensure the booked time is within working hours
+    const bookedHour = bookedDateTime.getHours();
+
+    if (bookedHour < Number(5) || bookedHour >= Number(17)) {
+      return response
+        .status(400)
+        .json({ message: "You can only book within working hours!" });
+    }
+
+    // Check if the slot is already booked
+    const existingBooking = await BookingModel.findOne({
+      where: {
+        startTime: {
+          [Op.between]: [
+            new Date(bookedDateTime.setMinutes(0, 0, 0)), // Start of the hour
+            new Date(bookedDateTime.setMinutes(59, 59, 999)), // End of the hour
+          ],
+        },
+      },
     });
+
+    if (existingBooking)
+      return response.status(403).json({ message: "Booking is already there" });
+
+    const booking = await BookingModel.create(request.body as RequestBody);
+
+    await booking.save();
+    response.status(200).json({ message: "Success!", data: booking });
   } catch (error: any) {
-    next(createError(500, error.message as string));
+    response.status(500).json({ error: error?.message as string });
   }
 };
 

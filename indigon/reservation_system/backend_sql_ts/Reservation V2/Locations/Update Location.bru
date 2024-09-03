@@ -1,0 +1,17 @@
+meta {
+  name: Update Location
+  type: http
+  seq: 2
+}
+
+put {
+  url: http://localhost:3001/api/location/65f77c83d880b56ea914871c
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "locationId": "newlocationid2"
+  }
+}

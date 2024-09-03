@@ -16,7 +16,7 @@ export const Bookings = () => {
   const { dispatch, auth } = UseAuthContext();
 
   const { data, isError, isLoading, error } = useGetAllBooking({
-    locationId: auth?.authUser?.locations[0],
+    locationId: auth?.authUser?.location?.locationId,
   });
 
   useEffect(() => {

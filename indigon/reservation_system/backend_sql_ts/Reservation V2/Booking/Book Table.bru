@@ -1,0 +1,23 @@
+meta {
+  name: Book Table
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3000/api/booking
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "tableName": "Table 1",
+    "startTime": "2024-06-01T15:18:40.010Z",
+    "endTime": "2024-06-01T16:18:40.010Z",
+    "clientName": "Shagor Hossain",
+    "bookingStatus": "confirmed",
+    "locationId": "663fb9b0b909096145cecb23",
+    "clientId": "665a54a19d98dfd196d0e1f5"
+  }
+}

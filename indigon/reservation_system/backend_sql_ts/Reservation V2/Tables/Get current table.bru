@@ -1,0 +1,47 @@
+meta {
+  name: Get current table
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:3001/api/table/65f877cd6f13d7f84afc0e2d
+  body: json
+  auth: none
+}
+
+tests {
+  test("Response status code is 200", function () {
+    expect(res.getStatus()).to.equal(200);
+  });
+  
+  
+  test("Verify that the 'restaurantId' array is present and contains at least one element", function () {
+    const responseData = res.getBody();
+    
+    expect(responseData).to.be.an('object');
+    expect(responseData.restaurantId).to.exist.and.to.be.an('array').and.to.have.lengthOf.at.least(1, "Array should contain at least one element");
+  });
+  
+  
+  test("The 'bookedTimes' array is present and contains at least one element", function () {
+    const responseData = res.getBody();
+    
+    expect(responseData).to.be.an('object');
+    expect(responseData.bookedTimes).to.exist.and.to.be.an('array');
+    expect(responseData.bookedTimes.length).to.be.at.least(1);
+  });
+  
+  
+  test("Validate name is a non-empty string", function () {
+      const responseData = res.getBody();
+      
+      expect(responseData.name).to.be.a('string').and.to.have.lengthOf.at.least(1, "Value should not be empty");
+  });
+  
+  test("Validate maxPeople is a non-negative integer", function () {
+      const responseData = res.getBody();
+      
+      expect(responseData.maxPeople).to.be.a('number').and.to.be.at.least(0, "Value should not be negative");
+  });
+}
