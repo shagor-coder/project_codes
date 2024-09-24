@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="./src/bootstrap.min.css" />
+    <link rel="stylesheet" href="./src/compare-slide.css" />
+    <title>Image Comapare Slider</title>
+  </head>
+
+  <body>
+    <section class="py-5">
+      <div class="container">
+        <div class="row mb-4 button-row">
+          <button class="compare-tab active" id="people">People</button>
+          <button class="compare-tab" id="product">Product</button>
+          <button class="compare-tab" id="animal">Animal</button>
+          <button class="compare-tab" id="cars">Car</button>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="compare-slider-wrapper">
+              <div class="compare-slider-main">
+                <div class="slider-line"></div>
+                <div class="slider-ruler">
+                  <input
+                    value="50"
+                    step="1"
+                    max="100"
+                    min="0"
+                    type="range"
+                    class="ruler-tap"
+                  />
+                </div>
+                <div
+                  class="left-img img-con"
+                  style="
+                    clip-path: polygon(0px 0px, 50% 0px, 50% 100%, 0px 100%);
+                  "
+                >
+                  <img
+                    class="img-fluid"
+                    src="https://sb.kaleidousercontent.com/67418/992x558/ef4cc24685/people-org.png"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+                <div class="right-img img-con transparent">
+                  <img
+                    class="img-fluid"
+                    src="https://sb.kaleidousercontent.com/67418/992x558/7632960ff9/people.png"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+              </div>
+              <div class="color-picker-row">
+                <button class="color-picker active" id="transparent"></button>
+                <button class="color-picker" id="black"></button>
+                <button class="color-picker" id="green"></button>
+                <button class="color-picker" id="blue"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bootstrap -->
+    <script src="./src/bootstrap.bundle.min.js"></script>
+    <script src="./src/script.js"></script>
+  </body>
+</html>

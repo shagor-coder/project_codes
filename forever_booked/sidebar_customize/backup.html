@@ -1,0 +1,410 @@
+<script>
+  window.exclude_accounts = ["3ph7NZx2kybPjT6R8uJc"];
+</script>
+
+<script>
+  (function () {
+    (function () {
+      const n = document.createElement("link").relList;
+      if (n && n.supports && n.supports("modulepreload")) return;
+      for (const t of document.querySelectorAll('link[rel="modulepreload"]'))
+        e(t);
+      new MutationObserver((t) => {
+        for (const i of t)
+          if (i.type === "childList")
+            for (const a of i.addedNodes)
+              a.tagName === "LINK" && a.rel === "modulepreload" && e(a);
+      }).observe(document, { childList: !0, subtree: !0 });
+      function o(t) {
+        const i = {};
+        return (
+          t.integrity && (i.integrity = t.integrity),
+          t.referrerPolicy && (i.referrerPolicy = t.referrerPolicy),
+          t.crossOrigin === "use-credentials"
+            ? (i.credentials = "include")
+            : t.crossOrigin === "anonymous"
+            ? (i.credentials = "omit")
+            : (i.credentials = "same-origin"),
+          i
+        );
+      }
+      function e(t) {
+        if (t.ep) return;
+        t.ep = !0;
+        const i = o(t);
+        fetch(t.href, i);
+      }
+    })();
+    const _ = (r = "", n = "") =>
+        new Promise((o, e) => {
+          let t = [],
+            i;
+          (i = setInterval(() => {
+            n === "multi"
+              ? (t = [...document.querySelectorAll(r)])
+              : (t = document.querySelector(r)),
+              !(!t || !t.length) && (clearInterval(i), o(t));
+          }, 300)),
+            setTimeout(() => {
+              t || (clearInterval(i), o(!1));
+            }, 2e4);
+        }),
+      b = [
+        {
+          element: "Academy",
+          name: "Academy",
+          icon: '<i class="fa-solid fa-graduation-cap"></i>',
+          order: "0",
+        },
+        {
+          element: "Help Center",
+          name: "Help Center",
+          icon: '<i class="fa-regular fa-lightbulb"></i>',
+          order: "1",
+        },
+        {
+          element: "Skool Community",
+          name: "Community",
+          icon: '<i class="fa-solid fa-school-flag"></i>',
+          order: "2",
+        },
+        {
+          element: "Referral Form",
+          name: "Add Referral",
+          icon: '<i class="fa-solid fa-user-plus"></i>',
+          order: "3",
+        },
+        {
+          element: "Custom",
+          name: "Your Resources",
+          order: "4",
+          icon: '<i class="fa-solid fa-pencil"></i>',
+          submenus: [
+            {
+              element: "Collab Doc",
+              name: "Collab Doc",
+              icon: '<i class="fa-solid fa-handshake-simple"></i>',
+            },
+            {
+              element: "Treatment Plan",
+              name: "Treatment Plan",
+              icon: '<i class="fa-solid fa-syringe"></i>',
+            },
+            {
+              element: "Media Database",
+              name: "Media Database",
+              icon: '<i class="fa-solid fa-photo-film"></i>',
+            },
+            {
+              element: "Transformation Plan",
+              name: "Transformation Plan",
+              icon: '<i class="fa-solid fa-map-location-dot"></i>',
+            },
+            {
+              element: "Mobile App",
+              name: "Mobile App",
+              icon: '<i class="fa-solid fa-mobile-screen-button"></i>',
+            },
+          ],
+        },
+        { element: "Divider", name: "Divider 1", order: "4" },
+        {
+          element: "Conversations",
+          name: "Conversations",
+          icon: '<i class="fa-regular fa-comment"></i>',
+          order: "5",
+        },
+        {
+          element: "Opportunities",
+          name: "Track Leads",
+          icon: '<i class="fa-solid fa-user-group"></i>',
+          order: "6",
+        },
+        { element: "Divider", name: "Divider 1", order: "4" },
+        {
+          element: "Facebook Ads",
+          name: "Meta Ads",
+          icon: '<i class="fa-brands fa-facebook"></i>',
+          order: "8",
+        },
+        {
+          element: "Request Ad Integration",
+          name: "Request Ad Integration",
+          icon: '<i class="fa-brands fa-intercom"></i>',
+          order: "8",
+        },
+        {
+          element: "Launch SMS Campaign",
+          name: "Launch SMS Campaign",
+          icon: '<i class="fa-solid fa-comments"></i>',
+          order: "8",
+        },
+        {
+          element: "Marketing",
+          name: "Email + Socials",
+          icon: '<i class="fa-solid fa-envelopes-bulk"></i>',
+          order: "8",
+        },
+        {
+          element: "Booster Shot",
+          name: "Booster Shot",
+          icon: '<i class="fa-solid fa-gauge-high"></i>',
+          order: "8",
+        },
+        {
+          element: "Upload Client List",
+          name: "Upload Client List",
+          icon: '<i class="fa-solid fa-cloud-arrow-up"></i>',
+          order: "8",
+        },
+        {
+          element: "Custom",
+          name: "Reporting",
+          order: "7",
+          icon: '<i class="fa-solid fa-chart-area"></i>',
+          submenus: [
+            {
+              element: "Dashboard",
+              name: "Track Results",
+              icon: '<i class="fa-solid fa-filter-circle-dollar"></i>',
+            },
+            {
+              element: "Reporting",
+              name: "Track Ads",
+              icon: '<i class="fa-solid fa-chart-pie"></i>',
+            },
+          ],
+        },
+        { element: "Divider", name: "Divider 2", order: "8" },
+        {
+          element: "Contacts",
+          name: "Contacts",
+          order: "9",
+          icon: '<i class="fa-solid fa-pager"></i>',
+        },
+        {
+          element: "Reputation",
+          name: "Manage Reviews",
+          order: "10",
+          icon: '<i class="fa-solid fa-star"></i>',
+        },
+        {
+          element: "Payments",
+          name: "Payments",
+          order: "11",
+          icon: '<i class="fa-solid fa-wallet"></i>',
+        },
+        { element: "Divider", name: "Divider 3", order: "13" },
+        {
+          element: "AI Offer Prompts ",
+          name: "AI Prompts",
+          order: "12",
+          icon: '<i class="fa-solid fa-robot"></i>',
+        },
+        {
+          element: "AI Knowledge",
+          name: "AI Knowledge",
+          order: "13",
+          icon: '<i class="fa-solid fa-brain"></i>',
+        },
+        {
+          element: "Q/A Database",
+          name: "Q/A Database",
+          order: "13",
+          icon: '<i class="fa-solid fa-robot"></i>',
+        },
+        {
+          element: "AI Q/A Database",
+          name: "AI Q/A Database",
+          order: "13",
+          icon: '<i class="fa-solid fa-question"></i>',
+        },
+        {
+          element: "Automation",
+          name: "Automation",
+          order: "14",
+          icon: '<i class="fa-solid fa-gear"></i>',
+        },
+        { element: "Divider", name: "Divider 4", order: "15" },
+        {
+          element: "Calendars",
+          name: "Calendars",
+          order: "15",
+          icon: '<i class="fa-solid fa-calendar"></i>',
+        },
+        {
+          element: "Sites",
+          name: "Sites",
+          order: "16",
+          icon: '<i class="fa-solid fa-sitemap"></i>',
+        },
+        {
+          element: "Media Storage",
+          name: "Site Media",
+          order: "16",
+          icon: '<i class="fa-regular fa-images"></i>',
+        },
+        { element: "Divider", name: "Divider 4", order: "17" },
+        {
+          element: "Refer & Get A Free Month",
+          name: "Refer & Get A Free Month",
+          order: "18",
+          icon: '<i class="fa-solid fa-sack-dollar"></i>',
+        },
+      ],
+      g = window.exclude_accounts || [];
+    let p = [],
+      v = [],
+      c = [];
+    const w = async () => {
+        (p = []), (v = []);
+        let r = (await _(".hl_nav-header a", "multi")) || [];
+        return (
+          c == null ||
+            c.forEach((n) => {
+              n.remove();
+            }),
+          (c = []),
+          b.forEach((n) => {
+            var o;
+            if (n.element !== "Custom" && n.element !== "Divider") {
+              let e =
+                r == null
+                  ? void 0
+                  : r.find(
+                      (a) =>
+                        a.innerText.toString().trim().toLowerCase() ===
+                        n.element.trim().toLowerCase()
+                    );
+              if (!e && n.element !== "Custom")
+                return console.log("No menus found");
+              let t = e.querySelector(".hl_text-overflow");
+              t && (e.dataset.text = t.innerText), t && (t.innerText = n.name);
+              let i = document.createElement("span");
+              (i.classList = "custom-icon"),
+                (i.innerHTML = n.icon),
+                e.prepend(i),
+                c.push(i),
+                (e.dataset.order = n.order),
+                p.push(e);
+            }
+            if (n.element === "Divider") {
+              let e = document.createElement("a");
+              (e.classList =
+                "w-full group px-3 flex items-center justify-start sm:justify-center md:justify-center lg:justify-start xl:justify-start text-sm font-medium rounded-md cursor-pointer exact-active-class active text-gray-300 font-normal cursor-text divider custom-divider"),
+                (e.innerHTML = `
+      <p class="w-full text-left border-b border-solid my-3" style="line-height: 0.1em; font-size: 10px;"></p>
+      `),
+                (e.dataset.order = n.order),
+                p.push(e),
+                c.push(e);
+            }
+            if (n.element === "Custom" && n.element !== "Divider") {
+              let e = document.createElement("div");
+              (e.classList = `
+            w-full custom-item
+            `),
+                (e.dataset.order = n.order),
+                (e.innerHTML = `
+              <div class="w-full group px-3 flex items-center justify-start md:justify-center lg:justify-start xl:justify-start text-sm rounded-md cursor-pointer custom-link font-medium opacity-70 hover:opacity-100 py-2 md:py-2 custom-text">
+                <span class="md:mr-0 h-5 w-5 mr-2 lg:mr-2 xl:mr-2 font-sm">
+                ${n.icon}
+                </span>
+                <span class="hl_text-overflow sm:hidden md:hidden nav-title lg:block xl:block"> ${n.name.trim()} </span>
+                <span class="ml-auto font-sm right-icon">
+                  <i class="fa-solid fa-angle-right"></i>
+                </span>
+              </div>
+              <div class="custom-dropdown"></div>
+            `);
+              let t = e.querySelector(".custom-dropdown"),
+                i = e.querySelector(".custom-text");
+              (o = n.submenus) == null ||
+                o.forEach((a) => {
+                  let u = r.find(
+                    (x) => x.innerText.toString().trim() === a.element.trim()
+                  );
+                  if (!u) return console.log("No menu element found");
+                  let m = u.querySelector(".hl_text-overflow");
+                  m && (u.dataset.text = m.innerText),
+                    m && (m.innerText = a.name);
+                  let f = document.createElement("span");
+                  (f.classList = "custom-icon"),
+                    (f.innerHTML = a.icon),
+                    u.prepend(f),
+                    c.push(f),
+                    t.append(u);
+                }),
+                p.push(e),
+                v.push(e),
+                c.push(e),
+                i.addEventListener("click", (a) => {
+                  a.stopPropagation(),
+                    v.forEach((m) => {
+                      m === e || m.classList.remove("active");
+                    }),
+                    e.classList.contains("active")
+                      ? e.classList.remove("active")
+                      : e.classList.add("active");
+                });
+            }
+          }),
+          p
+        );
+      },
+      S = async (r) => {
+        setTimeout(async () => {
+          const n = await w(),
+            o = document.querySelector(".hl_nav-header > nav");
+          n.forEach((e) => {
+            o.appendChild(e);
+          });
+        }, 1000);
+      },
+      L =
+        '@import"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css";#sidebar-v2 a.divider:not(.custom-divider){display:none!important}.sidebar-v2-location #sb_app-marketplace,.sidebar-v2-location #sb_memberships{display:none!important}.hl_nav-header>nav a span.custom-icon{display:flex!important;align-items:center!important;justify-content:center!important;width:20px!important;height:20px!important;margin-right:8px!important}.hl_nav-header>nav a span.custom-icon i{color:#000!important;font-size:16px!important}.sidebar-v2-location .hl_nav-header>nav a span.h-5.w-5{display:none!important}.sidebar-v2-location .hl_nav-header>nav a>img{display:none!important}.hl_nav-header>nav .custom-item{flex-direction:column!important;justify-content:flex-start!important}.hl_nav-header>nav .custom-item:hover .custom-text{background-color:#f3f4f6!important}.hl_nav-header>nav .custom-text i{color:#000!important;font-size:16px!important}.hl_nav-header>nav .custom-item .custom-text{width:100%!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;margin-bottom:2px!important}.hl_nav-header>nav .custom-item .custom-text .nav-title{color:#000!important}.custom-item .custom-dropdown{transition:all .3s ease-out;transform-origin:top;max-height:0px;overflow:hidden;transform:scaleY(0);width:100%;padding-left:10px;flex-direction:column;align-items:flex-start;justify-content:center}.custom-item.active .custom-text{background-color:#f3f4f6!important}.custom-item.active .custom-dropdown{max-height:200px;transform:scaleY(1)}';
+    let y,
+      s,
+      d,
+      l = !1;
+    const h = document.createElement("style");
+    h.innerHTML = L;
+    const C = async () => {
+        if (
+          ((s = new URL(location.href).pathname.trim()),
+          !s.toString().includes("location"))
+        )
+          return console.log("Agency View"), (d = "");
+        if (s.toString().includes("/settings/")) return (l = !0);
+        let n = s.split("/");
+        if (
+          s.toString().includes("/workflow/") ||
+          s.toString().includes("/form-builder-v2/") ||
+          s.toString().includes("/survey-builder-v2/") ||
+          s.toString().includes("/page-builder/") ||
+          s.toString().includes("/emails/create/") ||
+          s.toString().includes("/campaigns/create") ||
+          s.toString().includes("/customers/detail/")
+        )
+          return (l = !0);
+        let o = n[3];
+        if (d && g.includes(o.trim()) && d !== o)
+          return (
+            h.remove(),
+            (location.pathname = `/v2/location/${o}/settings/company`)
+          );
+        if (g.includes(o.trim())) return h.remove();
+        if (!(d === o && !l)) {
+          if (d && d !== o)
+            return (location.pathname = `/v2/location/${o}/settings/company`);
+          (d = o), (l = !1), document.head.appendChild(h), await S();
+        }
+      },
+      T = () => {
+        const r = document.querySelector("#app");
+        (y = new MutationObserver(C)),
+          y.observe(r, { subtree: !0, childList: !0, attributes: !0 });
+      };
+    T();
+  })();
+</script>

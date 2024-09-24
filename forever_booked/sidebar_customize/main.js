@@ -46,6 +46,12 @@ const initiate_observer = async () => {
   if (current_path.toString().includes("/customers/detail/"))
     return (settings_visited = true);
 
+  if (current_path.toString().includes("/payments/v2/estimates"))
+    return (settings_visited = true);
+
+  if (current_path.toString().includes("/payments/invoice-templates"))
+    return (settings_visited = true);
+
   let current_location_id = paths[3];
 
   if (
@@ -70,7 +76,6 @@ const initiate_observer = async () => {
 
   settings_visited = false;
   document.head.appendChild(stylesheet);
-
   await add_sidebar_menus(mutation_observer);
 };
 

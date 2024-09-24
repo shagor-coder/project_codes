@@ -9,16 +9,17 @@ export const get_element_by_promise = (selectorClass = "", type = "") => {
         element = document.querySelector(selectorClass);
       }
 
-      if (!element || !element.length) return;
+      if (type === "multi" && element.length < 24) return;
+      if (type === "single" && !element) return;
       clearInterval(timeout);
       res(element);
-    }, 300);
+    }, 200);
 
     setTimeout(() => {
       if (!element) {
         clearInterval(timeout);
         res(false);
       }
-    }, 20000);
+    }, 30000);
   });
 };
