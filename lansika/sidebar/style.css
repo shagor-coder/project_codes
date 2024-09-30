@@ -1,0 +1,719 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap");
+
+/* CSS Variables */
+
+:root {
+  --primary-color: #005aaa;
+  --secondary-color: #007ed5;
+  --common-font-family: "Roboto", sans-serif;
+  --font-weight-light: 300;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
+  --font-weight-normal: 400;
+
+  --transition-all: 0.3s linear;
+
+  /* Sidebar CSS */
+  --sidebar-background-color: var(--primary-color);
+  --sidebar-menu-font-family: var(--common-font-family);
+  --sidebar-menu-hover-box-shadow: 0 2px 5px #005aaa65;
+  --sidebar-menu-font-size: 16px;
+  --sidebar-menu-font-color: #fff;
+  --sidebar-menu-hover-font-color: #fff;
+  --sidebar-menu-hover-background-color: var(--secondary-color);
+  --sidebar-menu-font-weight: var(--font-weight-normal);
+
+  --sidebar-menu-divider-text-color: #fff;
+
+  --sidebar-menu-badge-text-color: #fff;
+  --sidebar-menu-badge-background: var(--secondary-color);
+  --sidebar-menu-badge-border: 1px solid var(--primary-color);
+
+  /* Sidebar Icon */
+  --sidebar-lauchpad-icon: "\f06a";
+  --sidebar-dashboard-icon: "\e473";
+  --sidebar-conversation-icon: "\f086";
+  --sidebar-calendar-icon: "\f133";
+  --sidebar-contact-icon: "\f2b9";
+  --sidebar-opportunity-icon: "\f0e8";
+  --sidebar-payment-icon: "\f09d";
+  --sidebar-marketing-icon: "\f140";
+  --sidebar-automation-icon: "\f72b";
+  --sidebar-sites-icon: "\f0ac";
+  --sidebar-memberships-icon: "\f132";
+  --sidebar-media-storage-icon: "\f87c";
+  --sidebar-reputation-icon: "\f005";
+  --sidebar-reporting-icon: "\f200";
+  --sidebar-appmarketplace-icon: "\f3fa";
+  --sidebar-mobileapp-icon: "\f3cf";
+  --sidebar-settings-icon: "\f1de";
+
+  /* Topbar CSS */
+  --topbar-background-color: var(--primary-color);
+
+  --topbar-title-font-color: #fff;
+  --topbar-title-font-weight: var(--font-weight-bold);
+  --topbar-title-font-size: 20px;
+
+  --topbar-menu-font-color: #fff;
+  --topbar-menu-font-weight: var(--font-weight-normal);
+  --topbar-menu-font-size: 14px;
+  --topbar-menu-active-border-color: #fff;
+  --topbar-menu-active-font-color: #fff;
+
+  /* Topbar Icons CSS */
+  --topbar-icon-background-color: var(--primary-color);
+  --topbar-icon-border: 1px solid #fff;
+
+  /* Dashboard Cards CSS */
+  --dashboard-card-background-color: #dfecf8;
+  --dashboard-card-border: 1px solid #17122b2b;
+  --dashboard-card-border-radius: 5px;
+  --dashboard-card-header-background: var(--primary-color);
+  --dashboard-card-box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.15);
+
+  --dashboard-card-header-title-font-color: #fff;
+  --dashboard-card-header-title-font-size: 16px;
+  --dashboard-card-header-title-font-weight: var(--font-weight-bold);
+
+  --dashboard-card-header-icon-font-color: #fff;
+  --dashboard-card-header-icon-font-size: 16px;
+  --dashboard-card-header-icon-background: var(--secondary-color);
+  --dashboard-card-header-icon-hover-background: var(--secondary-color);
+
+  /* Location Switcher CSS */
+  --location-switcher-background: var(--secondary-color);
+  --location-switcher-border: 1px solid var(--primary-color);
+  --location-switcher-header-font-size: 14px;
+  --location-switcher-header-font-color: #fff;
+  --location-switcher-header-font-weight: var(--font-weight-medium);
+
+  --location-switcher-icon-font-color: #fff;
+
+  --location-switcher-subtext-font-size: 10px;
+  --location-switcher-subtext-font-color: #fff;
+  --location-switcher-subtext-font-weight: var(--font-weight-normal);
+
+  /* Global Search Opener */
+  --global-search-background: var(--secondary-color);
+  --global-search-border: 1px solid var(--primary-color);
+  --global-search-header-font-size: 14px;
+  --global-search-header-font-color: #fff;
+  --global-search-header-font-weight: var(--font-weight-medium);
+
+  --global-search-icon-font-color: #fff;
+
+  /* Quick Actions */
+
+  --quick-actions-background: var(--secondary-color);
+  --quick-actions-border: 1px solid var(--primary-color);
+
+  --quick-actions-icon-font-color: #fff;
+
+  /* Collapse Button */
+  --collapse-button-background: var(--secondary-color);
+  --collapse-button-border: 1px solid var(--primary-color);
+  --collapse-button-font-size: 20px;
+  --collapse-button-font-color: #fff;
+
+  /* Settings Back Button */
+
+  --back-button-background: var(--secondary-color);
+  --back-button-border: 1px solid var(--primary-color);
+  --back-button-font-size: 12px;
+  --back-button-font-color: #fff;
+  --back-button-font-weight: var(--font-weight-normal);
+
+  /* Conversations CSS */
+
+  --conversation-unread-background: var(--primary-color);
+  --conversation-unread-font-color: #fff;
+  --conversation-unread-font-size: 12px;
+  --conversation-unread-font-weight: var(--font-weight-bold);
+
+  --conversation-avater-background: var(--primary-color);
+  --conversation-avater-icon-color: var(--secondary-color);
+
+  --conversation-send-message-background: var(--primary-color);
+  --conversation-send-message-font-color: #fff;
+  --conversation-send-message-font-size: 14px;
+  --conversation-send-message-font-weight: var(--font-weight-bold);
+
+  --conversation-received-message-background: #eff2f9;
+  --conversation-received-message-font-color: var(--primary-color);
+  --conversation-received-message-font-size: 14px;
+  --conversation-received-message-font-weight: var(--font-weight-bold);
+}
+
+/* Hide scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 0;
+}
+
+/* Hide scrollbar for Firefox */
+html {
+  scrollbar-width: none;
+}
+
+body {
+  font-family: var(--common-font-family) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+strong,
+div,
+ul,
+li {
+  font-family: var(--common-font-family) !important;
+}
+
+/* Sidebar Start */
+body #sidebar-v2 .default-bg-color,
+body #sidebar-v2.default-bg-color {
+  background-image: linear-gradient(
+    178deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  ) !important;
+}
+
+body #sidebar-v2 nav {
+  padding: 0 5px 0 5px !important;
+}
+
+body #sidebar-v2 nav a {
+  border-top-left-radius: 5px !important;
+  border-bottom-left-radius: 5px !important;
+  position: relative !important;
+  transition: var(--transition-all) !important;
+}
+
+body #sidebar-v2 nav a.active:not(.divider),
+body #sidebar-v2 nav a:hover:not(.divider) {
+  box-shadow: var(--sidebar-menu-box-shadow) !important;
+  background-color: #fdbd56 !important;
+}
+
+body #sidebar-v2 nav a .nav-title {
+  color: var(--sidebar-menu-font-color) !important;
+  font-size: var(--sidebar-menu-font-size) !important;
+  font-weight: var(--sidebar-menu-font-weight) !important;
+  font-family: var(--sidebar-menu-font-family) !important;
+}
+
+body #sidebar-v2 nav a:hover .nav-title {
+  color: var(--sidebar-menu-hover-font-color) !important;
+}
+
+body .sidebar-v2-location #sidebar-v2 nav a img {
+  filter: invert(0) !important;
+}
+
+body .sidebar-v2-location #sidebar-v2 nav a.divider p {
+  border-color: var(--secondary-color) !important;
+}
+
+.sidebar-v2-location #sidebar-v2 .hl_nav-header {
+  padding-top: 20px !important;
+}
+
+.sidebar-v2-location #sidebar-v2 .hl_nav-settings {
+  padding-top: 20px !important;
+  padding-bottom: 15px !important;
+}
+
+/* Change Sidebar Icons */
+body .sidebar-v2-location #sidebar-v2 nav a img {
+  display: none !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  .hl_nav-header
+  nav
+  a:not(.custom-link)
+  span:nth-child(1) {
+  display: none !important;
+}
+
+body .sidebar-v2-location #sidebar-v2 .hl_nav-settings nav a span:nth-child(1) {
+  display: none !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  nav
+  a:not(.custom-link)
+  span:nth-child(2) {
+  padding-left: 28px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  position: relative !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  nav
+  a:not(.custom-link)
+  span:nth-child(2)::before {
+  content: "" !important;
+  position: absolute !important;
+  width: 21px !important;
+  height: 100% !important;
+  left: 0px !important;
+  top: 0px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: "Font Awesome 6 Free" !important;
+  font-size: var(--sidebar-menu-font-size) !important;
+  color: var(--sidebar-menu-hover-font-color) !important;
+  font-weight: var(--font-weight-bold) !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  nav
+  a#sb_launchpad
+  span:nth-child(2)::before {
+  content: var(--sidebar-lauchpad-icon) !important;
+}
+
+body .sidebar-v2-location #sidebar-v2 nav a.custom-link i {
+  color: var(--sidebar-menu-font-color) !important;
+  font-size: var(--sidebar-menu-font-size) !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  nav
+  a#sb_dashboard
+  span:nth-child(2)::before {
+  content: var(--sidebar-dashboard-icon) !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  nav
+  a#sb_conversations
+  span:nth-child(2)::before {
+  content: var(--sidebar-conversation-icon) !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  nav
+  a#sb_calendars
+  span:nth-child(2)::before {
+  content: var(--sidebar-calendar-icon) !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  nav
+  a#sb_contacts
+  span:nth-child(2)::before {
+  content: var(--sidebar-contact-icon) !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  nav
+  a#sb_opportunities
+  span:nth-child(2)::before {
+  content: var(--sidebar-opportunity-icon) !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  nav
+  a#sb_payments
+  span:nth-child(2)::before {
+  content: var(--sidebar-payment-icon) !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  nav
+  a#sb_email-marketing
+  span:nth-child(2)::before {
+  content: var(--sidebar-marketing-icon) !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  nav
+  a#sb_automation
+  span:nth-child(2)::before {
+  content: var(--sidebar-automation-icon) !important;
+}
+
+body .sidebar-v2-location #sidebar-v2 nav a#sb_sites span:nth-child(2)::before {
+  content: var(--sidebar-sites-icon) !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  nav
+  a#sb_memberships
+  span:nth-child(2)::before {
+  content: var(--sidebar-memberships-icon) !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  nav
+  a#sb_app-media
+  span:nth-child(2)::before {
+  content: var(--sidebar-media-storage-icon) !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  nav
+  a#sb_reputation
+  span:nth-child(2)::before {
+  content: var(--sidebar-reputation-icon) !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  nav
+  a#sb_reporting
+  span:nth-child(2)::before {
+  content: var(--sidebar-reporting-icon) !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  nav
+  a#sb_app-marketplace
+  span:nth-child(2)::before {
+  content: var(--sidebar-appmarketplace-icon) !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  nav
+  a#sb_location-mobile-app
+  span:nth-child(2)::before {
+  content: var(--sidebar-mobileapp-icon) !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  nav
+  a#sb_settings
+  span:nth-child(2)::before {
+  content: var(--sidebar-settings-icon) !important;
+}
+
+/* Change Lauchpad Name */
+body .sidebar-v2-location #sidebar-v2 nav a#sb_launchpad span:nth-child(2) {
+  color: transparent !important;
+}
+
+body
+  .sidebar-v2-location
+  #sidebar-v2
+  nav
+  a#sb_launchpad
+  span:nth-child(2)::after {
+  content: "Start Here" !important;
+  position: absolute !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  font-size: var(--sidebar-menu-font-size) !important;
+  font-family: var(--sidebar-menu-font-family) !important;
+  font-weight: var(--font-weight-medium) !important;
+  color: var(--sidebar-menu-font-color) !important;
+  text-indent: 0px !important;
+}
+
+/* Change Agency Icons */
+
+body .sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a img {
+  filter: invert(0) !important;
+}
+
+body .sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a i {
+  color: var(--sidebar-menu-font-color) !important;
+}
+
+/* Start Topbar CSS */
+body .hl_header {
+  background-color: var(--topbar-background-color) !important;
+}
+
+body .hl_header .topmenu-navtitle {
+  color: var(--topbar-title-font-color) !important;
+  font-size: var(--topbar-title-font-size) !important;
+  font-weight: var(--topbar-title-font-weight) !important;
+}
+
+.sidebar-v2-location .hl_header .topmenu-nav .topmenu-navitem {
+  color: var(--topbar-menu-font-color) !important;
+  font-size: var(--topbar-menu-font-size) !important;
+  font-weight: var(--topbar-menu-font-weight) !important;
+}
+
+.sidebar-v2-location .hl_header .topmenu-nav .topmenu-navitem.active {
+  color: var(--topbar-menu-active-font-color) !important;
+  border-color: var(--topbar-menu-active-border-color) !important;
+}
+
+/* Start Topbar Icons CSS */
+
+body .hl_header .hdctrl_ms {
+  background-color: var(--topbar-icon-background-color) !important;
+  border: var(--topbar-icon-border) !important;
+}
+
+body .hl_header .hl_header--phone.dropdown a > span {
+  background-color: var(--topbar-icon-background-color) !important;
+  border: var(--topbar-icon-border) !important;
+}
+
+body .hl_header .hl_header--recent-activities {
+  background-color: var(--topbar-icon-background-color) !important;
+  border: var(--topbar-icon-border) !important;
+}
+
+body .hl_header .hl_header--avatar .avatar_img {
+  background-color: var(--topbar-icon-background-color) !important;
+  border: var(--topbar-icon-border) !important;
+}
+
+body .hl_header .btn-changelog {
+  background-color: var(--topbar-icon-background-color) !important;
+  border: var(--topbar-icon-border) !important;
+}
+
+body .hl_header #hl_header--help-icon {
+  background-color: var(--topbar-icon-background-color) !important;
+  border: var(--topbar-icon-border) !important;
+}
+
+/* Dashboard Cards CSS */
+
+#location-dashboard .hl-card {
+  background-color: var(--dashboard-card-background-color) !important;
+  border: var(--dashboard-card-border) !important;
+  box-shadow: var(--dashboard-card-box-shadow) !important;
+  border-radius: var(--dashboard-card-border-radius) !important;
+}
+
+#location-dashboard .hl-card > .hl-card-header {
+  background-color: var(--dashboard-card-header-background) !important;
+  border-top-left-radius: var(--dashboard-card-border-radius) !important;
+  border-top-right-radius: var(--dashboard-card-border-radius) !important;
+}
+
+#location-dashboard .hl-card > .hl-card-header div.hl-text-md-medium {
+  font-size: var(--dashboard-card-header-title-font-size) !important;
+  color: var(--dashboard-card-header-title-font-color) !important;
+  font-weight: var(--dashboard-card-header-title-font-weight) !important;
+}
+
+#location-dashboard .hl-card > .hl-card-header div.hl-text-xs-regular {
+  color: var(--dashboard-card-header-title-font-color) !important;
+}
+
+#location-dashboard
+  .hl-card
+  > .hl-card-header
+  .location-dashboard-popover-date-property
+  > div {
+  background-color: var(--dashboard-card-header-icon-background) !important;
+  color: var(--dashboard-card-header-icon-font-color) !important;
+}
+
+#chart path:not(path[fill="transparent"], path[fill-opacity="0.2"]) {
+  fill: #fff !important;
+  fill-opacity: 1 !important;
+  stroke: var(--secondary-color) !important;
+}
+
+#chart path[fill="transparent"],
+#chart path[fill-opacity="0.2"] {
+  fill: transparent !important;
+}
+
+#chart path:not(path[fill="transparent"], path[fill-opacity="0.2"]):hover {
+  fill-opacity: 0.2 !important;
+}
+
+.hl-empty .hl-empty-icon-container .hl-empty-icon svg {
+  color: var(--primary-color) !important;
+  stroke: var(--primary-color) !important;
+}
+
+/* Start Location Switcher CSS */
+body #location-switcher-sidbar-v2 {
+  background-color: var(--location-switcher-background) !important;
+  border: var(--location-switcher-border) !important;
+}
+
+body #location-switcher-sidbar-v2 .hl_switcher-loc-name {
+  font-size: var(--location-switcher-header-font-size) !important;
+  color: var(--location-switcher-header-font-color) !important;
+  font-weight: var(--location-switcher-header-font-weight) !important;
+}
+
+body #location-switcher-sidbar-v2 .hl_switcher-loc-city {
+  font-size: var(--location-switcher-subtext-font-size) !important;
+  color: var(--location-switcher-subtext-font-color) !important;
+  font-weight: var(--location-switcher-subtext-font-weight) !important;
+}
+
+body #sidebar-v2 #location-switcher-sidbar-v2 .hl_location_icon {
+  filter: invert(0) !important;
+}
+
+body #location-switcher-sidbar-v2 .switcher-caret-holder i {
+  color: var(--location-switcher-icon-font-color) !important;
+}
+
+/* Start Global Search Opener CSS */
+
+body #globalSearchOpener {
+  background-color: var(--global-search-background) !important;
+  border: var(--global-search-border) !important;
+}
+
+body #globalSearchOpener .search-placeholder {
+  font-size: var(--global-search-header-font-size) !important;
+  color: var(--global-search-header-font-color) !important;
+  font-weight: var(--global-search-header-font-weight) !important;
+}
+
+body #globalSearchOpener .search-shortcut {
+  font-size: var(--global-search-header-font-size) !important;
+  color: var(--global-search-header-font-color) !important;
+  font-weight: var(--global-search-header-font-weight) !important;
+  background-color: var(--primary-color) !important;
+}
+
+body #globalSearchOpener .search-icon {
+  color: var(--global-search-icon-font-color) !important;
+}
+
+/* Start Quick Actions CSS */
+body #quickActions {
+  background-color: var(--quick-actions-background) !important;
+  border: var(--quick-actions-border) !important;
+}
+body #quickActions img {
+  filter: invert(1) !important;
+}
+
+/* Collapse Button */
+
+body #sidebar-v2 .hl_collapse-button {
+  background-color: var(--collapse-button-background) !important;
+  border: var(--collapse-button-border) !important;
+  font-size: var(--collapse-button-font-size) !important;
+  color: var(--collapse-button-font-color) !important;
+}
+
+/* Start Back Button */
+
+body #backButtonv2 {
+  background-color: var(--back-button-background) !important;
+  border: var(--back-button-border) !important;
+  font-size: var(--back-button-font-size) !important;
+  color: var(--back-button-font-color) !important;
+  font-weight: var(--back-button-font-weight) !important;
+}
+
+body #backButtonv2 + div {
+  font-size: var(--back-button-font-size) !important;
+  color: var(--back-button-font-color) !important;
+  font-weight: var(--back-button-font-weight) !important;
+}
+
+/* Start Setting Divider Text */
+
+body #sidebar-v2 .divider p .uppercase {
+  color: var(--sidebar-menu-divider-text-color) !important;
+}
+
+body #sidebar-v2 a .hl_new_badge {
+  color: var(--sidebar-menu-badge-text-color) !important;
+  background-color: var(--sidebar-menu-badge-background) !important;
+  border: var(--sidebar-menu-badge-border) !important;
+}
+
+/* Start Conversation CSS */
+
+body #conversations {
+  font-family: var(--common-font-family) !important;
+}
+
+body #conversation-list span.bg-blue-500 {
+  background-color: var(--conversation-unread-background) !important;
+  font-size: var(--conversation-unread-font-size) !important;
+  font-weight: var(--conversation-unread-font-weight) !important;
+  color: var(--conversation-unread-font-color) !important;
+}
+
+body .message-body--conversation .avatar_img {
+  background-color: var(--conversation-avater-background) !important;
+}
+
+body .message-body--conversation .type-icon {
+  color: var(--conversation-avater-icon-color) !important;
+}
+
+body .messages-single.\--own-message .message-bubble {
+  background-color: var(--conversation-send-message-background) !important;
+  font-size: var(--conversation-send-message-font-size) !important;
+  font-weight: var(--conversation-send-message-font-weight) !important;
+  color: var(--conversation-send-message-font-color) !important;
+  font-family: var(--common-font-family) !important;
+}
+
+body .messages-single.\--own-message .message-bubble:before {
+  border-color: var(--primary-color) transparent transparent transparent;
+}
+
+body .messages-single .message-bubble {
+  background-color: var(--conversation-received-message-background) !important;
+  font-size: var(--conversation-received-message-font-size) !important;
+  font-weight: var(--conversation-received-message-font-weight) !important;
+  color: var(--conversation-received-message-font-color) !important;
+  font-family: var(--common-font-family) !important;
+}
+
+body .messages-single .message-bubble:before {
+  border-color: #403f3f transparent transparent transparent;
+}
