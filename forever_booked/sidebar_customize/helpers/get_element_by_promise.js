@@ -9,7 +9,7 @@ export const get_element_by_promise = (selectorClass = "", type = "") => {
         element = document.querySelector(selectorClass);
       }
 
-      if (type === "multi" && element.length < 24) return;
+      if (type === "multi" && element.length < 18) return;
       if (type === "single" && !element) return;
       clearInterval(timeout);
       res(element);
@@ -20,6 +20,6 @@ export const get_element_by_promise = (selectorClass = "", type = "") => {
         clearInterval(timeout);
         res(false);
       }
-    }, 30000);
+    }, 10000);
   });
 };

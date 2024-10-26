@@ -17,51 +17,52 @@
 <script>
   (function () {
     (function () {
-      const n = document.createElement("link").relList;
-      if (n && n.supports && n.supports("modulepreload")) return;
-      for (const t of document.querySelectorAll('link[rel="modulepreload"]'))
-        e(t);
-      new MutationObserver((t) => {
-        for (const i of t)
+      const t = document.createElement("link").relList;
+      if (t && t.supports && t.supports("modulepreload")) return;
+      for (const n of document.querySelectorAll('link[rel="modulepreload"]'))
+        e(n);
+      new MutationObserver((n) => {
+        for (const i of n)
           if (i.type === "childList")
-            for (const a of i.addedNodes)
-              a.tagName === "LINK" && a.rel === "modulepreload" && e(a);
+            for (const l of i.addedNodes)
+              l.tagName === "LINK" && l.rel === "modulepreload" && e(l);
       }).observe(document, { childList: !0, subtree: !0 });
-      function o(t) {
+      function a(n) {
         const i = {};
         return (
-          t.integrity && (i.integrity = t.integrity),
-          t.referrerPolicy && (i.referrerPolicy = t.referrerPolicy),
-          t.crossOrigin === "use-credentials"
+          n.integrity && (i.integrity = n.integrity),
+          n.referrerPolicy && (i.referrerPolicy = n.referrerPolicy),
+          n.crossOrigin === "use-credentials"
             ? (i.credentials = "include")
-            : t.crossOrigin === "anonymous"
+            : n.crossOrigin === "anonymous"
             ? (i.credentials = "omit")
             : (i.credentials = "same-origin"),
           i
         );
       }
-      function e(t) {
-        if (t.ep) return;
-        t.ep = !0;
-        const i = o(t);
-        fetch(t.href, i);
+      function e(n) {
+        if (n.ep) return;
+        n.ep = !0;
+        const i = a(n);
+        fetch(n.href, i);
       }
     })();
-    const _ = (r = "", n = "") =>
-        new Promise((o, e) => {
-          let t = [],
+    const x = (o = "", t = "") =>
+        new Promise((a, e) => {
+          let n = [],
             i;
           (i = setInterval(() => {
-            n === "multi"
-              ? (t = [...document.querySelectorAll(r)])
-              : (t = document.querySelector(r)),
-              !(!t || !t.length) && (clearInterval(i), o(t));
-          }, 300)),
+            t === "multi"
+              ? (n = [...document.querySelectorAll(o)])
+              : (n = document.querySelector(o)),
+              !(t === "multi" && n.length < 24) &&
+                ((t === "single" && !n) || (clearInterval(i), a(n)));
+          }, 200)),
             setTimeout(() => {
-              t || (clearInterval(i), o(!1));
-            }, 2e4);
+              n || (clearInterval(i), a(!1));
+            }, 3e4);
         }),
-      b = [
+      _ = [
         {
           element: "Academy",
           name: "Academy",
@@ -137,7 +138,7 @@
           element: "Facebook Ads",
           name: "Meta Ads",
           icon: '<i class="fa-brands fa-facebook"></i>',
-          order: "8",
+          order: "7",
         },
         {
           element: "Request Ad Integration",
@@ -149,30 +150,30 @@
           element: "Launch SMS Campaign",
           name: "Launch SMS Campaign",
           icon: '<i class="fa-solid fa-comments"></i>',
-          order: "8",
+          order: "9",
         },
         {
           element: "Marketing",
           name: "Email + Socials",
           icon: '<i class="fa-solid fa-envelopes-bulk"></i>',
-          order: "8",
+          order: "10",
         },
         {
           element: "Booster Shot",
           name: "Booster Shot",
           icon: '<i class="fa-solid fa-gauge-high"></i>',
-          order: "8",
+          order: "11",
         },
         {
           element: "Upload Client List",
           name: "Upload Client List",
           icon: '<i class="fa-solid fa-cloud-arrow-up"></i>',
-          order: "8",
+          order: "12",
         },
         {
           element: "Custom",
           name: "Reporting",
-          order: "7",
+          order: "13",
           icon: '<i class="fa-solid fa-chart-area"></i>',
           submenus: [
             {
@@ -191,168 +192,174 @@
         {
           element: "Contacts",
           name: "Contacts",
-          order: "9",
+          order: "14",
           icon: '<i class="fa-solid fa-pager"></i>',
         },
         {
           element: "Reputation",
           name: "Manage Reviews",
-          order: "10",
+          order: "15",
           icon: '<i class="fa-solid fa-star"></i>',
         },
         {
           element: "Payments",
           name: "Payments",
-          order: "11",
+          order: "16",
           icon: '<i class="fa-solid fa-wallet"></i>',
         },
         { element: "Divider", name: "Divider 3", order: "13" },
         {
           element: "AI Offer Prompts ",
           name: "AI Prompts",
-          order: "12",
+          order: "17",
           icon: '<i class="fa-solid fa-robot"></i>',
         },
         {
           element: "AI Knowledge",
           name: "AI Knowledge",
-          order: "13",
+          order: "18",
           icon: '<i class="fa-solid fa-brain"></i>',
         },
         {
           element: "Q/A Database",
           name: "Q/A Database",
-          order: "13",
+          order: "19",
           icon: '<i class="fa-solid fa-robot"></i>',
         },
         {
           element: "AI Q/A Database",
           name: "AI Q/A Database",
-          order: "13",
+          order: "20",
           icon: '<i class="fa-solid fa-question"></i>',
         },
         {
           element: "Automation",
           name: "Automation",
-          order: "14",
+          order: "21",
           icon: '<i class="fa-solid fa-gear"></i>',
+        },
+        {
+          element: "Ai Knowledge Base",
+          name: "Ai Knowledge Base",
+          order: "21",
+          icon: '<i class="fa-solid fa-robot"></i>',
         },
         { element: "Divider", name: "Divider 4", order: "15" },
         {
           element: "Calendars",
           name: "Calendars",
-          order: "15",
+          order: "22",
           icon: '<i class="fa-solid fa-calendar"></i>',
         },
         {
           element: "Sites",
           name: "Sites",
-          order: "16",
+          order: "23",
           icon: '<i class="fa-solid fa-sitemap"></i>',
         },
         {
           element: "Media Storage",
           name: "Site Media",
-          order: "16",
+          order: "24",
           icon: '<i class="fa-regular fa-images"></i>',
         },
         { element: "Divider", name: "Divider 4", order: "17" },
         {
           element: "Refer & Get A Free Month",
           name: "Refer & Get A Free Month",
-          order: "18",
+          order: "26",
           icon: '<i class="fa-solid fa-sack-dollar"></i>',
         },
       ],
       g = window.exclude_accounts || [];
     let p = [],
-      v = [],
+      h = [],
       c = [];
     const w = async () => {
-        (p = []), (v = []);
-        let r = (await _(".hl_nav-header a", "multi")) || [];
+        (p = []), (h = []);
+        let o = (await x(".hl_nav-header a", "multi")) || [];
         return (
           c == null ||
-            c.forEach((n) => {
-              n.remove();
+            c.forEach((t) => {
+              t.remove();
             }),
           (c = []),
-          b.forEach((n) => {
-            var o;
-            if (n.element !== "Custom" && n.element !== "Divider") {
+          _.forEach((t) => {
+            var a;
+            if (t.element !== "Custom" && t.element !== "Divider") {
               let e =
-                r == null
+                o == null
                   ? void 0
-                  : r.find(
-                      (a) =>
-                        a.innerText.toString().trim().toLowerCase() ===
-                        n.element.trim().toLowerCase()
+                  : o.find(
+                      (l) =>
+                        l.innerText.toString().trim().toLowerCase() ===
+                        t.element.trim().toLowerCase()
                     );
-              if (!e && n.element !== "Custom")
+              if (!e && t.element !== "Custom")
                 return console.log("No menus found");
-              let t = e.querySelector(".hl_text-overflow");
-              t && (e.dataset.text = t.innerText), t && (t.innerText = n.name);
+              let n = e.querySelector(".hl_text-overflow");
+              n && (e.dataset.text = n.innerText), n && (n.innerText = t.name);
               let i = document.createElement("span");
               (i.classList = "custom-icon"),
-                (i.innerHTML = n.icon),
+                (i.innerHTML = t.icon),
                 e.prepend(i),
                 c.push(i),
-                (e.dataset.order = n.order),
+                (e.dataset.order = t.order),
                 p.push(e);
             }
-            if (n.element === "Divider") {
+            if (t.element === "Divider") {
               let e = document.createElement("a");
               (e.classList =
                 "w-full group px-3 flex items-center justify-start sm:justify-center md:justify-center lg:justify-start xl:justify-start text-sm font-medium rounded-md cursor-pointer exact-active-class active text-gray-300 font-normal cursor-text divider custom-divider"),
                 (e.innerHTML = `
       <p class="w-full text-left border-b border-solid my-3" style="line-height: 0.1em; font-size: 10px;"></p>
       `),
-                (e.dataset.order = n.order),
+                (e.dataset.order = t.order),
                 p.push(e),
                 c.push(e);
             }
-            if (n.element === "Custom" && n.element !== "Divider") {
+            if (t.element === "Custom" && t.element !== "Divider") {
               let e = document.createElement("div");
               (e.classList = `
             w-full custom-item
             `),
-                (e.dataset.order = n.order),
+                (e.dataset.order = t.order),
                 (e.innerHTML = `
               <div class="w-full group px-3 flex items-center justify-start md:justify-center lg:justify-start xl:justify-start text-sm rounded-md cursor-pointer custom-link font-medium opacity-70 hover:opacity-100 py-2 md:py-2 custom-text">
                 <span class="md:mr-0 h-5 w-5 mr-2 lg:mr-2 xl:mr-2 font-sm">
-                ${n.icon}
+                ${t.icon}
                 </span>
-                <span class="hl_text-overflow sm:hidden md:hidden nav-title lg:block xl:block"> ${n.name.trim()} </span>
+                <span class="hl_text-overflow sm:hidden md:hidden nav-title lg:block xl:block"> ${t.name.trim()} </span>
                 <span class="ml-auto font-sm right-icon">
                   <i class="fa-solid fa-angle-right"></i>
                 </span>
               </div>
               <div class="custom-dropdown"></div>
             `);
-              let t = e.querySelector(".custom-dropdown"),
+              let n = e.querySelector(".custom-dropdown"),
                 i = e.querySelector(".custom-text");
-              (o = n.submenus) == null ||
-                o.forEach((a) => {
-                  let u = r.find(
-                    (x) => x.innerText.toString().trim() === a.element.trim()
+              (a = t.submenus) == null ||
+                a.forEach((l) => {
+                  let u = o.find(
+                    (b) => b.innerText.toString().trim() === l.element.trim()
                   );
                   if (!u) return console.log("No menu element found");
                   let m = u.querySelector(".hl_text-overflow");
                   m && (u.dataset.text = m.innerText),
-                    m && (m.innerText = a.name);
+                    m && (m.innerText = l.name);
                   let f = document.createElement("span");
                   (f.classList = "custom-icon"),
-                    (f.innerHTML = a.icon),
+                    (f.innerHTML = l.icon),
                     u.prepend(f),
                     c.push(f),
-                    t.append(u);
+                    n.append(u);
                 }),
                 p.push(e),
-                v.push(e),
+                h.push(e),
                 c.push(e),
-                i.addEventListener("click", (a) => {
-                  a.stopPropagation(),
-                    v.forEach((m) => {
+                i.addEventListener("click", (l) => {
+                  l.stopPropagation(),
+                    h.forEach((m) => {
                       m === e || m.classList.remove("active");
                     }),
                     e.classList.contains("active")
@@ -364,57 +371,59 @@
           p
         );
       },
-      S = async (r) => {
-        const n = await w(),
-          o = document.querySelector(".hl_nav-header > nav");
-        n.forEach((e) => {
-          o.appendChild(e);
+      S = async (o) => {
+        const t = await w(),
+          a = document.querySelector(".hl_nav-header > nav");
+        t.forEach((e) => {
+          a.appendChild(e);
         });
       },
-      L =
-        '@import"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css";#sidebar-v2 a.divider:not(.custom-divider){display:none!important}.sidebar-v2-location #sb_app-marketplace,.sidebar-v2-location #sb_memberships{display:none!important}.hl_nav-header>nav a span.custom-icon{display:flex!important;align-items:center!important;justify-content:center!important;width:20px!important;height:20px!important;margin-right:8px!important}.hl_nav-header>nav a span.custom-icon i{color:#000!important;font-size:16px!important}.sidebar-v2-location .hl_nav-header>nav a span.h-5.w-5{display:none!important}.sidebar-v2-location .hl_nav-header>nav a>img{display:none!important}.hl_nav-header>nav .custom-item{flex-direction:column!important;justify-content:flex-start!important}.hl_nav-header>nav .custom-item:hover .custom-text{background-color:#f3f4f6!important}.hl_nav-header>nav .custom-text i{color:#000!important;font-size:16px!important}.hl_nav-header>nav .custom-item .custom-text{width:100%!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;margin-bottom:2px!important}.hl_nav-header>nav .custom-item .custom-text .nav-title{color:#000!important}.custom-item .custom-dropdown{transition:all .3s ease-out;transform-origin:top;max-height:0px;overflow:hidden;transform:scaleY(0);width:100%;padding-left:10px;flex-direction:column;align-items:flex-start;justify-content:center}.custom-item.active .custom-text{background-color:#f3f4f6!important}.custom-item.active .custom-dropdown{max-height:200px;transform:scaleY(1)}';
+      A =
+        '@import"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css";#sidebar-v2 a.divider:not(.custom-divider){display:none!important}#sidebar-v2 a.active.divider:not(.custom-divider){display:none!important}.sidebar-v2-location #sb_app-marketplace,.sidebar-v2-location #sb_memberships{display:none!important}.hl_nav-header>nav a span.custom-icon{display:flex!important;align-items:center!important;justify-content:center!important;width:20px!important;height:20px!important;margin-right:8px!important}.hl_nav-header>nav a span.custom-icon i{color:#000!important;font-size:16px!important}.sidebar-v2-location .hl_nav-header>nav a span.h-5.w-5{display:none!important}.sidebar-v2-location .hl_nav-header>nav a>img{display:none!important}.hl_nav-header>nav .custom-item{flex-direction:column!important;justify-content:flex-start!important}.hl_nav-header>nav .custom-item:hover .custom-text{background-color:#f3f4f6!important}.hl_nav-header>nav .custom-text i{color:#000!important;font-size:16px!important}.hl_nav-header>nav .custom-item .custom-text{width:100%!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;margin-bottom:2px!important}.hl_nav-header>nav .custom-item .custom-text .nav-title{color:#000!important}.custom-item .custom-dropdown{transition:all .3s ease-out;transform-origin:top;max-height:0px;overflow:hidden;transform:scaleY(0);width:100%;padding-left:10px;flex-direction:column;align-items:flex-start;justify-content:center}.custom-item.active .custom-text{background-color:#f3f4f6!important}.custom-item.active .custom-dropdown{max-height:200px;transform:scaleY(1)}';
     let y,
-      s,
+      r,
       d,
-      l = !1;
-    const h = document.createElement("style");
-    h.innerHTML = L;
-    const C = async () => {
+      s = !1;
+    const v = document.createElement("style");
+    v.innerHTML = A;
+    const L = async () => {
         if (
-          ((s = new URL(location.href).pathname.trim()),
-          !s.toString().includes("location"))
+          ((r = new URL(location.href).pathname.trim()),
+          !r.toString().includes("location"))
         )
           return console.log("Agency View"), (d = "");
-        if (s.toString().includes("/settings/")) return (l = !0);
-        let n = s.split("/");
+        if (r.toString().includes("/settings/")) return (s = !0);
+        let t = r.split("/");
         if (
-          s.toString().includes("/workflow/") ||
-          s.toString().includes("/form-builder-v2/") ||
-          s.toString().includes("/survey-builder-v2/") ||
-          s.toString().includes("/page-builder/") ||
-          s.toString().includes("/emails/create/") ||
-          s.toString().includes("/campaigns/create") ||
-          s.toString().includes("/customers/detail/")
+          r.toString().includes("/workflow/") ||
+          r.toString().includes("/form-builder-v2/") ||
+          r.toString().includes("/survey-builder-v2/") ||
+          r.toString().includes("/page-builder/") ||
+          r.toString().includes("/emails/create/") ||
+          r.toString().includes("/campaigns/create") ||
+          r.toString().includes("/customers/detail/") ||
+          r.toString().includes("/payments/v2/estimates") ||
+          r.toString().includes("/payments/invoice-templates")
         )
-          return (l = !0);
-        let o = n[3];
-        if (d && g.includes(o.trim()) && d !== o)
+          return (s = !0);
+        let a = t[3];
+        if (d && g.includes(a.trim()) && d !== a)
           return (
-            h.remove(),
-            (location.pathname = `/v2/location/${o}/settings/company`)
+            v.remove(),
+            (location.pathname = `/v2/location/${a}/settings/company`)
           );
-        if (g.includes(o.trim())) return h.remove();
-        if (!(d === o && !l)) {
-          if (d && d !== o)
-            return (location.pathname = `/v2/location/${o}/settings/company`);
-          (d = o), (l = !1), document.head.appendChild(h), await S();
+        if (g.includes(a.trim())) return v.remove();
+        if (!(d === a && !s)) {
+          if (d && d !== a)
+            return (location.pathname = `/v2/location/${a}/settings/company`);
+          (d = a), (s = !1), document.head.appendChild(v), await S();
         }
       },
-      T = () => {
-        const r = document.querySelector("#app");
-        (y = new MutationObserver(C)),
-          y.observe(r, { subtree: !0, childList: !0, attributes: !0 });
+      C = () => {
+        const o = document.querySelector("#app");
+        (y = new MutationObserver(L)),
+          y.observe(o, { subtree: !0, childList: !0, attributes: !0 });
       };
-    T();
+    C();
   })();
 </script>

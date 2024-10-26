@@ -1,0 +1,110 @@
+html {
+  scroll-behavior: smooth !important;
+}
+
+#preview-container .index-1 {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+#preview-container .index-0 {
+  position: relative !important;
+  z-index: 0 !important;
+}
+
+#preview-container .timer-sec .c-image-feature .img-feature-container {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+}
+
+#preview-container
+  .timer-sec
+  .c-image-feature
+  .img-feature-container
+  .img-container {
+  flex: 1 0 45px !important;
+  max-width: 45px !important;
+  padding: 0 !important;
+  margin-right: 20px !important;
+}
+
+#preview-container
+  .timer-sec
+  .c-image-feature
+  .img-feature-container
+  .txt-container {
+  width: auto !important;
+  padding: 0 !important;
+}
+
+#preview-container
+  .timer-sec
+  .c-column:nth-child(2)
+  .c-image-feature
+  .img-feature-container
+  .txt-container
+  .featureText
+  p {
+  font-weight: 300 !important;
+}
+
+#preview-container .timer-sec .c-countdown .time-grid-3 {
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px !important;
+  margin-left: 64px !important;
+  margin-top: -15px !important;
+}
+
+#preview-container .timer-sec .c-countdown .time-grid-3 .timer-box {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 5px !important;
+}
+
+#preview-container .inner-shadow > .inner {
+  padding: 20px 20px !important;
+  background-color: #fff !important;
+  box-shadow: 0px 2px 8px #00000029 !important;
+  border-radius: 10px !important;
+}
+
+#preview-container .li-text .c-paragraph p {
+  padding-left: 20px !important;
+  position: relative !important;
+}
+
+#preview-container .li-text .c-paragraph p::before {
+  position: absolute !important;
+  content: "" !important;
+  left: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 7px !important;
+  height: 7px !important;
+  background-color: #166534 !important;
+  border-radius: 100px !important;
+}
+
+@media (max-width: 767px) {
+  #preview-container .c-section > .inner {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  #preview-container .c-section > .inner .c-row {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #preview-container .inner-shadow > .inner {
+    padding: 20px 20px !important;
+    background-color: #fff !important;
+    box-shadow: 0px 2px 8px #00000029 !important;
+    border-radius: 10px !important;
+    max-width: calc(100% - 48px) !important;
+  }
+}

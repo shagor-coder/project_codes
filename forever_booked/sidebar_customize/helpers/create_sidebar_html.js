@@ -5,9 +5,18 @@ export let organised_menus = [];
 export let custom_menus = [];
 export let custom_elements = [];
 
+const wait = (timeout) =>
+  new Promise((resolve, reject) =>
+    setTimeout(() => {
+      resolve(true);
+    }, timeout)
+  );
+
 export const create_sidebar_menus = async () => {
   organised_menus = [];
   custom_menus = [];
+
+  // await wait(1500);
 
   let sidebar_menus =
     (await get_element_by_promise(".hl_nav-header a", "multi")) || [];

@@ -6,6 +6,18 @@
 :root {
   --primary-color: #005aaa;
   --secondary-color: #007ed5;
+  --brand-yellow-color: #fdbd56;
+
+  --primary-color-r: 0;
+  --secondary-color-r: 0;
+  --brand-yellow-color-r: 253;
+  --primary-color-g: 90;
+  --secondary-color-g: 126;
+  --brand-yellow-color-g: 189;
+  --primary-color-b: 170;
+  --secondary-color-b: 213;
+  --brand-yellow-color-b: 86;
+
   --common-font-family: "Roboto", sans-serif;
   --font-weight-light: 300;
   --font-weight-medium: 500;
@@ -557,25 +569,183 @@ body .hl_header #hl_header--help-icon {
   color: var(--dashboard-card-header-icon-font-color) !important;
 }
 
-#chart path:not(path[fill="transparent"], path[fill-opacity="0.2"]) {
-  fill: #fff !important;
+/* .crm-opportunities-stages-distribution
+  #chart
+  path:not(path[fill="transparent"], path[fill-opacity="0.2"]) {
+  fill: rgba(
+    var(--brand-yellow-color-r),
+    var(--brand-yellow-color-g),
+    var(--brand-yellow-color-b),
+    0.7
+  ) !important;
+  fill-opacity: 1 !important;
+  stroke: var(--secondary-color) !important;
+} */
+
+.crm-opportunities-funnel
+  #chart
+  path[fill="#EAECF0"]:not(path[fill="transparent"], path[fill-opacity="0.2"]) {
+  fill: rgba(
+    var(--brand-yellow-color-r),
+    var(--brand-yellow-color-g),
+    var(--brand-yellow-color-b),
+    0.5
+  ) !important;
   fill-opacity: 1 !important;
   stroke: var(--secondary-color) !important;
 }
 
-#chart path[fill="transparent"],
-#chart path[fill-opacity="0.2"] {
-  fill: transparent !important;
+/* .crm-opportunities-status
+  #chart
+  path:not(path[fill="transparent"], path[fill-opacity="0.2"]) {
+  fill: rgba(
+    var(--brand-yellow-color-r),
+    var(--brand-yellow-color-g),
+    var(--brand-yellow-color-b),
+    0.7
+  ) !important;
+  fill-opacity: 1 !important;
+  stroke: var(--secondary-color) !important;
+} */
+
+.crm-opportunities-conversion-rate
+  .vue-echarts-inner
+  path:not(
+    path[fill="transparent"],
+    path[fill-opacity="0.2"],
+    path[fill-opacity="0"]
+  ) {
+  fill: rgba(
+    var(--brand-yellow-color-r),
+    var(--brand-yellow-color-g),
+    var(--brand-yellow-color-b),
+    0.7
+  ) !important;
+  fill-opacity: 1 !important;
+  stroke: var(--secondary-color) !important;
 }
 
-#chart path:not(path[fill="transparent"], path[fill-opacity="0.2"]):hover {
-  fill-opacity: 0.2 !important;
+.crm-opportunities-conversion-rate
+  .vue-echarts-inner
+  path[fill="#53B1FD"]:not(
+    path[fill="transparent"],
+    path[fill-opacity="0.2"],
+    path[fill-opacity="0"]
+  ) {
+  fill: rgba(
+    var(--primary-color-r),
+    var(--primary-color-g),
+    var(--primary-color-b),
+    0.7
+  ) !important;
+  fill-opacity: 1 !important;
+  stroke: var(--secondary-color) !important;
 }
 
-.hl-empty .hl-empty-icon-container .hl-empty-icon svg {
-  color: var(--primary-color) !important;
-  stroke: var(--primary-color) !important;
+.crm-opportunities-value .vue-echarts-inner path[fill="rgb(83,177,253)"] {
+  fill: rgba(
+    var(--brand-yellow-color-r),
+    var(--brand-yellow-color-g),
+    var(--brand-yellow-color-b),
+    0.7
+  ) !important;
+  fill-opacity: 1 !important;
+  stroke: var(--brand-yellow-color) !important;
 }
+
+.crm-opportunities-value .vue-echarts-inner path[fill="rgb(83,177,253)"]:hover {
+  fill: rgba(
+    var(--brand-yellow-color-r),
+    var(--brand-yellow-color-g),
+    var(--brand-yellow-color-b),
+    0.9
+  ) !important;
+  fill-opacity: 1 !important;
+  stroke: var(--brand-yellow-color) !important;
+}
+
+/* .crm-opportunities-funnel
+  #chart
+  path[fill="rgb(180,180,180)"]:not(:last-child) {
+  fill: #007cd541 !important;
+  fill-opacity: 1 !important;
+  stroke: var(--secondary-color) !important;
+} */
+
+/* ==== Color For different Steps ==== */
+/* .crm-opportunities-funnel #chart path:nth-child(22) {
+  fill: rgba(
+    var(--primary-color-r),
+    var(--primary-color-g),
+    var(--primary-color-b),
+    1
+  ) !important;
+}
+
+.crm-opportunities-funnel #chart path:nth-child(23) {
+  fill: rgba(
+    var(--primary-color-r),
+    var(--primary-color-g),
+    var(--primary-color-b),
+    1
+  ) !important;
+}
+.crm-opportunities-funnel #chart path:nth-child(24) {
+  fill: rgba(
+    var(--primary-color-r),
+    var(--primary-color-g),
+    var(--primary-color-b),
+    0.9
+  ) !important;
+}
+.crm-opportunities-funnel #chart path:nth-child(25) {
+  fill: rgba(
+    var(--primary-color-r),
+    var(--primary-color-g),
+    var(--primary-color-b),
+    0.8
+  ) !important;
+}
+.crm-opportunities-funnel #chart path:nth-child(26) {
+  fill: rgba(
+    var(--primary-color-r),
+    var(--primary-color-g),
+    var(--primary-color-b),
+    0.7
+  ) !important;
+}
+.crm-opportunities-funnel #chart path:nth-child(27) {
+  fill: rgba(
+    var(--secondary-color-r),
+    var(--secondary-color-g),
+    var(--secondary-color-b),
+    0.9
+  ) !important;
+}
+.crm-opportunities-funnel #chart path:nth-child(28) {
+  fill: rgba(
+    var(--secondary-color-r),
+    var(--secondary-color-g),
+    var(--secondary-color-b),
+    0.8
+  ) !important;
+}
+.crm-opportunities-funnel #chart path:nth-child(29) {
+  fill: rgba(
+    var(--secondary-color-r),
+    var(--secondary-color-g),
+    var(--secondary-color-b),
+    0.7
+  ) !important;
+}
+.crm-opportunities-funnel #chart path:nth-child(30) {
+  fill: rgba(
+    var(--secondary-color-r),
+    var(--secondary-color-g),
+    var(--secondary-color-b),
+    0.6
+  ) !important;
+} */
 
 /* Start Location Switcher CSS */
 body #location-switcher-sidbar-v2 {
@@ -671,49 +841,4 @@ body #sidebar-v2 a .hl_new_badge {
   color: var(--sidebar-menu-badge-text-color) !important;
   background-color: var(--sidebar-menu-badge-background) !important;
   border: var(--sidebar-menu-badge-border) !important;
-}
-
-/* Start Conversation CSS */
-
-body #conversations {
-  font-family: var(--common-font-family) !important;
-}
-
-body #conversation-list span.bg-blue-500 {
-  background-color: var(--conversation-unread-background) !important;
-  font-size: var(--conversation-unread-font-size) !important;
-  font-weight: var(--conversation-unread-font-weight) !important;
-  color: var(--conversation-unread-font-color) !important;
-}
-
-body .message-body--conversation .avatar_img {
-  background-color: var(--conversation-avater-background) !important;
-}
-
-body .message-body--conversation .type-icon {
-  color: var(--conversation-avater-icon-color) !important;
-}
-
-body .messages-single.\--own-message .message-bubble {
-  background-color: var(--conversation-send-message-background) !important;
-  font-size: var(--conversation-send-message-font-size) !important;
-  font-weight: var(--conversation-send-message-font-weight) !important;
-  color: var(--conversation-send-message-font-color) !important;
-  font-family: var(--common-font-family) !important;
-}
-
-body .messages-single.\--own-message .message-bubble:before {
-  border-color: var(--primary-color) transparent transparent transparent;
-}
-
-body .messages-single .message-bubble {
-  background-color: var(--conversation-received-message-background) !important;
-  font-size: var(--conversation-received-message-font-size) !important;
-  font-weight: var(--conversation-received-message-font-weight) !important;
-  color: var(--conversation-received-message-font-color) !important;
-  font-family: var(--common-font-family) !important;
-}
-
-body .messages-single .message-bubble:before {
-  border-color: #403f3f transparent transparent transparent;
 }

@@ -75,12 +75,15 @@ const initiate_observer = async () => {
   old_location_id = current_location_id;
 
   settings_visited = false;
+
   document.head.appendChild(stylesheet);
   await add_sidebar_menus(mutation_observer);
 };
 
 const run_mutation_observer = () => {
   const app = document.querySelector("#app");
+  console.log(app);
+
   mutation_observer = new MutationObserver(initiate_observer);
   mutation_observer.observe(app, {
     subtree: true,
