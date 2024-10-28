@@ -8,7 +8,7 @@ document.body.appendChild(swiperJs);
 const testimonialsSection = document.querySelector(".testimonials-sec");
 changeSectionToSlider();
 function changeSectionToSlider() {
-  if (window.innerWidth > 500) return;
+  if (window.innerWidth > 768) return;
   const swiperNavContainer = document.createElement("div");
   swiperNavContainer.innerHTML = `
     <div class="swiper-button-next"></div>
@@ -34,6 +34,7 @@ const swiperRows = [...document.querySelectorAll(".swiperRow")];
 swiperRows.forEach(removeGHLClasses);
 
 function removeGHLClasses(swiperRow) {
+  if (window.innerWidth < 768) return;
   const swiperPaginationContainer = document.createElement("div");
   swiperPaginationContainer.classList = "swiper-pagination";
 
@@ -96,7 +97,7 @@ function genrateSwiperOptions(isSection) {
         spaceBetween: 30,
       },
       640: {
-        slidesPerView: 1,
+        slidesPerView: 2,
         spaceBetween: 40,
       },
       992: {
@@ -148,21 +149,27 @@ const featureShowHides = [
 
 featureShowHides.forEach((featureShowHide, index) => {
   featureShowHide.addEventListener("click", (e) => {
-    console.log(e);
-
     pricingColumns[index].classList.toggle("active");
     featureShowHide.classList.toggle("active");
+    featureShowHide.classList.contains("active")
+      ? (featureShowHide.querySelector("p").textContent = "Hide All Feature")
+      : (featureShowHide.querySelector("p").textContent = "View All Features");
   });
 });
 
 // Typing and CountUp animations
 setTimeout(() => {
-  const typed = new Typed(".typingText strong", {
-    strings: ["Automating Industries!", "Creating systems"],
-    typeSpeed: 100,
-    backSpeed: 50,
-    loop: true,
-  });
+  const typed = new Typed(
+    window.innerWidth < 768
+      ? ".mobile-only .typingText strong"
+      : ".desktop-only .typingText strong",
+    {
+      strings: ["Automating Industries!", "Creating systems"],
+      typeSpeed: 100,
+      backSpeed: 50,
+      loop: true,
+    }
+  );
 
   const countUpRow = document.querySelector(".counter-row");
 
@@ -224,3 +231,69 @@ setTimeout(() => {
 
   observer.observe(countUpRow);
 }, 2000);
+
+// Handle View More Events
+const swiperRowColsAutomate = [
+  ...document.querySelectorAll(".automate-sec .swiperRow .c-column"),
+];
+const swiperRowViewMoreBtn = document.querySelector(
+  ".automate-sec .view-more-btn"
+);
+
+swiperRowViewMoreBtn.addEventListener("click", () => {
+  swiperRowColsAutomate
+    .slice(3, 12)
+    .forEach((col) => col.classList.toggle("active"));
+
+  swiperRowViewMoreBtn.classList.toggle("active");
+  swiperRowViewMoreBtn.classList.contains("active")
+    ? (swiperRowViewMoreBtn.innerHTML = `<div style="" class="main-heading-group"><div class="button-icon-start"></div><div class="main-heading-button">Show Less Services</div><div style="width: 17px; margin-left: 7px;display: flex;
+    align-items: center;
+    justify-content: center;"><img  style="width: 17px;" src="https://storage.googleapis.com/msgsndr/pE0YHF1zH4QJ2Hb9JR8A/media/671de16a6e56115b84424df3.svg" alt="Adamo Automations"/></div></div>`)
+    : (swiperRowViewMoreBtn.innerHTML = `<div style="" class="main-heading-group"><div class="button-icon-start"></div><div class="main-heading-button">View More Industries</div><div style="width: 17px; margin-left: 7px;display: flex;
+    align-items: center;
+    justify-content: center;"><img style="width: 17px;" src="https://storage.googleapis.com/msgsndr/pE0YHF1zH4QJ2Hb9JR8A/media/671de19cd2e1af2ce4a0e9f6.svg"  alt="Adamo Automations"/></div></div>`);
+});
+
+const swiperRowColsServices = [
+  ...document.querySelectorAll(".services-sec .swiperRow .c-column"),
+];
+const swiperRowViewMoreBtnServices = document.querySelector(
+  ".services-sec .view-more-btn"
+);
+
+swiperRowViewMoreBtnServices.addEventListener("click", () => {
+  swiperRowColsServices
+    .slice(3, 12)
+    .forEach((col) => col.classList.toggle("active"));
+
+  swiperRowViewMoreBtnServices.classList.toggle("active");
+  swiperRowViewMoreBtnServices.classList.contains("active")
+    ? (swiperRowViewMoreBtnServices.innerHTML = `<div style="" class="main-heading-group"><div class="button-icon-start"></div><div class="main-heading-button">Show Less Services</div><div style="width: 17px; margin-left: 7px;display: flex;
+    align-items: center;
+    justify-content: center;"><img  style="width: 17px;" src="https://storage.googleapis.com/msgsndr/pE0YHF1zH4QJ2Hb9JR8A/media/671de16a6e56115b84424df3.svg" alt="Adamo Automations"/></div></div>`)
+    : (swiperRowViewMoreBtnServices.innerHTML = `<div style="" class="main-heading-group"><div class="button-icon-start"></div><div class="main-heading-button">View More Services</div><div style="width: 17px; margin-left: 7px;display: flex;
+    align-items: center;
+    justify-content: center;"><img style="width: 17px;" src="https://storage.googleapis.com/msgsndr/pE0YHF1zH4QJ2Hb9JR8A/media/671de19cd2e1af2ce4a0e9f6.svg"  alt="Adamo Automations"/></div></div>`);
+});
+
+const faqsElements = [
+  ...document.querySelectorAll(".faqs-sec .faq-row .hl-faq-child"),
+];
+
+faqsElements.slice(0, 3).forEach((faq) => faq.classList.add("active"));
+
+const faqsViewMore = document.querySelector(".faqs-sec .view-more-btn");
+
+faqsViewMore.addEventListener("click", () => {
+  faqsElements.slice(4, 12).forEach((col) => col.classList.toggle("active"));
+
+  faqsViewMore.classList.toggle("active");
+  faqsViewMore.classList.contains("active")
+    ? (faqsViewMore.innerHTML = `<div style="" class="main-heading-group"><div class="button-icon-start"></div><div class="main-heading-button">Show Less FAQs</div><div style="width: 17px; margin-left: 7px;display: flex;
+    align-items: center;
+    justify-content: center;"><img  style="width: 17px;" src="https://storage.googleapis.com/msgsndr/pE0YHF1zH4QJ2Hb9JR8A/media/671de16a6e56115b84424df3.svg" alt="Adamo Automations"/></div></div>`)
+    : (faqsViewMore.innerHTML = `<div style="" class="main-heading-group"><div class="button-icon-start"></div><div class="main-heading-button">View More FAQs</div><div style="width: 17px; margin-left: 7px;display: flex;
+    align-items: center;
+    justify-content: center;"><img style="width: 17px;" src="https://storage.googleapis.com/msgsndr/pE0YHF1zH4QJ2Hb9JR8A/media/671de19cd2e1af2ce4a0e9f6.svg"  alt="Adamo Automations"/></div></div>`);
+});
