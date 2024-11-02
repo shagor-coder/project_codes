@@ -1,12 +1,4 @@
-const swiperJs = document.createElement("script");
-swiperJs.type = "text/javascript";
-swiperJs.src = "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js";
-swiperJs.async = true;
-
-document.body.appendChild(swiperJs);
-
 const testimonialsSection = document.querySelector(".testimonials-sec");
-changeSectionToSlider();
 function changeSectionToSlider() {
   if (window.innerWidth > 768) return;
   const swiperNavContainer = document.createElement("div");
@@ -30,8 +22,6 @@ function changeSectionToSlider() {
 
 // Slider System
 const swiperRows = [...document.querySelectorAll(".swiperRow")];
-
-swiperRows.forEach(removeGHLClasses);
 
 function removeGHLClasses(swiperRow) {
   if (window.innerWidth < 768) return;
@@ -154,11 +144,17 @@ featureShowHides.forEach((featureShowHide, index) => {
     featureShowHide.classList.contains("active")
       ? (featureShowHide.querySelector("p").textContent = "Hide All Feature")
       : (featureShowHide.querySelector("p").textContent = "View All Features");
+
+    // Scroll to the target element
+    pricingColumns[index].scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   });
 });
 
 // Typing and CountUp animations
-setTimeout(() => {
+function animations() {
   const typed = new Typed(
     window.innerWidth < 768
       ? ".mobile-only .typingText strong"
@@ -230,70 +226,108 @@ setTimeout(() => {
   });
 
   observer.observe(countUpRow);
-}, 2000);
+}
 
-// Handle View More Events
-const swiperRowColsAutomate = [
-  ...document.querySelectorAll(".automate-sec .swiperRow .c-column"),
-];
-const swiperRowViewMoreBtn = document.querySelector(
-  ".automate-sec .view-more-btn"
-);
+function handleViewMoreClicks() {
+  if (window.innerWidth > 767) return;
 
-swiperRowViewMoreBtn.addEventListener("click", () => {
-  swiperRowColsAutomate
-    .slice(3, 12)
-    .forEach((col) => col.classList.toggle("active"));
+  // Handler for Automate
+  const swiperRowColsAutomate = [
+    ...document.querySelectorAll(".automate-sec .swiperRow .c-column"),
+  ];
+  const swiperRowViewMoreBtn = document.querySelector(
+    ".automate-sec .view-more-btn"
+  );
 
-  swiperRowViewMoreBtn.classList.toggle("active");
-  swiperRowViewMoreBtn.classList.contains("active")
-    ? (swiperRowViewMoreBtn.innerHTML = `<div style="" class="main-heading-group"><div class="button-icon-start"></div><div class="main-heading-button">Show Less Services</div><div style="width: 17px; margin-left: 7px;display: flex;
+  swiperRowViewMoreBtn.addEventListener("click", () => {
+    swiperRowColsAutomate
+      .slice(3, swiperRowColsAutomate.length)
+      .forEach((col) => col.classList.toggle("active"));
+
+    swiperRowViewMoreBtn.classList.toggle("active");
+    swiperRowViewMoreBtn.classList.contains("active")
+      ? (swiperRowViewMoreBtn.innerHTML = `<div style="" class="main-heading-group"><div class="button-icon-start"></div><div class="main-heading-button">Show Less Services</div><div style="width: 17px; margin-left: 7px;display: flex;
     align-items: center;
     justify-content: center;"><img  style="width: 17px;" src="https://storage.googleapis.com/msgsndr/pE0YHF1zH4QJ2Hb9JR8A/media/671de16a6e56115b84424df3.svg" alt="Adamo Automations"/></div></div>`)
-    : (swiperRowViewMoreBtn.innerHTML = `<div style="" class="main-heading-group"><div class="button-icon-start"></div><div class="main-heading-button">View More Industries</div><div style="width: 17px; margin-left: 7px;display: flex;
+      : (swiperRowViewMoreBtn.innerHTML = `<div style="" class="main-heading-group"><div class="button-icon-start"></div><div class="main-heading-button">View More Industries</div><div style="width: 17px; margin-left: 7px;display: flex;
     align-items: center;
     justify-content: center;"><img style="width: 17px;" src="https://storage.googleapis.com/msgsndr/pE0YHF1zH4QJ2Hb9JR8A/media/671de19cd2e1af2ce4a0e9f6.svg"  alt="Adamo Automations"/></div></div>`);
-});
 
-const swiperRowColsServices = [
-  ...document.querySelectorAll(".services-sec .swiperRow .c-column"),
-];
-const swiperRowViewMoreBtnServices = document.querySelector(
-  ".services-sec .view-more-btn"
-);
+    // Scroll to the target element
+    swiperRowColsAutomate[2].scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  });
 
-swiperRowViewMoreBtnServices.addEventListener("click", () => {
-  swiperRowColsServices
-    .slice(3, 12)
-    .forEach((col) => col.classList.toggle("active"));
+  // Handler for Services
+  const swiperRowColsServices = [
+    ...document.querySelectorAll(".services-sec .swiperRow .c-column"),
+  ];
+  const swiperRowViewMoreBtnServices = document.querySelector(
+    ".services-sec .view-more-btn"
+  );
 
-  swiperRowViewMoreBtnServices.classList.toggle("active");
-  swiperRowViewMoreBtnServices.classList.contains("active")
-    ? (swiperRowViewMoreBtnServices.innerHTML = `<div style="" class="main-heading-group"><div class="button-icon-start"></div><div class="main-heading-button">Show Less Services</div><div style="width: 17px; margin-left: 7px;display: flex;
+  swiperRowViewMoreBtnServices.addEventListener("click", () => {
+    swiperRowColsServices
+      .slice(3, swiperRowColsServices.length)
+      .forEach((col) => col.classList.toggle("active"));
+
+    swiperRowViewMoreBtnServices.classList.toggle("active");
+    swiperRowViewMoreBtnServices.classList.contains("active")
+      ? (swiperRowViewMoreBtnServices.innerHTML = `<div style="" class="main-heading-group"><div class="button-icon-start"></div><div class="main-heading-button">Show Less Services</div><div style="width: 17px; margin-left: 7px;display: flex;
     align-items: center;
     justify-content: center;"><img  style="width: 17px;" src="https://storage.googleapis.com/msgsndr/pE0YHF1zH4QJ2Hb9JR8A/media/671de16a6e56115b84424df3.svg" alt="Adamo Automations"/></div></div>`)
-    : (swiperRowViewMoreBtnServices.innerHTML = `<div style="" class="main-heading-group"><div class="button-icon-start"></div><div class="main-heading-button">View More Services</div><div style="width: 17px; margin-left: 7px;display: flex;
+      : (swiperRowViewMoreBtnServices.innerHTML = `<div style="" class="main-heading-group"><div class="button-icon-start"></div><div class="main-heading-button">View More Services</div><div style="width: 17px; margin-left: 7px;display: flex;
     align-items: center;
     justify-content: center;"><img style="width: 17px;" src="https://storage.googleapis.com/msgsndr/pE0YHF1zH4QJ2Hb9JR8A/media/671de19cd2e1af2ce4a0e9f6.svg"  alt="Adamo Automations"/></div></div>`);
-});
+
+    // Scroll to the target element
+    swiperRowColsServices[2].scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  });
+}
 
 const faqsElements = [
   ...document.querySelectorAll(".faqs-sec .faq-row .hl-faq-child"),
 ];
 
-faqsElements.slice(0, 3).forEach((faq) => faq.classList.add("active"));
+faqsElements.slice(0, 3).forEach((faq) => (faq.dataset.show = "show"));
 
 const faqsViewMore = document.querySelector(".faqs-sec .view-more-btn");
 
 faqsViewMore.addEventListener("click", () => {
-  faqsElements.slice(4, 12).forEach((col) => col.classList.toggle("active"));
-
   faqsViewMore.classList.toggle("active");
-  faqsViewMore.classList.contains("active")
-    ? (faqsViewMore.innerHTML = `<div style="" class="main-heading-group"><div class="button-icon-start"></div><div class="main-heading-button">Show Less FAQs</div><div style="width: 17px; margin-left: 7px;display: flex;
+
+  if (faqsViewMore.classList.contains("active")) {
+    faqsElements
+      .slice(3, faqsElements.length)
+      .forEach((col) => (col.dataset.show = "show"));
+
+    faqsViewMore.innerHTML = `<div style="" class="main-heading-group"><div class="button-icon-start"></div><div class="main-heading-button">Show Less FAQs</div><div style="width: 17px; margin-left: 7px;display: flex;
     align-items: center;
-    justify-content: center;"><img  style="width: 17px;" src="https://storage.googleapis.com/msgsndr/pE0YHF1zH4QJ2Hb9JR8A/media/671de16a6e56115b84424df3.svg" alt="Adamo Automations"/></div></div>`)
-    : (faqsViewMore.innerHTML = `<div style="" class="main-heading-group"><div class="button-icon-start"></div><div class="main-heading-button">View More FAQs</div><div style="width: 17px; margin-left: 7px;display: flex;
+    justify-content: center;"><img  style="width: 17px;" src="https://storage.googleapis.com/msgsndr/pE0YHF1zH4QJ2Hb9JR8A/media/671de16a6e56115b84424df3.svg" alt="Adamo Automations"/></div></div>`;
+  } else {
+    faqsElements
+      .slice(3, faqsElements.length)
+      .forEach((col) => (col.dataset.show = "hide"));
+
+    faqsViewMore.innerHTML = `<div style="" class="main-heading-group"><div class="button-icon-start"></div><div class="main-heading-button">View More FAQs</div><div style="width: 17px; margin-left: 7px;display: flex;
     align-items: center;
-    justify-content: center;"><img style="width: 17px;" src="https://storage.googleapis.com/msgsndr/pE0YHF1zH4QJ2Hb9JR8A/media/671de19cd2e1af2ce4a0e9f6.svg"  alt="Adamo Automations"/></div></div>`);
+    justify-content: center;"><img style="width: 17px;" src="https://storage.googleapis.com/msgsndr/pE0YHF1zH4QJ2Hb9JR8A/media/671de19cd2e1af2ce4a0e9f6.svg"  alt="Adamo Automations"/></div></div>`;
+  }
+
+  // Scroll to the target element
+  faqsElements[2].scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+document.addEventListener("hydrationDone", () => {
+  setTimeout(() => {
+    swiperRows.forEach(removeGHLClasses);
+    changeSectionToSlider();
+    handleViewMoreClicks();
+    animations();
+  }, 1000);
 });

@@ -17,13 +17,24 @@ function watch_document_change() {
     clearTimeout(timeout);
     timeout = setTimeout(async () => {
       const current_url = new URL(location.href);
+
       if (!current_url.pathname.includes("location")) return;
       if (google_maps_icons_container.isConnected) return;
       if (current_url.pathname.includes("/contacts/detail/")) {
+        [...document.querySelectorAll(".pac-container")].forEach(
+          (container) => {
+            container.remove();
+          }
+        );
         await handle_maps_icons_insert_for_contact(current_url.pathname);
         return;
       }
       if (current_url.pathname.includes("/opportunities/list")) {
+        [...document.querySelectorAll(".pac-container")].forEach(
+          (container) => {
+            container.remove();
+          }
+        );
         await handle_opportunity_card_click();
         return;
       }
@@ -34,7 +45,7 @@ function watch_document_change() {
 const mutation_observer = new MutationObserver(watch_document_change());
 
 async function main() {
-  const main_wrapper = document.querySelector("#app");
+  const main_wrapper = document.querySelector("body");
   if (!main_wrapper) return;
   mutation_observer.observe(main_wrapper, {
     childList: true,

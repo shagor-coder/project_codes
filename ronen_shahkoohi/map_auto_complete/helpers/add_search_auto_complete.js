@@ -14,10 +14,10 @@ function initiate_auto_complete(input_el) {
 }
 
 export async function add_search_auto_complete_for_contacts(
-  adress_inputs = {}
+  street_adress_input
 ) {
-  const { street_adress_input, city_input, state_input, postal_code_input } =
-    adress_inputs;
+  // const { street_adress_input, city_input, state_input, postal_code_input } =
+  //   adress_inputs;
 
   const autocomplete = initiate_auto_complete(street_adress_input);
 
@@ -29,6 +29,14 @@ export async function add_search_auto_complete_for_contacts(
     const city_obj = address_components.find((ac) => {
       return ac.types.includes("locality") && ac.types.includes("political");
     });
+
+    const city_obj_2 = address_components.find((ac) => {
+      return (
+        ac.types.includes("sublocality_level_1") &&
+        ac.types.includes("political")
+      );
+    });
+
     const state_obj = address_components.find((ac) => {
       return ac.types.includes("administrative_area_level_1");
     });
@@ -36,13 +44,19 @@ export async function add_search_auto_complete_for_contacts(
       return ac.types.includes("postal_code");
     });
 
-    update_adress_inputs(street_adress_input, street_adress);
-    update_adress_inputs(city_input, city_obj && city_obj.short_name);
-    update_adress_inputs(state_input, state_obj && state_obj.short_name);
-    update_adress_inputs(
-      postal_code_input,
-      postal_code_obj && postal_code_obj.short_name
-    );
+    const full_adress = `${street_adress} ${
+      city_obj ? city_obj.short_name : city_obj_2.short_name
+    } ${state_obj ? state_obj.short_name : ""} ${
+      postal_code_obj ? postal_code_obj.short_name : ""
+    }`;
+
+    update_adress_inputs(street_adress_input, full_adress);
+    // update_adress_inputs(city_input, city_obj && city_obj.short_name);
+    // update_adress_inputs(state_input, state_obj && state_obj.short_name);
+    // update_adress_inputs(
+    //   postal_code_input,
+    //   postal_code_obj && postal_code_obj.short_name
+    // );
     const event = new Event("blur");
     street_adress_input.dispatchEvent(event);
 
@@ -59,9 +73,18 @@ export async function add_search_auto_complete_for_opportunities(
     const { address_components, name } = places;
 
     const street_adress = name;
+
     const city_obj = address_components.find((ac) => {
       return ac.types.includes("locality") && ac.types.includes("political");
     });
+
+    const city_obj_2 = address_components.find((ac) => {
+      return (
+        ac.types.includes("sublocality_level_1") &&
+        ac.types.includes("political")
+      );
+    });
+
     const state_obj = address_components.find((ac) => {
       return ac.types.includes("administrative_area_level_1");
     });
@@ -69,9 +92,11 @@ export async function add_search_auto_complete_for_opportunities(
       return ac.types.includes("postal_code");
     });
 
-    const full_adress = `${street_adress} ${city_obj && city_obj.short_name} ${
-      state_obj && state_obj.short_name
-    } ${postal_code_obj && postal_code_obj.short_name}`;
+    const full_adress = `${street_adress} ${
+      city_obj ? city_obj.short_name : city_obj_2.short_name
+    } ${state_obj ? state_obj.short_name : ""} ${
+      postal_code_obj ? postal_code_obj.short_name : ""
+    }`;
 
     update_adress_inputs(property_address_el, full_adress);
 

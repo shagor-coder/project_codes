@@ -9,17 +9,18 @@ function select_element_by_promise(selectorClass = "", type = "") {
         element = document.querySelector(selectorClass);
       }
 
+      if (type === "multi" && !element.length) return;
       if (!element) return;
       clearInterval(timeout);
       res(element);
-    }, 300);
+    }, 200);
 
     setTimeout(() => {
       if (!element) {
         clearInterval(timeout);
         res(false);
       }
-    }, 10000);
+    }, 20000);
   });
 }
 
