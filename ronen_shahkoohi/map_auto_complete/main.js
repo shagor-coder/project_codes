@@ -27,6 +27,7 @@ function watch_document_change() {
           }
         );
         await handle_maps_icons_insert_for_contact(current_url.pathname);
+        clearTimeout(timeout);
         return;
       }
       if (current_url.pathname.includes("/opportunities/list")) {
@@ -36,6 +37,7 @@ function watch_document_change() {
           }
         );
         await handle_opportunity_card_click();
+        clearTimeout(timeout);
         return;
       }
     }, 500);
@@ -52,6 +54,7 @@ async function main() {
     subtree: true,
     attributes: true,
   });
+  alert("MutationObserver");
 }
 
 main();

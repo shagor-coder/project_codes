@@ -85,3 +85,25 @@ document.addEventListener("hydrationDone", () => {
     swiperRows.forEach(removeGHLClasses);
   }, 100);
 });
+
+// For 18+ Confirmation
+const privateColumns = [
+  ...document.querySelectorAll(".private-images .c-column > .inner"),
+];
+privateColumns.forEach(createOverlayElements);
+function createOverlayElements(column) {
+  const overlay = document.createElement("div");
+  overlay.className = "private-overlay";
+  overlay.innerHTML = `
+    <h4 class="overlay-warning-heading">Warning!</h4>
+    <p class="overlay-warning-text">This gallery contains nudity. Please click OK to confirm you are at least 18 years of age and are not offended by this material.</p>
+    <button class="overlay-button">I am 18+</buttton>
+  `;
+
+  const overlayButton = overlay.querySelector(".overlay-button");
+  overlayButton.addEventListener("click", () => {
+    overlay.remove();
+  });
+
+  column.appendChild(overlay);
+}

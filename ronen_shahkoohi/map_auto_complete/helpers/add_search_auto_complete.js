@@ -46,7 +46,7 @@ export async function add_search_auto_complete_for_contacts(
 
     const full_adress = `${street_adress} ${
       city_obj ? city_obj.short_name : city_obj_2.short_name
-    } ${state_obj ? state_obj.short_name : ""} ${
+    }, ${state_obj ? state_obj.short_name : ""} ${
       postal_code_obj ? postal_code_obj.short_name : ""
     }`;
 
@@ -94,7 +94,7 @@ export async function add_search_auto_complete_for_opportunities(
 
     const full_adress = `${street_adress} ${
       city_obj ? city_obj.short_name : city_obj_2.short_name
-    } ${state_obj ? state_obj.short_name : ""} ${
+    }, ${state_obj ? state_obj.short_name : ""} ${
       postal_code_obj ? postal_code_obj.short_name : ""
     }`;
 

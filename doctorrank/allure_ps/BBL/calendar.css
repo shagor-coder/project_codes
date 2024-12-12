@@ -12,3 +12,58 @@
 #appointment_widgets--revamp .widgets-slot-block {
   margin-top: 0px !important;
 }
+
+@media (max-width: 768px) {
+  .hl-app .form-builder--wrap {
+    padding: 10px 15px !important;
+  }
+
+  body #_builder-form .fields-container {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+
+  #_builder-form .text-element {
+    font-size: 16px !important;
+    padding: 0px !important;
+    font-family: "Josefin Sans", sans-serif !important;
+  }
+
+  body .col-rv.c-row > .inner {
+    flex-direction: column-reverse !important;
+  }
+
+  .appointment_widgets-sm--revamp
+    .appointment_widgets--revamp--booking
+    .appointment_widgets--revamp--steps
+    .widgets-date-block
+    .vdpInnerWrap
+    .vdpHeadCellContent {
+    font-size: 12px !important;
+  }
+
+  .appointment_widgets-sm--revamp
+    .appointment_widgets--revamp--booking
+    .appointment_widgets--revamp--steps
+    .widgets-date-block
+    .vdpCell
+    .vdpCellContent {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 13px !important;
+  }
+
+  .appointment_widgets-sm--revamp
+    .appointment_widgets--revamp--booking
+    .appointment_widgets--revamp--neo-calendar-logo {
+    width: 150px !important;
+  }
+}
+
+body
+  .appointment_widgets-xl--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-slot-block {
+  margin-top: 0px !important;
+}
