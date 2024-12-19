@@ -33,7 +33,6 @@ export const staticData = {
   ],
   ELITETERM: [
     "CUSTOM VALUES",
-    "NEW RECRUIT",
     "POLICY DETAILS",
     "BOOK OF BUSINESS",
     "POLICY #2",
@@ -41,7 +40,6 @@ export const staticData = {
   ],
   ELITEFEX: [
     "CUSTOM VALUES",
-    "NEW RECRUIT",
     "POLICY DETAILS",
     "BOOK OF BUSINESS",
     "POLICY #2",
@@ -49,7 +47,6 @@ export const staticData = {
   ],
   FEX: [
     "CUSTOM VALUES",
-    "NEW RECRUIT",
     "POLICY DETAILS",
     "BOOK OF BUSINESS",
     "POLICY #2",
@@ -57,7 +54,6 @@ export const staticData = {
   ],
   VET_LEAD: [
     "CUSTOM VALUES",
-    "NEW RECRUIT",
     "POLICY DETAILS",
     "BOOK OF BUSINESS",
     "POLICY #2",
