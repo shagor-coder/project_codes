@@ -1,5 +1,6 @@
 import { google_maps_icons_container } from "./helpers/create_html";
 import {
+  handle_edit_opportunity_card,
   handle_maps_icons_insert_for_contact,
   handle_opportunity_card_click,
 } from "./helpers/handle_map_icons_insert";
@@ -27,6 +28,7 @@ function watch_document_change() {
           }
         );
         await handle_maps_icons_insert_for_contact(current_url.pathname);
+        await handle_edit_opportunity_card();
         clearTimeout(timeout);
         return;
       }
@@ -54,7 +56,6 @@ async function main() {
     subtree: true,
     attributes: true,
   });
-  alert("MutationObserver");
 }
 
 main();

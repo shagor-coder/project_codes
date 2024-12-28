@@ -1,0 +1,200 @@
+/* CSS FOR CALENDAR */
+
+body #appointment_widgets--revamp {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  overflow: hidden !important;
+}
+
+#appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--neo-calendar-logo {
+  width: 200px !important;
+  height: unset !important;
+}
+
+#appointment_widgets--revamp .booking-info--duration svg path,
+#appointment_widgets--revamp .booking-info--datetime svg path,
+#appointment_widgets--revamp .booking-info--timezone svg path {
+  stroke: #2563eb !important;
+}
+
+body
+  #appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-date-block
+  .vdpHeadCell {
+  padding: 5px 8px !important;
+  background-color: #2563eb !important;
+  border-radius: 3px !important;
+  color: #fff !important;
+  font-weight: 300 !important;
+}
+
+body
+  #appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-date-block
+  .vdpCell.selectable.selected
+  .vdpCellContent {
+  padding: 5px 8px !important;
+  background-color: #2563eb !important;
+  border-radius: 3px !important;
+  color: #fff !important;
+  font-weight: 300 !important;
+}
+
+.appointment_widgets-xl--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-date-block
+  .vdpInnerWrap
+  .vdpHeadCellContent {
+  color: #fff !important;
+  font-weight: 300 !important;
+}
+
+.appointment_widgets-sm--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-date-block
+  .vdpInnerWrap
+  .vdpHeadCellContent {
+  color: #fff !important;
+  font-weight: 300 !important;
+}
+
+#appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-slot-block
+  .widgets-time-slots
+  .widgets-time-slot
+  > span {
+  background-color: #2563eb !important;
+  color: #fff !important;
+}
+
+body
+  #appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-slot-block
+  .widgets-time-slots
+  .widgets-time-slot
+  > span:hover {
+  border: 2px solid #2563ee !important;
+}
+
+body
+  #appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-slot-block
+  .widgets-time-slots
+  .widgets-time-slot
+  > span {
+  border: 1px solid #2563ee !important;
+}
+
+#appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-slot-block
+  .widgets-time-slots
+  .widgets-time-slot.actived
+  > span {
+  background-color: #2563eb !important;
+}
+
+#appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-slot-block
+  .widgets-time-slots
+  .widgets-time-slot.actived
+  button {
+  color: #fff !important;
+  font-weight: 300 !important;
+}
+
+body
+  #appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-slot-block
+  .widgets-time-slots
+  .widgets-time-slot.actived
+  button {
+  background-color: #2563eb !important;
+  border-color: #2563ee !important;
+}
+
+.calendarVdpComponent .vdpCellContent {
+  border-radius: 4px !important;
+}
+
+#appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .widgets-action-buttons
+  > button {
+  background-color: #2563eb !important;
+  border-color: #2563eb !important;
+}
+
+body
+  #appointment_widgets--revamp
+  .appointment_widgets--revamp--booking
+  .appointment_widgets--revamp--steps
+  .widgets-date-block
+  .vdpCell
+  .vdpCellContent {
+  color: #2563eb !important;
+}
+
+@media (max-width: 768px) {
+  body
+    #appointment_widgets--revamp
+    .appointment_widgets--revamp--booking
+    .appointment_widgets--revamp--neo-calendar-logo {
+    width: 100px !important;
+    height: unset !important;
+  }
+
+  body
+    #appointment_widgets--revamp
+    .appointment_widgets--revamp--booking
+    .appointment_widgets--revamp--steps
+    .widgets-date-block
+    .vdpHeadCell {
+    padding: 3px 4px !important;
+  }
+
+  .appointment_widgets-sm--revamp
+    .appointment_widgets--revamp--booking
+    .appointment_widgets--revamp--steps
+    .widgets-date-block
+    .vdpInnerWrap
+    .vdpHeadCellContent {
+    color: #fff !important;
+    font-weight: 300 !important;
+    padding: 3px 4px !important;
+  }
+
+  body
+    #appointment_widgets--revamp
+    .appointment_widgets--revamp--booking
+    .appointment_widgets--revamp--steps
+    .widgets-date-block
+    .vdpCell.selectable.selected
+    .vdpCellContent {
+    padding: 3px 4px !important;
+    background-color: #2563eb !important;
+    border-radius: 3px !important;
+    color: #fff !important;
+    font-weight: 300 !important;
+    font-size: 11px !important;
+  }
+}

@@ -104,8 +104,16 @@ body {
   max-width: 500px !important;
 }
 
-.max-w-1342 {
-  max-width: 1342px !important;
+.max-w-700 {
+  max-width: 700px !important;
+}
+
+.max-w-870 {
+  max-width: 870px !important;
+}
+
+.max-w-1024 {
+  max-width: 1024px !important;
 }
 /* Start Border Radius */
 .br-20 {
@@ -131,21 +139,41 @@ body .c-section > .inner {
 }
 
 /* ==== Hero Section ==== */
-#preview-container .hero-sec {
-  padding-top: 0px !important;
-}
-
-#preview-container .hero-sec .c-row {
-  padding-top: 0px !important;
-}
-
 .hero-sec .form-col {
   box-shadow: 0px 4px 64px 0px rgba(0, 0, 0, 0.2) !important;
   background: linear-gradient(180deg, #0680c100, #0680c166) !important;
 }
 
-.hero-sec #_builder-form .button-element {
-  border-radius: 0px !important;
+.hero-sec .form-col #_builder-form {
+  background-color: transparent !important;
+}
+
+.hero-sec
+  #_builder-form
+  .fields-container
+  .form-field-wrapper:not(:nth-child(5), :nth-child(6))
+  label {
+  display: none !important;
+}
+
+.hero-sec #_builder-form .fields-container .form-field-wrapper textarea {
+  min-width: 100% !important;
+  resize: vertical !important;
+  min-height: 148px !important;
+  max-height: 250px !important;
+}
+
+.hero-sec
+  #_builder-form
+  .fields-container
+  .form-field-wrapper
+  input[type="checkbox"],
+.hero-sec
+  #_builder-form
+  .fields-container
+  .form-field-wrapper
+  input[type="radio"] {
+  accent-color: #29b2e6ff !important;
 }
 
 /* ==== Features Section ==== */
@@ -197,6 +225,15 @@ body .c-section > .inner {
   body .c-section .c-row {
     padding-left: 0 !important;
     padding-right: 0 !important;
+  }
+
+  /* ==== Hero Section ==== */
+  #preview-container .hero-sec .header-row > .inner {
+    flex-direction: row !important;
+  }
+
+  #preview-container .hero-sec .header-row > .inner .c-column:nth-child(1) {
+    max-width: 148px !important;
   }
 
   /* ==== Features Section ==== */
