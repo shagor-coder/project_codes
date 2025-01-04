@@ -38,7 +38,7 @@ export const Table = () => {
               variant="contained"
               color="primary"
               onClick={() => {
-                navigate(`/restaurants/${data.restaurantId[0]}`);
+                navigate(`/restaurants/${data.restaurantId}`);
               }}
             >
               Go back

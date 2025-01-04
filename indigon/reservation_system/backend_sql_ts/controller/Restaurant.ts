@@ -1,7 +1,6 @@
-import { AssetsModel, LocationModel } from "../models";
+import { AssetsModel } from "../models";
 import { RestaurantModel } from "../models";
 import { Request, Response, NextFunction } from "express";
-import { where } from "sequelize";
 import { deletePhoto, uploadPhoto } from "../utils/clodinary";
 import { createError } from "../utils/error";
 
@@ -132,6 +131,9 @@ export const getRestaurant = async (
           {
             model: AssetsModel,
             as: "assets",
+            attributes: {
+              exclude: ["updatedAt", "createdAt"],
+            },
           },
         ],
       }

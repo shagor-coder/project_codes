@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { UserModel } from "../models";
+import { LocationModel, UserModel } from "../models";
 import { createError } from "../utils/error";
 import bcrypt from "bcrypt";
 
@@ -36,14 +36,46 @@ export const getUser = async (
   next: NextFunction
 ) => {
   try {
-    const user = await UserModel.findOne({
+    const isUser = await UserModel.findOne({
       // @ts-ignore
       where: { id: request.user.id as string },
       attributes: { exclude: ["password"] },
+      include: [
+        {
+          model: LocationModel,
+          as: "location",
+          attributes: {
+            exclude: [
+              "id",
+              "userId",
+              "access_token",
+              "refresh_token",
+              "expires_in",
+              "createdAt",
+              "updatedAt",
+            ],
+          },
+        },
+      ],
     });
 
-    if (!user) return next(createError(404, "User not found"));
-    response.status(200).json({ status: "success", data: user.toJSON() });
+    if (!isUser) return next(createError(404, "User not found"));
+
+    const user = isUser.toJSON();
+
+    const { id, isAdmin, name, email } = user;
+
+    response.status(200).json({
+      status: "success",
+      data: {
+        id,
+        isAdmin,
+        name,
+        email,
+        // @ts-ignore
+        locationId: user.location?.locationId || null,
+      },
+    });
   } catch (error: any) {
     next(createError(500, error.message as string));
   }

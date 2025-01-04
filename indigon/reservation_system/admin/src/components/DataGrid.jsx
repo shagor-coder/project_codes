@@ -4,8 +4,9 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import Box from "@mui/material/Box";
 import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
 import { useState } from "react";
-import { FormModal } from "./FormModal";
 import { capitalizeText } from "../utils/capitalizeText";
+import { FormModal } from "./FormModal";
+import { formatReadableTime } from "../utils/formatTime";
 
 const ignoredFields = [
   "isAdmin",
@@ -15,10 +16,11 @@ const ignoredFields = [
   "userId",
   "updatedAt",
   "createdAt",
-  "bookedTimes",
   "clientId",
   "tableId",
 ];
+
+const timeStampFields = ["startTime", "endTime"];
 
 export const DataGridComponent = ({
   data,
@@ -31,7 +33,16 @@ export const DataGridComponent = ({
   const [currentData, setCurrentData] = useState(null);
 
   const updateData = data.map((d) => {
-    return { ...d, id: d.id };
+    let obj = { ...d, id: d.id };
+
+    const keys = Object.keys(obj);
+
+    keys.forEach((k) => {
+      if (timeStampFields.includes(k)) {
+        obj[k] = formatReadableTime(d[k]);
+      }
+    });
+    return obj;
   });
 
   const getColumns = () => {
@@ -44,7 +55,7 @@ export const DataGridComponent = ({
         field: "",
         headerName: "",
         type: "",
-        width: 200,
+        width: timeStampFields.includes(k) ? 220 : 200,
       };
       obj.field = k;
       obj.headerName = capitalizeText(k.toString());
@@ -98,7 +109,7 @@ export const DataGridComponent = ({
   }
 
   return (
-    <Box sx={{ maxWidth: "calc(100vw - 230px)", height: "600px" }}>
+    <Box sx={{ maxWidth: `100%`, height: "600px" }}>
       {data.length ? (
         <DataGrid
           rows={updateData}

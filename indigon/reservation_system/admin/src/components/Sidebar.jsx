@@ -21,7 +21,7 @@ import { useState } from "react";
 import { UseAuthContext } from "../context/AuthContext";
 import { useLocation } from "react-router-dom";
 
-const drawerWidth = 180;
+export const drawerWidth = 180;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,

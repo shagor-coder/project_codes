@@ -82,7 +82,7 @@ export const Restaurant = () => {
                 <Button
                   variant="contained"
                   color="primary"
-                  onClick={() => navigate(`/locations/${data.locationId[0]}`)}
+                  onClick={() => navigate(`/locations/`)}
                 >
                   Go back
                 </Button>
@@ -139,7 +139,7 @@ export const Restaurant = () => {
                 <Button
                   variant="contained"
                   color="primary"
-                  onClick={() => navigate(`/locations/${data.locationId[0]}`)}
+                  onClick={() => navigate(`/locations/`)}
                 >
                   Go back
                 </Button>

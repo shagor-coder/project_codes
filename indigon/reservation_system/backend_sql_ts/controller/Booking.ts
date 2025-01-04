@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 import { Request, Response, NextFunction } from "express";
-import { BookingModel } from "../models";
+import { BookingModel, RestaurantModel } from "../models";
 import { createError } from "../utils/error";
 import { Op } from "sequelize";
 
@@ -28,6 +28,9 @@ export const getAllBookingForAdmin = async (
     const allBookings = await BookingModel.findAll({
       where: {
         locationId: request.params.locationId as string,
+      },
+      attributes: {
+        exclude: ["restaurantId", "locationId"],
       },
     });
 
@@ -75,53 +78,89 @@ export const getBooking = async (
   }
 };
 
-// Create a booking
 export const createBooking = async (
   request: Request,
   response: Response,
   next: NextFunction
 ) => {
   try {
-    const { startTime } = request.body as RequestBody;
-
+    const body = request.body as RequestBody;
+    const { startTime } = body;
     const bookedDateTime = new Date(startTime);
 
+    // Validate date is valid
+    if (isNaN(bookedDateTime.getTime())) {
+      return response.status(400).json({ message: "Invalid date format" });
+    }
+
+    // Check for past bookings
     if (new Date() >= bookedDateTime) {
       return response
         .status(403)
         .json({ message: "You cannot book a time in the past!" });
     }
 
-    // Ensure the booked time is within working hours
+    // Validate working hours (5 AM to 5 PM)
     const bookedHour = bookedDateTime.getHours();
+    const WORKING_HOURS = {
+      START: 8,
+      END: 17,
+    };
 
-    if (bookedHour < Number(5) || bookedHour >= Number(17)) {
-      return response
-        .status(400)
-        .json({ message: "You can only book within working hours!" });
+    if (bookedHour < WORKING_HOURS.START || bookedHour >= WORKING_HOURS.END) {
+      return response.status(400).json({
+        message: "You can only book within working hours (5 AM to 5 PM)!",
+      });
     }
 
-    // Check if the slot is already booked
+    // Check for existing bookings
+    const startOfHour = new Date(bookedDateTime);
+    startOfHour.setMinutes(0, 0, 0);
+
+    const endOfHour = new Date(bookedDateTime);
+    endOfHour.setMinutes(59, 59, 999);
+
     const existingBooking = await BookingModel.findOne({
       where: {
         startTime: {
-          [Op.between]: [
-            new Date(bookedDateTime.setMinutes(0, 0, 0)), // Start of the hour
-            new Date(bookedDateTime.setMinutes(59, 59, 999)), // End of the hour
-          ],
+          [Op.between]: [startOfHour, endOfHour],
         },
       },
     });
 
-    if (existingBooking)
-      return response.status(403).json({ message: "Booking is already there" });
+    if (existingBooking) {
+      return response.status(403).json({
+        message: "This time slot is already booked",
+      });
+    }
 
-    const booking = await BookingModel.create(request.body as RequestBody);
+    const restaurant = await RestaurantModel.findByPk(body.restaurantId);
 
-    await booking.save();
-    response.status(200).json({ message: "Success!", data: booking });
-  } catch (error: any) {
-    response.status(500).json({ error: error?.message as string });
+    if (!restaurant)
+      return response.status(404).json({ message: "No restaurant found!!" });
+
+    const booking = await BookingModel.create({
+      ...body,
+      restaurantName: restaurant.toJSON().name,
+    });
+
+    response.status(201).json({
+      message: "Booking created successfully",
+      data: booking,
+    });
+  } catch (error) {
+    console.error("Booking creation failed:", error);
+
+    if (error instanceof Error) {
+      return response.status(500).json({
+        message: "Failed to create booking",
+        error: error.message,
+      });
+    }
+
+    return response.status(500).json({
+      message: "An unexpected error occurred",
+    });
   }
 };
 

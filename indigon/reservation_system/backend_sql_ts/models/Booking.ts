@@ -12,7 +12,7 @@ interface BookingAttributes {
   clientId: string;
   locationId: string;
   tableId: string;
-  restaurantId: string;
+  restaurantName: string;
 }
 
 export const BookingModel: ModelDefined<
@@ -31,20 +31,22 @@ export const BookingModel: ModelDefined<
       type: DataTypes.DATE,
       allowNull: false,
       validate: {
-        validator: function (value: any) {
-          return value > new Date();
+        isFuture(value: Date) {
+          if (value <= new Date()) {
+            throw new Error("Start time must be in the future");
+          }
         },
-        message: "Start time must be in the future",
       },
     },
     endTime: {
       type: DataTypes.DATE,
       allowNull: false,
       validate: {
-        validator: function (value: any) {
-          return value > new Date();
+        isAfterStart(value: Date) {
+          if (this.startTime && value <= this.startTime) {
+            throw new Error("End time must be after start time");
+          }
         },
-        message: "End time must be after start time",
       },
     },
     clientName: {
@@ -60,12 +62,12 @@ export const BookingModel: ModelDefined<
       type: DataTypes.UUID,
       allowNull: false,
     },
-    restaurantId: {
-      type: DataTypes.UUID,
+    restaurantName: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    tableId: {
-      type: DataTypes.UUID,
+    tableName: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     clientId: {

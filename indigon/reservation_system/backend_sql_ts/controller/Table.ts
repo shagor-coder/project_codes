@@ -156,7 +156,7 @@ export const bookTable = async (
 
     const newBooking = await BookingModel.create({
       tableId: tableId as string,
-      restaurantId: restaurantId as string,
+      restaurantName: restaurantId as string,
       clientId: client.toJSON().id as string,
       locationId: locationId as string,
       ...other,

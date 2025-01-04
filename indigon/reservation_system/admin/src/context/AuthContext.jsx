@@ -1,6 +1,12 @@
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { Backdrop, CircularProgress } from "@mui/material";
 import { useQueryClient } from "@tanstack/react-query";
-import React, { useContext, useEffect, useReducer, useState } from "react";
 import { ToastComponent } from "../components/Toast";
 import { useGetCurrentUser } from "../features/user/services/user";
 
@@ -12,22 +18,14 @@ const defaultContext = {
   toastType: "success",
 };
 
-const AuthContext = React.createContext(null);
+const AuthContext = createContext(null);
 
 const authReducer = (state, action) => {
   switch (action.type) {
     case "login":
-      return {
-        ...state,
-        isLoggedIn: true,
-        authUser: action.data,
-      };
+      return { ...state, isLoggedIn: true, authUser: action.data };
     case "logout":
-      return {
-        ...state,
-        isLoggedIn: false,
-        authUser: null,
-      };
+      return { ...state, isLoggedIn: false, authUser: null };
     case "showToast":
       return {
         ...state,
@@ -35,30 +33,18 @@ const authReducer = (state, action) => {
         toastType: action.toastType,
         toastMessage: action.message,
       };
-
     case "closeToast":
-      return {
-        ...state,
-        showToast: false,
-        toastType: "Success!",
-        toastMessage: "success",
-      };
-
+      return { ...state, showToast: false };
     default:
       return state;
   }
 };
 
-export const UseAuthContext = () => {
-  return useContext(AuthContext);
-};
+export const UseAuthContext = () => useContext(AuthContext);
 
-export const useAppQueryClient = () => {
-  return useQueryClient();
-};
+export const useAppQueryClient = () => useQueryClient();
 
 export const AuthContextProvider = ({ children }) => {
-  const [isLoadFinished, setIsLoadFinished] = useState(false);
   const [auth, dispatch] = useReducer(authReducer, defaultContext);
   const {
     data: userData,
@@ -67,6 +53,7 @@ export const AuthContextProvider = ({ children }) => {
     isFetched,
     isPending,
   } = useGetCurrentUser();
+  const [isLoadFinished, setIsLoadFinished] = useState(false);
 
   useEffect(() => {
     if (isError) {
@@ -75,41 +62,28 @@ export const AuthContextProvider = ({ children }) => {
         message: error.message,
         toastType: "error",
       });
-
-      dispatch({
-        type: "logout",
-      });
+      dispatch({ type: "logout" });
     }
-
-    if (userData) {
-      dispatch({
-        type: "login",
-        data: userData,
-      });
-    }
-
-    if (isFetched) {
-      setIsLoadFinished(true);
-    }
-  }, [isError, userData, isPending, error, isFetched]);
+    if (userData) dispatch({ type: "login", data: userData });
+    if (isFetched) setIsLoadFinished(true);
+  }, [isError, userData, isFetched, error]);
 
   if (isPending)
     return (
-      <Backdrop sx={{ color: "#fff", zIndex: 9999 }} open={isPending}>
+      <Backdrop sx={{ color: "#fff", zIndex: 9999 }} open>
         <CircularProgress color="info" />
       </Backdrop>
     );
 
-  if (isLoadFinished)
-    return (
-      <AuthContext.Provider value={{ auth, dispatch }}>
-        {auth.showToast && (
-          <ToastComponent
-            message={auth.toastMessage}
-            toastType={auth.toastType}
-          />
-        )}
-        {children}
-      </AuthContext.Provider>
-    );
+  return (
+    <AuthContext.Provider value={{ auth, dispatch }}>
+      {auth.showToast && (
+        <ToastComponent
+          message={auth.toastMessage}
+          toastType={auth.toastType}
+        />
+      )}
+      {isLoadFinished && children}
+    </AuthContext.Provider>
+  );
 };

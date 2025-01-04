@@ -49,7 +49,7 @@ export const loginUser = async (
 
   try {
     const isUser = await UserModel.findOne({
-      where: { email: email },
+      where: { email },
       include: [
         {
           model: LocationModel,
@@ -72,7 +72,9 @@ export const loginUser = async (
 
     if (!isUser) return next(createError(404, "No user found!"));
 
-    const { password: dbPassword, id, isAdmin, name } = isUser.toJSON();
+    const user = isUser.toJSON();
+
+    const { password: dbPassword, id, isAdmin, name } = user;
 
     const isPassword = await bcrypt.compare(password, dbPassword);
 
@@ -100,6 +102,8 @@ export const loginUser = async (
         id: id,
         name,
         email: email,
+        // @ts-ignore
+        locationId: user?.location?.locationId || null,
       },
     });
   } catch (error: any) {

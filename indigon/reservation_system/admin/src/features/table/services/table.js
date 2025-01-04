@@ -54,9 +54,9 @@ export const useDeleteTable = () => {
     onSuccess: async (data) => {
       await queryClient.invalidateQueries({ queryKey: ["deleteTable"] });
       queryClient.setQueriesData({ queryKey: ["allTables"] }, (oldTables) => {
-        const updatedTables = oldTables.filter(
-          (Table) => Table._id !== data.id
-        );
+        const updatedTables = oldTables.filter((Table) => Table.id !== data.id);
+        console.log(oldTables);
+
         return updatedTables;
       });
     },
