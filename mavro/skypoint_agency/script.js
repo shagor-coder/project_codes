@@ -80,3 +80,17 @@ document.addEventListener("hydrationDone", () => {
     }
   }, 1000);
 });
+
+const remove_label_asterisk = () => {
+  const allFieldContainers = [
+    ...document.querySelectorAll("#_builder-form .form-field-container"),
+  ];
+
+  allFieldContainers?.forEach((fieldContainer) => {
+    const span = fieldContainer.querySelector(".label-alignment span");
+    if (!span) return;
+    if (span.innerText.trim() === "*") span.remove();
+  });
+};
+
+remove_label_asterisk();
