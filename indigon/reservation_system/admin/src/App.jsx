@@ -1,20 +1,21 @@
 import { Route, Routes } from "react-router-dom";
+import NotFoundPage from "./404/NotFound";
 import { PrivateRoutes } from "./components/PrivateRoute";
 import { Login } from "./features/authentication/Login";
 import { Register } from "./features/authentication/Register";
+import { Bookings } from "./features/bookings/Bookings";
 import { Dashboard } from "./features/dashboard/Dashboard";
-import { Users } from "./features/user/Users";
 import { Locations } from "./features/location/Locations";
-import NotFoundPage from "./404/NotFound";
-import { SingleLocation } from "./features/location/pages/SingleLocation";
 import { InstallConfirmation } from "./features/location/pages/InstallConfirmation";
-import { Restaurant } from "./features/restaurant/Restuarant";
+import { SingleLocation } from "./features/location/pages/SingleLocation";
 import { Menus } from "./features/menu/Menus";
 import { AddRestaurant } from "./features/restaurant/pages/AddRestaurant";
 import { EditRestaurant } from "./features/restaurant/pages/EditRestaurant";
+import { Restaurants } from "./features/restaurant/Restaurants";
+import { SingleRestaurant } from "./features/restaurant/SingleRestaurant";
 import { AddTable } from "./features/table/pages/AddTable";
 import { Table } from "./features/table/Table";
-import { Bookings } from "./features/bookings/Bookings";
+import { Users } from "./features/user/Users";
 
 export const App = () => {
   return (
@@ -36,7 +37,11 @@ export const App = () => {
           path="restaurants/:restaurantId/edit-restaurant"
           element={<EditRestaurant />}
         />
-        <Route path="restaurants/:restaurantId" element={<Restaurant />} />
+        <Route
+          path="restaurants/:restaurantId"
+          element={<SingleRestaurant />}
+        />
+        <Route path="restaurants/" element={<Restaurants />} />
         <Route path="tables/:restaurantId/add-table" element={<AddTable />} />
         <Route path="tables/:tableId/bookings" element={<Table />} />
         <Route path="/bookings" element={<Bookings />} />

@@ -1,33 +1,38 @@
-import { Backdrop, Box, Button, CircularProgress } from "@mui/material";
+import { Backdrop, Button, CircularProgress } from "@mui/material";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { DataGridComponent } from "../../components/DataGrid";
 import { Layout } from "../../components/Layout";
 import { PagesHeader } from "../../components/PagesHeader";
 import { UseAuthContext } from "../../context/AuthContext";
-import { useDeleteLocation, useGetAllLocations } from "./services/location";
-import { useNavigate } from "react-router-dom";
+import {
+  useDeleteRestaurant,
+  useGetAllRestaurant,
+} from "./services/restaurant";
 
-export const Locations = () => {
-  const { isLoading, isError, data, error } = useGetAllLocations();
+export const Restaurants = () => {
+  const { auth, dispatch } = UseAuthContext();
+
+  const { isLoading, isError, data, error } = useGetAllRestaurant(
+    auth?.authUser?.locationId
+  );
+
   const {
-    isPending,
     isError: isDeleteError,
     error: deleteError,
-    data: isDeleted,
+    isSuccess: isDeleted,
     mutate,
-  } = useDeleteLocation();
-  const { dispatch } = UseAuthContext();
+  } = useDeleteRestaurant();
+
   const navigate = useNavigate();
 
   const handleNavigate = (id) => {
-    navigate(`/locations/${id}`);
+    navigate(`/restaurants/${id}`);
   };
 
-  const handleDeleteLocation = (params) => {
-    mutate(params.id);
+  const handleDeleteRestaurant = (params) => {
+    mutate({ restaurantId: params.id });
   };
-
-  const marketplaceLink = import.meta.env.VITE_GHL_APP_MARKETPLACE_URL;
 
   let content = "";
 
@@ -39,7 +44,7 @@ export const Locations = () => {
     );
 
   useEffect(() => {
-    if (isError || isDeleteError) {
+    if (isError || isDeleteError || deleteError) {
       dispatch({
         type: "showToast",
         toastType: "error",
@@ -50,36 +55,37 @@ export const Locations = () => {
       dispatch({
         type: "showToast",
         toastType: "success",
-        message: "Location has been deleted!!",
+        message: "Restaurant has been deleted!!",
       });
     }
-  }, [isError, isDeleteError, isDeleted]);
+  }, [isError, isDeleted, isDeleteError, deleteError]);
 
   if (data && data.length) {
     content = (
       <DataGridComponent
         actionNeeded={false}
-        handleNavigate={() => {}}
+        handleNavigate={handleNavigate}
         data={data}
-        handleDelete={handleDeleteLocation}
+        handleDelete={handleDeleteRestaurant}
       />
     );
   }
 
   return (
-    <Layout headline="Locations">
+    <Layout headline="Restaurants">
       <PagesHeader
-        headline="See all your locations"
+        headline="See all your restaurants"
         IconButton={
           <Button
-            disabled={data ? true : false}
             variant="contained"
             color="primary"
             onClick={() => {
-              window.open(marketplaceLink, "_blank");
+              navigate(
+                `/restaurants/${auth?.authUser?.locationId}/new-restaurant`
+              );
             }}
           >
-            Add to a location
+            Add A Restaurant
           </Button>
         }
       />

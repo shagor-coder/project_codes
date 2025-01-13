@@ -8,7 +8,7 @@ import { useGetCurrentRestaurant } from "./services/restaurant";
 import { useDeleteTable, useGetAllTable } from "../table/services/table";
 import { DataGridComponent } from "../../components/DataGrid";
 
-export const Restaurant = () => {
+export const SingleRestaurant = () => {
   const { restaurantId } = useParams();
   const { dispatch } = UseAuthContext();
   const navigate = useNavigate();
@@ -22,8 +22,7 @@ export const Restaurant = () => {
   });
 
   const {
-    data: deletedTable,
-    isPending,
+    isSuccess: isTableDeleted,
     isError: isTableDeleteError,
     error: tableDeleteError,
     mutate,
@@ -53,14 +52,14 @@ export const Restaurant = () => {
       });
     }
 
-    if (deletedTable) {
+    if (isTableDeleted) {
       dispatch({
         type: "showToast",
         toastType: "success",
         message: "Table has been deleted!",
       });
     }
-  }, [isError, data]);
+  }, [isError, data, isTableDeleted]);
 
   let content = "";
 
@@ -82,9 +81,9 @@ export const Restaurant = () => {
                 <Button
                   variant="contained"
                   color="primary"
-                  onClick={() => navigate(`/locations/`)}
+                  onClick={() => navigate(`/restaurants`)}
                 >
-                  Go back
+                  Go Back
                 </Button>
               </Grid>
               <Grid item>
@@ -132,14 +131,14 @@ export const Restaurant = () => {
     content = (
       <Box>
         <PagesHeader
-          headline={data?.name}
+          headline={`Tables in ${data?.name}`}
           IconButton={
             <Grid container spacing={1}>
               <Grid item>
                 <Button
                   variant="contained"
                   color="primary"
-                  onClick={() => navigate(`/locations/`)}
+                  onClick={() => navigate(`/restaurants`)}
                 >
                   Go back
                 </Button>
@@ -173,10 +172,21 @@ export const Restaurant = () => {
                   variant="contained"
                   color="primary"
                   onClick={() => {
-                    window.open("/", "_blank");
+                    navigator.clipboard
+                      .writeText(`${new URL(location.href).href}`)
+                      .then(() => {
+                        dispatch({
+                          type: "showToast",
+                          toastType: "success",
+                          message: "Public Link Copied!",
+                        });
+                      })
+                      .catch((e) => {
+                        console.log(error);
+                      });
                   }}
                 >
-                  Get Link
+                  Get Restaurant Public Link
                 </Button>
               </Grid>
             </Grid>
@@ -194,5 +204,5 @@ export const Restaurant = () => {
     );
   }
 
-  return <Layout headline="Restaurant">{content}</Layout>;
+  return <Layout headline={`${data?.name}`}>{content}</Layout>;
 };

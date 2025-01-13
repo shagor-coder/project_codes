@@ -117,7 +117,7 @@ export const getAllRestaurant = async (
 };
 
 // Get Restaurant for current user
-export const getRestaurant = async (
+export const getRestaurantForAdmin = async (
   request: Request,
   response: Response,
   next: NextFunction
@@ -139,7 +139,45 @@ export const getRestaurant = async (
       }
     );
     if (!restaurant) return next(createError(404, "Restaurant not found"));
-    response.status(200).json({ staus: "success", data: restaurant });
+    response.status(200).json({ staus: "success", data: restaurant.toJSON() });
+  } catch (error: any) {
+    next(createError(500, error.message as string));
+  }
+};
+
+// Get Restaurant for web
+export const getRestaurantForWeb = async (
+  request: Request,
+  response: Response,
+  next: NextFunction
+) => {
+  try {
+    const restaurant = await RestaurantModel.findByPk(
+      request.params.id as string,
+      {
+        nest: true,
+        include: [
+          {
+            model: AssetsModel,
+            as: "assets",
+            attributes: {
+              exclude: [
+                "updatedAt",
+                "createdAt",
+                "id",
+                "restaurantId",
+                "photoId",
+              ],
+            },
+          },
+        ],
+        attributes: {
+          exclude: ["createdAt", "updatedAt", "userId"],
+        },
+      }
+    );
+    if (!restaurant) return next(createError(404, "Restaurant not found"));
+    response.status(200).json({ staus: "success", data: restaurant.toJSON() });
   } catch (error: any) {
     next(createError(500, error.message as string));
   }
@@ -162,7 +200,8 @@ export const updateRestaurant = async (
 
     // @ts-ignore
     const featuredImages = request.files["featuredImage"] || null;
-    const photoURLs = [] as string[];
+    const photoURLs = [] as { photoURL: string; photoId: string }[];
+    const photoURLPromises = [] as Promise<any>[];
 
     const uploadPhotos = async () => {
       await Promise.all(
@@ -179,6 +218,28 @@ export const updateRestaurant = async (
     const featuredImage = await uploadPhoto(
       featuredImages ? featuredImages[0] : null
     );
+
+    photoURLs?.forEach((photoObj) => {
+      photoURLPromises.push(
+        AssetsModel.create({
+          isFeatured: false,
+          photoId: photoObj?.photoId as string,
+          photoURL: photoObj?.photoURL as string,
+          restaurantId: request.params.id as string,
+        })
+      );
+    });
+
+    await Promise.all(photoURLPromises);
+
+    await AssetsModel.create({
+      isFeatured: true,
+      // @ts-ignore
+      photoId: featuredImage?.photoId as string,
+      // @ts-ignore
+      photoURL: featuredImage?.photoURL as string,
+      restaurantId: request.params.id as string,
+    });
 
     response.status(200).json({
       status: "success",
@@ -230,6 +291,9 @@ export const deleteRestaurantImage = async (
   next: NextFunction
 ) => {
   try {
+    await AssetsModel.destroy({
+      where: { photoId: request.query.photoId as string },
+    });
     await deletePhoto(request.query.photoId as string);
 
     response.status(200).json({
@@ -249,6 +313,10 @@ export const deleteFeaturedImage = async (
   next: NextFunction
 ) => {
   try {
+    await AssetsModel.destroy({
+      where: { photoId: request.query.photoId as string },
+    });
+
     await deletePhoto(request.query.photoId as string);
 
     response.status(200).json({

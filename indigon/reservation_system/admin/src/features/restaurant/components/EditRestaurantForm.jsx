@@ -26,16 +26,25 @@ export const EditRestaurantForm = ({ data: currentData }) => {
     isError: isEditError,
     mutate,
     error,
+    isSuccess: isRestaurantUpdated,
   } = useEditRestaurant();
-  const { mutate: deleteImage } = useDeleteRestaurantImage();
-  const { mutate: deleteFeaturedImage } = useDeleteRestaurantFeaturedImage();
+  const {
+    mutate: deleteImage,
+    isSuccess: isRestaurantImgDeleted,
+    isError: isRestaurantImgDelError,
+  } = useDeleteRestaurantImage();
+  const {
+    mutate: deleteFeaturedImage,
+    isSuccess: isRestaurantFeImgDeleted,
+    isError: isRestaurantFeImgDelError,
+  } = useDeleteRestaurantFeaturedImage();
   const { dispatch } = UseAuthContext();
 
   const [uploadedImages, setuploadedImages] = useState([]);
   const [newFeaturedImage, setNewFeaturedImage] = useState(null);
 
   const {
-    _id,
+    id,
     name,
     description,
     addressLine,
@@ -43,7 +52,6 @@ export const EditRestaurantForm = ({ data: currentData }) => {
     openingHours,
     closingHours,
     bookingDuration,
-    featuredImage,
     assets,
     cuisines,
     diningStyle,
@@ -89,18 +97,18 @@ export const EditRestaurantForm = ({ data: currentData }) => {
     }));
   };
 
-  const handleFeaturedImageDelete = () => {
+  const handleFeaturedImageDelete = (photo) => {
     deleteFeaturedImage({
-      restaurantId: _id,
-      photoId: featuredImage?.photoId,
+      restaurantId: id,
+      photoId: photo?.photoId,
     });
   };
 
   const handleImageDelete = (photo) => {
     deleteImage({
-      restaurantId: _id,
+      restaurantId: id,
       photoId: photo?.photoId,
-      id: photo._id,
+      id: photo?.id,
     });
   };
 
@@ -116,7 +124,7 @@ export const EditRestaurantForm = ({ data: currentData }) => {
     });
     formData.append("featuredImage", newFeaturedImage);
 
-    mutate({ restaurantId: _id, formData: formData });
+    mutate({ restaurantId: id, formData: formData });
   };
 
   useEffect(() => {
@@ -127,12 +135,32 @@ export const EditRestaurantForm = ({ data: currentData }) => {
         toastType: "error",
       });
     }
-  }, [, isEditError, isEditPending, error]);
+    if (isRestaurantUpdated) {
+      dispatch({
+        type: "showToast",
+        message: "Restauran updated successfully!",
+        toastType: "success",
+      });
+    }
+    if (isRestaurantImgDeleted || isRestaurantFeImgDeleted) {
+      dispatch({
+        type: "showToast",
+        message: "Image deleted successfully!",
+        toastType: "success",
+      });
+    }
+  }, [
+    isEditError,
+    isEditPending,
+    error,
+    isRestaurantFeImgDelError,
+    isRestaurantFeImgDeleted,
+    isRestaurantImgDeleted,
+    isRestaurantImgDelError,
+  ]);
 
   const oldFeaturedImage = assets.find((as) => as.isFeatured);
   const oldPhotos = assets.filter((as) => !as.isFeatured);
-
-  console.log(oldFeaturedImage, oldPhotos);
 
   return (
     <Grid container spacing={1}>
@@ -140,85 +168,91 @@ export const EditRestaurantForm = ({ data: currentData }) => {
         <Typography component="h3" variant="h5">
           Featured Image
         </Typography>
-        <ImageList>
-          <ImageListItem
-            sx={{
-              position: "relative",
-              width: "100%",
-              height: "100%",
-            }}
-          >
-            <img
-              src={oldFeaturedImage.photoURL}
-              alt={"Featured Image"}
-              loading="lazy"
-              style={{
+        {oldFeaturedImage && (
+          <ImageList>
+            <ImageListItem
+              sx={{
+                position: "relative",
                 width: "100%",
                 height: "100%",
-                objectFit: "cover",
-              }}
-            />
-            <IconButton
-              onClick={handleFeaturedImageDelete}
-              sx={{
-                position: "absolute",
-                top: 0,
-                right: 0,
-                color: "primary.main",
-                backgroundColor: "rgba(255, 255, 255, 0.7)",
-                "&:hover": {
-                  backgroundColor: "rgba(255, 255, 255, 0.9)",
-                },
               }}
             >
-              <DeleteIcon />
-            </IconButton>
-          </ImageListItem>
-        </ImageList>
+              <img
+                src={oldFeaturedImage?.photoURL}
+                alt={"Featured Image"}
+                loading="lazy"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
+              />
+              <IconButton
+                onClick={() => {
+                  handleFeaturedImageDelete(oldFeaturedImage);
+                }}
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  right: 0,
+                  color: "primary.main",
+                  backgroundColor: "rgba(255, 255, 255, 0.7)",
+                  "&:hover": {
+                    backgroundColor: "rgba(255, 255, 255, 0.9)",
+                  },
+                }}
+              >
+                <DeleteIcon />
+              </IconButton>
+            </ImageListItem>
+          </ImageList>
+        )}
         <Grid>
           <Typography component="h3" variant="h5">
             Restaurant Photos
           </Typography>
-          <ImageList sx={{ wrestaurantIdth: "100%" }} cols={3}>
-            {oldPhotos?.map((photo) => {
-              return (
-                <ImageListItem
-                  key={photo?.photoId}
-                  sx={{
-                    position: "relative",
-                    width: "100%",
-                    height: "100%",
-                  }}
-                >
-                  <img
-                    src={photo?.photoURL}
-                    alt={photo?.photoId}
-                    loading="lazy"
-                    style={{
+          {oldPhotos && (
+            <ImageList sx={{ wrestaurantIdth: "100%" }} cols={3}>
+              {oldPhotos?.map((photo) => {
+                return (
+                  <ImageListItem
+                    key={photo?.photoId}
+                    sx={{
+                      position: "relative",
                       width: "100%",
                       height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                  <IconButton
-                    onClick={() => handleImageDelete(photo)}
-                    sx={{
-                      position: "absolute",
-                      top: 0,
-                      right: 0,
-                      color: "primary.main",
-                      backgroundColor: "rgba(255, 255, 255, 0.7)",
-                      "&:hover": {
-                        backgroundColor: "rgba(255, 255, 255, 0.9)",
-                      },
                     }}
                   >
-                    <DeleteIcon />
-                  </IconButton>
-                </ImageListItem>
-              );
-            })}
-          </ImageList>
+                    <img
+                      src={photo?.photoURL}
+                      alt={photo?.photoId}
+                      loading="lazy"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                    <IconButton
+                      onClick={() => handleImageDelete(photo)}
+                      sx={{
+                        position: "absolute",
+                        top: 0,
+                        right: 0,
+                        color: "primary.main",
+                        backgroundColor: "rgba(255, 255, 255, 0.7)",
+                        "&:hover": {
+                          backgroundColor: "rgba(255, 255, 255, 0.9)",
+                        },
+                      }}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </ImageListItem>
+                );
+              })}
+            </ImageList>
+          )}
         </Grid>
       </Grid>
       <Grid item xs={12} md={8}>

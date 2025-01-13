@@ -7,7 +7,8 @@ import {
   deleteRestaurant,
   deleteRestaurantImage,
   getAllRestaurant,
-  getRestaurant,
+  getRestaurantForAdmin,
+  getRestaurantForWeb,
   updateRestaurant,
 } from "../controller/Restaurant";
 
@@ -27,8 +28,11 @@ _Router.post(
 // Get all the Restaurants
 _Router.get("/:locationId/all", verifyUser, getAllRestaurant);
 
-// Get the current Restaurant
-_Router.get("/:id", getRestaurant);
+// Get the current Restaurant for admin
+_Router.get("/:id", verifyUser, getRestaurantForAdmin);
+
+// Get the current Restaurant for web
+_Router.get("/site/:id", getRestaurantForWeb);
 
 // Update the current Restaurant
 _Router.put(

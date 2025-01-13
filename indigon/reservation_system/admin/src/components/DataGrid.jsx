@@ -18,6 +18,15 @@ const ignoredFields = [
   "createdAt",
   "clientId",
   "tableId",
+  "assets",
+  "locationId",
+  "priceRange",
+  "paymentOptions",
+  "dressCode",
+  "diningStyle",
+  "parkingDetails",
+  "executiveChef",
+  "website",
 ];
 
 const timeStampFields = ["startTime", "endTime"];
@@ -109,7 +118,7 @@ export const DataGridComponent = ({
   }
 
   return (
-    <Box sx={{ maxWidth: `100%`, height: "600px" }}>
+    <Box sx={{ maxWidth: `1800px`, height: "600px" }}>
       {data.length ? (
         <DataGrid
           rows={updateData}

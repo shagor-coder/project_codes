@@ -55,6 +55,8 @@ export const getAllTable = async (
   next: NextFunction
 ) => {
   try {
+    console.log(request.params.restaurantId);
+
     const tables = await TableModel.findAll({
       where: {
         restaurantId: request.params.restaurantId as string,

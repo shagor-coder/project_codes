@@ -1,10 +1,10 @@
 import axios from "axios";
 import { axiosInstance } from "../axios";
 
-export const getCurrentRestuarant = async ({ restaurantId }) => {
+export const getCurrentRestaurant = async ({ restaurantId }) => {
   try {
     const request = await axiosInstance.get(
-      import.meta.env.VITE_API_BASE_URL + `/api/restuarant/${restaurantId}/`
+      import.meta.env.VITE_API_BASE_URL + `/api/restaurant/${restaurantId}/`
     );
 
     const response = await request.data;
@@ -14,10 +14,10 @@ export const getCurrentRestuarant = async ({ restaurantId }) => {
   }
 };
 
-export const deleteCurrentRestuarant = async ({ restaurantId }) => {
+export const deleteCurrentRestaurant = async ({ restaurantId }) => {
   try {
     const request = await axiosInstance.delete(
-      import.meta.env.VITE_API_BASE_URL + `/api/restuarant/${restaurantId}`
+      import.meta.env.VITE_API_BASE_URL + `/api/restaurant/${restaurantId}`
     );
 
     const response = await request.data;
@@ -27,10 +27,10 @@ export const deleteCurrentRestuarant = async ({ restaurantId }) => {
   }
 };
 
-export const getAllRestuarants = async (locationId) => {
+export const getAllRestaurants = async (locationId) => {
   try {
     const request = await axiosInstance.get(
-      import.meta.env.VITE_API_BASE_URL + `/api/restuarant/${locationId}/all`
+      import.meta.env.VITE_API_BASE_URL + `/api/restaurant/${locationId}/all`
     );
 
     const response = await request.data;
@@ -40,10 +40,10 @@ export const getAllRestuarants = async (locationId) => {
   }
 };
 
-export const createRestuarant = async ({ locationId, formData }) => {
+export const createRestaurant = async ({ locationId, formData }) => {
   try {
     const request = await axios.post(
-      import.meta.env.VITE_API_BASE_URL + `/api/restuarant/${locationId}`,
+      import.meta.env.VITE_API_BASE_URL + `/api/restaurant/${locationId}`,
       formData,
       {
         withCredentials: true,
@@ -59,11 +59,11 @@ export const createRestuarant = async ({ locationId, formData }) => {
   }
 };
 
-export const updateRestuarant = async ({ restaurantId, formData }) => {
+export const updateRestaurant = async ({ restaurantId, formData }) => {
   try {
     const request = await axiosInstance.put(
       import.meta.env.VITE_API_BASE_URL +
-        `/api/restuarant/${restaurantId}/update`,
+        `/api/restaurant/${restaurantId}/update`,
       formData,
       {
         withCredentials: true,
@@ -79,11 +79,11 @@ export const updateRestuarant = async ({ restaurantId, formData }) => {
   }
 };
 
-export const deleteRestuarantImage = async ({ restaurantId, photoId, id }) => {
+export const deleteRestaurantImage = async ({ restaurantId, photoId, id }) => {
   try {
     const request = await axiosInstance.delete(
       import.meta.env.VITE_API_BASE_URL +
-        `/api/restuarant/${restaurantId}/deleteImage?photoId=${photoId}&id=${id}`
+        `/api/restaurant/${restaurantId}/deleteImage?photoId=${photoId}&id=${id}`
     );
 
     const response = await request.data;
@@ -93,14 +93,14 @@ export const deleteRestuarantImage = async ({ restaurantId, photoId, id }) => {
   }
 };
 
-export const deleteRestuarantFeaturedImage = async ({
+export const deleteRestaurantFeaturedImage = async ({
   restaurantId,
   photoId,
 }) => {
   try {
     const request = await axiosInstance.delete(
       import.meta.env.VITE_API_BASE_URL +
-        `/api/restuarant/${restaurantId}/deleteFeaturedImage?photoId=${photoId}`
+        `/api/restaurant/${restaurantId}/deleteFeaturedImage?photoId=${photoId}`
     );
 
     const response = await request.data;

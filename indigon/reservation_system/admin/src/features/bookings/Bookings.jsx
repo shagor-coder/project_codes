@@ -1,6 +1,5 @@
 import { Box } from "@mui/material";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { DataGridComponent } from "../../components/DataGrid";
 import { Layout } from "../../components/Layout";
 import { PagesHeader } from "../../components/PagesHeader";
@@ -9,7 +8,6 @@ import { EditBookingInfo } from "./components/EditBookingInfo";
 import { useGetAllBooking } from "./services/booking";
 
 export const Bookings = () => {
-  const navigate = useNavigate();
   const { dispatch, auth } = UseAuthContext();
 
   const { data, isError, isLoading, error } = useGetAllBooking({
@@ -43,7 +41,7 @@ export const Bookings = () => {
   return (
     <Layout headline="Booking info">
       <Box>
-        <PagesHeader headline="Total Booking" IconButton={data?.length} />
+        <PagesHeader headline="All Bookings" IconButton={data?.length} />
         {content}
       </Box>
     </Layout>

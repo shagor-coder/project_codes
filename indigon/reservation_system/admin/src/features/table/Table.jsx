@@ -32,22 +32,23 @@ export const Table = () => {
     content = (
       <Box>
         <PagesHeader
-          headline="Total Booking"
+          headline={`All Bookings for ${data?.name}`}
           IconButton={
             <Button
               variant="contained"
+              s
               color="primary"
               onClick={() => {
-                navigate(`/restaurants/${data.restaurantId}`);
+                navigate(`/restaurants/${data?.restaurantId}`);
               }}
             >
-              Go back
+              Go Back
             </Button>
           }
         />
-        {data.bookedTimes && data.bookedTimes.length ? (
+        {data.bookings && data.bookings.length ? (
           <DataGridComponent
-            data={data.bookedTimes}
+            data={data.bookings}
             handleDelete={() => {}}
             actionNeeded={true}
             EditForm={EditBookingInfo}

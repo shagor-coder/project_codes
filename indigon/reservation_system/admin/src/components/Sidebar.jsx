@@ -15,6 +15,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import BookOnlineIcon from "@mui/icons-material/BookOnline";
+import DinnerDiningIcon from "@mui/icons-material/DinnerDining";
 import { ProfileMenu } from "./ProfileMenu";
 import { MenuItem } from "./MenuItem";
 import { useState } from "react";
@@ -164,6 +165,12 @@ export const Sidebar = ({ headline }) => {
             name="Locations"
             path="/locations"
             isActive={activeLink("/locations")}
+          />
+          <MenuItem
+            icon={<DinnerDiningIcon />}
+            name="Restaurants"
+            path="/restaurants"
+            isActive={activeLink("/restaurants")}
           />
           <MenuItem
             icon={<BookOnlineIcon />}

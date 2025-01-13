@@ -1,19 +1,19 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useAppQueryClient } from "../../../context/AuthContext";
 import {
-  createRestuarant,
-  deleteCurrentRestuarant,
-  getAllRestuarants,
-  getCurrentRestuarant,
-  updateRestuarant,
-  deleteRestuarantImage,
-  deleteRestuarantFeaturedImage,
+  createRestaurant,
+  deleteCurrentRestaurant,
+  getAllRestaurants,
+  getCurrentRestaurant,
+  updateRestaurant,
+  deleteRestaurantImage,
+  deleteRestaurantFeaturedImage,
 } from "../../../requests/restaurant/restaurant";
 
 export const useGetCurrentRestaurant = ({ restaurantId }) => {
   return useQuery({
     queryKey: ["currentRestaurant"],
-    queryFn: () => getCurrentRestuarant({ restaurantId }),
+    queryFn: () => getCurrentRestaurant({ restaurantId }),
     retry: 0,
   });
 };
@@ -21,7 +21,7 @@ export const useGetCurrentRestaurant = ({ restaurantId }) => {
 export const useGetAllRestaurant = (locationId) => {
   return useQuery({
     queryKey: ["allRestaurants"],
-    queryFn: () => getAllRestuarants(locationId),
+    queryFn: () => getAllRestaurants(locationId),
     retry: 0,
   });
 };
@@ -31,7 +31,7 @@ export const useCreateRestaurant = () => {
 
   return useMutation({
     mutationKey: ["createRestaurant"],
-    mutationFn: createRestuarant,
+    mutationFn: createRestaurant,
     onSuccess: async (data) => {
       await queryClient.invalidateQueries({ queryKey: ["createRestaurant"] });
 
@@ -56,7 +56,7 @@ export const useDeleteRestaurant = () => {
 
   return useMutation({
     mutationKey: ["deleteRestaurant"],
-    mutationFn: deleteCurrentRestuarant,
+    mutationFn: deleteCurrentRestaurant,
     onSuccess: async (data) => {
       await queryClient.invalidateQueries({ queryKey: ["deleteRestaurant"] });
       queryClient.setQueriesData(
@@ -81,7 +81,7 @@ export const useEditRestaurant = () => {
 
   return useMutation({
     mutationKey: ["updateRestaurant"],
-    mutationFn: updateRestuarant,
+    mutationFn: updateRestaurant,
     onSuccess: async (data) => {
       await queryClient.invalidateQueries({
         queryKey: ["updateRestaurant"],
@@ -102,7 +102,7 @@ export const useDeleteRestaurantImage = () => {
 
   return useMutation({
     mutationKey: ["deleteRestaurantImage"],
-    mutationFn: deleteRestuarantImage,
+    mutationFn: deleteRestaurantImage,
     onSuccess: async (data) => {
       await queryClient.invalidateQueries({
         queryKey: ["deleteRestaurantImage"],
@@ -123,7 +123,7 @@ export const useDeleteRestaurantFeaturedImage = () => {
 
   return useMutation({
     mutationKey: ["deleteRestaurantFeaturedImage"],
-    mutationFn: deleteRestuarantFeaturedImage,
+    mutationFn: deleteRestaurantFeaturedImage,
     onSuccess: async (data) => {
       await queryClient.invalidateQueries({
         queryKey: ["deleteRestaurantFeaturedImage"],

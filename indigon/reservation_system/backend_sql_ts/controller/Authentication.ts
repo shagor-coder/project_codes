@@ -56,7 +56,6 @@ export const loginUser = async (
           as: "location",
           attributes: {
             exclude: [
-              "id",
               "userId",
               "access_token",
               "refresh_token",
@@ -103,7 +102,7 @@ export const loginUser = async (
         name,
         email: email,
         // @ts-ignore
-        locationId: user?.location?.locationId || null,
+        locationId: user?.location?.id || null,
       },
     });
   } catch (error: any) {
