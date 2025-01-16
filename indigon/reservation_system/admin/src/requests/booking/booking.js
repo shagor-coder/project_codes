@@ -35,7 +35,7 @@ export const getAllBookings = async ({ locationId }) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error?.response?.data;
   }
 };
 
@@ -48,7 +48,7 @@ export const createBooking = async ({ locationId, formData }) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error?.response?.data;
   }
 };
 
@@ -61,6 +61,6 @@ export const updateBooking = async ({ bookingId, formData }) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error?.response?.data;
   }
 };

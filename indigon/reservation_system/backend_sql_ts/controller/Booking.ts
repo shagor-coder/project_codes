@@ -85,40 +85,49 @@ export const createBooking = async (
 ) => {
   try {
     const body = request.body as RequestBody;
-    const { startTime } = body;
-    const bookedDateTime = new Date(startTime);
+    const { startTime, endTime } = body;
+    const bookedStartDateTime = new Date(startTime);
+    const bookedEndDateTime = new Date(endTime);
 
-    // Validate date is valid
-    if (isNaN(bookedDateTime.getTime())) {
-      return response.status(400).json({ message: "Invalid date format" });
+    if (
+      isNaN(bookedStartDateTime.getTime()) ||
+      isNaN(bookedEndDateTime.getTime())
+    ) {
+      return next(createError(403, "Invalid date format"));
     }
 
-    // Check for past bookings
-    if (new Date() >= bookedDateTime) {
-      return response
-        .status(403)
-        .json({ message: "You cannot book a time in the past!" });
+    if (new Date() >= bookedStartDateTime) {
+      return next(createError(403, "Cannot book a time in past!"));
     }
 
-    // Validate working hours (5 AM to 5 PM)
-    const bookedHour = bookedDateTime.getHours();
+    const bookedHour = bookedStartDateTime.getUTCHours();
     const WORKING_HOURS = {
       START: 8,
       END: 17,
     };
 
     if (bookedHour < WORKING_HOURS.START || bookedHour >= WORKING_HOURS.END) {
-      return response.status(400).json({
-        message: "You can only book within working hours (5 AM to 5 PM)!",
-      });
+      return next(
+        createError(
+          403,
+          "You can only book within working hours (5 AM to 5 PM)!"
+        )
+      );
     }
 
-    // Check for existing bookings
-    const startOfHour = new Date(bookedDateTime);
+    const startOfHour = new Date(bookedStartDateTime);
     startOfHour.setMinutes(0, 0, 0);
 
-    const endOfHour = new Date(bookedDateTime);
-    endOfHour.setMinutes(59, 59, 999);
+    const endOfHour = new Date(bookedEndDateTime);
+    endOfHour.setMinutes(0, 0, 0);
+
+    const differenceInMilliseconds =
+      bookedEndDateTime.getTime() - bookedStartDateTime.getTime();
+
+    const differenceInHours = differenceInMilliseconds / (1000 * 60 * 60);
+
+    if (differenceInHours > 1)
+      return next(createError(403, "Time must be same day and hour"));
 
     const existingBooking = await BookingModel.findOne({
       where: {
@@ -129,15 +138,12 @@ export const createBooking = async (
     });
 
     if (existingBooking) {
-      return response.status(403).json({
-        message: "This time slot is already booked",
-      });
+      return next(createError(403, "This time slot is already booked"));
     }
 
     const restaurant = await RestaurantModel.findByPk(body.restaurantId);
 
-    if (!restaurant)
-      return response.status(404).json({ message: "No restaurant found!!" });
+    if (!restaurant) return next(createError(404, "No restaurant found"));
 
     const booking = await BookingModel.create({
       ...body,
@@ -149,18 +155,9 @@ export const createBooking = async (
       data: booking,
     });
   } catch (error) {
-    console.error("Booking creation failed:", error);
+    console.log(error);
 
-    if (error instanceof Error) {
-      return response.status(500).json({
-        message: "Failed to create booking",
-        error: error.message,
-      });
-    }
-
-    return response.status(500).json({
-      message: "An unexpected error occurred",
-    });
+    next(createError(500, "Table booking failed!"));
   }
 };
 
@@ -172,23 +169,64 @@ export const updateBooking = async (
 ) => {
   const { bookingStatus, startTime, endTime } = request.body as RequestBody;
 
+  const booking = await BookingModel.findByPk(request.params.id as string);
+
+  if (!booking) return next(createError(404, "No booking found"));
+
+  const bookedStartDateTime = new Date(startTime);
+  const bookedEndDateTime = new Date(endTime);
+
+  if (
+    isNaN(bookedStartDateTime.getTime()) ||
+    isNaN(bookedEndDateTime.getTime())
+  ) {
+    return next(createError(403, "Invalid date format"));
+  }
+
+  if (new Date() >= bookedStartDateTime) {
+    return next(createError(403, "Cannot book a time in past!"));
+  }
+
+  const bookedHour = bookedStartDateTime.getUTCHours();
+  const WORKING_HOURS = {
+    START: 8,
+    END: 17,
+  };
+
+  if (bookedHour < WORKING_HOURS.START || bookedHour >= WORKING_HOURS.END) {
+    return next(
+      createError(403, "You can only book within working hours (5 AM to 5 PM)!")
+    );
+  }
+
+  const startOfHour = new Date(bookedStartDateTime);
+  startOfHour.setMinutes(0, 0, 0);
+
+  const endOfHour = new Date(bookedEndDateTime);
+  endOfHour.setMinutes(0, 0, 0);
+
+  const differenceInMilliseconds =
+    bookedEndDateTime.getTime() - bookedStartDateTime.getTime();
+
+  const differenceInHours = differenceInMilliseconds / (1000 * 60 * 60);
+
+  if (differenceInHours > 1)
+    return next(createError(403, "Time must be same day and hour"));
+
   try {
-    const updatedBooking = await BookingModel.update(
-      { id: request.params.id as string },
+    await BookingModel.update(
       {
-        fields: {
-          //@ts-ignore
-          bookingStatus: bookingStatus as string,
-          endTime: endTime,
-          startTime: startTime,
-        },
-      }
+        bookingStatus: bookingStatus as string,
+        endTime: endTime,
+        startTime: startTime,
+      },
+      { where: { id: request.params.id as string } }
     );
 
     response.status(200).json({
       status: "success",
       message: "Booking have been updated!",
-      data: updatedBooking,
+      data: { ...request.body },
     });
   } catch (error: any) {
     next(createError(500, error.message as string));

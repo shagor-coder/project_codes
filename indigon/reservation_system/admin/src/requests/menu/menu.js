@@ -8,7 +8,7 @@ export const getCurrentMenu = async (id) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -21,7 +21,7 @@ export const deleteCurrentMenu = async (id) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -34,7 +34,7 @@ export const getAllMenus = async () => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -47,7 +47,7 @@ export const createMenu = async (formData) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -60,6 +60,6 @@ export const updateMenu = async ({ id, formData }) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };

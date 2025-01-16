@@ -10,7 +10,7 @@ export const getCurrentRestaurant = async ({ restaurantId }) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -23,7 +23,7 @@ export const deleteCurrentRestaurant = async ({ restaurantId }) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -36,7 +36,7 @@ export const getAllRestaurants = async (locationId) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -55,7 +55,7 @@ export const createRestaurant = async ({ locationId, formData }) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -75,7 +75,7 @@ export const updateRestaurant = async ({ restaurantId, formData }) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -89,7 +89,7 @@ export const deleteRestaurantImage = async ({ restaurantId, photoId, id }) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -106,6 +106,6 @@ export const deleteRestaurantFeaturedImage = async ({
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };

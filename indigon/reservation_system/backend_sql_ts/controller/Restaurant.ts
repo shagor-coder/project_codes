@@ -5,7 +5,6 @@ import { deletePhoto, uploadPhoto } from "../utils/clodinary";
 import { createError } from "../utils/error";
 
 type RequestBody = {
-  id?: string;
   name: string;
   description: string;
   addressLine: string;
@@ -28,7 +27,11 @@ export const createRestaurant = async (
     const photos = request.files["photos"] || [];
     // @ts-ignore
     const featuredImages = request.files["featuredImage"] || [];
-    const photoURLs = [] as { photoURL: string; photoId: string }[];
+    const photoURLs = [] as {
+      photoURL: string;
+      photoId: string;
+      isFeatured: boolean;
+    }[];
     let photoURLPromises = [] as Promise<any>[];
 
     const uploadPhotos = async () => {
@@ -36,17 +39,24 @@ export const createRestaurant = async (
         photos?.map(async (file: any) => {
           const result = await uploadPhoto(file);
           // @ts-ignore
-          photoURLs.push(result);
+          photoURLs.push({ ...result, isFeatured: false });
         })
       );
     };
 
-    await uploadPhotos();
-
-    const featuredImage = (await uploadPhoto(featuredImages[0])) as {
-      photoURL: string;
-      photoId: string;
+    const uploadFeaturedImage = async () => {
+      await Promise.all(
+        featuredImages?.map(async (file: any) => {
+          const result = await uploadPhoto(file);
+          // @ts-ignore
+          photoURLs.push({ ...result, isFeatured: true });
+        })
+      );
     };
+
+    photos && (await uploadPhotos());
+
+    featuredImages && (await uploadFeaturedImage());
 
     // Create new Restaurant document with photo URLs
     const newRestaurantBody = {
@@ -61,7 +71,7 @@ export const createRestaurant = async (
     photoURLs?.forEach((photoObj) => {
       photoURLPromises.push(
         AssetsModel.create({
-          isFeatured: false,
+          isFeatured: photoObj?.isFeatured,
           photoId: photoObj?.photoId as string,
           photoURL: photoObj?.photoURL as string,
           restaurantId: newRestaurant.toJSON().id as string,
@@ -70,13 +80,6 @@ export const createRestaurant = async (
     });
 
     await Promise.all(photoURLPromises);
-
-    await AssetsModel.create({
-      isFeatured: true,
-      photoId: featuredImage?.photoId as string,
-      photoURL: featuredImage?.photoURL as string,
-      restaurantId: newRestaurant.toJSON().id as string,
-    });
 
     response.status(200).json({
       status: "success",
@@ -190,6 +193,8 @@ export const updateRestaurant = async (
   next: NextFunction
 ) => {
   try {
+    const body = request.body as RequestBody;
+
     const restaurant = await RestaurantModel.findByPk(
       request.params.id as string
     );
@@ -200,7 +205,12 @@ export const updateRestaurant = async (
 
     // @ts-ignore
     const featuredImages = request.files["featuredImage"] || null;
-    const photoURLs = [] as { photoURL: string; photoId: string }[];
+
+    const photoURLs = [] as {
+      photoURL: string;
+      photoId: string;
+      isFeatured: boolean;
+    }[];
     const photoURLPromises = [] as Promise<any>[];
 
     const uploadPhotos = async () => {
@@ -208,21 +218,44 @@ export const updateRestaurant = async (
         photos?.map(async (file: any) => {
           const result = await uploadPhoto(file);
           // @ts-ignore
-          photoURLs.push(result);
+          photoURLs.push({ ...result, isFeatured: false });
+        })
+      );
+    };
+
+    const uploadFeaturedImage = async () => {
+      await Promise.all(
+        featuredImages?.map(async (file: any) => {
+          const result = await uploadPhoto(file);
+          // @ts-ignore
+          photoURLs.push({ ...result, isFeatured: true });
         })
       );
     };
 
     photos && (await uploadPhotos());
 
-    const featuredImage = await uploadPhoto(
-      featuredImages ? featuredImages[0] : null
+    featuredImages && (await uploadFeaturedImage());
+
+    // Create new Restaurant document with photo URLs
+    const updatedRestaurantBody = {
+      ...body,
+      // @ts-ignore
+      userId: request.user.id as string,
+    };
+
+    await RestaurantModel.update(
+      { ...updatedRestaurantBody },
+      {
+        where: { id: request.params.id as string },
+        returning: true,
+      }
     );
 
     photoURLs?.forEach((photoObj) => {
       photoURLPromises.push(
         AssetsModel.create({
-          isFeatured: false,
+          isFeatured: photoObj?.isFeatured as boolean,
           photoId: photoObj?.photoId as string,
           photoURL: photoObj?.photoURL as string,
           restaurantId: request.params.id as string,
@@ -230,21 +263,26 @@ export const updateRestaurant = async (
       );
     });
 
-    await Promise.all(photoURLPromises);
-
-    await AssetsModel.create({
-      isFeatured: true,
-      // @ts-ignore
-      photoId: featuredImage?.photoId as string,
-      // @ts-ignore
-      photoURL: featuredImage?.photoURL as string,
-      restaurantId: request.params.id as string,
-    });
+    const updatedRestaurant = await RestaurantModel.findByPk(
+      request.params.id as string,
+      {
+        nest: true,
+        include: [
+          {
+            model: AssetsModel,
+            as: "assets",
+            attributes: {
+              exclude: ["updatedAt", "createdAt"],
+            },
+          },
+        ],
+      }
+    );
 
     response.status(200).json({
       status: "success",
       message: "Restaurant updated successfully!",
-      data: "",
+      data: updatedRestaurant?.toJSON(),
     });
   } catch (error: any) {
     next(createError(500, "Restaurant not Updated"));

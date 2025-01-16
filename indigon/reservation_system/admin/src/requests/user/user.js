@@ -9,7 +9,7 @@ export const getCurrentUser = async () => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -23,7 +23,7 @@ export const updateCurrentUser = async ({ id, formData }) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -36,7 +36,7 @@ export const deleteCurrentUser = async (id) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -49,7 +49,7 @@ export const getAllUserForAdmin = async () => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -63,6 +63,6 @@ export const createUserForAdmin = async (formData) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };

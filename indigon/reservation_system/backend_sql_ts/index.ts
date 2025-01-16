@@ -1,4 +1,4 @@
-import express, { Express, NextFunction, Request } from "express";
+import express, { Express, NextFunction, Request, Response } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
@@ -17,7 +17,7 @@ const app: Express = express();
 const PORT = process.env.PORT || 3000;
 
 const corsOptions = {
-  origin: ["http://localhost:5173"],
+  origin: process.env.ALLOWED_ORIGINS?.split(",") || ["http://localhost:5173"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 };
@@ -35,25 +35,35 @@ app.use("/api/table", TableRouter);
 app.use("/api/booking", BookingRouter);
 app.use("/api/client", ClientRouter);
 
-//@ts-ignore
-app.use((err: any, req: Request, res: Response, next: NextFunction) => {
-  const errorStatus = err.status || 500;
-  const errorMessage = err.message || "Something went wrong";
-  //@ts-ignore
-  res.status(errorStatus).send(errorMessage);
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  const errorStatus = (err as any).status || 500;
+  res.status(errorStatus).json({
+    success: false,
+    status: errorStatus,
+    message: err.message, // Directly expose error.message
+    stack: process.env.NODE_ENV === "development" ? err.stack : undefined,
+  });
 });
 
-const connect_with_db = async () => {
+const connectDatabase = async () => {
   try {
     await sequelize.authenticate();
-    await sequelize.sync({ alter: true });
-    console.log("DB Authentication successful!!");
-  } catch (error: any) {
-    throw new Error(error);
+    // await sequelize.sync({ force: true });
+    console.log("✅ Database connection established successfully");
+  } catch (error) {
+    process.exit(1);
   }
 };
 
-app.listen(PORT, async () => {
-  await connect_with_db();
-  console.log(`[server]: Server is running at http://localhost:${PORT}`);
-});
+const initServer = async () => {
+  try {
+    await connectDatabase();
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running at http://localhost:${PORT}`);
+    });
+  } catch (error) {
+    process.exit(1);
+  }
+};
+
+initServer();

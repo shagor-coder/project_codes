@@ -9,7 +9,7 @@ export const getCurrentLocation = async (id) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -22,7 +22,7 @@ export const deleteCurrentLocation = async (id) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -35,7 +35,7 @@ export const getAllLocations = async () => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -48,6 +48,6 @@ export const createLocation = async (code) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };

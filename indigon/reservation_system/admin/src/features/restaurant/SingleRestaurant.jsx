@@ -94,7 +94,7 @@ export const SingleRestaurant = () => {
                     navigate(`/restaurants/${restaurantId}/edit-restaurant`);
                   }}
                 >
-                  Edit
+                  Edit Restaurant
                 </Button>
               </Grid>
 

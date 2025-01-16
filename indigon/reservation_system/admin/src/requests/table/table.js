@@ -9,7 +9,7 @@ export const getCurrentTable = async ({ tableId }) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -22,7 +22,7 @@ export const deleteCurrentTable = async ({ tableId }) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -35,7 +35,7 @@ export const getAllTables = async ({ restaurantId }) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -48,7 +48,7 @@ export const createTable = async ({ restaurantId, formData }) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };
 
@@ -61,6 +61,6 @@ export const updateTable = async ({ tableId, formData }) => {
     const response = await request.data;
     return response.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error.response?.data;
   }
 };

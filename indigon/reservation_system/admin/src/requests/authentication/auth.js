@@ -10,7 +10,7 @@ export const handleLogin = async (formData = {}) => {
     const response = await request.data;
     return response?.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error?.response?.data;
   }
 };
 
@@ -24,7 +24,7 @@ export const handleRegister = async (formData = {}) => {
     const response = await request.data;
     return response?.data;
   } catch (error) {
-    throw new Error(error?.response?.data);
+    throw error?.response?.data;
   }
 };
 
@@ -37,6 +37,6 @@ export const handleLogout = async () => {
     return request;
   } catch (error) {
     console.log(error);
-    throw new Error(error?.response?.data);
+    throw error?.response?.data;
   }
 };

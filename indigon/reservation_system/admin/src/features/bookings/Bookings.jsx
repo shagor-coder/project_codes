@@ -15,6 +15,8 @@ export const Bookings = () => {
   });
 
   useEffect(() => {
+    console.log(error);
+
     if (isError) {
       dispatch({
         type: "showToast",

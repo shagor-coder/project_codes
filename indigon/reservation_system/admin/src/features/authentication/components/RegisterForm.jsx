@@ -1,19 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import { InputComponent } from "../../../components/Input";
 import { Box, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRegister } from "../services/auth";
+import { UseAuthContext } from "../../../context/AuthContext";
 
 export const RegisterForm = () => {
+  const { dispatch } = UseAuthContext();
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
   });
 
-  const { data, isError, isPending, mutate: doRegister } = useRegister();
+  const { error, isError, isSuccess, mutate: doRegister } = useRegister();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -28,6 +32,26 @@ export const RegisterForm = () => {
     event.preventDefault();
     doRegister(formData);
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch({
+        type: "showToast",
+        toastType: "success",
+        message: "Registration successfull!",
+      });
+
+      navigate(`/login`);
+    }
+
+    if (isError) {
+      dispatch({
+        type: "showToast",
+        toastType: "error",
+        message: error?.message,
+      });
+    }
+  });
 
   return (
     <form onSubmit={handleSubmit}>

@@ -1,11 +1,11 @@
 meta {
-  name: Book Table
+  name: Update Booking
   type: http
-  seq: 1
+  seq: 2
 }
 
-post {
-  url: http://localhost:3000/api/booking
+put {
+  url: http://localhost:3000/api/booking/10bbfcca-3ca4-4e57-b6d7-823d18c69419
   body: json
   auth: none
 }
@@ -17,14 +17,14 @@ headers {
 body:json {
   {
     "tableName": "Table 1",
-    "startTime": "2025-04-01T11:00:00.000Z",
-    "endTime": "2025-04-01T12:00:00.000Z",
+    "startTime": "2025-05-01T09:00:00.000Z",
+    "endTime": "2025-06-01T10:00:00.000Z",
     "clientName": "Shagor Hossain",
     "bookingStatus": "confirmed",
     "locationId": "0be8f692-78a9-4197-942a-56eed0db9cd8",
     "clientId": "4304611f-5dd6-4670-a94a-a6d9ed813e0d",
     "restaurantId": "de7a2c3b-dfc3-49c6-8623-24772d40e27b",
     "tableId": "1c75f950-8e99-41fa-bf2f-6fab063843e6",
-    "numberOfGuest": 4
+    "numberOfGuest":4
   }
 }
