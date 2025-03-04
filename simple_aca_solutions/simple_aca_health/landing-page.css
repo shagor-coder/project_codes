@@ -1,0 +1,189 @@
+html {
+  scroll-behavior: smooth !important;
+}
+
+body {
+  overflow-x: hidden !important;
+}
+
+#preview-container .hide-preview {
+  display: none !important;
+}
+
+#previewer .c-row .c-column > .inner {
+  padding: 5px 5px !important;
+}
+
+#previewer .swiper-row > .inner {
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+}
+
+div #previewer .swiper-row > .inner .c-column {
+  flex: 1 0 33% !important;
+  max-width: 33% !important;
+}
+
+.mobile-preview #previewer .swiper-row > .inner .c-column {
+  flex: 1 0 100% !important;
+  max-width: 100% !important;
+}
+
+#previewer .swiper-row > .inner {
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+}
+
+div #previewer .c-column.horizontal-col > .inner {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+}
+
+div #previewer .c-column.horizontal-col > .inner > div {
+  flex: 1 0 33% !important;
+  max-width: 33% !important;
+}
+
+.mobile-preview #previewer .c-column.horizontal-col > .inner > div {
+  flex: 1 0 100% !important;
+  max-width: 100% !important;
+}
+
+.--mobile .c-nav-menu-v2 .nav-menu-desktop {
+  background-color: #000 !important;
+}
+
+/* Start Max Width */
+
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.ml-auto {
+  margin-left: auto !important;
+  margin-right: 0px !important;
+}
+
+.mr-a {
+  margin-right: auto !important;
+  margin-left: 0px !important;
+}
+
+.max-w-1050 {
+  max-width: 1050px !important;
+}
+
+.max-w-1280 {
+  max-width: 1280px !important;
+}
+
+/* For Container  */
+body .c-section > .inner {
+  max-width: 1440px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+#preview-container .c-video > div {
+  overflow: hidden !important;
+}
+
+/* ==== Start Header Section ==== */
+.header-sec {
+  margin-bottom: -171px !important;
+  position: relative !important;
+  z-index: 1 !important;
+  background-color: transparent !important;
+}
+
+/* ==== Media Queries ==== */
+
+@media (max-width: 767px) {
+  body .col-rv > .inner {
+    flex-direction: column-reverse !important;
+  }
+
+  body .c-section > .inner {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  /* ==== Start Header Section ==== */
+  #preview-container .header-sec {
+    margin-bottom: -131px !important;
+  }
+}
+
+/* ==== Form CSS ==== */
+
+.c-form .hl-app .hl_form-builder--main {
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.c-form .hl-app .ghl-form-wrap {
+  margin-bottom: 0px !important;
+}
+
+.c-form .hl-app .form-builder--wrap {
+  margin-bottom: 0px !important;
+  padding: 0px !important;
+}
+
+#_builder-form .fields-container {
+  padding: 0px !important;
+}
+
+#preview-container
+  .c-form
+  #_builder-form
+  .form-builder--item
+  input[type="text"][class="form-control"],
+#preview-container
+  .c-form
+  #_builder-form
+  .form-builder--item
+  .date-picker-custom-style,
+#preview-container
+  .c-form
+  #_builder-form
+  .form-builder--item
+  input[type="number"] {
+  border-width: 0 !important;
+  border-bottom-width: 1px !important;
+}
+
+#preview-container .c-form #_builder-form input[type="tel"],
+#preview-container .c-form #_builder-form input[type="email"],
+#preview-container .c-form #_builder-form .multiselect .multiselect__tags {
+  border-width: 0 !important;
+  border-bottom-width: 1px !important;
+}
+
+body #_builder-form .signature-button {
+  background-color: #ebebeb !important;
+  border-radius: 0px !important;
+  border-color: #5bb2e8 !important;
+  border-width: 0 !important;
+  border-bottom-width: 1px !important;
+}
+
+body .form-builder--item .signature-container a {
+  color: #000 !important;
+  font-family: "Nunito Sans", sans-serif !important;
+  font-weight: 700 !important;
+}
+
+body #preview-container .c-form .hl-app .btn {
+  border-radius: 0px !important;
+}
+
+@media (max-width: 768px) {
+  .c-form .hl-app .menu-field-wrap {
+    padding: 0px !important;
+  }
+}

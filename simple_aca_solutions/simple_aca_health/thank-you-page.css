@@ -1,0 +1,196 @@
+html {
+  scroll-behavior: smooth !important;
+}
+
+body {
+  overflow-x: hidden !important;
+}
+
+#preview-container .hide-preview {
+  display: none !important;
+}
+
+#previewer .c-row .c-column > .inner {
+  padding: 5px 5px !important;
+}
+
+#previewer .swiper-row > .inner {
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+}
+
+div #previewer .swiper-row > .inner .c-column {
+  flex: 1 0 33% !important;
+  max-width: 33% !important;
+}
+
+.mobile-preview #previewer .swiper-row > .inner .c-column {
+  flex: 1 0 100% !important;
+  max-width: 100% !important;
+}
+
+#previewer .swiper-row > .inner {
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+}
+
+div #previewer .c-column.horizontal-col > .inner {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+}
+
+div #previewer .c-column.horizontal-col > .inner > div {
+  flex: 1 0 33% !important;
+  max-width: 33% !important;
+}
+
+.mobile-preview #previewer .c-column.horizontal-col > .inner > div {
+  flex: 1 0 100% !important;
+  max-width: 100% !important;
+}
+
+.--mobile .c-nav-menu-v2 .nav-menu-desktop {
+  background-color: #000 !important;
+}
+
+/* Start Max Width */
+
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.ml-auto {
+  margin-left: auto !important;
+  margin-right: 0px !important;
+}
+
+.mr-a {
+  margin-right: auto !important;
+  margin-left: 0px !important;
+}
+
+.max-w-1140 {
+  max-width: 1140px !important;
+}
+
+.max-w-1280 {
+  max-width: 1280px !important;
+}
+
+.max-w-1340 {
+  max-width: 1340px !important;
+}
+
+/* For Container  */
+body .c-section > .inner {
+  max-width: 1440px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+#preview-container .c-video > div {
+  overflow: hidden !important;
+}
+
+/* ==== Start Header Section ==== */
+.header-sec {
+  margin-bottom: -175px !important;
+  position: relative !important;
+  z-index: 1 !important;
+  background-color: transparent !important;
+}
+
+/* ==== Media Queries ==== */
+
+@media (max-width: 767px) {
+  body .col-rv > .inner {
+    flex-direction: column-reverse !important;
+  }
+
+  body .c-section > .inner {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  /* ==== Start Header Section ==== */
+  #preview-container .header-sec {
+    margin-bottom: -131px !important;
+  }
+}
+
+/* ==== Calendar CSS ==== */
+#appointment_widgets--revamp {
+  padding: 0px !important;
+  overflow: hidden !important;
+}
+
+/* ==== Calendar Form CSS ==== */
+
+.hl-app .hl_form-builder--main {
+  padding: 0px !important;
+}
+
+.hl-app .ghl-form-wrap {
+  padding: 0px 0px 86px 0px !important;
+  margin: 0px !important;
+  position: relative !important;
+}
+
+.c-calendar .hl-app #_builder-form {
+  margin-bottom: 0px !important;
+  padding: 20px !important;
+  min-height: 370px !important;
+}
+
+.c-calendar .hl-app .form-builder--wrap {
+  margin-bottom: 0px !important;
+  padding: 0px !important;
+}
+
+#_builder-form .fields-container {
+  padding: 0px !important;
+}
+
+#preview-container
+  .c-calendar
+  #_builder-form
+  .form-builder--item
+  input[type="text"][class="form-control"],
+#preview-container
+  .c-calendar
+  #_builder-form
+  .form-builder--item
+  .date-picker-custom-style,
+#preview-container
+  .c-calendar
+  #_builder-form
+  .form-builder--item
+  input[type="number"] {
+  border-radius: 5px !important;
+  border-color: #5bb2e8 !important;
+}
+
+#preview-container .c-calendar #_builder-form input[type="tel"],
+#preview-container .c-calendar #_builder-form input[type="email"],
+#preview-container .c-calendar #_builder-form .multiselect .multiselect__tags {
+  border-radius: 5px !important;
+  border-color: #5bb2e8 !important;
+}
+
+#preview-container .c-calendar textarea[name="calendar_notes"] {
+  border-radius: 5px !important;
+  border-color: #5bb2e8 !important;
+}
+
+.c-calendar .hl-app input[type="radio"],
+.c-calendar .hl-app input[type="checkbox"] {
+  accent-color: #5bb2e8 !important;
+}
+
+body #preview-container .c-calendar .hl-app .btn {
+  border-radius: 5px !important;
+}

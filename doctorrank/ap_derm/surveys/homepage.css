@@ -1,0 +1,395 @@
+/* === Form CSS */
+@import url("https://fonts.googleapis.com/css2?family=Marcellus&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+/* Start Root CSS */
+:root {
+  --main-container-max-width: 750px;
+  --main-container-background-color: #fff;
+  --main-container-border: 1px solid var(--main-brand-color);
+  --main-label-font-weight: 400;
+  --main-label-color: #304b78;
+  --main-label-font-size: 22px;
+  --main-label-font-family: "Marcellus", sans-serif;
+  --placeholder-font-color: #304b78;
+  --placeholder-font-size: 16px;
+  --placeholder-font-weight: 400;
+  --placeholder-font-family: "Marcellus", sans-serif;
+  --radio-and-checkbox-font-color: #000;
+  --radio-and-checkbox-font-size: 13px;
+  --radio-and-checkbox-font-weight: 400;
+  --radio-and-checkbox-font-family: "Marcellus", sans-serif;
+  --radio-and-checkbox-border: 1px solid #304b78;
+  --radio-and-checkbox-before-bg-color: #304b78;
+  --radio-and-checkbox-answer-font-color: #304b78;
+  --radio-and-checkbox-answer-font-size: 16px;
+  --radio-and-checkbox-answer-font-weight: 400;
+  --radio-and-checkbox-answer-font-family: "Marcellus", sans-serif;
+  --radio-checkbox-hover-background-color: #304b78;
+  --radio-checkbox-hover-font-color: #ffffff;
+  --radio-input-container-min-height: 120px;
+  --radio-input-container-max-height: 120px;
+  --radio-input-container-max-width: 80px;
+  --radio-input-container-min-width: 80px;
+
+  --radio-image-container-min-height: 120px;
+  --radio-image-image-min-height: 60px;
+  --radio-image-container-max-height: 120px;
+  --radio-image-container-max-width: 80px;
+  --radio-image-container-min-width: 80px;
+  --radio-image-hover-background-color: #304a7882;
+  --radio-image-title-font-weight: 400;
+  --radio-image-title-font-size: 12px;
+  --radio-image-title-font-family: "Marcellus", sans-serif;
+  --radio-image-title-font-color: #ffffff;
+
+  --radio-image-selected-border: 1px solid #304b78;
+  --radio-image-normal-border: 1px solid #304b787b;
+  --radio-image-title-background-color: #304b78;
+
+  --input-font-color: #000;
+  --input-font-size: 16px;
+  --input-font-weight: 400;
+  --input-font-family: "Marcellus", sans-serif;
+  --border-radius: 0px;
+  --inputs-border: 1px solid #304b787b;
+  --inputs-hover-border: 1px solid #304a78;
+
+  --transition-all: all 0.3s ease-in-out;
+  --transition-border: border-color 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+  --error-font-weight: 400;
+  --error-font-family: "Marcellus", sans-serif;
+  --error-container-text-align: center;
+  --error-font-color: #d11010;
+  --accent-color: #304b78;
+}
+
+/* End Root CSS */
+
+/* Start Parent CSS */
+button {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+input:not(input[type="checkbox"], input[type="radio"]) {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+.hl-app .ghl-form-wrap {
+  border-radius: 0 !important;
+}
+
+.hl-app .hl_form-builder--main .ghl-form-wrap {
+  max-width: var(--main-container-max-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.hl-app .hl_form-builder--main #_builder-form {
+  max-width: var(--main-container-max-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* End Parent CSS  Resets */
+
+/* ==== Start Error Text CSS ==== */
+#_builder-form .alert {
+  border-left: none !important;
+}
+
+#_builder-form .alert ul {
+  list-style: none !important;
+}
+
+#_builder-form .alert.alert-danger {
+  text-align: var(--error-container-text-align) !important;
+  font-size: var(--error-font-size) !important;
+  font-weight: var(--error-font-weight) !important;
+  font-family: var(--error-font-family) !important;
+  color: var(--error-font-color) !important;
+}
+
+#_builder-form .alert.alert-danger span {
+  border-left: 5px solid #ff4747 !important;
+}
+/* ==== End Error Text CSS ==== */
+
+/* Start Common Inputs CSS */
+
+.hl-app #_builder-form .field-label.label-alignment {
+  font-size: var(--main-label-font-size) !important;
+  font-weight: var(--main-label-font-weight) !important;
+  font-family: var(--main-label-font-family) !important;
+  color: var(--main-label-color) !important;
+  text-align: left !important;
+  margin-bottom: 15px !important;
+  width: 100% !important;
+  line-height: 25px !important;
+}
+
+.hl-app #_builder-form .form-builder--item {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+body
+  #_builder-form
+  .form-builder--item
+  input[type="text"][class="form-control"],
+body
+  #_builder-form
+  .form-builder--item
+  input[type="email"][class="form-control"],
+body #_builder-form .form-builder--item input[type="tel"][class="form-control"],
+body #_builder-form .form-builder--item input[type="number"] {
+  background: var(--input-bg-color) !important;
+  transition: var(--transition-border) !important;
+  font-size: var(--input-font-size) !important;
+  color: var(--input-font-color) !important;
+  font-family: var(--input-font-family) !important;
+  font-weight: var(--input-font-weight) !important;
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--input-box-shadow) !important;
+  border: var(--inputs-border) !important;
+}
+
+body
+  #_builder-form
+  .form-builder--item
+  input[type="text"][class="form-control"]:hover,
+body
+  #_builder-form
+  .form-builder--item
+  input[type="email"][class="form-control"]:hover,
+body
+  #_builder-form
+  .form-builder--item
+  input[type="tel"][class="form-control"]:hover,
+body #_builder-form .form-builder--item input[type="number"]:hover {
+  border: var(--inputs-hover-border) !important;
+}
+
+.hl-app #_builder-form input:-internal-autofill-selected {
+  background: var(--input-hover-bg-color) !important;
+}
+
+/* End Inputs CSS */
+
+/* Radio Input Styles */
+
+.hl-app input[type="radio"],
+.hl-app input[type="checkbox"] {
+  accent-color: var(--accent-color) !important;
+}
+
+.hl-app #_builder-form .option-radio {
+  padding: 0px !important;
+}
+
+.hl-app #_builder-form .flex-col > div {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 16px !important;
+}
+
+.hl-app #_builder-form .flex-col div:not(.container-group-image) .option-radio {
+  flex: 1 0 calc(25% - 12px) !important;
+  max-width: calc(25% - 12px) !important;
+}
+
+.hl-app
+  #_builder-form
+  .flex-col
+  div:not(.container-group-image)
+  .option-radio
+  > div {
+  flex-direction: column !important;
+}
+
+.hl-app
+  #_builder-form
+  .flex-col
+  div:not(.container-group-image)
+  .option-radio
+  > div
+  label {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: var(--radio-input-container-min-height) !important;
+  min-width: var(--radio-input-container-min-width) !important;
+  border-radius: 5px !important;
+  border: var(--radio-image-normal-border) !important;
+  transition: var(--transition-all) !important;
+  margin-left: 0px !important;
+  font-family: var(--radio-and-checkbox-answer-font-family) !important;
+  font-size: var(--radio-and-checkbox-answer-font-size) !important;
+  font-weight: var(--radio-and-checkbox-answer-font-weight) !important;
+  color: var(--radio-and-checkbox-answer-font-color) !important;
+}
+
+.hl-app
+  #_builder-form
+  .flex-col
+  div:not(.container-group-image)
+  .option-radio
+  > div
+  input[type="radio"]:checked
+  + label {
+  border: var(--radio-image-selected-border) !important;
+}
+
+.hl-app
+  #_builder-form
+  .flex-col
+  div:not(.container-group-image)
+  .option-radio
+  > div
+  label:hover,
+.hl-app
+  #_builder-form
+  .flex-col
+  div:not(.container-group-image)
+  .option-radio
+  > div
+  input[type="radio"]:checked
+  + label {
+  background-color: var(--radio-checkbox-hover-background-color) !important;
+  color: var(--radio-checkbox-hover-font-color) !important;
+}
+
+.hl-app
+  #_builder-form
+  .flex-col
+  div:not(.container-group-image)
+  .option-radio
+  > div
+  input[type="radio"] {
+  display: inline-flex !important;
+  position: absolute !important;
+  z-index: 1 !important;
+  right: 16px !important;
+  top: 16px !important;
+}
+
+/* ==== Radio Image ==== */
+
+.hl-app .container-group-image {
+  width: 100% !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 16px !important;
+}
+
+.hl-app .option-radio-image input[type="radio"] {
+  display: inline-flex !important;
+  position: absolute !important;
+  z-index: 1 !important;
+  right: 16px !important;
+  top: 16px !important;
+}
+
+.hl-app #_builder-form .container-group-image > .option-radio {
+  flex: 1 0 calc(25% - 12px) !important;
+  max-width: calc(25% - 12px) !important;
+}
+
+.hl-app #_builder-form .container-group-image > .option-radio > div {
+  margin-top: 0 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  line-height: 30px !important;
+  position: relative !important;
+  padding-left: 0px !important;
+  width: 100% !important;
+}
+
+.hl-app .container-group-image .radio-image-option-set {
+  border: var(--radio-image-normal-border) !important;
+  transition: var(--transition-all) !important;
+}
+
+.hl-app .container-group-image .radio-image-option-set:hover,
+.hl-app [type="radio"]:checked + .radio-image-option-set {
+  border: var(--radio-image-selected-border) !important;
+  background-color: var(--radio-image-hover-background-color) !important;
+}
+
+.hl-app #_builder-form .container-group-image .img-opt-title {
+  font-size: var(--radio-image-title-font-size) !important;
+  font-weight: var(--radio-image-title-font-weight) !important;
+  color: var(--radio-image-title-font-color) !important;
+  font-family: var(--radio-image-title-font-family) !important;
+  cursor: pointer !important;
+  background-color: var(--radio-image-title-background-color) !important;
+  text-transform: uppercase !important;
+  line-height: 1.2 !important;
+  letter-spacing: 1px !important;
+}
+
+.hl-app
+  #_builder-form
+  .container-group-image
+  > .option-radio
+  .radio-image-option-set {
+  width: 100% !important;
+  margin-bottom: 0px !important;
+  min-height: var(--radio-image-container-min-height) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.hl-app #_builder-form .container-group-image .image-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  max-width: 60px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  min-height: var(--radio-image-image-min-height) !important;
+}
+
+/* End Radio Input Styles */
+
+@media (max-width: 767px) {
+  :root {
+    --radio-input-container-min-height: 100px;
+    --radio-input-container-max-height: 100px;
+    --radio-input-container-max-width: 70px;
+    --radio-input-container-min-width: 70px;
+
+    --radio-image-container-min-height: 100px;
+    --radio-image-image-min-height: 60px;
+    --radio-image-container-max-height: 100px;
+    --radio-image-container-max-width: 70px;
+    --radio-image-container-min-width: 70px;
+  }
+
+  .hl-app #_builder-form .container-group-image > .option-radio {
+    flex: 1 0 calc(50% - 8px) !important;
+    max-width: calc(50% - 8px) !important;
+  }
+
+  .hl-app
+    #_builder-form
+    .flex-col
+    div:not(.container-group-image)
+    .option-radio {
+    flex: 1 0 calc(50% - 8px) !important;
+    max-width: calc(50% - 8px) !important;
+  }
+}

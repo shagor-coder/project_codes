@@ -6,7 +6,7 @@ import {
 export const rebuttal_button = document.createElement("button");
 rebuttal_button.innerHTML = "<span class='font-base'>Rebuttal</span>";
 rebuttal_button.classList = `
- green-btn green-filled-button green-btn 
+ _rebuttal_button 
 `;
 
 rebuttal_button.addEventListener("click", () => {

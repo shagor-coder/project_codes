@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Call GHL</title>
+    <script src="https://sdk.twilio.com/js/client/v1.13/twilio.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 50px;
+        background-color: #0a0d1a;
+        color: white;
+      }
+      .ai-call-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 200px;
+        position: relative;
+      }
+
+      .ai-call-inner {
+        position: absolute;
+        inset: 0;
+        height: 160px;
+        width: 160px;
+        background: linear-gradient(
+          to right,
+          rgb(234, 89, 115),
+          rgb(168, 52, 176)
+        );
+        box-shadow: rgba(58, 174, 248, 0.3) 0px 18.19px 63.67px 0px;
+        border-radius: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        outline-offset: 10px;
+        outline: 2px solid rgb(109, 153, 241);
+      }
+
+      .microphone-img {
+        position: relative;
+        z-index: 1;
+        height: 160px;
+        width: 160px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        cursor: pointer;
+      }
+
+      .microphone-img img {
+        max-width: 60px;
+      }
+
+      .microphone-img img.agent {
+        max-width: 160px;
+        border-radius: 50%;
+      }
+
+      .cta-headline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 30px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-headline span {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      .cta-headline img {
+        max-width: 40px;
+      }
+
+      .cta-container {
+        margin-top: 30px;
+      }
+
+      .cta-container .disconnect-call {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 25px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: bold;
+        color: rgb(30, 41, 59);
+        background-color: rgb(241, 245, 249);
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 8px;
+        transition: background-color 0.3s;
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ai-call-wrapper">
+      <div class="ai-call-inner"></div>
+      <div class="microphone-img" onclick="makeCall()">
+        <img src="./img/microphone-2 (1).png" alt="Talk to AVA" />
+      </div>
+      <div class="cta-headline">
+        <img src="./img/lmjmitDDt8Ex8mob2tkZur6FuXg.avif" alt="AVA" />
+        <span>Talk to AVA</span>
+      </div>
+
+      <div class="cta-container" style="display: none">
+        <button class="disconnet-call" onclick="hangupCall()">End Call</button>
+      </div>
+    </div>
+
+    <script>
+      const makeCallEl = document.querySelector(".microphone-img");
+      const callImg = makeCallEl.querySelector("img");
+      const disConnectCallButton = document.querySelector(".disconnect-call");
+      const ctaHeadline = document.querySelector(".cta-headline");
+      const ctaContainer = document.querySelector(".cta-container");
+
+      let device;
+
+      async function initTwilio() {
+        try {
+          const response = await fetch("http://localhost:3000/get-token"); // Replace with your actual backend URL
+          const data = await response.json();
+
+          device = new Twilio.Device(data.token, {
+            codecPreferences: ["opus", "pcmu"],
+            fakeLocalDTMF: true,
+            enableRingingState: true,
+            disableAudioDefaults: true, // Prevents echo feedback
+          });
+
+          device.on("ready", () => {});
+          device.on("disconnect", handleDisconnect);
+          device.on("error", (error) => {});
+        } catch (error) {}
+      }
+
+      async function makeCall() {
+        if (!device) await initTwilio();
+
+        const connection = device.connect({
+          params: { From: "client:browser_user" }, // Twilio expects "From" instead of "To"
+        });
+
+        connection.on("accept", () => {
+          connection.on("volume", (inputVolume, outputVolume) => {
+            if (inputVolume > 0.5) {
+              callImg.src = "./img/microphone-2 (1).png";
+              callImg.classList.remove("agent");
+            } else {
+              makeCallEl.style = `pointer-events: none !important;`;
+              callImg.src = "./img/Agent.jpg";
+              callImg.classList.add("agent");
+              ctaHeadline.style = `display: none !important;`;
+              ctaContainer.style = ``;
+            }
+          });
+        });
+      }
+
+      function handleDisconnect() {
+        callImg.src = "./img/microphone-2 (1).png";
+        callImg.classList.remove("agent");
+        makeCallEl.style = `pointer-events: all !important;`;
+        ctaHeadline.style = ``;
+        ctaContainer.style = `display: none !important;`;
+      }
+
+      function hangupCall() {
+        if (device) device.disconnectAll();
+      }
+
+      initTwilio(); // Initialize Twilio when the page loads
+    </script>
+  </body>
+</html>

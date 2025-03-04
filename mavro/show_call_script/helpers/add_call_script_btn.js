@@ -14,7 +14,7 @@ script_button.addEventListener("click", () => {
   call_script_categories.classList.toggle("hidden");
 });
 
-export const add_call_script_btn = async (mutation_observer) => {
+export const add_call_script_btn = async () => {
   if (script_button.isConnected) return;
 
   const topbar_nav = document.querySelector(".hl_header--controls");

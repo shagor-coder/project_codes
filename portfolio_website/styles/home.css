@@ -54,7 +54,7 @@ div #previewer .c-column.horizontal-col > .inner > div {
   background-color: #000 !important;
 }
 
-/* Start Button */
+/* ==== Start Button ==== */
 .btn-element {
   display: inline-flex !important;
   flex-direction: column !important;
@@ -98,16 +98,7 @@ div #previewer .c-column.horizontal-col > .inner > div {
   display: none !important;
 }
 
-.btn-element:hover {
-  background-color: #704aa4 !important;
-}
-
-.btn-element .text-xs.font-sans {
-  margin-top: 5px !important;
-}
-/* End Button */
-
-/* Start Max Width */
+/* ==== Start Max Width ==== */
 
 .mx-auto {
   margin-left: auto !important;
@@ -124,44 +115,7 @@ div #previewer .c-column.horizontal-col > .inner > div {
   margin-left: 0px !important;
 }
 
-.max-w-200 {
-  max-width: 200px !important;
-}
-
-.max-w-230 {
-  max-width: 230px !important;
-}
-
-.max-w-300 {
-  max-width: 300px !important;
-}
-
-.max-w-470 {
-  max-width: 460px !important;
-}
-
-.max-w-800 {
-  max-width: 800px !important;
-}
-
-.max-w-950 {
-  max-width: 950px !important;
-}
-
-/* Start Border Radius */
-.br-20 {
-  border-radius: 20px !important;
-}
-
-.br-25 {
-  border-radius: 25px !important;
-}
-
-.br-40 {
-  border-radius: 40px !important;
-}
-
-/* Start Min Height */
+/* ==== Container CSS ==== */
 
 body .c-section > .inner {
   max-width: 1280px !important;
@@ -171,9 +125,6 @@ body .c-section > .inner {
   margin-right: auto !important;
 }
 
-#preview-container .c-video > div {
-  overflow: hidden !important;
-}
 /* ==== Start Header Section ==== */
 
 body .mega-menu-container {
@@ -227,58 +178,62 @@ body
 }
 
 /* ==== Hero Section ==== */
-/*#preview-container .hero-sec {
-    padding-bottom: 0px !important;
+
+/* ==== Works Section ==== */
+@media (min-width: 768px) {
+  #preview-container .works-sec .works-tab > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 815px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 8px;
+  }
+
+  #preview-container .works-sec .works-tab > div p {
+    padding: 9px 15px;
+    cursor: pointer;
+    background-color: #c9d8e057;
+    border-radius: 5px;
+    color: #188bf6;
+    line-height: 1;
+  }
+
+  #preview-container .works-sec .works-tab > div p.active {
+    background-color: #c9d8e0;
+  }
 }
 
-#preview-container .hero-sec .c-row:last-child {
-    padding-bottom: 0px !important;
+#preview-container .works-sec ._worksTabSelect {
+  padding: 9px 15px;
+  border: 1px solid #c9d8e0;
+  border-radius: 5px;
+  font-family: "Marcellus", sans-serif;
+  font-size: 16px;
+  background-color: #c9d8e0;
+  color: #188bf6;
+  outline: none;
+  box-shadow: none;
 }
 
-#preview-container .hero-sec {
-    padding-bottom: 0px !important;
-}*/
-
-/* ==== Includes Section ==== */
-.includes-sec .c-image-feature .img-feature-container {
-  display: flex !important;
-  align-items: flex-start !important;
-  justify-content: flex-start !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  padding: 0px !important;
-  max-width: 760px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+#preview-container .works-sec ._worksTabSelect:active {
+  outline: none;
+  box-shadow: none;
 }
 
-.includes-sec .right-feature .c-image-feature .img-feature-container {
-  flex-direction: row-reverse !important;
-  margin-left: auto !important;
+#preview-container .works-content {
+  display: none;
 }
 
-.includes-sec .c-image-feature .img-feature-container .img-container {
-  flex: 1 0 30px !important;
-  max-width: 30px !important;
-  margin-right: 16px !important;
-  padding: 0px !important;
+#preview-container .works-content.active {
+  display: block;
 }
 
-.includes-sec .c-image-feature .img-feature-container .txt-container {
-  width: auto !important;
-}
-
-/* ==== FAQs Section ==== */
-.faqs-sec .hl-faq-child-heading {
-  padding: 20px 20px 20px !important;
-}
-
-.faqs-sec .hl-faq-child-heading.active {
-  padding-bottom: 10px !important;
-}
-
-.faqs-sec .hl-faq-child-heading.active + .hl-faq-child-panel {
-  padding: 10px 20px 20px !important;
+.works-sec .works-content .c-image img {
+  max-height: 400px;
+  object-position: top;
+  object-fit: contain;
 }
 
 /* ==== Media Queries ==== */
@@ -320,8 +275,6 @@ body
     border-right: none !important;
     padding-right: 0 !important;
     position: relative !important;
-    /* z-index: 9999 !important; */
-    /* max-width: 160px !important; */
   }
 
   body .c-nav-menu-v2 .nav-menu-mobile span {
@@ -400,183 +353,4 @@ body
     color: #000 !important;
   }
   /* ==== End Mobile Nav ==== */
-
-  #preview-container .hero-sec > .bg {
-    background-repeat: no-repeat !important;
-    background-size: 280px !important;
-    background-position: center 185px !important;
-    background-image: url("https://storage.googleapis.com/msgsndr/WO2wyhQVmjUtbZYLtFPP/media/679e5a9faedcfaf93cef2f28.webp") !important;
-  }
-}
-
-/* ==== Form Element ==== */
-#_builder-form .button-element {
-  padding: 10px 20px !important;
-}
-
-/* ==== For Calendar ==== */
-@media (max-width: 768px) {
-  .hl-app .form-builder--wrap {
-    padding: 10px 15px !important;
-  }
-
-  body #_builder-form .fields-container {
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
-  }
-
-  #_builder-form .text-element {
-    font-size: 16px !important;
-    padding: 0px !important;
-    font-family: "Poppins", sans-serif !important;
-  }
-
-  body .col-rv.c-row > .inner {
-    flex-direction: column-reverse !important;
-  }
-
-  .appointment_widgets-sm--revamp
-    .appointment_widgets--revamp--booking
-    .appointment_widgets--revamp--steps
-    .widgets-date-block
-    .vdpInnerWrap
-    .vdpHeadCellContent {
-    font-size: 12px !important;
-  }
-
-  .appointment_widgets-sm--revamp
-    .appointment_widgets--revamp--booking
-    .appointment_widgets--revamp--steps
-    .widgets-date-block
-    .vdpCell
-    .vdpCellContent {
-    width: 36px !important;
-    height: 36px !important;
-    font-size: 13px !important;
-  }
-
-  body .custom-timer.big-text .time-grid-3 .timer-box .count {
-    font-size: 18px !important;
-  }
-
-  body .custom-timer.big-text .time-grid-3 .timer-box .label {
-    font-size: 14px !important;
-  }
-
-  .appointment_widgets-sm--revamp
-    .appointment_widgets--revamp--booking
-    .appointment_widgets--revamp--neo-calendar-logo {
-    width: 250px !important;
-  }
-}
-
-@media screen and (min-height: 800px) {
-  body .appointment_widgets-xl--revamp {
-    padding-top: 15px !important;
-  }
-}
-
-body
-  .appointment_widgets-xl--revamp
-  .appointment_widgets--revamp--booking
-  .appointment_widgets--revamp--steps
-  .widgets-slot-block {
-  margin-top: 0px !important;
-}
-
-#appointment_widgets--revamp .appointment_widgets--revamp--booking {
-  font-family: "Poppins", sans-serif !important;
-}
-
-#appointment-widgets-booking--revamp.default-form
-  .hl-app
-  #_builder-form
-  input[type="email"],
-#appointment-widgets-booking--revamp.default-form
-  .hl-app
-  #_builder-form
-  input[type="number"],
-#appointment-widgets-booking--revamp.default-form
-  .hl-app
-  #_builder-form
-  input[type="password"],
-#appointment-widgets-booking--revamp.default-form
-  .hl-app
-  #_builder-form
-  input[type="text"],
-#appointment-widgets-booking--revamp.default-form .iti--allow-dropdown input,
-#appointment-widgets-booking--revamp.default-form
-  .iti--allow-dropdown
-  input[type="tel"],
-#appointment-widgets-booking--revamp.default-form
-  .iti--allow-dropdown
-  input[type="text"],
-#appointment-widgets-booking--revamp.default-form
-  .iti--separate-dial-code
-  input,
-#appointment-widgets-booking--revamp.default-form
-  .iti--separate-dial-code
-  input[type="tel"],
-#appointment-widgets-booking--revamp.default-form
-  .iti--separate-dial-code
-  input[type="text"],
-#appointment-widgets-booking--revamp.default-form
-  textarea[name="calendar_notes"] {
-  font-family: "Poppins", sans-serif !important;
-}
-
-#appointment-widgets-booking--revamp.default-form #_builder-form label,
-#appointment-widgets-booking--revamp.default-form .terms-and-conditions span {
-  font-family: "Poppins", sans-serif !important;
-}
-
-body .hl-app .form-control {
-  padding: 8px 16px !important;
-}
-
-body .hl-app .countryphone {
-  height: 41.63px !important;
-}
-
-body .hl-app .default-form-spacing,
-body .hl-app .default-form-spacing-mobile,
-body .hl-app .payment-card-container,
-body .hl-app .payment-card-container-in-form {
-  padding-bottom: 10px !important;
-}
-
-@media (max-width: 768px) {
-  body .hl-app .form-builder--wrap {
-    margin-bottom: 0px !important;
-  }
-
-  body
-    .appointment_widgets-sm--revamp
-    .appointment_widgets--revamp--booking.default-form
-    #_builder-form
-    .fields-container {
-    padding-bottom: 0px !important;
-  }
-
-  body .hl-app .default-form-spacing,
-  body .hl-app .default-form-spacing-mobile,
-  body .hl-app .payment-card-container,
-  body .hl-app .payment-card-container-in-form {
-    padding-bottom: 20px !important;
-    padding-top: 10px !important;
-  }
-}
-
-body
-  .appointment_widgets-sm--revamp
-  .appointment_widgets--revamp--booking
-  .widgets-action-buttons
-  > button,
-body
-  .appointment_widgets-xl--revamp
-  .appointment_widgets--revamp--booking
-  .widgets-action-buttons
-  > button {
-  background-color: #8b60c7 !important;
-  border-color: #8b60c7 !important;
 }

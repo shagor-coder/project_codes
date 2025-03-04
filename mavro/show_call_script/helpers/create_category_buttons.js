@@ -31,7 +31,7 @@ export const create_category_buttons = async () => {
       "https://script.google.com/macros/s/AKfycbyi2Q0fIQVJgoGuiRmYINduGdx3eFMW0pI62ZkmE01GkcXvVbHjYMsCnBV3nphjzKti5g/exec?sheet=1"
     );
 
-    if (!call_script_data.length) return console.log("No scripts");
+    if (!call_script_data.length) return;
 
     const categories = Object.keys(call_script_data[0]);
 

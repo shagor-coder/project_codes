@@ -25,7 +25,7 @@ export const create_rebuttal_buttons = async () => {
       "https://script.google.com/macros/s/AKfycbyi2Q0fIQVJgoGuiRmYINduGdx3eFMW0pI62ZkmE01GkcXvVbHjYMsCnBV3nphjzKti5g/exec?sheet=2"
     );
 
-    if (!rebuttals_data.length) return console.log("No scripts");
+    if (!rebuttals_data.length) return;
 
     const categories = Object.keys(rebuttals_data[0]);
 
@@ -33,11 +33,7 @@ export const create_rebuttal_buttons = async () => {
 
     categories.forEach((category) => {
       let rebuttal = rebuttals_data[0][category];
-
-      console.log(rebuttal);
-
       if (!rebuttal) return;
-
       const button = document.createElement("button");
       button.classList = `script_category_button`;
       button.textContent = category;
