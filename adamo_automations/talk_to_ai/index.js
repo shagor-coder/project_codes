@@ -5,17 +5,23 @@ const cors = require("cors");
 
 const app = express();
 app.use(cors());
-app.use(express.json()); // ✅ For JSON requests (not needed for Twilio)
-app.use(express.urlencoded({ extended: true })); // ✅ Needed to parse Twilio webhook form data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const {
   TWILIO_ACCOUNT_SID,
   TWILIO_API_KEY,
   TWILIO_API_SECRET,
-  TWILIO_TWIML_SID, // 🔥 You need to set this in your .env
+  TWILIO_TWIML_SID,
+  TWILIO_NUMBER,
+  EMILY_AI_NUMBER,
 } = process.env;
 
 app.get("/get-token", (req, res) => {
+  const origin = req.headers.origin || "";
+  if (origin !== "https://adamoautomations.com")
+    return res.status(403).send("Not authorized!");
+
   const AccessToken = twilio.jwt.AccessToken;
   const VoiceGrant = AccessToken.VoiceGrant;
 
@@ -41,16 +47,11 @@ app.get("/get-token", (req, res) => {
 
 // 🎯 Handle Twilio Webhook for Outgoing Calls
 app.post("/twiml", (req, res) => {
-  console.log("Twilio Webhook Received:", req.body); // Debugging log
-
   const twiml = new twilio.twiml.VoiceResponse();
-
   // If call is from WebRTC, forward to GHL number
   if (req.body.From && req.body.From.startsWith("client:")) {
-    console.log("Incoming WebRTC call from:", req.body.From);
-    twiml.dial({ callerId: "+18564602689" }, "+8801742677273"); // 🔥 Your GHL number
+    twiml.dial({ callerId: TWILIO_NUMBER }, EMILY_AI_NUMBER); // 🔥 Your GHL number
   } else {
-    console.log("Invalid call source:", req.body.From);
     return res.status(400).send("Invalid call source");
   }
 

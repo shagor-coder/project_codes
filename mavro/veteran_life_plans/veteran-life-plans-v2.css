@@ -1,0 +1,106 @@
+html {
+  scroll-behavior: smooth !important;
+}
+
+body {
+  overflow-x: hidden !important;
+}
+
+#preview-container .hide-preview {
+  display: none !important;
+}
+
+/* Start Button */
+.btn-element {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: none !important;
+  border-radius: 0px !important;
+  border: none !important;
+  outline: none !important;
+  padding: 20px 45px !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 4px 0px rgb(255 255 255 / 15%) !important;
+}
+
+.btn-element .main-heading-group {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.btn-element .main-heading-group .main-heading-button {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.btn-element .main-heading-group .button-icon-start {
+  display: none !important;
+}
+
+.btn-element .main-heading-group .main-heading-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 14px !important;
+}
+
+.btn-element.btn-element-icon .button-icon-end {
+  display: none !important;
+}
+
+/* End Button */
+
+/* Start Max Width */
+
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.ml-auto {
+  margin-left: auto !important;
+}
+
+.mr-a {
+  margin-right: auto !important;
+}
+
+.max-w-580 {
+  max-width: 580px !important;
+}
+
+.max-w-1120 {
+  max-width: 1120px !important;
+}
+
+/* Start Min Height */
+body .c-section > .inner {
+  max-width: 1490px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* === Top Header ==== */
+#preview-container .top-header-sec .c-divider {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  body .c-section > .inner {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  body .c-section .c-row {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}

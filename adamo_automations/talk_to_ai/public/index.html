@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Call GHL</title>
+  </head>
+  <body>
     <script src="https://sdk.twilio.com/js/client/v1.13/twilio.min.js"></script>
     <style>
       body {
@@ -13,6 +15,7 @@
         background-color: #0a0d1a;
         color: white;
       }
+
       .ai-call-wrapper {
         display: flex;
         align-items: center;
@@ -22,6 +25,12 @@
         margin-right: auto;
         max-width: 200px;
         position: relative;
+      }
+
+      .ai-call-wrapper .hidden {
+        opacity: 0;
+        visibility: hidden;
+        display: none;
       }
 
       .ai-call-inner {
@@ -59,6 +68,7 @@
 
       .microphone-img img {
         max-width: 60px;
+        transition: opacity 300ms linear;
       }
 
       .microphone-img img.agent {
@@ -73,6 +83,7 @@
         margin-top: 30px;
         position: relative;
         z-index: 1;
+        gap: 10px;
       }
 
       .cta-headline span {
@@ -88,6 +99,8 @@
 
       .cta-container {
         margin-top: 30px;
+        position: relative;
+        z-index: 999;
       }
 
       .cta-container .disconnect-call {
@@ -96,7 +109,6 @@
         padding: 10px 25px;
         border-radius: 5px;
         border: none;
-        cursor: pointer;
         font-size: 12px;
         font-weight: bold;
         color: rgb(30, 41, 59);
@@ -104,22 +116,130 @@
         box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 8px;
         transition: background-color 0.3s;
         outline: none;
+        cursor: pointer;
+      }
+
+      .ripple {
+        position: absolute;
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        border: 2px solid rgb(109, 153, 241);
+        display: none;
+      }
+
+      .ai-call-wrapper.active .ripple {
+        display: block;
+      }
+
+      .ripple:nth-child(1) {
+        animation: waves 3s ease-out 0s infinite;
+      }
+
+      .ripple:nth-child(2) {
+        animation: waves 3s ease-out 1s infinite;
+      }
+
+      .ripple:nth-child(3) {
+        animation: waves 3s ease-out 2s infinite;
+      }
+
+      .user-talking {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 300ms linear;
+      }
+
+      .user-talking .wave-bar {
+        width: 6px;
+        height: 30px;
+        margin: 0 2px;
+        background-color: white;
+        border-radius: 3px;
+        animation: wave-animation 1s ease-in-out infinite alternate;
+      }
+
+      .user-talking .wave-bar:nth-child(1) {
+        animation-delay: 0s;
+      }
+      .user-talking .wave-bar:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .user-talking .wave-bar:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      .user-talking .wave-bar:nth-child(4) {
+        animation-delay: 0.6s;
+      }
+      .user-talking .wave-bar:nth-child(5) {
+        animation-delay: 0.8s;
+      }
+      .user-talking .wave-bar:nth-child(6) {
+        animation-delay: 0.99s;
+      }
+
+      @keyframes waves {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+
+        80% {
+          transform: scale(2.2);
+          opacity: 0;
+        }
+
+        100% {
+          transform: scale(2.2);
+          opacity: 0;
+        } /* Holding the animation to introduce a delay */
+      }
+
+      @keyframes wave-animation {
+        0% {
+          height: 15px;
+        }
+        50% {
+          height: 30px;
+        }
+        100% {
+          height: 15px;
+        }
       }
     </style>
-  </head>
-  <body>
+
     <div class="ai-call-wrapper">
-      <div class="ai-call-inner"></div>
+      <div class="ai-call-inner">
+        <div class="ripple"></div>
+        <div class="ripple"></div>
+        <div class="ripple"></div>
+      </div>
       <div class="microphone-img" onclick="makeCall()">
-        <img src="./img/microphone-2 (1).png" alt="Talk to AVA" />
+        <img
+          src="https://storage.googleapis.com/msgsndr/r2IULb3N1hQHJIwLIou6/media/67c00c73477767a6c00fffde.png"
+          alt="Talk to AVA"
+        />
+
+        <div class="user-talking hidden">
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+        </div>
       </div>
       <div class="cta-headline">
-        <img src="./img/lmjmitDDt8Ex8mob2tkZur6FuXg.avif" alt="AVA" />
-        <span>Talk to AVA</span>
+        <img
+          src="https://storage.googleapis.com/msgsndr/r2IULb3N1hQHJIwLIou6/media/67c00d0a28abdd20569c376e.png"
+          alt="AVA"
+        />
+        <span>Talk to Emily!</span>
       </div>
 
       <div class="cta-container" style="display: none">
-        <button class="disconnet-call" onclick="hangupCall()">End Call</button>
+        <button class="disconnect-call" onclick="hangupCall()">End Call</button>
       </div>
     </div>
 
@@ -129,12 +249,22 @@
       const disConnectCallButton = document.querySelector(".disconnect-call");
       const ctaHeadline = document.querySelector(".cta-headline");
       const ctaContainer = document.querySelector(".cta-container");
+      const aiCallWrapper = document.querySelector(".ai-call-wrapper");
+      const userTalking = document.querySelector(".user-talking");
 
       let device;
 
       async function initTwilio() {
         try {
-          const response = await fetch("http://localhost:3000/get-token"); // Replace with your actual backend URL
+          const response = await fetch(
+            "https://emilyreceptionist.live/get-token"
+          );
+
+          if (!response.ok)
+            return (makeCallEl.style =
+              "pointer-events:none;cursor: not-allowed;");
+
+          // Replace with your actual backend URL
           const data = await response.json();
 
           device = new Twilio.Device(data.token, {
@@ -158,23 +288,45 @@
         });
 
         connection.on("accept", () => {
+          callImg.src = "";
+          aiCallWrapper.classList.add("active");
+          makeCallEl.style = `pointer-events: none !important;`;
+          ctaHeadline.style = `display: none !important;`;
+          ctaContainer.style = ``;
+          callImg.src =
+            "https://storage.googleapis.com/msgsndr/pE0YHF1zH4QJ2Hb9JR8A/media/67c34acb3f1c49582fd12bc5.png";
+          callImg.classList.add("agent");
+
+          let talkingTimeout;
+          let isTalking = false;
+          const NOISE_THRESHOLD = 0.27;
+          const SILENCE_TIMEOUT = 900;
+
           connection.on("volume", (inputVolume, outputVolume) => {
-            if (inputVolume > 0.5) {
-              callImg.src = "./img/microphone-2 (1).png";
-              callImg.classList.remove("agent");
+            if (inputVolume > NOISE_THRESHOLD) {
+              if (!isTalking) {
+                isTalking = true;
+                callImg.classList.add("hidden");
+                userTalking.classList.remove("hidden");
+              }
+              clearTimeout(talkingTimeout); // Prevents early stopping
             } else {
-              makeCallEl.style = `pointer-events: none !important;`;
-              callImg.src = "./img/Agent.jpg";
-              callImg.classList.add("agent");
-              ctaHeadline.style = `display: none !important;`;
-              ctaContainer.style = ``;
+              if (isTalking) {
+                talkingTimeout = setTimeout(() => {
+                  callImg.classList.remove("hidden");
+                  userTalking.classList.add("hidden");
+                  isTalking = false;
+                }, SILENCE_TIMEOUT);
+              }
             }
           });
         });
       }
 
       function handleDisconnect() {
-        callImg.src = "./img/microphone-2 (1).png";
+        aiCallWrapper.classList.remove("active");
+        callImg.src =
+          "https://storage.googleapis.com/msgsndr/r2IULb3N1hQHJIwLIou6/media/67c00c73477767a6c00fffde.png";
         callImg.classList.remove("agent");
         makeCallEl.style = `pointer-events: all !important;`;
         ctaHeadline.style = ``;

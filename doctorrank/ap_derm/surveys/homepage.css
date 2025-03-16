@@ -194,7 +194,7 @@ body #_builder-form .form-builder--item input[type="number"]:hover {
   display: flex !important;
   flex-direction: row !important;
   flex-wrap: wrap !important;
-  align-items: center !important;
+  align-items: stretch !important;
   justify-content: flex-start !important;
   gap: 16px !important;
 }
@@ -351,6 +351,7 @@ body #_builder-form .form-builder--item input[type="number"]:hover {
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
+  height: 100% !important;
 }
 
 .hl-app #_builder-form .container-group-image .image-container {
