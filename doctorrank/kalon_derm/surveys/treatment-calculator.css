@@ -1,0 +1,653 @@
+/* === Form CSS */
+@import url("https://fonts.googleapis.com/css2?family=Marcellus&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+/* Start Root CSS */
+
+:root {
+  --main-container-max-width: 600px;
+  --main-container-background-color: #fff;
+  --main-container-border: none;
+  --main-label-font-weight: 300;
+  --main-label-color: #000000;
+  --main-label-font-size: 27px;
+  --main-label-font-family: ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --placeholder-font-color: #4b5563;
+  --placeholder-font-size: 20px;
+  --placeholder-font-weight: 400;
+  --placeholder-font-family: ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --terms_and_conditions-font-color: #4b5563;
+  --terms_and_conditions-font-size: 16px;
+  --terms_and_conditions-font-weight: 400;
+  --terms_and_conditions-font-family: ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --radio-and-checkbox-font-color: #000;
+  --radio-and-checkbox-font-size: 13px;
+  --radio-and-checkbox-font-weight: 400;
+  --radio-and-checkbox-font-family: ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --radio-and-checkbox-border: 1px solid #8b60c7;
+  --radio-and-checkbox-before-bg-color: #8b60c7;
+  --radio-and-checkbox-answer-font-color: #8b60c7;
+  --radio-and-checkbox-answer-font-size: 16px;
+  --radio-and-checkbox-answer-font-weight: 300;
+  --radio-and-checkbox-answer-font-family: ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --radio-checkbox-hover-background-color: #8b60c7;
+  --radio-checkbox-hover-font-color: #ffffff;
+
+  --radio-input-container-min-height: 120px;
+  --radio-input-container-max-height: 120px;
+  --radio-input-container-max-width: 80px;
+  --radio-input-container-min-width: 80px;
+
+  --radio-image-container-min-height: 120px;
+  --radio-image-image-min-height: 50px;
+  --radio-image-container-max-height: 120px;
+  --radio-image-container-max-width: 80px;
+  --radio-image-container-min-width: 80px;
+
+  --radio-image-img-container-min-height: 60px;
+  --radio-image-img-container-max-height: 60px;
+  --radio-image-img-container-max-width: 60px;
+  --radio-image-img-container-min-width: 60px;
+  --radio-image-img-container-normal-background: #f9fafb;
+  --radio-image-img-container-selected-background: #d8c4f3;
+
+  --radio-image-title-font-weight: 300;
+  --radio-image-title-font-size: 16px;
+  --radio-image-title-font-family: ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --radio-image-title-font-color: #4b5563;
+
+  --radio-image-selected-background-color: #ffffff;
+  --radio-image-selected-box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --radio-image-selected-border: 1px solid #8b60c7;
+  --radio-image-normal-border: 1px solid rgb(243 244 246);
+  --radio-image-title-background-color: #ffffff00;
+  --radio-image-selected-title-font-color: #8b60c7;
+
+  --input-font-color: #111827;
+  --input-font-size: 20px;
+  --input-font-weight: 400;
+  --input-font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --border-radius: 8px;
+  --inputs-border: 2px solid rgb(243 244 246);
+  --inputs-hover-border: 2px solid #8b60c7;
+
+  --footer-next-button-background-color: #8b60c7;
+  --footer-button-font-size: 16px;
+  --footer-next-button-font-color: #fff;
+
+  --footer-back-button-background-color: rgb(255, 255, 255);
+  --footer-back-button-font-color: #8b60c7;
+
+  --footer-button-font-family: ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --footer-button-font-weight: 300;
+  --footer-button-border-radius: 5px;
+  --footer-button-border: none;
+
+  --progressbar-background-color: #8b60c7;
+  --progressbar-thumb-background-color: #f3f4f6;
+
+  --transition-all: all 0.3s ease-in-out;
+  --transition-border: border-color 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+  --error-font-weight: 400;
+  --error-font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --error-container-text-align: center;
+  --error-font-color: #d11010;
+  --accent-color: #8b60c7;
+}
+
+/* End Root CSS */
+
+/* Start Parent CSS */
+button {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+input:not(input[type="checkbox"], input[type="radio"]) {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+.hl-app .ghl-form-wrap {
+  border-radius: 0 !important;
+}
+
+.hl-app * {
+  box-sizing: border-box !important;
+}
+
+.hl_form-builder--main {
+  max-width: var(--main-container-max-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  position: relative !important;
+  margin-top: 0px !important;
+  padding-top: 60px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.hl-app .hl_form-builder--main .ghl-form-wrap {
+  max-width: var(--main-container-max-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-shadow: none !important;
+}
+
+.hl-app .hl_form-builder--main #_builder-form {
+  max-width: var(--main-container-max-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-shadow: none !important;
+  border-radius: 8px !important;
+  padding: 0px !important;
+}
+
+.hl_form-builder--main #_builder-form .fields-container {
+  padding: 0px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* End Parent CSS  Resets */
+
+/* ==== Start Error Text CSS ==== */
+#_builder-form .alert {
+  border-left: none !important;
+}
+
+#_builder-form .alert ul {
+  list-style: none !important;
+}
+
+#_builder-form .alert.alert-danger {
+  text-align: var(--error-container-text-align) !important;
+  font-size: var(--error-font-size) !important;
+  font-weight: var(--error-font-weight) !important;
+  font-family: var(--error-font-family) !important;
+  color: var(--error-font-color) !important;
+}
+
+#_builder-form .alert.alert-danger span {
+  border-left: 5px solid #ff4747 !important;
+}
+/* ==== End Error Text CSS ==== */
+
+/* Start Common Inputs CSS */
+
+.hl-app #_builder-form .label-alignment {
+  font-size: var(--main-label-font-size) !important;
+  font-weight: var(--main-label-font-weight) !important;
+  font-family: var(--main-label-font-family) !important;
+  color: var(--main-label-color) !important;
+  text-align: center !important;
+  margin-bottom: 30px !important;
+  width: 100% !important;
+  line-height: 25px !important;
+}
+
+body #_builder-form .terms-and-conditions p {
+  font-size: var(--terms_and_conditions-font-size) !important;
+  color: var(--terms_and_conditions-font-color) !important;
+  font-family: var(--terms_and_conditions-font-family) !important;
+  font-weight: var(--terms_and_conditions-font-weight) !important;
+  line-height: 23px !important;
+}
+
+.hl-app #_builder-form .form-builder--item {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+body
+  #_builder-form
+  .form-builder--item
+  input[type="text"][class="form-control"],
+body
+  #_builder-form
+  .form-builder--item
+  input[type="email"][class="form-control"],
+body #_builder-form .form-builder--item input[type="tel"][class="form-control"],
+body #_builder-form .form-builder--item input[type="number"] {
+  background: var(--input-bg-color) !important;
+  transition: var(--transition-border) !important;
+  font-size: var(--input-font-size) !important;
+  color: var(--input-font-color) !important;
+  font-family: var(--input-font-family) !important;
+  font-weight: var(--input-font-weight) !important;
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--input-box-shadow) !important;
+  border: var(--inputs-border) !important;
+  padding: 12px 16px !important;
+}
+
+body
+  #_builder-form
+  .form-builder--item
+  input[type="text"][class="form-control"]::placeholder,
+body
+  #_builder-form
+  .form-builder--item
+  input[type="email"][class="form-control"]::placeholder,
+body
+  #_builder-form
+  .form-builder--item
+  input[type="tel"][class="form-control"]::placeholder,
+body #_builder-form .form-builder--item input[type="number"]::placeholder {
+  font-size: var(--placeholder-font-size) !important;
+  color: var(--placeholder-font-color) !important;
+  font-family: var(--placeholder-font-family) !important;
+  font-weight: var(--placeholder-font-weight) !important;
+}
+
+body
+  #_builder-form
+  .form-builder--item
+  input[type="text"][class="form-control"]:hover,
+body
+  #_builder-form
+  .form-builder--item
+  input[type="email"][class="form-control"]:hover,
+body
+  #_builder-form
+  .form-builder--item
+  input[type="tel"][class="form-control"]:hover,
+body #_builder-form .form-builder--item input[type="number"]:hover {
+  border: var(--inputs-hover-border) !important;
+}
+
+body
+  #_builder-form
+  .form-builder--item
+  input[type="text"][class="form-control"]:focus,
+body
+  #_builder-form
+  .form-builder--item
+  input[type="email"][class="form-control"]:focus,
+body
+  #_builder-form
+  .form-builder--item
+  input[type="tel"][class="form-control"]:hover,
+body #_builder-form .form-builder--item input[type="number"]:focus {
+  border: var(--inputs-hover-border) !important;
+}
+
+.hl-app #_builder-form input:-internal-autofill-selected {
+  background: var(--input-hover-bg-color) !important;
+}
+
+/* End Inputs CSS */
+
+/* Radio Input Styles */
+
+.hl-app input[type="radio"],
+.hl-app input[type="checkbox"] {
+  accent-color: var(--accent-color) !important;
+}
+
+.hl-app #_builder-form .option-radio {
+  padding: 0px !important;
+}
+
+.hl-app #_builder-form .flex-col > div {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  gap: 16px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.hl-app #_builder-form .flex-col div:not(.container-group-image) .option-radio {
+  flex: 1 0 calc(50% - 8px) !important;
+  max-width: calc(50% - 8px) !important;
+}
+
+.hl-app
+  #_builder-form
+  .flex-col
+  div:not(.container-group-image)
+  .option-radio
+  > div {
+  flex-direction: column !important;
+}
+
+.hl-app
+  #_builder-form
+  .flex-col
+  div:not(.container-group-image)
+  .option-radio
+  > div
+  label {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: var(--radio-input-container-min-height) !important;
+  min-width: var(--radio-input-container-min-width) !important;
+  border-radius: 5px !important;
+  border: var(--radio-image-normal-border) !important;
+  transition: var(--transition-all) !important;
+  margin-left: 0px !important;
+  font-family: var(--radio-and-checkbox-answer-font-family) !important;
+  font-size: var(--radio-and-checkbox-answer-font-size) !important;
+  font-weight: var(--radio-and-checkbox-answer-font-weight) !important;
+  color: var(--radio-and-checkbox-answer-font-color) !important;
+}
+
+.hl-app
+  #_builder-form
+  .flex-col
+  div:not(.container-group-image)
+  .option-radio
+  > div
+  input[type="radio"]:checked
+  + label {
+  border: var(--radio-image-selected-border) !important;
+}
+
+.hl-app
+  #_builder-form
+  .flex-col
+  div:not(.container-group-image)
+  .option-radio
+  > div
+  label:hover,
+.hl-app
+  #_builder-form
+  .flex-col
+  div:not(.container-group-image)
+  .option-radio
+  > div
+  input[type="radio"]:checked
+  + label {
+  background-color: var(--radio-checkbox-hover-background-color) !important;
+  color: var(--radio-checkbox-hover-font-color) !important;
+}
+
+.hl-app
+  #_builder-form
+  .flex-col
+  div:not(.container-group-image)
+  .option-radio
+  > div
+  input[type="radio"] {
+  display: inline-flex !important;
+  position: absolute !important;
+  z-index: 1 !important;
+  right: 16px !important;
+  top: 16px !important;
+}
+
+/* ==== Radio Image ==== */
+
+.hl-app .container-group-image {
+  width: 100% !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 16px !important;
+}
+
+.hl-app .option-radio-image input[type="radio"] {
+  display: inline-flex !important;
+  position: absolute !important;
+  z-index: 1 !important;
+  right: 16px !important;
+  top: 16px !important;
+}
+
+.hl-app #_builder-form .container-group-image > .option-radio {
+  flex: 1 0 calc(50% - 8px) !important;
+  max-width: calc(50% - 8px) !important;
+}
+
+.hl-app #_builder-form .container-group-image > .option-radio > div {
+  margin-top: 0 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  line-height: 30px !important;
+  position: relative !important;
+  padding-left: 0px !important;
+  width: 100% !important;
+}
+
+.hl-app .container-group-image .radio-image-option-set {
+  border: var(--radio-image-normal-border) !important;
+  transition: var(--transition-all) !important;
+  padding: 16px !important;
+  border-radius: 8px !important;
+}
+
+.hl-app .container-group-image .radio-image-option-set:hover {
+  border: var(--radio-image-selected-border) !important;
+}
+
+.hl-app [type="radio"]:checked + .radio-image-option-set {
+  border: var(--radio-image-selected-border) !important;
+  background-color: var(--radio-image-selected-background-color) !important;
+  box-shadow: var(--radio-image-selected-box-shadow) !important;
+}
+
+.hl-app
+  #_builder-form
+  .container-group-image
+  [type="radio"]:checked
+  + .radio-image-option-set
+  .img-opt-title {
+  color: var(--radio-image-selected-title-font-color) !important;
+}
+
+.hl-app #_builder-form .container-group-image .img-opt-title {
+  font-size: var(--radio-image-title-font-size) !important;
+  font-weight: var(--radio-image-title-font-weight) !important;
+  color: var(--radio-image-title-font-color) !important;
+  font-family: var(--radio-image-title-font-family) !important;
+  cursor: pointer !important;
+  background-color: var(--radio-image-title-background-color) !important;
+  text-transform: uppercase !important;
+  line-height: 1.2 !important;
+  letter-spacing: 1px !important;
+}
+
+.hl-app
+  #_builder-form
+  .container-group-image
+  > .option-radio
+  .radio-image-option-set {
+  width: 100% !important;
+  margin-bottom: 0px !important;
+  min-height: var(--radio-image-container-min-height) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+}
+
+.hl-app #_builder-form .container-group-image .image-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: var(--radio-image-img-container-max-width) !important;
+  min-width: var(--radio-image-img-container-min-width) !important;
+  height: var(--radio-image-img-container-max-height) !important;
+  min-height: var(--radio-image-img-container-min-height) !important;
+  padding: 0px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  background-color: var(
+    --radio-image-img-container-normal-background
+  ) !important;
+  transition: var(--transition-all) !important;
+  border-radius: 50% !important;
+}
+
+.hl-app
+  #_builder-form
+  [type="radio"]:checked
+  + .radio-image-option-set
+  .image-container {
+  background-color: var(
+    --radio-image-img-container-selected-background
+  ) !important;
+}
+
+.hl-app #_builder-form .container-group-image .image-container img {
+  max-width: 50px !important;
+  min-width: 50px !important;
+}
+
+/* End Radio Input Styles */
+
+/* Start Footer Styles  */
+.hl_form-builder--main .ghl-footer {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  position: static !important;
+  display: flex !important;
+  flex-direction: column-reverse !important;
+  align-items: center !important;
+  height: 100px !important;
+}
+
+.hl_form-builder--main .ghl-footer-buttons {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-top: 20px !important;
+  position: static !important;
+  gap: 0px !important;
+  width: 100% !important;
+}
+
+.hl_form-builder--main .ghl-footer .ghl-btn {
+  font-size: var(--footer-button-font-size) !important;
+  font-weight: var(--footer-button-font-weight) !important;
+  font-family: var(--footer-button-font-family) !important;
+  padding: 10px 30px !important;
+  border-radius: var(--footer-button-border-radius) !important;
+  border: var(--footer-button-border) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.hl_form-builder--main .ghl-footer .ghl-btn.ghl-footer-next {
+  background-color: var(--footer-next-button-background-color) !important;
+  color: var(--footer-next-button-font-color) !important;
+  width: 100% !important;
+}
+
+.hl_form-builder--main .ghl-footer .ghl-btn.ghl-submit-btn {
+  background-color: var(--footer-next-button-background-color) !important;
+  color: var(--footer-next-button-font-color) !important;
+  width: 100% !important;
+}
+
+.hl_form-builder--main .ghl-footer .ghl-btn.ghl-footer-back {
+  background-color: var(--footer-back-button-background-color) !important;
+  color: var(--footer-back-button-font-color) !important;
+  position: absolute !important;
+  top: 10px !important;
+  left: 0px !important;
+}
+
+.hl_form-builder--main .ghl-footer .ghl-btn.ghl-footer-back svg {
+  stroke: var(--footer-back-button-font-color) !important;
+}
+
+.ghl-progress-container {
+  position: static !important;
+  height: auto !important;
+  width: 100% !important;
+}
+
+.ghl-progress-container .ghl-footer-progress-bar {
+  width: 100% !important;
+  background-color: var(--progressbar-thumb-background-color) !important;
+  border: none !important;
+  height: 9px !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+.ghl-progress-container .ghl-progress-bar-fill {
+  background-color: var(--progressbar-background-color) !important;
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+}
+
+.ghl-footer-progress-text {
+  font-size: 10px !important;
+  color: #fff !important;
+  display: none !important;
+}
+
+/* End Footer Styles */
+
+/* End Footer Styles */
+
+@media (max-width: 767px) {
+  :root {
+    --main-label-font-size: 20px;
+    --placeholder-font-size: 16px;
+    --input-font-size: 16px;
+    --radio-and-checkbox-answer-font-size: 13px;
+    --radio-image-title-font-size: 12px;
+    --footer-button-font-size: 16px;
+
+    --radio-input-container-min-height: 100px;
+    --radio-input-container-max-height: 100px;
+    --radio-input-container-max-width: 70px;
+    --radio-input-container-min-width: 70px;
+
+    --radio-image-container-min-height: 100px;
+    --radio-image-image-min-height: 60px;
+    --radio-image-container-max-height: 100px;
+    --radio-image-container-max-width: 70px;
+    --radio-image-container-min-width: 70px;
+
+    --radio-image-img-container-min-height: 50px;
+    --radio-image-img-container-max-height: 50px;
+    --radio-image-img-container-max-width: 50px;
+    --radio-image-img-container-min-width: 50px;
+  }
+
+  .hl-app #_builder-form .container-group-image > .option-radio {
+    flex: 1 0 calc(50% - 8px) !important;
+    max-width: calc(50% - 8px) !important;
+  }
+
+  .hl-app
+    #_builder-form
+    .flex-col
+    div:not(.container-group-image)
+    .option-radio {
+    flex: 1 0 calc(50% - 8px) !important;
+    max-width: calc(50% - 8px) !important;
+  }
+
+  .hl_form-builder--main .ghl-footer .ghl-btn {
+    padding: 10px 20px !important;
+    height: 45px !important;
+  }
+}

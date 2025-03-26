@@ -6,9 +6,14 @@ body {
   overflow-x: hidden !important;
 }
 
-#preview-container .c-video > div {
-  border-radius: 20px !important;
-  overflow: hidden !important;
+.z-index-1 {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.z-index-10 {
+  position: relative !important;
+  z-index: 10 !important;
 }
 
 #preview-container .hide-preview {
@@ -27,7 +32,6 @@ body {
   outline: none !important;
   cursor: pointer !important;
   box-shadow: none !important;
-  border: none !important;
 }
 
 .btn-element .main-heading-group {
@@ -46,8 +50,7 @@ body {
 }
 
 .btn-element .main-heading-group .button-icon-start {
-  display: inline-block !important;
-  margin-right: 10px !important;
+  display: none !important;
 }
 
 .btn-element-new .main-heading-group .button-icon-start {
@@ -84,6 +87,10 @@ body {
   margin-left: 0px !important;
 }
 
+.max-w-420 {
+  max-width: 420px !important;
+}
+
 .max-w-470 {
   max-width: 470px !important;
 }
@@ -94,6 +101,10 @@ body {
 
 .max-w-650 {
   max-width: 650px !important;
+}
+
+.max-w-750 {
+  max-width: 750px !important;
 }
 
 .max-w-800 {
@@ -110,6 +121,38 @@ body {
 
 .max-w-970 {
   max-width: 970px !important;
+}
+
+.max-w-1024 {
+  max-width: 1024px !important;
+}
+
+.max-w-1340 {
+  max-width: 1340px !important;
+}
+
+.max-w-1440 {
+  max-width: 1440px !important;
+}
+
+.max-w-1540 {
+  max-width: 1540px !important;
+}
+
+#preview-container .list-p p {
+  padding-left: 20px !important;
+  position: relative !important;
+}
+
+#preview-container .list-p p::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #000;
 }
 
 /* ==== Container CSS ==== */
@@ -131,27 +174,63 @@ body .header-sec .mega-menu-container {
   height: auto !important;
 }
 
-/* ==== Status Section ==== */
-.status-sec {
-  background: linear-gradient(180deg, #ffffff 0%, #e0e2e3 100%) !important;
+/* ==== Vendors Section ==== */
+#preview-container .vendors-sec > .inner {
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
-.status-sec .c-row .c-button {
-  margin-top: auto !important;
+#preview-container .vendors-sec > .inner .c-column {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
-/* ==== Resources Sec ==== */
-.resources-sec .resources-row .c-button {
-  margin-top: auto !important;
+#preview-container .vendors-sec .vendor-row {
+  margin-top: -10px !important;
+  position: relative !important;
+  z-index: 0 !important;
 }
 
-.resources-sec .resources-row .c-button .main-heading-group {
-  line-height: 1 !important;
-  white-space: pre-wrap !important;
-  display: inline-flex !important;
+/* ==== Marquee Section ==== */
+#preview-container .marquee-sec {
+  overflow: hidden !important;
 }
 
-/* ==== Zoom Section ==== */
+.marquee-sec .marquee-row .c-column {
+  position: relative !important;
+  min-height: 40px !important;
+}
+
+#preview-container .marquee-sec .marquee-row .c-column > .inner {
+  display: flex !important;
+  align-items: center !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 20px !important;
+  min-height: 42px !important;
+}
+
+.marquee-sec .marquee-row .c-sub-heading h2 {
+  white-space: nowrap !important;
+}
+
+#preview-container .marquee-sec .marquee-row .c-column > .inner {
+  position: absolute !important;
+  left: 100%;
+  animation: move linear 15s infinite;
+  min-width: 100% !important;
+}
+
+@keyframes move {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: -100%;
+  }
+}
 
 /* ==== Media Queries ==== */
 
@@ -260,23 +339,21 @@ body .header-sec .mega-menu-container {
   }
   /* ==== End Mobile Nav ==== */
 
-  /* ==== Resources Section ==== */
-  #preview-container .resources-sec .resources-row > .inner {
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    gap: 10px !important;
+  /* ==== Vendors Section ==== */
+  #preview-container .vendors-sec > .inner {
+    max-width: 100% !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
   }
 
-  #preview-container .resources-sec .resources-row > .inner .c-column {
-    flex: 1 0 calc(33% - 6px) !important;
-    max-width: calc(33% - 6px) !important;
+  #preview-container .vendors-sec > .inner .c-column {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
   }
 
-  #preview-container
-    .resources-sec
-    .resources-row
-    .c-button
-    .main-heading-button {
-    font-size: 12px !important;
+  #preview-container .vendors-sec .vendor-row {
+    margin-top: 20px !important;
+    position: relative !important;
+    z-index: 10 !important;
   }
 }
