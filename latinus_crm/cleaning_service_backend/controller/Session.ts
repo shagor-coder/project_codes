@@ -23,7 +23,7 @@ export const createSession = async (
     const session = await stripe.checkout.sessions.create({
       success_url: process.env.SESSION_SUCCESS_URL as string,
       cancel_url: process.env.SESSION_CANCEL_URL as string,
-      payment_method_types: ["card", "alipay", "us_bank_account"],
+      payment_method_types: ["alipay", "us_bank_account", "giropay"],
       mode: "payment",
       submit_type: "pay",
       customer_email: email,

@@ -15,3 +15,7 @@ export const dbConfig: dbConfig = {
   db_password: process.env.DB_PASSWORD as string,
   db_name: process.env.DB_NAME as string,
 };
+
+export const appConfig: { webhook_signature: string } = {
+  webhook_signature: process.env.WEBHOOK_SECRET_KEY as string,
+};

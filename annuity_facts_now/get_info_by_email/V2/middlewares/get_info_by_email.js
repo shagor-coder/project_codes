@@ -17,6 +17,7 @@ async function get_info_by_email(request, response, next) {
       },
     };
     const { data } = await axios.request(config);
+
     const atd_info = process_atd_info(data);
     request.atd_info = atd_info;
     next();
