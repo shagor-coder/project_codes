@@ -34,6 +34,8 @@ export const filterEmptyCustomFields = (customFields: customFieldsType) => {
     "triggerData",
     "Agent Termination PDF",
     "Final Attestation PDF",
+    "Survey Completed Doc URL",
+    "Final Attestation PDF URL",
   ];
 
   const keys = Object.keys(customFields);

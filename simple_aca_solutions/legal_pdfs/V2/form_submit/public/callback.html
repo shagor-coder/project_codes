@@ -21,9 +21,17 @@
           };
 
           const request = await fetch(
-            `http://localhost:3300/api/app-install?code=${code}`,
+            `https://fflskypoint.simpleacasolutionsstore.com/api/app-install?code=${code}`,
             options
           );
+
+          if (!request.ok)
+            return (
+              (document.querySelector("h1").innerHTML =
+                "Application installation failed!"),
+              console.log(request)
+            );
+
           const response = await request.json();
           document.querySelector("h1").innerHTML = "Application installed!";
         } catch (error) {
@@ -35,7 +43,8 @@
         const currentURL = new URL(location.href);
         const code = currentURL.searchParams.get("code");
         if (!code)
-          document.querySelector("h1").innerHTML = "No code specified!";
+          return (document.querySelector("h1").innerHTML =
+            "No code specified!");
         installApplication(code);
       };
 

@@ -1,54 +1,66 @@
 import axios from "axios";
 import FormData from "form-data";
 import stream from "stream";
-import { Request, Response } from "express";
+import { Request, RequestHandler, Response } from "express";
+import { LocationModel } from "../Models/Location";
+import { updateContactById } from "../helpers/update-contact";
 
-export const postPdfToContact = async (
+export const postPdfToContact: RequestHandler = async (
   request: Request,
   response: Response
 ): Promise<void> => {
   try {
     const {
+      contact_id,
       full_name,
-      email,
       location_id,
-      surveyId,
-      surveypage_url,
       upload_field_key,
       agent_termination_pdf,
+    } =
       // @ts-ignore
-    } = request.formattedData as any;
+      request.formattedData as {
+        contact_id: string;
+        full_name: string;
+        location_id: string;
+        upload_field_key: string;
+        agent_termination_pdf: string;
+      };
 
     // @ts-ignore
     const pdfDoc = request.pdfDoc as stream.PassThrough;
 
-    if (!pdfDoc) {
+    if (!pdfDoc)
       response.status(400).json({ message: "No PDF document provided" });
-      return;
-    }
 
-    let fData = new FormData();
+    const fData = new FormData();
 
-    const eventData = {
-      source: "direct",
-      page: {
-        url: surveypage_url,
-        title: "$0 ACA/Health Coverage",
-      },
-      timestamp: Date.now(),
-      type: "page-visit",
-      domain: "https://www.ushealthprogram.com/",
-      medium: "survey",
-      mediumId: surveyId.trim(),
-    };
+    fData.append(
+      "contact",
+      JSON.stringify({
+        id: contact_id,
+        data: {
+          location_id: location_id,
+        },
+      })
+    );
 
-    const fd = {
-      full_name: full_name,
-      email: email,
-      formId: surveyId.trim(),
-      location_id: location_id.trim(),
-      eventData: eventData,
-    };
+    const locationInfo = await LocationModel.findOne({
+      where: { locationId: location_id },
+    });
+
+    if (!locationInfo)
+      response.status(404).json({ message: "No location Found!" });
+
+    const access_token = locationInfo?.toJSON().access_token as string;
+
+    const data = new FormData();
+    data.append(
+      "id",
+      `${contact_id}/${
+        agent_termination_pdf ? agent_termination_pdf : upload_field_key
+      }`
+    );
+    data.append("maxFiles", "1");
 
     // Convert PDF Stream to Buffer using Promise
     const finalPdfBuffer = await new Promise<Buffer>((resolve, reject) => {
@@ -59,53 +71,42 @@ export const postPdfToContact = async (
       pdfDoc.end();
     });
 
-    fData.append(
+    data.append("file", finalPdfBuffer, {
+      filename: `${full_name}.pdf`,
+      contentType: "application/pdf",
+    });
+
+    const config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: `https://services.leadconnectorhq.com/locations/${location_id}/customFields/upload`,
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        Version: "2021-07-28",
+        ...data.getHeaders(),
+      },
+      data: data,
+    };
+
+    const { data: uploadData } = await axios.request(config);
+
+    const updateContact = await updateContactById(
+      access_token,
+      contact_id,
       agent_termination_pdf
-        ? agent_termination_pdf
-        : upload_field_key || "file",
-      finalPdfBuffer,
-      {
-        filename: `${full_name}.pdf`,
-        contentType: "application/pdf",
-      }
+        ? "agent_termination_pdf_url"
+        : "final_attestation_pdf_url",
+      uploadData.meta[0].url
     );
-
-    fData.append("formData", JSON.stringify(fd));
-
-    try {
-      const config = {
-        method: "post" as const,
-        maxBodyLength: 2000000, // Adjusted for Node 14 shared hosting limits
-        url: "https://backend.leadconnectorhq.com/surveys/submit",
-        headers: {
-          ...fData.getHeaders(),
-          "Content-Length": fData.getLengthSync(),
-        },
-        data: fData,
-        timeout: 15000,
-      };
-
-      const { data, ...rest } = await axios.request(config);
-
-      response.status(200).json({
-        message: "Contact Updated!!",
-        data: data.contact.id,
-        limit: rest.headers,
-      });
-    } catch (error: any) {
-      console.error("🚨 Error Posting PDF:", error);
-      if (!response.headersSent) {
-        response
-          .status(500)
-          .json({ message: "Error Posting PDF!!", error: error.message });
-      }
-    }
+    response
+      .status(200)
+      .json({ message: "Upload successful!", result: updateContact });
   } catch (error: any) {
-    console.error("Error Posting PDF:", error.message);
     if (!response.headersSent) {
-      response
-        .status(500)
-        .json({ message: "Error Posting PDF!!", error: error.message });
+      response.status(500).json({
+        message: "Error Posting PDF",
+        error: error?.response?.data || error.message,
+      });
     }
   }
 };

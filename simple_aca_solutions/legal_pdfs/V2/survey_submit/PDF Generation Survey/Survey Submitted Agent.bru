@@ -1,11 +1,11 @@
 meta {
-  name: Form Submitted
+  name: Survey Submitted Agent
   type: http
-  seq: 3
+  seq: 4
 }
 
 post {
-  url: https://fflskypoint.simpleacasolutionsstore.com/create
+  url: http://localhost:3300/agent
   body: json
   auth: none
 }
@@ -36,20 +36,22 @@ body:json {
     "Lender": "",
     "Number of tax dependents you claim on your taxes": "1",
     "Do you have an existing health plan?": "",
+    "Survey Completed Doc URL": "https://msgsndr-private.storage.googleapis.com/location/jmxpZPANLULwmLFWoJ63/custom-Field/ZljBByBgwdFDIdx1bRhC/xBPd0oBf7LCOFsuLFa3P/bd549d78-5b26-49e8-a364-45808cf9cd69.pdf",
     "Medicaid/Medicare Double Confirmation": "",
-    "Primary Applicant's Social Security Number ": "",
+    "Primary Applicant's Social Security Number ": "111111111111111",
     " Effective Date": "",
     "Doctor's Name": "",
     "Loan": "",
     "Last Contact": "",
     "Total applicants signing up including you": "1",
     "How much is your current monthly insurance premium": "",
+    "Final Attestation PDF URL": "",
     "Required": "",
-    "Do You Have A Spouse?": "",
+    "Do You Have A Spouse?": "No",
     " ACA Plan": "",
     "Doctor's City": "",
     "Hobby": "",
-    "Do you use tobacco regularly?": "Yes",
+    "Do you use tobacco regularly?": "No",
     "How much is your deductible": "",
     "Phone 2": "",
     "Estimated household income would fall between $14,580\tand $21,870?": "",
@@ -86,7 +88,7 @@ body:json {
     "About how many times a year do you see a doctor": "",
     "Nicotine Usage?": "",
     "Estimated household income would fall between $35,140\tand $52,710?": "",
-    "Do You Have Any Dependents?": "",
+    "Do You Have Any Dependents?": "No",
     "How do you make your income?": "",
     "Job Title": "",
     "clientgclid": "",
@@ -107,12 +109,12 @@ body:json {
     "Are you": "",
     "Projected Income 2023": "",
     "Dependent 1 Date of Birth MM-DD-YYYY": "",
-    "I was found not eligible for Medicaid or CHIP in the last 90 days.": "",
+    "I was found not eligible for Medicaid or CHIP in the last 90 days.": "No",
     "Final Attestation PDF": "",
     "Are you working?": "",
     "Employer Name": "",
     "Do You Have a 2nd Dependent?": "",
-    "Do you have a doctor you would like to keep?": "",
+    "Do you have a doctor you would like to keep?": "No",
     "Agent Termination PDF": "",
     "Desired Coverage": "",
     "Do you have any dependents living at home?": "",
@@ -148,7 +150,7 @@ body:json {
     "Are you currently taking any Prescriptions? If yes, please list below.": "",
     "Dependent 4 Name and Date of Birth": "",
     "Do You Have a 4th Dependent?": "",
-    "Survey Completed Doc": [],
+    "Survey Completed Doc": "",
     "Dependent 4 Social Security Number": "",
     "Dependent 4 Full Legal Name": "",
     "Great, let's find you affordable options. What is your age?": "",
@@ -177,16 +179,16 @@ body:json {
     "Authorization Signature": {
       "meta": {
         "fieldname": "HO1bYPtDmikYJpI2cKiP",
-        "originalname": "sign-timestamp-1745415458.png",
+        "originalname": "sign-timestamp-1746644858.png",
         "encoding": "7bit",
         "mimetype": "image/png",
-        "size": 20150,
-        "uuid": "aa257455-b4ff-4848-a442-de55d7e573d0",
+        "size": 12366,
+        "uuid": "42a85c68-a5ed-4b98-8f4b-ea811d40c4a2",
         "isSignature": true,
-        "timestamp": "1745415458"
+        "timestamp": "1746644858"
       },
-      "url": "https://services.leadconnectorhq.com/documents/download/zoAnQKR0Y4uA2RTZ5ktj",
-      "documentId": "zoAnQKR0Y4uA2RTZ5ktj"
+      "url": "https://services.leadconnectorhq.com/documents/download/GA4rshZj3rpnQ8qmNJBa",
+      "documentId": "GA4rshZj3rpnQ8qmNJBa"
     },
     "Example: myemail@email.com": "",
     "Spouse's Employer Name": "",
@@ -208,7 +210,20 @@ body:json {
     "Not Eligible for Medicaid": "",
     "What is your Social Security# ?": "",
     "Today's Date": "",
-    "Sign Below": "",
+    "Sign Below": {
+      "meta": {
+        "fieldname": "yBSKnDLJdyZWOOOxmALC",
+        "originalname": "sign-timestamp-1747277976.png",
+        "encoding": "7bit",
+        "mimetype": "image/png",
+        "size": 13619,
+        "uuid": "c4275fe4-be3d-432f-a44f-6547d79598fe",
+        "isSignature": true,
+        "timestamp": "1747277976"
+      },
+      "url": "https://services.leadconnectorhq.com/documents/download/z6f35qJNbStEdCfA0AAb",
+      "documentId": "z6f35qJNbStEdCfA0AAb"
+    },
     "Gender": "",
     "Total Dependents": "",
     "By answering YES and confirming your information below, you attest to the following: 1.) This is a request to be enrolled in the best NO-COST plan in your area, based on our expertise of the market. 2) We will enroll you using the information provided in this form AND the minimum income to qualify. You MUST update your income with us within 30 days of enrollment; 3) This is a request to have {{user.name}} take over as your agent of record from this point forward, unless written notice is provided. PLEASE ANSWER YES TO APPROVE OF THESE TERMS AND CONDITIONS. ": "",
@@ -226,19 +241,19 @@ body:json {
     "Dependent 5 Name and Social Security Number": "",
     "If there are more dependents, please list additional information here": "",
     "Paid for ": "",
-    "contact_id": "jAkslLYjFJ66ASGj8hRu",
+    "contact_id": "ZljBByBgwdFDIdx1bRhC",
     "first_name": "Md",
     "last_name": "Shagor Hossain",
     "full_name": "Md Shagor Hossain",
     "email": "msh43320@gmail.com",
     "phone": "+8801742677273",
-    "tags": "aca lead",
+    "tags": "aca lead,survey",
     "address1": "Kayetkhali",
     "city": "Jessore",
     "state": "Jessore",
     "country": "US",
     "timezone": "Asia/Dhaka",
-    "date_created": "2025-04-23T13:37:41.177Z",
+    "date_created": "2025-05-07T19:07:42.372Z",
     "postal_code": "7400",
     "contact_source": "aca lead form [03/02/2025]",
     "full_address": "Kayetkhali, Jessore Jessore 7400",
@@ -254,8 +269,8 @@ body:json {
       "id": "jmxpZPANLULwmLFWoJ63"
     },
     "workflow": {
-      "id": "2693f190-eec9-4aa7-82d5-36842f540eea",
-      "name": "Create PDF"
+      "id": "6fdb417a-6f57-4558-acd9-5b20bce520f6",
+      "name": "Create PDF - 2"
     },
     "triggerData": {},
     "contact": {
@@ -273,7 +288,7 @@ body:json {
         "gclid": null,
         "fbp": "fb.1.1741091764837.610469546781796333",
         "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
-        "ip": "103.124.183.71",
+        "ip": "103.124.183.200",
         "gaClientId": null,
         "medium": "form",
         "mediumId": "oK0TaFLCB4XcBQBCeKyl",
@@ -285,21 +300,21 @@ body:json {
       },
       "lastAttributionSource": {
         "sessionSource": "Direct traffic",
-        "url": "https://simpleacahealth.com/lp",
+        "url": "https://simpleacahealth.com/review-answers-2388",
         "utmSource": null,
         "utmMedium": null,
         "utmContent": null,
         "utmTerm": null,
         "utmKeyword": null,
         "utmMatchtype": null,
-        "referrer": "https://app.gohighlevel.com",
+        "referrer": null,
         "gclid": null,
         "fbp": "fb.1.1741091764837.610469546781796333",
-        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
-        "ip": "103.124.183.71",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+        "ip": "103.124.183.206",
         "gaClientId": null,
         "medium": "form",
-        "mediumId": "oK0TaFLCB4XcBQBCeKyl",
+        "mediumId": "nOyW0DUYoBJgjoGTN405",
         "adName": null,
         "adGroupId": null,
         "adId": null,
@@ -307,7 +322,30 @@ body:json {
         "wbraid": null
       }
     },
-    "attributionSource": {},
+    "attributionSource": {
+      "sessionSource": "Direct traffic",
+      "url": "https://simpleacahealth.com/survey-122",
+      "campaign": null,
+      "utmSource": null,
+      "utmMedium": null,
+      "utmContent": null,
+      "utmTerm": null,
+      "utmKeyword": null,
+      "utmMatchtype": null,
+      "referrer": null,
+      "gclid": null,
+      "fbp": "fb.1.1741091764837.610469546781796333",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+      "ip": "103.124.183.206",
+      "gaClientId": null,
+      "medium": "form",
+      "mediumId": "nOyW0DUYoBJgjoGTN405",
+      "adName": null,
+      "adGroupId": null,
+      "adId": null,
+      "gbraid": null,
+      "wbraid": null
+    },
     "customData": {
       "surveyId": "bWDE6umapsOBgIxDtgy3",
       "surveypage_url": "https://simpleacahealth.com/lp",
@@ -315,7 +353,8 @@ body:json {
       "agent_phone_number": "719-209-3225",
       "national_producer_number": "6785176 and 1769173",
       "agent_email": "matt@simpleacasolutions.com",
-      "upload_field_key": "xBPd0oBf7LCOFsuLFa3P"
+      "upload_field_key": "ahJ92cigtuv0ZNJlVeTh",
+      "agent_termination_pdf": "d7y4t45MY6EiyGnQAbgO"
     }
   }
 }

@@ -11,29 +11,9 @@ export const createPdfWithSignatureAgent = async (
   try {
     const {
       authorizationSignature,
-      ip,
       full_name,
-      phone,
-      city,
-      state,
-      country,
-      name,
-      contact_id,
-      email,
-      location_id,
-      surveyId,
-      surveypage_url,
-      agent_name,
-      agent_phone_number,
-      national_producer_number,
-      agent_email,
-      upload_field_key,
-      agent_termination_pdf,
-      ...rest
       //   @ts-ignore
     } = request.formattedData as any;
-
-    const textsForCustomFields = createTextsFromCustomFields({ ...rest });
 
     const imageResponse = await axios.get(authorizationSignature.url, {
       responseType: "arraybuffer",

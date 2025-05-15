@@ -4,6 +4,7 @@ import { formatWebhookRequest } from "../middlewares/format-webhook-request";
 import { createPdfWithSignature } from "../middlewares/create-pdf-with-signature";
 import { postPdfToContact } from "../controllers/post-pdf-to-contact";
 import { createPdfWithSignatureAgent } from "../middlewares/create-pdf-with-signature-agent";
+import { checkExpireDateForLocation } from "../middlewares/check-expire-date";
 
 const _Router: Router = express.Router();
 
@@ -13,6 +14,7 @@ _Router.get("/", (request: Request, response: Response) => {
 
 _Router.post(
   "/create",
+  checkExpireDateForLocation,
   formatWebhookRequest,
   createPdfWithSignature,
   postPdfToContact
@@ -20,6 +22,7 @@ _Router.post(
 
 _Router.post(
   "/agent",
+  checkExpireDateForLocation,
   formatWebhookRequest,
   createPdfWithSignatureAgent,
   postPdfToContact

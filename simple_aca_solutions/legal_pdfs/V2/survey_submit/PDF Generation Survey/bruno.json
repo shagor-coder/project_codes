@@ -1,0 +1,6 @@
+{
+  "version": "1",
+  "name": "PDF Generation Survey",
+  "type": "collection",
+  "ignore": ["node_modules", ".git"]
+}

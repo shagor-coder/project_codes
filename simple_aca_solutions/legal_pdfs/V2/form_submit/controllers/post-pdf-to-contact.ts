@@ -81,7 +81,7 @@ export const postPdfToContact = async (
     const updateContact = await updateContactById(
       access_token,
       contact_id,
-      upload_field_key,
+      "survey_completed_doc_url",
       uploadData.meta[0].url
     );
     response
