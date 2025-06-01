@@ -1,0 +1,287 @@
+html {
+  scroll-behavior: smooth !important;
+}
+
+body {
+  overflow-x: hidden !important;
+}
+
+#preview-container .c-video > div {
+  border-radius: 20px !important;
+  overflow: hidden !important;
+}
+
+#preview-container .hide-preview {
+  display: none !important;
+}
+
+#previewer .c-row .c-column > .inner {
+  padding: 5px 5px !important;
+}
+
+#previewer .swiper-row > .inner {
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+}
+
+div #previewer .swiper-row > .inner .c-column {
+  flex: 1 0 33% !important;
+  max-width: 33% !important;
+}
+
+.mobile-preview #previewer .swiper-row > .inner .c-column {
+  flex: 1 0 100% !important;
+  max-width: 100% !important;
+}
+
+.hl-builder-main-wrapper #hl_main_popup .swiper-row > .inner {
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+}
+
+.hl-builder-main-wrapper #hl_main_popup .swiper-row > .inner .c-column {
+  flex: 1 0 33% !important;
+  max-width: 33% !important;
+}
+
+.hl-builder-main-wrapper.--mobile
+  #hl_main_popup
+  .swiper-row
+  > .inner
+  .c-column {
+  flex: 1 0 100% !important;
+  max-width: 100% !important;
+}
+
+/* Start Button */
+.btn-element {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  outline: none !important;
+  cursor: pointer !important;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !important;
+  border: none !important;
+  background-image: linear-gradient(to right, #9f5de2, #8b5cf6) !important;
+  min-height: 54px !important;
+  transition: transform 200ms cubic-bezier(0.47, 0, 0.745, 0.715) !important;
+}
+
+.btn-element:hover {
+  transform: translateY(-3px) !important;
+}
+
+.btn-element.btn-element-white {
+  background-image: none !important;
+  background-color: #fff !important;
+}
+
+.btn-element .main-heading-group {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.btn-element .main-heading-group .main-heading-button {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.btn-element .main-heading-group .button-icon-start {
+  display: none !important;
+}
+
+.btn-element .main-heading-group .main-heading-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+}
+
+.btn-element .button-icon-end {
+  display: none !important;
+}
+
+/* End Button */
+
+/* Start Max Width */
+
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.ml-auto {
+  margin-left: auto !important;
+  margin-right: 0px !important;
+}
+
+.mr-a {
+  margin-right: auto !important;
+  margin-left: 0px !important;
+}
+
+.max-w-240 {
+  max-width: 240px !important;
+}
+
+.max-w-350 {
+  max-width: 350px !important;
+}
+
+.max-w-700 {
+  max-width: 700px !important;
+}
+
+.max-w-750 {
+  max-width: 750px !important;
+}
+
+.max-w-800 {
+  max-width: 800px !important;
+}
+
+.max-w-930 {
+  max-width: 930px !important;
+}
+
+/* ==== Container CSS ==== */
+
+#preview-container .c-image img.img-el-cover {
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
+body .c-section > .inner {
+  max-width: 1280px !important;
+  padding-left: 32px !important;
+  padding-right: 32px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* ==== Header Section ==== */
+.header-sec {
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
+  background-color: #fffffff2 !important;
+}
+
+/* ==== Options Section ===== */
+.options-sec .products-row .c-column > .inner {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+  border-radius: 8px !important;
+  border: 1px solid #f3f4f6 !important;
+  transition: box-shadow 150ms cubic-bezier(0.47, 0, 0.745, 0.715) !important;
+}
+
+.options-sec .products-row .c-column > .inner:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !important;
+}
+
+.options-sec .products-row .c-column > .inner .c-sub-heading,
+.options-sec .products-row .c-column > .inner .c-paragraph {
+  padding-left: 18px !important;
+  padding-right: 18px !important;
+}
+
+.options-sec .products-row .c-column > .inner .c-paragraph:last-child {
+  margin-bottom: 30px !important;
+}
+
+.options-sec .products-row .c-paragraph .learn-more > div {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.options-sec .products-row .c-paragraph .learn-more > div a {
+  font-size: 14px !important;
+}
+
+/* ==== Perks Section ==== */
+.perks-sec .c-image-feature .img-feature-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+}
+
+.perks-sec .c-image-feature .img-feature-container .img-container {
+  flex: 1 0 30px !important;
+  max-width: 30px !important;
+  margin-right: 16px !important;
+  padding: 0px !important;
+}
+
+.perks-sec .c-image-feature .img-feature-container .txt-container {
+  width: auto !important;
+  padding: 0px !important;
+}
+
+.perks-sec .c-image-feature .img-feature-container .txt-container .featureText {
+  display: none !important;
+}
+
+/* ==== Bonus Section ==== */
+.bonus-sec .bonus-row {
+  background-image: linear-gradient(to right, #9f5de2, #f489b3) !important;
+}
+
+/* ==== Media Queries ==== */
+
+@media (max-width: 767px) {
+  body .col-rv > .inner {
+    flex-direction: column-reverse !important;
+  }
+
+  body .c-section > .inner {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  body .c-section .c-row {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  body .c-section.btn-element-center .c-button {
+    text-align: center !important;
+  }
+
+  /* ==== Perks Section ==== */
+  body #preview-container .perks-sec .perks-row {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* ==== Bonus Section ==== */
+  body #preview-container .bonus-sec .bonus-row {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+
+/* ==== Tooltip Content ==== */
+.toolTipContainer {
+  position: absolute !important;
+  top: calc(100% + 20px) !important;
+  left: 0 !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 6px !important;
+  background-color: #fff !important;
+  z-index: 9999 !important;
+  padding: 18px !important;
+}
+
+.toolTipContainer p {
+  font-family: "Inter", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  color: #2d3748 !important;
+  line-height: 1.5 !important;
+}

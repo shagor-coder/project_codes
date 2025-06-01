@@ -25,7 +25,7 @@ app.get("/get-token", (req, res) => {
   const AccessToken = twilio.jwt.AccessToken;
   const VoiceGrant = AccessToken.VoiceGrant;
 
-  const identity = "browser_user"; // 👈 A unique identity for each caller
+  const identity = "browser_user"; // A unique identity for each caller
 
   const token = new AccessToken(
     TWILIO_ACCOUNT_SID,
@@ -37,7 +37,7 @@ app.get("/get-token", (req, res) => {
   );
 
   const voiceGrant = new VoiceGrant({
-    outgoingApplicationSid: TWILIO_TWIML_SID, // 👈 This allows outgoing calls!
+    outgoingApplicationSid: TWILIO_TWIML_SID, // This allows outgoing calls!
   });
 
   token.addGrant(voiceGrant);
@@ -45,12 +45,12 @@ app.get("/get-token", (req, res) => {
   res.json({ token: token.toJwt(), identity });
 });
 
-// 🎯 Handle Twilio Webhook for Outgoing Calls
+// Handle Twilio Webhook for Outgoing Calls
 app.post("/twiml", (req, res) => {
   const twiml = new twilio.twiml.VoiceResponse();
   // If call is from WebRTC, forward to GHL number
   if (req.body.From && req.body.From.startsWith("client:")) {
-    twiml.dial({ callerId: TWILIO_NUMBER }, EMILY_AI_NUMBER); // 🔥 Your GHL number
+    twiml.dial({ callerId: TWILIO_NUMBER }, EMILY_AI_NUMBER); // Your GHL number
   } else {
     return res.status(400).send("Invalid call source");
   }
