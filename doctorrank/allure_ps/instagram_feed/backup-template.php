@@ -1,0 +1,4499 @@
+<?php
+
+/*
+Template Name: Home
+*/
+
+get_header();
+?>
+<main class="content-wrap on-canvas">
+      <!-- Page Layout -->
+      <!-- Home Hero Module -->
+      <div class="banner home-hero mod-home_hero">
+        <div class="row">
+          <h2>
+            <span class="small wow fadeInLeft" data-wow-duration="2s"
+              >Allure Plastic Surgery</span
+            >
+          </h2>
+          <h1>
+            <span
+              class="wow fadeInLeft"
+              data-wow-duration="2s"
+              data-wow-delay="1s"
+              >Top Plastic Surgeon in NYC, Staten Island & NJ</span
+            >
+          </h1>
+          <div
+            class="text wow fadeInLeft"
+            data-wow-duration="2s"
+            data-wow-delay="2s"
+          >
+            <p class="my-p">
+              Dr. Elliot Heller, a certified surgeon with over 25 years of
+              experience, offers advanced liposuction, breast implants, tummy
+              tuck, and facial procedures in Manhattan, Staten Island & New Jersey. Achieve
+              natural, stunning results with personalized care. Book your free
+              consultation today!
+            </p>
+
+            <div class="center-btn">
+              <!-- 						<h2 class="board-text"> 
+							Board-certified Surgeon
+Dr. Elliot Heller
+						</h2>
+						<p class="my-p">
+							
+							Over 10,000 successful transformations & 25 years of experience
+						</p> -->
+              <img
+                src="/wp-content/uploads/2025/06/stars.webp"
+                alt="Stars"
+                class="star responsive-image"
+              />
+              <br />
+              <a href="/contact/" class="btn whiteflair" style="margin-top: 5px"
+                >Free consultation</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="flair-border">
+          <div class="border-primary"></div>
+          <div class="border-dark"></div>
+        </div>
+        <picture class="background">
+          <img
+            loading="eager"
+            src="/wp-content/uploads/2025/07/homepage-hero.webp"
+            alt="Beautiful Woman in NYC."
+            rel="preload"
+            as="image"
+          />
+        </picture>
+      </div>
+
+      <!-- Doctor Module Module -->
+
+      <div class="surgeon-container">
+        <div class="surgeon-image-panel">
+          <div class="surgeon-image-overlay"></div>
+          <img
+            src="/wp-content/uploads/2025/06/1596496379-homepage3-doctorheller.webp"
+            alt="Dr. John E. Sherman in his New York clinic"
+          />
+        </div>
+
+        <div class="surgeon-content-panel">
+          <div class="surgeon-content-wrapper">
+            <div class="surgeon-header">
+              <p class="surgeon-subtitle">
+                Best Plastic Surgeon in Manhattan, Staten Island and New Jersey
+              </p>
+              <h2>Dr. Elliot Heller, MD</h2>
+            </div>
+
+            <section class="surgeon-stats">
+              <div class="surgeon-stat-item">
+                <span class="surgeon-stat-number">25+</span>
+                <span class="surgeon-stat-label">Years of Experience</span>
+              </div>
+              <div class="surgeon-stat-item">
+                <span class="surgeon-stat-number">10K+</span>
+                <span class="surgeon-stat-label">Procedures Performed</span>
+              </div>
+            </section>
+
+            <div class="surgeon-divider"></div>
+
+            <section class="surgeon-bio">
+              <p>Dr. Elliot Heller, MD, is a certified surgeon. He graduated from State University of New York College of Medicine and completed his residency at NYU Langone Medical Center. Dr. Heller completed his fellowship in plastic surgery at Mount Sinai Medical Centre. Currently, Dr. Heller has an average patient rating of 5.0 based on over 100 reviews. He practices at Allure Plastic Surgery in Manhattan, Staten Island, and Edison, NJ</p>
+            </section>
+
+            <section class="surgeon-credentials">
+              <h3 class="surgeon-section-title">Credentials & Recognitions</h3>
+              <ul class="surgeon-credentials-list">
+                <li>
+                  <i class="fas fa-award"></i> Certified by the American Academy
+                  Aesthetic and Restorative Surgery
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Founding Member of the New
+                  Jersey Cosmetic Surgery Society
+                </li>
+                <li>
+                  <i class="fas fa-star"></i> Published in Star-Ledger, News
+                  Tribune, Review, and Highland Park Herald
+                </li>
+              </ul>
+            </section>
+
+            <div class="surgeon-cta-section">
+              <a
+                href="/contact/"
+                class="surgeon-cta-button"
+                >Message Dr. Heller</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- One Column Module -->
+      <div class="container mod-quote_slider wow fadeInUp">
+        <div class="row">
+<!--<div
+            class="inner wow fadeInUp"
+            data-wow-duration="2s"
+            data-wow-delay="1s"
+          >
+            <div class="owl-carousel">
+              <div class="item">
+                <div class="s3grid">
+                  <div class="feat2">
+                    <h3>I love my plastic surgeon! My BBL came out perfect!</h3>
+                  </div>
+                  <div class="feat2">
+                    <p>
+                      I went to multiple consultations with other doctors, and
+                      none of them were as detailed, informative, or personal as
+                      Dr. Heller. I absolutely am so happy I consulted and did
+                      my surgery with him.
+                    </p>
+                  </div>
+                </div>
+                <p class="author">&mdash; Kat</p>
+              </div>
+              <div class="item">
+                <div class="s3grid">
+                  <div class="feat2">
+                    <h3>I could not be happier!</h3>
+                  </div>
+                  <div class="feat2">
+                    <p>
+                      I am truly happy with my chin liposuction results! I am 30
+                      days post op and looking at my before pictures today truly
+                      amazed me. Dr. Heller did an incredible job.
+                    </p>
+                  </div>
+                </div>
+                <p class="author">&mdash; S.R.</p>
+              </div>
+              <div class="item">
+                <div class="s3grid">
+                  <div class="feat2">
+                    <h3>
+                      I just wanted to thank you again for the wonderful new
+                      nose.
+                    </h3>
+                  </div>
+                  <div class="feat2">
+                    <p>
+                      Thanks to you I have confidence - something I never had.
+                      You are a wonderful surgeon. I am so glad I chose you.
+                    </p>
+                  </div>
+                </div>
+                <p class="author">&mdash; J.J.</p>
+              </div>
+              <div class="item">
+                <div class="s3grid">
+                  <div class="feat2">
+                    <h3>My experience was nothing short of perfect!</h3>
+                  </div>
+                  <div class="feat2">
+                    <p>
+                      I had no complications, felt perfectly at ease, and am
+                      ecstatic with the results. You and your staff deserve to
+                      be recommended on the tremendous job you do every day. I
+                      would like to genuinely thank you again.
+                    </p>
+                  </div>
+                </div>
+                <p class="author">&mdash; L.M.</p>
+              </div>
+              <div class="item">
+                <div class="s3grid">
+                  <div class="feat2">
+                    <h3>
+                      Thank you all for taking care of me and making me feel at
+                      ease.
+                    </h3>
+                  </div>
+                  <div class="feat2">
+                    <p>
+                      Dr.Heller, I appreciate your expertise, kindness and
+                      excellence! Thank you for your genuine concern & amazing
+                      work fixing me up.
+                    </p>
+                  </div>
+                </div>
+                <p class="author">&mdash; B.C.</p>
+              </div>
+            </div>
+          </div> -->
+			
+			<script async src="https://www.instagram.com/embed.js"></script>
+		
+		<div class="mb-20">
+			<blockquote
+      class="instagram-media"
+      data-instgrm-permalink="https://www.instagram.com/realdrbody/?utm_source=ig_embed&amp;utm_campaign=loading"
+      data-instgrm-version="14"
+      style="
+        background: #fff;
+        border: 0;
+        border-radius: 3px;
+        box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.5),
+          0 1px 10px 0 rgba(0, 0, 0, 0.15);
+        margin: 1px;
+        max-width: 540px;
+        min-width: 326px;
+        padding: 0;
+        width: 99.375%;
+        width: -webkit-calc(100% - 2px);
+        width: calc(100% - 2px);
+      "
+    >
+      <div style="padding: 16px">
+        <a
+          href="https://www.instagram.com/realdrbody/?utm_source=ig_embed&amp;utm_campaign=loading"
+          style="
+            background: #ffffff;
+            line-height: 0;
+            padding: 0 0;
+            text-align: center;
+            text-decoration: none;
+            width: 100%;
+          "
+          target="_blank"
+        >
+          <div style="display: flex; flex-direction: row; align-items: center">
+            <div
+              style="
+                background-color: #f4f4f4;
+                border-radius: 50%;
+                flex-grow: 0;
+                height: 40px;
+                margin-right: 14px;
+                width: 40px;
+              "
+            ></div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+                justify-content: center;
+              "
+            >
+              <div
+                style="
+                  background-color: #f4f4f4;
+                  border-radius: 4px;
+                  flex-grow: 0;
+                  height: 14px;
+                  margin-bottom: 6px;
+                  width: 100px;
+                "
+              ></div>
+              <div
+                style="
+                  background-color: #f4f4f4;
+                  border-radius: 4px;
+                  flex-grow: 0;
+                  height: 14px;
+                  width: 60px;
+                "
+              ></div>
+            </div>
+          </div>
+          <div style="padding: 19% 0"></div>
+          <div
+            style="
+              display: block;
+              height: 50px;
+              margin: 0 auto 12px;
+              width: 50px;
+            "
+          >
+            <svg
+              width="50px"
+              height="50px"
+              viewBox="0 0 60 60"
+              version="1.1"
+              xmlns="https://www.w3.org/2000/svg"
+              xmlns:xlink="https://www.w3.org/1999/xlink"
+            >
+              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g
+                  transform="translate(-511.000000, -20.000000)"
+                  fill="#000000"
+                >
+                  <g>
+                    <path
+                      d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425
+
+Artym Saribkyan, [9/17/2025 12:54 AM]
+C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"
+                    ></path>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div style="padding-top: 8px">
+            <div
+              style="
+                color: #3897f0;
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 550;
+                line-height: 18px;
+              "
+            >
+              View this profile on Instagram
+            </div>
+          </div>
+          <div style="padding: 12.5% 0"></div>
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              margin-bottom: 14px;
+              align-items: center;
+            "
+          >
+            <div>
+              <div
+                style="
+                  background-color: #f4f4f4;
+                  border-radius: 50%;
+                  height: 12.5px;
+                  width: 12.5px;
+                  transform: translateX(0px) translateY(7px);
+                "
+              ></div>
+              <div
+                style="
+                  background-color: #f4f4f4;
+                  height: 12.5px;
+                  transform: rotate(-45deg) translateX(3px) translateY(1px);
+                  width: 12.5px;
+                  flex-grow: 0;
+                  margin-right: 14px;
+                  margin-left: 2px;
+                "
+              ></div>
+              <div
+                style="
+                  background-color: #f4f4f4;
+                  border-radius: 50%;
+                  height: 12.5px;
+                  width: 12.5px;
+                  transform: translateX(9px) translateY(-18px);
+                "
+              ></div>
+            </div>
+            <div style="margin-left: 8px">
+              <div
+                style="
+                  background-color: #f4f4f4;
+                  border-radius: 50%;
+                  flex-grow: 0;
+                  height: 20px;
+                  width: 20px;
+                "
+              ></div>
+              <div
+                style="
+                  width: 0;
+                  height: 0;
+                  border-top: 2px solid transparent;
+                  border-left: 6px solid #f4f4f4;
+                  border-bottom: 2px solid transparent;
+                  transform: translateX(16px) translateY(-4px) rotate(30deg);
+                "
+              ></div>
+            </div>
+            <div style="margin-left: auto">
+              <div
+                style="
+                  width: 0px;
+                  border-top: 8px solid #f4f4f4;
+                  border-right: 8px solid transparent;
+                  transform: translateY(16px);
+                "
+              ></div>
+              <div
+                style="
+                  background-color: #f4f4f4;
+                  flex-grow: 0;
+                  height: 12px;
+                  width: 16px;
+                  transform: translateY(-4px);
+                "
+              ></div>
+              <div
+                style="
+                  width: 0;
+                  height: 0;
+                  border-top: 8px solid #f4f4f4;
+                  border-left: 8px solid transparent;
+                  transform: translateY(-4px) translateX(8px);
+                "
+              ></div>
+            </div>
+          </div>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              flex-grow: 1;
+              justify-content: center;
+              margin-bottom: 24px;
+            "
+          >
+            <div
+              style="
+                background-color: #f4f4f4;
+                border-radius: 4px;
+                flex-grow: 0;
+                height: 14px;
+                margin-bottom: 6px;
+                width: 224px;
+              "
+            ></div>
+            <div
+              style="
+                background-color: #f4f4f4;
+                border-radius: 4px;
+                flex-grow: 0;
+                height: 14px;
+                width: 144px;
+              "
+            ></div></div
+        ></a>
+        <p
+          style="
+            color: #c9c8cd;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            line-height: 17px;
+            margin-bottom: 0;
+            margin-top: 8px;
+            overflow: hidden;
+            padding: 8px 0 7px;
+            text-align: center;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          "
+        >
+          <a
+            href="https://www.instagram.com/realdrbody/?utm_source=ig_embed&amp;utm_campaign=loading"
+            style="
+              color: #c9c8cd;
+              font-family: Arial, sans-serif;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: normal;
+              line-height: 17px;
+            "
+            target="_blank"
+            >Dr. Elliot Heller</a
+          >
+          (@<a
+            href="https://www.instagram.com/realdrbody/?utm_source=ig_embed&amp;utm_campaign=loading"
+            style="
+              color: #c9c8cd;
+              font-family: Arial, sans-serif;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: normal;
+              line-height: 17px;
+            "
+            target="_blank"
+            >realdrbody</a
+          >) • Instagram photos and videos
+        </p>
+      </div>
+    </blockquote>
+		</div>
+		
+		<link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    
+    <div class="swiper instaSlider">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <blockquote
+            class="instagram-media"
+            data-instgrm-permalink="https://www.instagram.com/reel/DH6Vr--OX_9/?utm_source=ig_embed&amp;utm_campaign=loading"
+            data-instgrm-version="14"
+            style="
+              background: #fff;
+              border: 0;
+              border-radius: 3px;
+              box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.5),
+                0 1px 10px 0 rgba(0, 0, 0, 0.15);
+              margin: 1px;
+              max-width: 540px;
+              min-width: 326px;
+              padding: 0;
+              width: 99.375%;
+              width: -webkit-calc(100% - 2px);
+              width: calc(100% - 2px);
+            "
+          >
+            <div style="padding: 16px">
+              <a
+                href="https://www.instagram.com/reel/DH6Vr--OX_9/?utm_source=ig_embed&amp;utm_campaign=loading"
+                style="
+                  background: #ffffff;
+                  line-height: 0;
+                  padding: 0 0;
+                  text-align: center;
+                  text-decoration: none;
+                  width: 100%;
+                "
+                target="_blank"
+              >
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                  "
+                >
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 50%;
+                      flex-grow: 0;
+                      height: 40px;
+                      margin-right: 14px;
+                      width: 40px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      flex-grow: 1;
+                      justify-content: center;
+                    "
+                  >
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 4px;
+                        flex-grow: 0;
+                        height: 14px;
+                        margin-bottom: 6px;
+                        width: 100px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 4px;
+                        flex-grow: 0;
+                        height: 14px;
+                        width: 60px;
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0"></div>
+                <div
+                  style="
+                    display: block;
+                    height: 50px;
+                    margin: 0 auto 12px;
+                    width: 50px;
+                  "
+                >
+                  <svg
+                    width="50px"
+                    height="50px"
+                    viewBox="0 0 60 60"
+                    version="1.1"
+                    xmlns="https://www.w3.org/2000/svg"
+                    xmlns:xlink="https://www.w3.org/1999/xlink"
+                  >
+                    <g
+                      stroke="none"
+                      stroke-width="1"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <g
+                        transform="translate(-511.000000, -20.000000)"
+                        fill="#000000"
+                      >
+                        <g>
+                          <path
+                            d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"
+                          ></path>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <div style="padding-top: 8px">
+                  <div
+                    style="
+                      color: #3897f0;
+                      font-family: Arial, sans-serif;
+                      font-size: 14px;
+                      font-style: normal;
+                      font-weight: 550;
+                      line-height: 18px;
+                    "
+                  >
+                    View this post on Instagram
+                  </div>
+                </div>
+                <div style="padding: 12.5% 0"></div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 14px;
+                    align-items: center;
+                  "
+                >
+                  <div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        height: 12.5px;
+                        width: 12.5px;
+                        transform: translateX(0px) translateY(7px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        height: 12.5px;
+                        transform: rotate(-45deg) translateX(3px)
+                          translateY(1px);
+                        width: 12.5px;
+                        flex-grow: 0;
+                        margin-right: 14px;
+                        margin-left: 2px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        height: 12.5px;
+                        width: 12.5px;
+                        transform: translateX(9px) translateY(-18px);
+                      "
+                    ></div>
+                  </div>
+                  <div style="margin-left: 8px">
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        flex-grow: 0;
+                        height: 20px;
+                        width: 20px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        width: 0;
+                        height: 0;
+                        border-top: 2px solid transparent;
+                        border-left: 6px solid #f4f4f4;
+                        border-bottom: 2px solid transparent;
+                        transform: translateX(16px) translateY(-4px)
+                          rotate(30deg);
+                      "
+                    ></div>
+                  </div>
+                  <div style="margin-left: auto">
+                    <div
+                      style="
+                        width: 0px;
+                        border-top: 8px solid #f4f4f4;
+                        border-right: 8px solid transparent;
+                        transform: translateY(16px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        flex-grow: 0;
+                        height: 12px;
+                        width: 16px;
+                        transform: translateY(-4px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        width: 0;
+                        height: 0;
+                        border-top: 8px solid #f4f4f4;
+                        border-left: 8px solid transparent;
+                        transform: translateY(-4px) translateX(8px);
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+                    justify-content: center;
+                    margin-bottom: 24px;
+                  "
+                >
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 4px;
+                      flex-grow: 0;
+                      height: 14px;
+                      margin-bottom: 6px;
+                      width: 224px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 4px;
+                      flex-grow: 0;
+                      height: 14px;
+                      width: 144px;
+                    "
+                  ></div></div
+              ></a>
+              <p
+                style="
+                  color: #c9c8cd;
+                  font-family: Arial, sans-serif;
+                  font-size: 14px;
+                  line-height: 17px;
+                  margin-bottom: 0;
+                  margin-top: 8px;
+                  overflow: hidden;
+                  padding: 8px 0 7px;
+                  text-align: center;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                "
+              >
+                <a
+                  href="https://www.instagram.com/reel/DH6Vr--OX_9/?utm_source=ig_embed&amp;utm_campaign=loading"
+                  style="
+                    color: #c9c8cd;
+                    font-family: Arial, sans-serif;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: normal;
+                    line-height: 17px;
+                    text-decoration: none;
+                  "
+                  target="_blank"
+                  >A post shared by Dr. Elliot Heller (@realdrbody)</a
+                >
+              </p>
+            </div>
+          </blockquote>
+        </div>
+        <div class="swiper-slide">
+          <blockquote
+            class="instagram-media"
+            data-instgrm-permalink="https://www.instagram.com/reel/DLkYwm_uFz9/?utm_source=ig_embed&amp;utm_campaign=loading"
+            data-instgrm-version="14"
+            style="
+              background: #fff;
+              border: 0;
+              border-radius: 3px;
+              box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.5),
+                0 1px 10px 0 rgba(0, 0, 0, 0.15);
+              margin: 1px;
+              max-width: 540px;
+              min-width: 326px;
+              padding: 0;
+              width: 99.375%;
+              width: -webkit-calc(100% - 2px);
+              width: calc(100% - 2px);
+            "
+          >
+            <div style="padding: 16px">
+              <a
+                href="https://www.instagram.com/reel/DLkYwm_uFz9/?utm_source=ig_embed&amp;utm_campaign=loading"
+                style="
+                  background: #ffffff;
+                  line-height: 0;
+                  padding: 0 0;
+                  text-align: center;
+                  text-decoration: none;
+                  width: 100%;
+                "
+                target="_blank"
+              >
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                  "
+                >
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 50%;
+                      flex-grow: 0;
+                      height: 40px;
+                      margin-right: 14px;
+                      width: 40px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      flex-grow: 1;
+                      justify-content: center;
+                    "
+                  >
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 4px;
+                        flex-grow: 0;
+                        height: 14px;
+                        margin-bottom: 6px;
+                        width: 100px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 4px;
+                        flex-grow: 0;
+                        height: 14px;
+                        width: 60px;
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0"></div>
+                <div
+                  style="
+                    display: block;
+                    height: 50px;
+                    margin: 0 auto 12px;
+                    width: 50px;
+                  "
+                >
+                  <svg
+                    width="50px"
+                    height="50px"
+                    viewBox="0 0 60 60"
+                    version="1.1"
+                    xmlns="https://www.w3.org/2000/svg"
+                    xmlns:xlink="https://www.w3.org/1999/xlink"
+                  >
+                    <g
+                      stroke="none"
+                      stroke-width="1"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <g
+                        transform="translate(-511.000000, -20.000000)"
+                        fill="#000000"
+                      >
+                        <g>
+                          <path
+                            d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"
+                          ></path>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <div style="padding-top: 8px">
+                  <div
+                    style="
+                      color: #3897f0;
+                      font-family: Arial, sans-serif;
+                      font-size: 14px;
+                      font-style: normal;
+                      font-weight: 550;
+                      line-height: 18px;
+                    "
+                  >
+                    View this post on Instagram
+                  </div>
+                </div>
+                <div style="padding: 12.5% 0"></div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 14px;
+                    align-items: center;
+                  "
+                >
+                  <div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        height: 12.5px;
+                        width: 12.5px;
+                        transform: translateX(0px) translateY(7px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        height: 12.5px;
+                        transform: rotate(-45deg) translateX(3px)
+                          translateY(1px);
+                        width: 12.5px;
+                        flex-grow: 0;
+                        margin-right: 14px;
+                        margin-left: 2px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        height: 12.5px;
+                        width: 12.5px;
+                        transform: translateX(9px) translateY(-18px);
+                      "
+                    ></div>
+                  </div>
+                  <div style="margin-left: 8px">
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        flex-grow: 0;
+                        height: 20px;
+                        width: 20px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        width: 0;
+                        height: 0;
+                        border-top: 2px solid transparent;
+                        border-left: 6px solid #f4f4f4;
+                        border-bottom: 2px solid transparent;
+                        transform: translateX(16px) translateY(-4px)
+                          rotate(30deg);
+                      "
+                    ></div>
+                  </div>
+                  <div style="margin-left: auto">
+                    <div
+                      style="
+                        width: 0px;
+                        border-top: 8px solid #f4f4f4;
+                        border-right: 8px solid transparent;
+                        transform: translateY(16px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        flex-grow: 0;
+                        height: 12px;
+                        width: 16px;
+                        transform: translateY(-4px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        width: 0;
+                        height: 0;
+                        border-top: 8px solid #f4f4f4;
+                        border-left: 8px solid transparent;
+                        transform: translateY(-4px) translateX(8px);
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+                    justify-content: center;
+                    margin-bottom: 24px;
+                  "
+                >
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 4px;
+                      flex-grow: 0;
+                      height: 14px;
+                      margin-bottom: 6px;
+                      width: 224px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 4px;
+                      flex-grow: 0;
+                      height: 14px;
+                      width: 144px;
+                    "
+                  ></div></div
+              ></a>
+              <p
+                style="
+                  color: #c9c8cd;
+                  font-family: Arial, sans-serif;
+                  font-size: 14px;
+                  line-height: 17px;
+                  margin-bottom: 0;
+                  margin-top: 8px;
+                  overflow: hidden;
+                  padding: 8px 0 7px;
+                  text-align: center;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                "
+              >
+                <a
+                  href="https://www.instagram.com/reel/DLkYwm_uFz9/?utm_source=ig_embed&amp;utm_campaign=loading"
+                  style="
+                    color: #c9c8cd;
+                    font-family: Arial, sans-serif;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: normal;
+                    line-height: 17px;
+                    text-decoration: none;
+                  "
+                  target="_blank"
+                  >A post shared by Dr. Elliot Heller (@realdrbody)</a
+                >
+              </p>
+            </div>
+          </blockquote>
+        </div>
+        <div class="swiper-slide">
+          <blockquote
+            class="instagram-media"
+            data-instgrm-permalink="https://www.instagram.com/reel/DLF9BsTO9fx/?utm_source=ig_embed&amp;utm_campaign=loading"
+            data-instgrm-version="14"
+            style="
+              background: #fff;
+              border: 0;
+              border-radius: 3px;
+              box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.5),
+                0 1px 10px 0 rgba(0, 0, 0, 0.15);
+              margin: 1px;
+              max-width: 540px;
+              min-width: 326px;
+              padding: 0;
+              width: 99.375%;
+              width: -webkit-calc(100% - 2px);
+              width: calc(100% - 2px);
+            "
+          >
+            <div style="padding: 16px">
+              <a
+                href="https://www.instagram.com/reel/DLF9BsTO9fx/?utm_source=ig_embed&amp;utm_campaign=loading"
+                style="
+                  background: #ffffff;
+                  line-height: 0;
+                  padding: 0 0;
+                  text-align: center;
+                  text-decoration: none;
+                  width: 100%;
+                "
+                target="_blank"
+              >
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                  "
+                >
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 50%;
+                      flex-grow: 0;
+                      height: 40px;
+                      margin-right: 14px;
+                      width: 40px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      flex-grow: 1;
+                      justify-content: center;
+                    "
+                  >
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 4px;
+                        flex-grow: 0;
+                        height: 14px;
+                        margin-bottom: 6px;
+                        width: 100px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 4px;
+                        flex-grow: 0;
+                        height: 14px;
+                        width: 60px;
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0"></div>
+                <div
+                  style="
+                    display: block;
+                    height: 50px;
+                    margin: 0 auto 12px;
+                    width: 50px;
+                  "
+                >
+                  <svg
+                    width="50px"
+                    height="50px"
+                    viewBox="0 0 60 60"
+                    version="1.1"
+                    xmlns="https://www.w3.org/2000/svg"
+                    xmlns:xlink="https://www.w3.org/1999/xlink"
+                  >
+                    <g
+                      stroke="none"
+                      stroke-width="1"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <g
+                        transform="translate(-511.000000, -20.000000)"
+                        fill="#000000"
+                      >
+                        <g>
+                          <path
+                            d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"
+                          ></path>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <div style="padding-top: 8px">
+                  <div
+                    style="
+                      color: #3897f0;
+                      font-family: Arial, sans-serif;
+                      font-size: 14px;
+                      font-style: normal;
+                      font-weight: 550;
+                      line-height: 18px;
+                    "
+                  >
+                    View this post on Instagram
+                  </div>
+                </div>
+                <div style="padding: 12.5% 0"></div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 14px;
+                    align-items: center;
+                  "
+                >
+                  <div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        height: 12.5px;
+                        width: 12.5px;
+                        transform: translateX(0px) translateY(7px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        height: 12.5px;
+                        transform: rotate(-45deg) translateX(3px)
+                          translateY(1px);
+                        width: 12.5px;
+                        flex-grow: 0;
+                        margin-right: 14px;
+                        margin-left: 2px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        height: 12.5px;
+                        width: 12.5px;
+                        transform: translateX(9px) translateY(-18px);
+                      "
+                    ></div>
+                  </div>
+                  <div style="margin-left: 8px">
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        flex-grow: 0;
+                        height: 20px;
+                        width: 20px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        width: 0;
+                        height: 0;
+                        border-top: 2px solid transparent;
+                        border-left: 6px solid #f4f4f4;
+                        border-bottom: 2px solid transparent;
+                        transform: translateX(16px) translateY(-4px)
+                          rotate(30deg);
+                      "
+                    ></div>
+                  </div>
+                  <div style="margin-left: auto">
+                    <div
+                      style="
+                        width: 0px;
+                        border-top: 8px solid #f4f4f4;
+                        border-right: 8px solid transparent;
+                        transform: translateY(16px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        flex-grow: 0;
+                        height: 12px;
+                        width: 16px;
+                        transform: translateY(-4px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        width: 0;
+                        height: 0;
+                        border-top: 8px solid #f4f4f4;
+                        border-left: 8px solid transparent;
+                        transform: translateY(-4px) translateX(8px);
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+                    justify-content: center;
+                    margin-bottom: 24px;
+                  "
+                >
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 4px;
+                      flex-grow: 0;
+                      height: 14px;
+                      margin-bottom: 6px;
+                      width: 224px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 4px;
+                      flex-grow: 0;
+                      height: 14px;
+                      width: 144px;
+                    "
+                  ></div></div
+              ></a>
+              <p
+                style="
+                  color: #c9c8cd;
+                  font-family: Arial, sans-serif;
+                  font-size: 14px;
+                  line-height: 17px;
+                  margin-bottom: 0;
+                  margin-top: 8px;
+                  overflow: hidden;
+                  padding: 8px 0 7px;
+                  text-align: center;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                "
+              >
+                <a
+                  href="https://www.instagram.com/reel/DLF9BsTO9fx/?utm_source=ig_embed&amp;utm_campaign=loading"
+                  style="
+                    color: #c9c8cd;
+                    font-family: Arial, sans-serif;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: normal;
+                    line-height: 17px;
+                    text-decoration: none;
+                  "
+                  target="_blank"
+                  >A post shared by Dr. Elliot Heller (@realdrbody)</a
+                >
+              </p>
+            </div>
+          </blockquote>
+        </div>
+        <div class="swiper-slide">
+          <blockquote
+            class="instagram-media"
+            data-instgrm-permalink="https://www.instagram.com/p/DMX_sbLukIs/?utm_source=ig_embed&amp;utm_campaign=loading"
+            data-instgrm-version="14"
+            style="
+              background: #fff;
+              border: 0;
+              border-radius: 3px;
+              box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.5),
+                0 1px 10px 0 rgba(0, 0, 0, 0.15);
+              margin: 1px;
+              max-width: 540px;
+              min-width: 326px;
+              padding: 0;
+              width: 99.375%;
+              width: -webkit-calc(100% - 2px);
+              width: calc(100% - 2px);
+            "
+          >
+            <div style="padding: 16px">
+              <a
+                href="https://www.instagram.com/p/DMX_sbLukIs/?utm_source=ig_embed&amp;utm_campaign=loading"
+                style="
+                  background: #ffffff;
+                  line-height: 0;
+                  padding: 0 0;
+                  text-align: center;
+                  text-decoration: none;
+                  width: 100%;
+                "
+                target="_blank"
+              >
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                  "
+                >
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 50%;
+                      flex-grow: 0;
+                      height: 40px;
+                      margin-right: 14px;
+                      width: 40px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      flex-grow: 1;
+                      justify-content: center;
+                    "
+                  >
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 4px;
+                        flex-grow: 0;
+                        height: 14px;
+                        margin-bottom: 6px;
+                        width: 100px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 4px;
+                        flex-grow: 0;
+                        height: 14px;
+                        width: 60px;
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0"></div>
+                <div
+                  style="
+                    display: block;
+                    height: 50px;
+                    margin: 0 auto 12px;
+                    width: 50px;
+                  "
+                >
+                  <svg
+                    width="50px"
+                    height="50px"
+                    viewBox="0 0 60 60"
+                    version="1.1"
+                    xmlns="https://www.w3.org/2000/svg"
+                    xmlns:xlink="https://www.w3.org/1999/xlink"
+                  >
+                    <g
+                      stroke="none"
+                      stroke-width="1"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <g
+                        transform="translate(-511.000000, -20.000000)"
+                        fill="#000000"
+                      >
+                        <g>
+                          <path
+                            d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"
+                          ></path>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <div style="padding-top: 8px">
+                  <div
+                    style="
+                      color: #3897f0;
+                      font-family: Arial, sans-serif;
+                      font-size: 14px;
+                      font-style: normal;
+                      font-weight: 550;
+                      line-height: 18px;
+                    "
+                  >
+                    View this post on Instagram
+                  </div>
+                </div>
+                <div style="padding: 12.5% 0"></div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 14px;
+                    align-items: center;
+                  "
+                >
+                  <div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        height: 12.5px;
+                        width: 12.5px;
+                        transform: translateX(0px) translateY(7px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        height: 12.5px;
+                        transform: rotate(-45deg) translateX(3px)
+                          translateY(1px);
+                        width: 12.5px;
+                        flex-grow: 0;
+                        margin-right: 14px;
+                        margin-left: 2px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        height: 12.5px;
+                        width: 12.5px;
+                        transform: translateX(9px) translateY(-18px);
+                      "
+                    ></div>
+                  </div>
+                  <div style="margin-left: 8px">
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        flex-grow: 0;
+                        height: 20px;
+                        width: 20px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        width: 0;
+                        height: 0;
+                        border-top: 2px solid transparent;
+                        border-left: 6px solid #f4f4f4;
+                        border-bottom: 2px solid transparent;
+                        transform: translateX(16px) translateY(-4px)
+                          rotate(30deg);
+                      "
+                    ></div>
+                  </div>
+                  <div style="margin-left: auto">
+                    <div
+                      style="
+                        width: 0px;
+                        border-top: 8px solid #f4f4f4;
+                        border-right: 8px solid transparent;
+                        transform: translateY(16px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        flex-grow: 0;
+                        height: 12px;
+                        width: 16px;
+                        transform: translateY(-4px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        width: 0;
+                        height: 0;
+                        border-top: 8px solid #f4f4f4;
+                        border-left: 8px solid transparent;
+                        transform: translateY(-4px) translateX(8px);
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+                    justify-content: center;
+                    margin-bottom: 24px;
+                  "
+                >
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 4px;
+                      flex-grow: 0;
+                      height: 14px;
+                      margin-bottom: 6px;
+                      width: 224px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 4px;
+                      flex-grow: 0;
+                      height: 14px;
+                      width: 144px;
+                    "
+                  ></div></div
+              ></a>
+              <p
+                style="
+                  color: #c9c8cd;
+                  font-family: Arial, sans-serif;
+                  font-size: 14px;
+                  line-height: 17px;
+                  margin-bottom: 0;
+                  margin-top: 8px;
+                  overflow: hidden;
+                  padding: 8px 0 7px;
+                  text-align: center;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                "
+              >
+                <a
+                  href="https://www.instagram.com/p/DMX_sbLukIs/?utm_source=ig_embed&amp;utm_campaign=loading"
+                  style="
+                    color: #c9c8cd;
+                    font-family: Arial, sans-serif;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: normal;
+                    line-height: 17px;
+                    text-decoration: none;
+                  "
+                  target="_blank"
+                  >A post shared by Dr. Elliot Heller (@realdrbody)</a
+                >
+              </p>
+            </div>
+          </blockquote>
+        </div>
+        <div class="swiper-slide">
+          <blockquote
+            class="instagram-media"
+            data-instgrm-permalink="https://www.instagram.com/reel/DLSwX5buJo_/?utm_source=ig_embed&amp;utm_campaign=loading"
+            data-instgrm-version="14"
+            style="
+              background: #fff;
+              border: 0;
+              border-radius: 3px;
+              box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.5),
+                0 1px 10px 0 rgba(0, 0, 0, 0.15);
+              margin: 1px;
+              max-width: 540px;
+              min-width: 326px;
+              padding: 0;
+              width: 99.375%;
+              width: -webkit-calc(100% - 2px);
+              width: calc(100% - 2px);
+            "
+          >
+            <div style="padding: 16px">
+              <a
+                href="https://www.instagram.com/reel/DLSwX5buJo_/?utm_source=ig_embed&amp;utm_campaign=loading"
+                style="
+                  background: #ffffff;
+                  line-height: 0;
+                  padding: 0 0;
+                  text-align: center;
+                  text-decoration: none;
+                  width: 100%;
+                "
+                target="_blank"
+              >
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                  "
+                >
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 50%;
+                      flex-grow: 0;
+                      height: 40px;
+                      margin-right: 14px;
+                      width: 40px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      flex-grow: 1;
+                      justify-content: center;
+                    "
+                  >
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 4px;
+                        flex-grow: 0;
+                        height: 14px;
+                        margin-bottom: 6px;
+                        width: 100px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 4px;
+                        flex-grow: 0;
+                        height: 14px;
+                        width: 60px;
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0"></div>
+                <div
+                  style="
+                    display: block;
+                    height: 50px;
+                    margin: 0 auto 12px;
+                    width: 50px;
+                  "
+                >
+                  <svg
+                    width="50px"
+                    height="50px"
+                    viewBox="0 0 60 60"
+                    version="1.1"
+                    xmlns="https://www.w3.org/2000/svg"
+                    xmlns:xlink="https://www.w3.org/1999/xlink"
+                  >
+                    <g
+                      stroke="none"
+                      stroke-width="1"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <g
+                        transform="translate(-511.000000, -20.000000)"
+                        fill="#000000"
+                      >
+                        <g>
+                          <path
+                            d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"
+                          ></path>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <div style="padding-top: 8px">
+                  <div
+                    style="
+                      color: #3897f0;
+                      font-family: Arial, sans-serif;
+                      font-size: 14px;
+                      font-style: normal;
+                      font-weight: 550;
+                      line-height: 18px;
+                    "
+                  >
+                    View this post on Instagram
+                  </div>
+                </div>
+                <div style="padding: 12.5% 0"></div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 14px;
+                    align-items: center;
+                  "
+                >
+                  <div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        height: 12.5px;
+                        width: 12.5px;
+                        transform: translateX(0px) translateY(7px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        height: 12.5px;
+                        transform: rotate(-45deg) translateX(3px)
+                          translateY(1px);
+                        width: 12.5px;
+                        flex-grow: 0;
+                        margin-right: 14px;
+                        margin-left: 2px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        height: 12.5px;
+                        width: 12.5px;
+                        transform: translateX(9px) translateY(-18px);
+                      "
+                    ></div>
+                  </div>
+                  <div style="margin-left: 8px">
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        flex-grow: 0;
+                        height: 20px;
+                        width: 20px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        width: 0;
+                        height: 0;
+                        border-top: 2px solid transparent;
+                        border-left: 6px solid #f4f4f4;
+                        border-bottom: 2px solid transparent;
+                        transform: translateX(16px) translateY(-4px)
+                          rotate(30deg);
+                      "
+                    ></div>
+                  </div>
+                  <div style="margin-left: auto">
+                    <div
+                      style="
+                        width: 0px;
+                        border-top: 8px solid #f4f4f4;
+                        border-right: 8px solid transparent;
+                        transform: translateY(16px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        flex-grow: 0;
+                        height: 12px;
+                        width: 16px;
+                        transform: translateY(-4px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        width: 0;
+                        height: 0;
+                        border-top: 8px solid #f4f4f4;
+                        border-left: 8px solid transparent;
+                        transform: translateY(-4px) translateX(8px);
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+                    justify-content: center;
+                    margin-bottom: 24px;
+                  "
+                >
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 4px;
+                      flex-grow: 0;
+                      height: 14px;
+                      margin-bottom: 6px;
+                      width: 224px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 4px;
+                      flex-grow: 0;
+                      height: 14px;
+                      width: 144px;
+                    "
+                  ></div></div
+              ></a>
+              <p
+                style="
+                  color: #c9c8cd;
+                  font-family: Arial, sans-serif;
+                  font-size: 14px;
+                  line-height: 17px;
+                  margin-bottom: 0;
+                  margin-top: 8px;
+                  overflow: hidden;
+                  padding: 8px 0 7px;
+                  text-align: center;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                "
+              >
+                <a
+                  href="https://www.instagram.com/reel/DLSwX5buJo_/?utm_source=ig_embed&amp;utm_campaign=loading"
+                  style="
+                    color: #c9c8cd;
+                    font-family: Arial, sans-serif;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: normal;
+                    line-height: 17px;
+                    text-decoration: none;
+                  "
+                  target="_blank"
+                  >A post shared by Dr. Elliot Heller (@realdrbody)</a
+                >
+              </p>
+            </div>
+          </blockquote>
+        </div>
+        <div class="swiper-slide">
+          <blockquote
+            class="instagram-media"
+            data-instgrm-permalink="https://www.instagram.com/reel/DLDwtfbuaGo/?utm_source=ig_embed&amp;utm_campaign=loading"
+            data-instgrm-version="14"
+            style="
+              background: #fff;
+              border: 0;
+              border-radius: 3px;
+              box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.5),
+                0 1px 10px 0 rgba(0, 0, 0, 0.15);
+              margin: 1px;
+              max-width: 540px;
+              min-width: 326px;
+              padding: 0;
+              width: 99.375%;
+              width: -webkit-calc(100% - 2px);
+              width: calc(100% - 2px);
+            "
+          >
+            <div style="padding: 16px">
+              <a
+                href="https://www.instagram.com/reel/DLDwtfbuaGo/?utm_source=ig_embed&amp;utm_campaign=loading"
+                style="
+                  background: #ffffff;
+                  line-height: 0;
+                  padding: 0 0;
+                  text-align: center;
+                  text-decoration: none;
+                  width: 100%;
+                "
+                target="_blank"
+              >
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                  "
+                >
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 50%;
+                      flex-grow: 0;
+                      height: 40px;
+                      margin-right: 14px;
+                      width: 40px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      flex-grow: 1;
+                      justify-content: center;
+                    "
+                  >
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 4px;
+                        flex-grow: 0;
+                        height: 14px;
+                        margin-bottom: 6px;
+                        width: 100px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 4px;
+                        flex-grow: 0;
+                        height: 14px;
+                        width: 60px;
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0"></div>
+                <div
+                  style="
+                    display: block;
+                    height: 50px;
+                    margin: 0 auto 12px;
+                    width: 50px;
+                  "
+                >
+                  <svg
+                    width="50px"
+                    height="50px"
+                    viewBox="0 0 60 60"
+                    version="1.1"
+                    xmlns="https://www.w3.org/2000/svg"
+                    xmlns:xlink="https://www.w3.org/1999/xlink"
+                  >
+                    <g
+                      stroke="none"
+                      stroke-width="1"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <g
+                        transform="translate(-511.000000, -20.000000)"
+                        fill="#000000"
+                      >
+                        <g>
+                          <path
+                            d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"
+                          ></path>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <div style="padding-top: 8px">
+                  <div
+                    style="
+                      color: #3897f0;
+                      font-family: Arial, sans-serif;
+                      font-size: 14px;
+                      font-style: normal;
+                      font-weight: 550;
+                      line-height: 18px;
+                    "
+                  >
+                    View this post on Instagram
+                  </div>
+                </div>
+                <div style="padding: 12.5% 0"></div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 14px;
+                    align-items: center;
+                  "
+                >
+                  <div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        height: 12.5px;
+                        width: 12.5px;
+                        transform: translateX(0px) translateY(7px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        height: 12.5px;
+                        transform: rotate(-45deg) translateX(3px)
+                          translateY(1px);
+                        width: 12.5px;
+                        flex-grow: 0;
+                        margin-right: 14px;
+                        margin-left: 2px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        height: 12.5px;
+                        width: 12.5px;
+                        transform: translateX(9px) translateY(-18px);
+                      "
+                    ></div>
+                  </div>
+                  <div style="margin-left: 8px">
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        flex-grow: 0;
+                        height: 20px;
+                        width: 20px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        width: 0;
+                        height: 0;
+                        border-top: 2px solid transparent;
+                        border-left: 6px solid #f4f4f4;
+                        border-bottom: 2px solid transparent;
+                        transform: translateX(16px) translateY(-4px)
+                          rotate(30deg);
+                      "
+                    ></div>
+                  </div>
+                  <div style="margin-left: auto">
+                    <div
+                      style="
+                        width: 0px;
+                        border-top: 8px solid #f4f4f4;
+                        border-right: 8px solid transparent;
+                        transform: translateY(16px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        flex-grow: 0;
+                        height: 12px;
+                        width: 16px;
+                        transform: translateY(-4px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        width: 0;
+                        height: 0;
+                        border-top: 8px solid #f4f4f4;
+                        border-left: 8px solid transparent;
+                        transform: translateY(-4px) translateX(8px);
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+                    justify-content: center;
+                    margin-bottom: 24px;
+                  "
+                >
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 4px;
+                      flex-grow: 0;
+                      height: 14px;
+                      margin-bottom: 6px;
+                      width: 224px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 4px;
+                      flex-grow: 0;
+                      height: 14px;
+                      width: 144px;
+                    "
+                  ></div></div
+              ></a>
+              <p
+                style="
+                  color: #c9c8cd;
+                  font-family: Arial, sans-serif;
+                  font-size: 14px;
+                  line-height: 17px;
+                  margin-bottom: 0;
+                  margin-top: 8px;
+                  overflow: hidden;
+                  padding: 8px 0 7px;
+                  text-align: center;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                "
+              >
+                <a
+                  href="https://www.instagram.com/reel/DLDwtfbuaGo/?utm_source=ig_embed&amp;utm_campaign=loading"
+                  style="
+                    color: #c9c8cd;
+                    font-family: Arial, sans-serif;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: normal;
+                    line-height: 17px;
+                    text-decoration: none;
+                  "
+                  target="_blank"
+                  >A post shared by Dr. Elliot Heller (@realdrbody)</a
+                >
+              </p>
+            </div>
+          </blockquote>
+        </div>
+        <div class="swiper-slide">
+          <blockquote
+            class="instagram-media"
+            data-instgrm-permalink="https://www.instagram.com/reel/DK2KbqMuktZ/?utm_source=ig_embed&amp;utm_campaign=loading"
+            data-instgrm-version="14"
+            style="
+              background: #fff;
+              border: 0;
+              border-radius: 3px;
+              box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.5),
+                0 1px 10px 0 rgba(0, 0, 0, 0.15);
+              margin: 1px;
+              max-width: 540px;
+              min-width: 326px;
+              padding: 0;
+              width: 99.375%;
+              width: -webkit-calc(100% - 2px);
+              width: calc(100% - 2px);
+            "
+          >
+            <div style="padding: 16px">
+              <a
+                href="https://www.instagram.com/reel/DK2KbqMuktZ/?utm_source=ig_embed&amp;utm_campaign=loading"
+                style="
+                  background: #ffffff;
+                  line-height: 0;
+                  padding: 0 0;
+                  text-align: center;
+                  text-decoration: none;
+                  width: 100%;
+                "
+                target="_blank"
+              >
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                  "
+                >
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 50%;
+                      flex-grow: 0;
+                      height: 40px;
+                      margin-right: 14px;
+                      width: 40px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      flex-grow: 1;
+                      justify-content: center;
+                    "
+                  >
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 4px;
+                        flex-grow: 0;
+                        height: 14px;
+                        margin-bottom: 6px;
+                        width: 100px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 4px;
+                        flex-grow: 0;
+                        height: 14px;
+                        width: 60px;
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0"></div>
+                <div
+                  style="
+                    display: block;
+                    height: 50px;
+                    margin: 0 auto 12px;
+                    width: 50px;
+                  "
+                >
+                  <svg
+                    width="50px"
+                    height="50px"
+                    viewBox="0 0 60 60"
+                    version="1.1"
+                    xmlns="https://www.w3.org/2000/svg"
+                    xmlns:xlink="https://www.w3.org/1999/xlink"
+                  >
+                    <g
+                      stroke="none"
+                      stroke-width="1"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <g
+                        transform="translate(-511.000000, -20.000000)"
+                        fill="#000000"
+                      >
+                        <g>
+                          <path
+                            d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"
+                          ></path>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <div style="padding-top: 8px">
+                  <div
+                    style="
+                      color: #3897f0;
+                      font-family: Arial, sans-serif;
+                      font-size: 14px;
+                      font-style: normal;
+                      font-weight: 550;
+                      line-height: 18px;
+                    "
+                  >
+                    View this post on Instagram
+                  </div>
+                </div>
+                <div style="padding: 12.5% 0"></div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 14px;
+                    align-items: center;
+                  "
+                >
+                  <div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        height: 12.5px;
+                        width: 12.5px;
+                        transform: translateX(0px) translateY(7px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        height: 12.5px;
+                        transform: rotate(-45deg) translateX(3px)
+                          translateY(1px);
+                        width: 12.5px;
+                        flex-grow: 0;
+                        margin-right: 14px;
+                        margin-left: 2px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        height: 12.5px;
+                        width: 12.5px;
+                        transform: translateX(9px) translateY(-18px);
+                      "
+                    ></div>
+                  </div>
+                  <div style="margin-left: 8px">
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        flex-grow: 0;
+                        height: 20px;
+                        width: 20px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        width: 0;
+                        height: 0;
+                        border-top: 2px solid transparent;
+                        border-left: 6px solid #f4f4f4;
+                        border-bottom: 2px solid transparent;
+                        transform: translateX(16px) translateY(-4px)
+                          rotate(30deg);
+                      "
+                    ></div>
+                  </div>
+                  <div style="margin-left: auto">
+                    <div
+                      style="
+                        width: 0px;
+                        border-top: 8px solid #f4f4f4;
+                        border-right: 8px solid transparent;
+                        transform: translateY(16px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        flex-grow: 0;
+                        height: 12px;
+                        width: 16px;
+                        transform: translateY(-4px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        width: 0;
+                        height: 0;
+                        border-top: 8px solid #f4f4f4;
+                        border-left: 8px solid transparent;
+                        transform: translateY(-4px) translateX(8px);
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+                    justify-content: center;
+                    margin-bottom: 24px;
+                  "
+                >
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 4px;
+                      flex-grow: 0;
+                      height: 14px;
+                      margin-bottom: 6px;
+                      width: 224px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 4px;
+                      flex-grow: 0;
+                      height: 14px;
+                      width: 144px;
+                    "
+                  ></div></div
+              ></a>
+              <p
+                style="
+                  color: #c9c8cd;
+                  font-family: Arial, sans-serif;
+                  font-size: 14px;
+                  line-height: 17px;
+                  margin-bottom: 0;
+                  margin-top: 8px;
+                  overflow: hidden;
+                  padding: 8px 0 7px;
+                  text-align: center;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                "
+              >
+                <a
+                  href="https://www.instagram.com/reel/DK2KbqMuktZ/?utm_source=ig_embed&amp;utm_campaign=loading"
+                  style="
+                    color: #c9c8cd;
+                    font-family: Arial, sans-serif;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: normal;
+                    line-height: 17px;
+                    text-decoration: none;
+                  "
+                  target="_blank"
+                  >A post shared by Dr. Elliot Heller (@realdrbody)</a
+                >
+              </p>
+            </div>
+          </blockquote>
+        </div>
+        <div class="swiper-slide">
+          <blockquote
+            class="instagram-media"
+            data-instgrm-permalink="https://www.instagram.com/reel/DFnsE5nO8dE/?utm_source=ig_embed&amp;utm_campaign=loading"
+            data-instgrm-version="14"
+            style="
+              background: #fff;
+              border: 0;
+              border-radius: 3px;
+              box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.5),
+                0 1px 10px 0 rgba(0, 0, 0, 0.15);
+              margin: 1px;
+              max-width: 540px;
+              min-width: 326px;
+              padding: 0;
+              width: 99.375%;
+              width: -webkit-calc(100% - 2px);
+              width: calc(100% - 2px);
+            "
+          >
+            <div style="padding: 16px">
+              <a
+                href="https://www.instagram.com/reel/DFnsE5nO8dE/?utm_source=ig_embed&amp;utm_campaign=loading"
+                style="
+                  background: #ffffff;
+                  line-height: 0;
+                  padding: 0 0;
+                  text-align: center;
+                  text-decoration: none;
+                  width: 100%;
+                "
+                target="_blank"
+              >
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                  "
+                >
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 50%;
+                      flex-grow: 0;
+                      height: 40px;
+                      margin-right: 14px;
+                      width: 40px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      flex-grow: 1;
+                      justify-content: center;
+                    "
+                  >
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 4px;
+                        flex-grow: 0;
+                        height: 14px;
+                        margin-bottom: 6px;
+                        width: 100px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 4px;
+                        flex-grow: 0;
+                        height: 14px;
+                        width: 60px;
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0"></div>
+                <div
+                  style="
+                    display: block;
+                    height: 50px;
+                    margin: 0 auto 12px;
+                    width: 50px;
+                  "
+                >
+                  <svg
+                    width="50px"
+                    height="50px"
+                    viewBox="0 0 60 60"
+                    version="1.1"
+                    xmlns="https://www.w3.org/2000/svg"
+                    xmlns:xlink="https://www.w3.org/1999/xlink"
+                  >
+                    <g
+                      stroke="none"
+                      stroke-width="1"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <g
+                        transform="translate(-511.000000, -20.000000)"
+                        fill="#000000"
+                      >
+                        <g>
+                          <path
+                            d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"
+                          ></path>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <div style="padding-top: 8px">
+                  <div
+                    style="
+                      color: #3897f0;
+                      font-family: Arial, sans-serif;
+                      font-size: 14px;
+                      font-style: normal;
+                      font-weight: 550;
+                      line-height: 18px;
+                    "
+                  >
+                    View this post on Instagram
+                  </div>
+                </div>
+                <div style="padding: 12.5% 0"></div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 14px;
+                    align-items: center;
+                  "
+                >
+                  <div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        height: 12.5px;
+                        width: 12.5px;
+                        transform: translateX(0px) translateY(7px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        height: 12.5px;
+                        transform: rotate(-45deg) translateX(3px)
+                          translateY(1px);
+                        width: 12.5px;
+                        flex-grow: 0;
+                        margin-right: 14px;
+                        margin-left: 2px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        height: 12.5px;
+                        width: 12.5px;
+                        transform: translateX(9px) translateY(-18px);
+                      "
+                    ></div>
+                  </div>
+                  <div style="margin-left: 8px">
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        flex-grow: 0;
+                        height: 20px;
+                        width: 20px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        width: 0;
+                        height: 0;
+                        border-top: 2px solid transparent;
+                        border-left: 6px solid #f4f4f4;
+                        border-bottom: 2px solid transparent;
+                        transform: translateX(16px) translateY(-4px)
+                          rotate(30deg);
+                      "
+                    ></div>
+                  </div>
+                  <div style="margin-left: auto">
+                    <div
+                      style="
+                        width: 0px;
+                        border-top: 8px solid #f4f4f4;
+                        border-right: 8px solid transparent;
+                        transform: translateY(16px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        flex-grow: 0;
+                        height: 12px;
+                        width: 16px;
+                        transform: translateY(-4px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        width: 0;
+                        height: 0;
+                        border-top: 8px solid #f4f4f4;
+                        border-left: 8px solid transparent;
+                        transform: translateY(-4px) translateX(8px);
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+                    justify-content: center;
+                    margin-bottom: 24px;
+                  "
+                >
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 4px;
+                      flex-grow: 0;
+                      height: 14px;
+                      margin-bottom: 6px;
+                      width: 224px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 4px;
+                      flex-grow: 0;
+                      height: 14px;
+                      width: 144px;
+                    "
+                  ></div></div
+              ></a>
+              <p
+                style="
+                  color: #c9c8cd;
+                  font-family: Arial, sans-serif;
+                  font-size: 14px;
+                  line-height: 17px;
+                  margin-bottom: 0;
+                  margin-top: 8px;
+                  overflow: hidden;
+                  padding: 8px 0 7px;
+                  text-align: center;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                "
+              >
+                <a
+                  href="https://www.instagram.com/reel/DFnsE5nO8dE/?utm_source=ig_embed&amp;utm_campaign=loading"
+                  style="
+                    color: #c9c8cd;
+                    font-family: Arial, sans-serif;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: normal;
+                    line-height: 17px;
+                    text-decoration: none;
+                  "
+                  target="_blank"
+                  >A post shared by Dr. Elliot Heller (@realdrbody)</a
+                >
+              </p>
+            </div>
+          </blockquote>
+        </div>
+        <div class="swiper-slide">
+          <blockquote
+            class="instagram-media"
+            data-instgrm-permalink="https://www.instagram.com/reel/DOJhJRXDus1/?utm_source=ig_embed&amp;utm_campaign=loading"
+            data-instgrm-version="14"
+            style="
+              background: #fff;
+              border: 0;
+              border-radius: 3px;
+              box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.5),
+                0 1px 10px 0 rgba(0, 0, 0, 0.15);
+              margin: 1px;
+              max-width: 540px;
+              min-width: 326px;
+              padding: 0;
+              width: 99.375%;
+              width: -webkit-calc(100% - 2px);
+              width: calc(100% - 2px);
+            "
+          >
+            <div style="padding: 16px">
+              <a
+                href="https://www.instagram.com/reel/DOJhJRXDus1/?utm_source=ig_embed&amp;utm_campaign=loading"
+                style="
+                  background: #ffffff;
+                  line-height: 0;
+                  padding: 0 0;
+                  text-align: center;
+                  text-decoration: none;
+                  width: 100%;
+                "
+                target="_blank"
+              >
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                  "
+                >
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 50%;
+                      flex-grow: 0;
+                      height: 40px;
+                      margin-right: 14px;
+                      width: 40px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      flex-grow: 1;
+                      justify-content: center;
+                    "
+                  >
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 4px;
+                        flex-grow: 0;
+                        height: 14px;
+                        margin-bottom: 6px;
+                        width: 100px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 4px;
+                        flex-grow: 0;
+                        height: 14px;
+                        width: 60px;
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div style="padding: 19% 0"></div>
+                <div
+                  style="
+                    display: block;
+                    height: 50px;
+                    margin: 0 auto 12px;
+                    width: 50px;
+                  "
+                >
+                  <svg
+                    width="50px"
+                    height="50px"
+                    viewBox="0 0 60 60"
+                    version="1.1"
+                    xmlns="https://www.w3.org/2000/svg"
+                    xmlns:xlink="https://www.w3.org/1999/xlink"
+                  >
+                    <g
+                      stroke="none"
+                      stroke-width="1"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <g
+                        transform="translate(-511.000000, -20.000000)"
+                        fill="#000000"
+                      >
+                        <g>
+                          <path
+                            d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"
+                          ></path>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <div style="padding-top: 8px">
+                  <div
+                    style="
+                      color: #3897f0;
+                      font-family: Arial, sans-serif;
+                      font-size: 14px;
+                      font-style: normal;
+                      font-weight: 550;
+                      line-height: 18px;
+                    "
+                  >
+                    View this post on Instagram
+                  </div>
+                </div>
+                <div style="padding: 12.5% 0"></div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 14px;
+                    align-items: center;
+                  "
+                >
+                  <div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        height: 12.5px;
+                        width: 12.5px;
+                        transform: translateX(0px) translateY(7px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        height: 12.5px;
+                        transform: rotate(-45deg) translateX(3px)
+                          translateY(1px);
+                        width: 12.5px;
+                        flex-grow: 0;
+                        margin-right: 14px;
+                        margin-left: 2px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        height: 12.5px;
+                        width: 12.5px;
+                        transform: translateX(9px) translateY(-18px);
+                      "
+                    ></div>
+                  </div>
+                  <div style="margin-left: 8px">
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        border-radius: 50%;
+                        flex-grow: 0;
+                        height: 20px;
+                        width: 20px;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        width: 0;
+                        height: 0;
+                        border-top: 2px solid transparent;
+                        border-left: 6px solid #f4f4f4;
+                        border-bottom: 2px solid transparent;
+                        transform: translateX(16px) translateY(-4px)
+                          rotate(30deg);
+                      "
+                    ></div>
+                  </div>
+                  <div style="margin-left: auto">
+                    <div
+                      style="
+                        width: 0px;
+                        border-top: 8px solid #f4f4f4;
+                        border-right: 8px solid transparent;
+                        transform: translateY(16px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        background-color: #f4f4f4;
+                        flex-grow: 0;
+                        height: 12px;
+                        width: 16px;
+                        transform: translateY(-4px);
+                      "
+                    ></div>
+                    <div
+                      style="
+                        width: 0;
+                        height: 0;
+                        border-top: 8px solid #f4f4f4;
+                        border-left: 8px solid transparent;
+                        transform: translateY(-4px) translateX(8px);
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+                    justify-content: center;
+                    margin-bottom: 24px;
+                  "
+                >
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 4px;
+                      flex-grow: 0;
+                      height: 14px;
+                      margin-bottom: 6px;
+                      width: 224px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      background-color: #f4f4f4;
+                      border-radius: 4px;
+                      flex-grow: 0;
+                      height: 14px;
+                      width: 144px;
+                    "
+                  ></div></div
+              ></a>
+              <p
+                style="
+                  color: #c9c8cd;
+                  font-family: Arial, sans-serif;
+                  font-size: 14px;
+                  line-height: 17px;
+                  margin-bottom: 0;
+                  margin-top: 8px;
+                  overflow: hidden;
+                  padding: 8px 0 7px;
+                  text-align: center;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                "
+              >
+                <a
+                  href="https://www.instagram.com/reel/DOJhJRXDus1/?utm_source=ig_embed&amp;utm_campaign=loading"
+                  style="
+                    color: #c9c8cd;
+                    font-family: Arial, sans-serif;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: normal;
+                    line-height: 17px;
+                    text-decoration: none;
+                  "
+                  target="_blank"
+                  >A post shared by Dr. Elliot Heller (@realdrbody)</a
+                >
+              </p>
+            </div>
+          </blockquote>
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script>
+      const swiper = new Swiper(".instaSlider", {
+        spaceBetween: 16,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: { el: ".swiper-pagination", clickable: true },
+        breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
+        on: {
+          init: function () {
+            if (window.instgrm && instgrm.Embeds) instgrm.Embeds.process();
+          },
+          slideChange: function () {
+            if (window.instgrm && instgrm.Embeds) instgrm.Embeds.process();
+          },
+        },
+      });
+    </script>
+
+    <style>
+      .instaSlider {
+        width: 100%;
+      }
+      .swiper-slide {
+        display: flex;
+        justify-content: center;
+      }
+      .instagram-media {
+        margin: 0 auto !important;
+      }
+
+      .swiper-button-prev,
+      .swiper-button-next {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #0f172a;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 20px rgba(15, 23, 42, 0.25);
+        transition: background 0.2s, transform 0.2s;
+      }
+      .swiper-button-prev:hover,
+      .swiper-button-next:hover {
+        background: #111827;
+        transform: translateY(-1px);
+      }
+      .swiper-button-prev:after,
+      .swiper-button-next:after {
+        font-size: 18px;
+        font-weight: bold;
+      }
+    </style>
+        </div>
+      </div>
+      
+      <!-- CTA Gallery Module -->
+      <div
+        class="container mod-cta mod-home_cta_gallery wow fadeInUp"
+        data-wow-duration="2s"
+      >
+        <img
+          class="bg"
+          loading="eager"
+          src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496353-homepage2-gallery.jpg?auto=format,compress"
+          alt="Allure Plastic Surgery"
+        />
+        <div class="row">
+          <div class="inner">
+            <h2>Explore Our Results</h2>
+            <h3>Before & After</h3>
+            <div class="links">
+              <ul>
+                <li><a href="/gallery/breast/">Breast</a></li>
+                <li><a href="/gallery/body/">Body</a></li>
+                <li><a href="/gallery/face/">face</a></li>
+                <li><a href="/gallery/non-invasive/">Non-Surgical</a></li>
+                <li><a href="/gallery/men/">Men</a></li>
+              </ul>
+              <a href="/gallery/" class="btn whiteflair">View All</a>
+            </div>
+          </div>
+          <div class="text">
+            <div
+              class="icon-quote bkg-image"
+              data-lazyload="bg"
+              data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596497299-quote-white.png"
+            ></div>
+            <p>
+              <span
+                >Committed to bringing you subtle, natural results you can count
+                on.</span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="google-reviews-widget" style="margin-top: 40px !important;">
+        <h3 class="text-center">What Our Patients Say</h3>
+        <?php echo do_shortcode('[trustindex no-registration=google]'); ?>
+      </div>
+      <div style="text-align: center" class="center-btn">
+        <a
+          href="/contact/"
+          class="btn whiteflair center-btn"
+          style="margin-bottom: 20px; text-align: center"
+          >Book Online</a
+        >
+      </div>
+
+      <!-- <div class="container mod-home_doctor bkg-image wow fadeInUp" data-wow-duration="2s" data-lazyload="bg" data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496379-homepage3-doctorheller.jpg">
+    <div class="row">
+        <div class="inner wow fadeInLeft" data-wow-duration="2s">
+            <h2><span class="small">Dr. Elliot</span> Heller</h2>
+            <div class="text">
+                <p>Dr. Elliot M. Heller possesses a uniquely calm demeanor, with a sincere and deeply-held concern for his patients. He puts even the most anxious patients at ease, with his extensive procedural knowledge and soothing bedside manner. His quiet confidence is due in part to his extensive training in both general, and head and neck surgery at NYU Medical Center. He trained in <em>plastic surgery at NYC's</em> Mt. Sinai Medical Center.</p>
+            </div>
+            <a href="/about/dr-elliot-heller/" class="btn">Learn More About Dr. Heller</a>
+        </div>
+        <div class="quote-inner wow fadeInRight" data-wow-duration="2s" data-wow-delay="1s">
+            <h3>Allure Founder</h3>
+            <div class="quote-text">
+                <p>&ldquo;Our extensive surgical experience only serves to enhance your cosmetic results.&rdquo;</p>
+            </div>
+            <p class="author">&mdash; Dr. Elliot Heller</p>
+        </div>
+    </div>
+</div>       -->
+
+
+
+
+     <!-- Two Column Module -->
+      <div class="container bkg-image mod-columns_two">
+        <div class="row mw-60">
+          <div class="s3grid">
+            <div class="feat2 wow fadeInLeft">
+              <h2>
+                Board-Certified, Highly-Experienced Plastic Surgeons in NYC, Staten Island, & NJ
+              </h2>
+            </div>
+            <div class="feat2 wow fadeInRight">
+              <p>
+                At Allure Plastic Surgery we bring an exceptional level of experience to the
+                table, with each of our doctors having been recognized, multiple
+                times over, as experts in their given specialties.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>   
+
+
+      <!-- Divider Module -->
+      <div class="container mod-divider wow fadeInUp" data-wow-duration="2s">
+        <div class="row">
+          <div class="inner">
+            <div class="media">
+              <img
+                src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596497059-allure-logo-wordmark.png"
+                data-lazyload="img"
+                data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596497059-allure-logo-wordmark.png?auto=format,compress"
+                width="370"
+                height="108"
+                alt="Allure Plastic Surgery"
+                class="img"
+              />
+            </div>
+            <p>Our Board Certified Surgeons</p>
+          </div>
+        </div>
+      </div>
+      <!-- Home Staff Module -->
+      <div
+        class="container mod-home_staff wow fadeInUp"
+        data-wow-duration="2s"
+        data-lazyload="bg"
+        data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596497466-homepage4-bg.jpg?auto=compress"
+      >
+        <div class="row">
+          <div class="item wow fadeInUp" data-wow-duration="2s">
+            <img
+              src="<?php bloginfo('template_url') ?>"
+              data-lazyload="img"
+              data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496403-homepage4-andrew-miller.png"
+              alt=""
+              class="img"
+            />
+            <div class="inner">
+              <h3
+                class="wow fadeInUp"
+                data-wow-duration="2s"
+                data-wow-delay="1s"
+              >
+                Andrew Miller, M.D.
+              </h3>
+              <div class="content">
+                <p>
+                  <span
+                    >Dr. Miller believes that the face&rsquo;s complexity
+                    requires a specialist that can deliver the highest quality
+                    of care and specialized treatment while utilizing the latest
+                    techniques.</span
+                  >
+                </p>
+                <a href="/about/dr-andrew-miller/"
+                  >More About Andrew Miller, M.D.</a
+                >
+              </div>
+              <span class="btn whiteflair">Quick View</span>
+              <div class="close">x</div>
+            </div>
+          </div>
+          <div
+            class="item wow fadeInUp"
+            data-wow-duration="2s"
+            data-wow-delay=".5s"
+          >
+            <img
+              src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496413-homepage4-harry-haramis.png"
+              data-lazyload="img"
+              data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496413-homepage4-harry-haramis.png"
+              alt=""
+              class="img"
+            />
+            <div class="inner">
+              <h3
+                class="wow fadeInUp"
+                data-wow-duration="2s"
+                data-wow-delay="1.5s"
+              >
+                Harry Haramis, M.D.
+              </h3>
+              <div class="content">
+                <p>
+                  <span
+                    >With over 30 years of training, Dr Haramis has evolved and
+                    honed his artistic cosmetic skills, culminating in a
+                    certification by the American Board of Plastic
+                    Surgery.</span
+                  >
+                </p>
+                <a href="/about/dr-harry-haramis/"
+                  >More About Harry Haramis, M.D.</a
+                >
+              </div>
+              <span class="btn whiteflair">Quick View</span>
+              <div class="close">x</div>
+            </div>
+          </div>
+          <div
+            class="item wow fadeInUp"
+            data-wow-duration="2s"
+            data-wow-delay="1s"
+          >
+            <img
+              src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496419-homepage4-julie-miller.png"
+              data-lazyload="img"
+              data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496419-homepage4-julie-miller.png"
+              alt=""
+              class="img"
+            />
+            <div class="inner">
+              <h3
+                class="wow fadeInUp"
+                data-wow-duration="2s"
+                data-wow-delay="2s"
+              >
+                Julie Miller, M.D.
+              </h3>
+              <div class="content">
+                <p>
+                  <span
+                    >Dr. Miller is a board certified surgeon and a proud member
+                    of the American Academy of Facial Plastic and Reconstructive
+                    Surgery. She specializes in eyelid plastic surgery, which
+                    includes procedures such as blepharoplasty, droopy eyelid
+                    repair, and eyelid lift.</span
+                  >
+                </p>
+                <a href="/about/dr-julie-miller/"
+                  >More About Julie Miller, M.D.</a
+                >
+              </div>
+              <span class="btn whiteflair">Quick View</span>
+              <div class="close">x</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center" class="center-btn">
+        <a
+          href="/contact/"
+          class="btn whiteflair center-btn"
+          style="margin-bottom: 20px; text-align: center"
+          >Book Online</a
+        >
+      </div>
+
+      <!-- Home Half Image Module -->
+      <div
+        class="container mod-home_half_image wow fadeInUp"
+        data-wow-duration="2s"
+      >
+        <div class="row half-image media top-aligned">
+          <div
+            class="wow bkg-image media"
+            role="img"
+            aria-label=""
+            data-lazyload="bg"
+            data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496444-homepage6.jpg?auto=format,compress"
+          >
+            <div class="flairimage">
+              <img
+                src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496444-homepage6.jpg"
+                data-lazyload="img"
+                data-wow-delay="2s"
+                data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496444-homepage6.jpg?auto=format,compress"
+                alt=""
+                class="img"
+              />
+            </div>
+          </div>
+          <div class="copy">
+            <div class="inner">
+              <div class="content">
+                <h2>Body</h2>
+                <h3 style="color: #4ecdc4 !important">Love the Way You Look</h3>
+                <p>
+                  When it comes to helping you look the way you've always wanted
+                  to, there are few plastic surgery offices that offer the
+                  combined level of expertise you'll find at Allure Plastic
+                  Surgery. Our board-certified surgeon has extensive experience
+                  with body contouring and sculpting techniques.
+                </p>
+              </div>
+              <ul class="service-item-container">
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/body/body-lift/"
+                    >Body Lift</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/body/body-contouring/"
+                    >Body Contouring</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/body/tummy-tuck-nyc/"
+                    >Tummy Tuck</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/liposuction-nyc/"
+                    >Liposuction</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/body/liposuction-360-nyc/"
+                    >Liposuction 360</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/body/smartlipo-nyc/"
+                    >SmartLipo</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/body/abdominal-etching-nyc/"
+                    >Abdominal Etching</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/body/brazilian-butt-lift-nyc/"
+                    >Brazilian Butt Lift</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/body/mommy-makeover-nyc/"
+                    >Mommy Makeover</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/body/thigh-lift/"
+                    >Thigh Lift</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/body/arm-lift-nyc/"
+                    >Arm Lift</a
+                  >
+                </li>
+<!--                 <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/body/body-implants-nyc/"
+                    >Body Implants</a
+                  >
+                </li> -->
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/body/plastic-surgery-after-weight-loss-nyc/"
+                    >Plastic Surgery After Weight Loss</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/body/labiaplasty-nyc/"
+                    >Labiaplasty</a
+                  >
+                </li>
+              </ul>
+              <a href="/body/" class="btn darkflair">View All</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Quote Module -->
+      <div
+        class="container mod-quote wow fadeInUp alt-background bkg-image"
+        data-wow-duration="2s"
+        data-lazyload="bg"
+        data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496857-homepage7-quote.jpg"
+      >
+        <div class="row quote author">
+          <div
+            class="inner wow fadeInUp"
+            data-wow-duration="2s"
+            data-wow-delay="1s"
+          >
+            <p>
+              Our work is not done until your aesthetic goals have been met.
+            </p>
+            <p class="author">&mdash; Allure Plastic Surgery</p>
+          </div>
+        </div>
+      </div>
+      <!-- Home Half Image Module -->
+      <div
+        class="container mod-home_half_image wow fadeInUp"
+        data-wow-duration="2s"
+      >
+        <div class="row half-image media flipped top-aligned">
+          <div
+            class="wow bkg-image media"
+            role="img"
+            aria-label=""
+            data-lazyload="bg"
+            data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496474-homepage8.jpg?auto=format,compress"
+          >
+            <div class="flairimage">
+              <img
+                src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496474-homepage8.jpg"
+                data-lazyload="img"
+                data-wow-delay="2s"
+                data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496474-homepage8.jpg?auto=format,compress"
+                alt="Beautiful Woman Wearing a Revealing top that Shows her Breasts after plastic surgery in NYC"
+                class="img"
+              />
+            </div>
+          </div>
+          <div class="copy">
+            <div class="inner">
+              <div class="content">
+                <h2>Breast</h2>
+                <h3 style="color: #4ecdc4 !important">
+                  RESTORE YOUR BUST, REGAIN YOUR CONFIDENCE
+                </h3>
+                <p>
+                  Few things can impact a woman's life in the way that her bust
+                  can. From an increased sense of femininity, to simply fitting
+                  better in the clothes you prefer, having a bust that is
+                  proportional to both your body and your personal desires has
+                  substantial benefits.
+                </p>
+              </div>
+              <ul class="service-item-container">
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/breast/breast-augmentation-nyc/"
+                    >Breast Augmentation</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a class="service-link" href="/breast/breast-lift-nyc/"
+                    >Breast Lift</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/breast/breast-lift-with-implants-nyc/"
+                    >Breast Lift with Implants</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/breast/breast-reduction-with-lift-nyc/"
+                    >Breast Reduction with Lift</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/breast/revision-breast-surgery/"
+                    >Revision Breast Surgery</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/breast/tuberous-breast-correction/"
+                    >Tuberous Breast Correction</a
+                  >
+                </li>
+              </ul>
+              <a href="/breast/" class="btn darkflair">View All</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Quote Slider Module -->
+      <div class="container mod-quote_slider wow fadeInUp">
+        <div class="row quote">
+          <div
+            class="inner wow fadeInUp"
+            data-wow-duration="2s"
+            data-wow-delay="1s"
+          >
+            <div class="owl-carousel">
+              <div class="item">
+                <div class="s3grid">
+                  <div class="feat2">
+                    <h3>
+                      Words cannot express just how grateful I am for the
+                      amazing job that you have done for me.
+                    </h3>
+                  </div>
+                  <div class="feat2">
+                    <p>
+                      I feel so wonderful in my clothes and very sexy! I Highly
+                      recommend you!
+                    </p>
+                  </div>
+                </div>
+                <p class="author">&mdash; M.B.</p>
+              </div>
+              <div class="item">
+                <div class="s3grid">
+                  <div class="feat2">
+                    <h3>Absolutely wonderful, trustworthy staff.</h3>
+                  </div>
+                  <div class="feat2">
+                    <p>
+                      And Dr. Heller himself is amazing. I would not go to
+                      anyone else or trust anyone else. He’s amazing and so is
+                      his staff. Love them!
+                    </p>
+                  </div>
+                </div>
+                <p class="author">&mdash; J.R.</p>
+              </div>
+              <div class="item">
+                <div class="s3grid">
+                  <div class="feat2">
+                    <h3>I’m Sexy and I Owe It All Dr. Heller!</h3>
+                  </div>
+                  <div class="feat2">
+                    <p>
+                      I absolutely love my Plastic Surgeon! Hands down the best
+                      I’ve been to.
+                    </p>
+                  </div>
+                </div>
+                <p class="author">&mdash; B.B.</p>
+              </div>
+              <div class="item">
+                <div class="s3grid">
+                  <div class="feat2">
+                    <h3>
+                      I've never felt more comfortable with a doctor and more
+                      beautiful since my surgery.
+                    </h3>
+                  </div>
+                  <div class="feat2">
+                    <p>
+                      Dr. Heller is amazing. I had a mini lift and a breast
+                      augmentation from Dr. Heller, and everyone should know
+                      he’s amazing. If I could give more than five stars, I
+                      would. He’s a miracle worker! Very talented, respectful,
+                      smart, and professional.
+                    </p>
+                  </div>
+                </div>
+                <p class="author">&mdash; A.D.</p>
+              </div>
+              <div class="item">
+                <div class="s3grid">
+                  <div class="feat2">
+                    <h3>
+                      Dr. Heller is a very professional and knowledgeable
+                      surgeon.
+                    </h3>
+                  </div>
+                  <div class="feat2">
+                    <p>
+                      So happy with my results on my Breast Augmentation and
+                      would highly recommend to everyone.
+                    </p>
+                  </div>
+                </div>
+                <p class="author">&mdash; K.B.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Banner Module -->
+      <div
+        class="container mod-banner text-center bkg-image three"
+        data-lazyload="bg"
+        data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1671217201-home-office.jpg?auto=format,compress"
+      >
+        <div class="row wow fadeInUp" data-wow-duration="2s">
+          <div class="content">
+            <p class="quote">
+              Allure ps is dedicated to patient education and socialmedia is the
+              perfect avenue to accomplish that goal.
+            </p>
+          </div>
+          <div class="content mt-50">
+            <div class="socials">
+              <div class="text-right">
+                <p>
+                  <a
+                    href="https://www.facebook.com/DrElliotHeller"
+                    target="_blank"
+                    aria-label="To see live procedures follow us on Snap Chat - link opens in new tab/window"
+                    rel="noopener"
+                    >To see live procedures
+                    <span class="block-tablet-up"
+                      >follow us on Facebook</span
+                    ></a
+                  >
+                </p>
+              </div>
+              <div>
+                <a
+                  href="https://www.facebook.com/DrElliotHeller"
+                  target="_blank"
+                  aria-label="To see live procedures follow us on Snap Chat - link opens in new tab/window"
+                  rel="noopener"
+                >
+                  <img
+                    src="<?php bloginfo('template_url') ?>/assets/img/img-export/1671218790-facebook-logo.png"
+                    alt="Facebook Link for Allure"
+                    width="100"
+                    height="100"
+                /></a>
+              </div>
+              <div>
+                <a
+                  href="https://www.instagram.com/realdrbody/"
+                  target="_blank"
+                  aria-label="To see live procedures follow us on Snap Chat - link opens in new tab/window"
+                  rel="noopener"
+                >
+                  <img
+                    src="<?php bloginfo('template_url') ?>/assets/img/img-export/1671218779-instagram.png"
+                    alt="Instagram Link for Allure"
+                    width="100"
+                    height="100"
+                /></a>
+              </div>
+              <div class="text-left">
+                <p>
+                  <a
+                    href="https://www.instagram.com/realdrbody/"
+                    target="_blank"
+                    aria-label="To see live procedures follow us on Snap Chat - link opens in new tab/window"
+                    rel="noopener"
+                    >For specials follow
+                    <span class="block">us on Instagram</span></a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Home Half Image Module -->
+      <div
+        class="container mod-home_half_image wow fadeInUp full-background"
+        data-wow-duration="2s"
+      >
+        <div class="row half-image media flipped">
+          <div
+            class="wow bkg-image media"
+            role="img"
+            aria-label=""
+            data-lazyload="bg"
+            data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496505-homepage10.jpg?auto=format,compress"
+          >
+            <div class="flairimage">
+              <img
+                src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496505-homepage10.jpg"
+                data-lazyload="img"
+                data-wow-delay="2s"
+                data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496505-homepage10.jpg?auto=format,compress"
+                alt="Woman with a beautiful face and neck in NYC."
+                class="img"
+              />
+            </div>
+          </div>
+          <div class="copy">
+            <div class="inner">
+              <div class="content">
+                <h2>Face</h2>
+                <h3>ENHANCE YOUR NATURAL BEAUTY</h3>
+                <p>
+                  Facial procedures require the highest level of precision and
+                  artistic vision. Dr. Heller combines over 25 years of surgical
+                  expertise with an understanding of facial harmony to deliver
+                  natural-looking results that enhance your unique features.
+                </p>
+              </div>
+              <ul class="service-item-container">
+                <li class="service-item">
+                  <a class="service-link" href="/face/neck-lift/">Neck Lift</a>
+                </li>
+                <li class="service-item">
+                  <a class="service-link" href="/face/brow-lift/">Brow Lift</a>
+                </li>
+                <li class="service-item">
+                  <a class="service-link" href="/face/facelift-nyc/"
+                    >Facelift</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a class="service-link" href="/face/mini-facelift/"
+                    >Mini Facelift</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a class="service-link" href="/face/rhinoplasty-nyc/"
+                    >Rhinoplasty</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a class="service-link" href="/face/blepharoplasty-nyc/"
+                    >Blepharoplasty/Eyelid Surgery</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a class="service-link" href="/face/cheek-lift-nyc/"
+                    >Cheek Lift</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a class="service-link" href="/face/lip-enhancement/"
+                    >Lip Enhancement</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a class="service-link" href="/face/chin-and-cheek-implants/"
+                    >Chin &amp; Cheek Implants</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a class="service-link" href="/face/earlobe-repair-nyc/"
+                    >Earlobe Repair</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a class="service-link" href="/face/ear-surgery-nyc/"
+                    >Otoplasty/Ear Surgery</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a class="service-link" href="/face/hair-treatments-nyc/"
+                    >Hair</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a class="service-link" href="/face/plasma-pen/"
+                    >Plasma Pen</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a class="service-link" href="/face/ultherapy-nyc/"
+                    >Ultherapy</a
+                  >
+                </li>
+              </ul>
+              <a href="/face/" class="btn darkflair">View All</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Two Column Module -->
+<!--       <div class="container bkg-image mod-columns_two">
+        <div class="row alt pt-100">
+          <div class="s3grid">
+            <div class="feat2 wow fadeInLeft">
+              <h2>Board Certified Surgeons</h2>
+              <h3>New York &amp; Staten Island</h3>
+            </div>
+            <div class="feat2 wow fadeInRight">
+              <p>
+                You'll always know that you're in good hands, when you entrust
+                your care to the board-certified staff at Allure
+                <em>Plastic Surgery in Staten Island</em> and NYC. Each of our
+                highly-trained plastic surgeons has vast experience with their
+                specialty, and together we form a practice that prides itself on
+                our abilities to put our patients in touch with the most
+                beautiful versions of themselves. We'll make sure you know
+                everything there is to know about your procedure, answering each
+                of your questions along the way.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- Home Half & Half Module -->
+
+      <!-- Non Invasive Section -->
+
+      <div
+        class="container mod-home_half_image wow fadeInUp"
+        data-wow-duration="2s"
+      >
+        <div class="row half-image media flipped top-aligned">
+          <div
+            class="wow bkg-image media"
+            role="img"
+            aria-label=""
+            data-lazyload="bg"
+            data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496534-homepage12.png?auto=format,compress"
+          >
+            <div class="flairimage">
+              <img
+                src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496534-homepage12.png"
+                data-lazyload="img"
+                data-wow-delay="2s"
+                data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596496534-homepage12.png?auto=format,compress"
+                alt="Beautiful Woman Wearing a Revealing top that Shows her Breasts after plastic surgery in NYC"
+                class="img"
+              />
+            </div>
+          </div>
+          <div class="copy">
+            <div class="inner">
+              <div class="content">
+                <h2>Non-Invasive</h2>
+                <h3 style="color: #4ecdc4 !important">
+                  ENHANCE WITHOUT SURGERY
+                </h3>
+                <p>
+                  There are plenty of ways to enhance your appearance without
+                  undergoing invasive surgical procedures. We offer a wide
+                  variety of non-surgical cosmetic treatments, many of which can
+                  rejuvenate and restore various parts of your body with little
+                  to no downtime.
+                </p>
+              </div>
+              <ul class="service-item-container service-item-column">
+                <li class="service-item main-service-item">
+                  <a
+                    class="service-link main-service-link"
+                    href="/non-surgical/body/"
+                    >Body</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/body/semaglutide-weight-loss-shots/"
+                    >Semaglutide Weight Loss Shots</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/body/cellfina-nyc/"
+                    >Cellfina</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/body/cool-sculpting-nyc/"
+                    >Coolsculpting</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/body/mesotherapy-nyc/"
+                    >Mesotherapy</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/body/scar-revision-nyc/"
+                    >Scar Revision</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/body/spider-vein-treatment-nyc/"
+                    >Spider Vein Treatment</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/body/stretch-mark-removal-nyc/"
+                    >Stretch Mark Removal</a
+                  >
+                </li>
+                <li class="service-item main-service-item">
+                  <a
+                    class="service-link main-service-link"
+                    href="/non-surgical/injectables/"
+                    >Injectables &amp; Fillers</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/injectables/botox-nyc/"
+                    >BOTOX</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/injectables/dermal-fillers-nyc/"
+                    >Dermal Fillers</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/injectables/fat-injections-nyc/"
+                    >Fat Injections</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/injectables/kybella-nyc/"
+                    >Kybella</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/injectables/lip-augmentation-nyc/"
+                    >Lip Augmentation</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/injectables/non-surgical-penis-enlargement-nyc/"
+                    >Non-Surgical Penis Enlargement</a
+                  >
+                </li>
+                <li class="service-item main-service-item">
+                  <a
+                    class="service-link main-service-link"
+                    href="/non-surgical/laser-treatments/"
+                    >Laser Treatments</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/laser-treatments/laser-resurfacing/"
+                    >Laser Resurfacing</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/laser-treatments/fraxel-laser-nyc/"
+                    >Fraxel Laser</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/laser-treatments/laser-hair-removal-nyc/"
+                    >Laser Hair Removal</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/laser-treatments/laser-skin-tightening-nyc/"
+                    >Laser Skin Tightening</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/laser-treatments/laser-tattoo-removal-nyc/"
+                    >Laser Tattoo Removal</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/laser-treatments/laser-wrinkle-removal-nyc/"
+                    >Laser Wrinkle Removal</a
+                  >
+                </li>
+                <li class="service-item main-service-item">
+                  <a
+                    class="service-link main-service-link"
+                    href="/non-surgical/skin/"
+                    >Skin</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/skin/j-plasma-renuvion/"
+                    >J Plasma Renuvion</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/skin/acne-scar-treatment-nyc/"
+                    >Acne Scar Treatment</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/skin/mole-removal-nyc/"
+                    >Mole Removal</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/skin/photofacial-nyc/"
+                    >Photofacial</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/skin/skin-bleaching/"
+                    >Skin Bleaching</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/skin/skin-peels-nyc/"
+                    >Skin Peels</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/non-surgical/skin/blood-infusion-microneedling/"
+                    >Blood Infusion Microneedling</a
+                  >
+                </li>
+                <li class="service-item main-service-item">
+                  <a
+                    class="service-link main-service-link"
+                    href="/face/plasma-pen/"
+                    >Plasma Pen</a
+                  >
+                </li>
+              </ul>
+              <a href="/breast/" class="btn darkflair">View All</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quote Slider Module -->
+
+      <div class="container mod-quote_slider wow fadeInUp">
+        <div class="row quote">
+          <div
+            class="inner wow fadeInUp"
+            data-wow-duration="2s"
+            data-wow-delay="1s"
+          >
+            <div class="owl-carousel">
+              <div class="item">
+                <div class="s3grid">
+                  <div class="feat2">
+                    <h3>
+                      Words cannot express just how grateful I am for the
+                      amazing job that you have done for me.
+                    </h3>
+                  </div>
+                  <div class="feat2">
+                    <p>
+                      I feel so wonderful in my clothes and very sexy! I Highly
+                      recommend you!
+                    </p>
+                  </div>
+                </div>
+                <p class="author">&mdash; M.B.</p>
+              </div>
+              <div class="item">
+                <div class="s3grid">
+                  <div class="feat2">
+                    <h3>Absolutely wonderful, trustworthy staff.</h3>
+                  </div>
+                  <div class="feat2">
+                    <p>
+                      And Dr. Heller himself is amazing. I would not go to
+                      anyone else or trust anyone else. He’s amazing and so is
+                      his staff. Love them!
+                    </p>
+                  </div>
+                </div>
+                <p class="author">&mdash; J.R.</p>
+              </div>
+              <div class="item">
+                <div class="s3grid">
+                  <div class="feat2">
+                    <h3>I’m Sexy and I Owe It All Dr. Heller!</h3>
+                  </div>
+                  <div class="feat2">
+                    <p>
+                      I absolutely love my Plastic Surgeon! Hands down the best
+                      I’ve been to.
+                    </p>
+                  </div>
+                </div>
+                <p class="author">&mdash; B.B.</p>
+              </div>
+              <div class="item">
+                <div class="s3grid">
+                  <div class="feat2">
+                    <h3>
+                      I've never felt more comfortable with a doctor and more
+                      beautiful since my surgery.
+                    </h3>
+                  </div>
+                  <div class="feat2">
+                    <p>
+                      Dr. Heller is amazing. I had a mini lift and a breast
+                      augmentation from Dr. Heller, and everyone should know
+                      he’s amazing. If I could give more than five stars, I
+                      would. He’s a miracle worker! Very talented, respectful,
+                      smart, and professional.
+                    </p>
+                  </div>
+                </div>
+                <p class="author">&mdash; A.D.</p>
+              </div>
+              <div class="item">
+                <div class="s3grid">
+                  <div class="feat2">
+                    <h3>
+                      Dr. Heller is a very professional and knowledgeable
+                      surgeon.
+                    </h3>
+                  </div>
+                  <div class="feat2">
+                    <p>
+                      So happy with my results on my Breast Augmentation and
+                      would highly recommend to everyone.
+                    </p>
+                  </div>
+                </div>
+                <p class="author">&mdash; K.B.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Men Section -->
+      <div
+        class="container mod-home_half_image wow fadeInUp full-background"
+        data-wow-duration="2s"
+      >
+        <div class="row half-image media flipped">
+          <div
+            class="wow bkg-image media"
+            role="img"
+            aria-label=""
+            data-lazyload="bg"
+            data-lazyload-src="https://www.newyorkplasticsurgeryallure.com/wp-content/uploads/2025/09/allure-men-1-1.webp"
+          >
+            <div class="flairimage">
+              <img
+                src="https://www.newyorkplasticsurgeryallure.com/wp-content/uploads/2025/09/allure-men-1-1.webp"
+                data-lazyload="img"
+                data-wow-delay="2s"
+                data-lazyload-src="https://www.newyorkplasticsurgeryallure.com/wp-content/uploads/2025/09/allure-men-1-1.webp"
+                alt="Men."
+                class="img"
+              />
+            </div>
+          </div>
+          <div class="copy">
+            <div class="inner">
+              <div class="content">
+                <h2>Men</h2>
+                <h3>YOUR MASCULINITY IS IMPORTANT TO US</h3>
+                <p>
+                  Your masculinity is as important to us as it is to you, which
+                  is why we offer a comprehensive range of procedures designed
+                  to bring out the best in your body. Whether you're looking to
+                  enhance facial features, achieve increased muscle definition,
+                  or address intimate concerns.
+                </p>
+              </div>
+              <ul class="service-item-container service-item-column">
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/men/gynecomastia-male-breast-reduction-nyc/"
+                    >Male Breast Reduction / Gynecomastia</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a class="service-link" href="/body/abdominal-etching-nyc/"
+                    >Abdominal Etching</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a class="service-link" href="/men/male-liposuction/"
+                    >Male Liposuction</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/body/body-implants-nyc/"
+                    >Bodybuilder Implants (Pec, Bicep, Calf)</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a
+                    class="service-link"
+                    href="/men/male-enhancements/dermal-fillers/"
+                    >Penis Enlargement (Length and Girth)</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a class="service-link" href="/men/male-enhancements/adult-circumcision/">Circumcision</a>
+                </li>
+                <li class="service-item">
+                  <a class="service-link" href="/men/male-enhancements/p-shot/"
+                    >P-Shot (Platelet Rich Plasma)</a
+                  >
+                </li>
+                <li class="service-item">
+                  <a class="service-link" href="/men/male-enhancements/scrotal-lift/"
+                    >Scrotal Lifts and Web Release</a
+                  >
+                </li>
+              </ul>
+              <a href="/men/" class="btn darkflair">View All</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Home Half & Half Module -->
+      <div
+        class="container mod-home_three_section wow fadeInUp"
+        data-wow-duration="2s"
+      >
+        <div class="row">
+          <div class="item wow fadeInUp" data-wow-duration="2s">
+            <img
+              src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596565724-homepage13a.jpg"
+              data-lazyload="img"
+              data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596565724-homepage13a.jpg?auto=format,compress"
+              alt="Rashida Jones in side-by-side comparison before and after photos. Her face looks different indicating that she possibly had plastic surgery."
+              class="bg"
+            />
+            <div class="inner">
+              <h2>Media</h2>
+              <a href="/about/news-and-media/" class="btn">View Media</a>
+            </div>
+          </div>
+          <div
+            class="item wow fadeInUp"
+            data-wow-duration="2s"
+            data-wow-delay=".5s"
+          >
+            <img
+              src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596565890-homepage14a.jpg"
+              data-lazyload="img"
+              data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596565890-homepage14a.jpg?auto=format,compress"
+              alt="Beautiful woman with large breasts, wearing a bikini on the beach."
+              class="bg"
+            />
+            <div class="inner">
+              <h2>Blog</h2>
+              <a href="/about/blog/" class="btn">View Blog</a>
+            </div>
+          </div>
+          <div
+            class="item wow fadeInUp"
+            data-wow-duration="2s"
+            data-wow-delay="1s"
+          >
+            <img
+              src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596565908-homepage15a.jpg"
+              data-lazyload="img"
+              data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596565908-homepage15a.jpg?auto=format,compress"
+              alt="Beautiful woman in a bathing suit by a pool on a rooftop in NYC."
+              class="bg"
+            />
+            <div class="inner">
+              <h2>Finance</h2>
+              <a href="/about/financing/" class="btn">View Finance</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Custom Location Module -->
+      <div
+        class="container mod-custom_location bkg-image wow fadeInUp"
+        data-wow-duration="2s"
+        data-lazyload="bg"
+        data-lazyload-src="<?php bloginfo('template_url') ?>/assets/img/img-export/1596498736-homepage16-location.jpg"
+      >
+        <div class="row">
+          <div class="item wow fadeInUp" data-wow-duration="2s">
+            <h3>New York, NY</h3>
+            <div class="address">
+              <p>
+                150 E 61st St,<span class="block">Manhattan, NY, 10065</span>
+              </p>
+            </div>
+            <a href="/about/our-facility/" class="btn">View Facility</a>
+          </div>
+          <div
+            class="item wow fadeInUp"
+            data-wow-duration="2s"
+            data-wow-delay=".5s"
+          >
+            <h3>Staten Island, NY</h3>
+            <div class="address">
+              <p>
+                1424 Richmond Ave,<span class="block"
+                  >Staten Island, NY, 10314</span
+                >
+              </p>
+            </div>
+            <a href="/about/our-facility/" class="btn">View Facility</a>
+          </div>
+          <div
+            class="item wow fadeInUp"
+            data-wow-duration="2s"
+            data-wow-delay=".5s"
+          >
+            <h3>Edison, <br />NJ</h3>
+            <div class="address">
+              <p>
+                1150 Amboy Ave.
+                <span class="block">Edison, New Jersey, 08837</span>
+              </p>
+            </div>
+            <a href="/about/our-facility/" class="btn">View Facility</a>
+          </div>
+        </div>
+      </div>
+      <!-- /Page Layout -->
+    </main>
+<?php
+get_footer();
