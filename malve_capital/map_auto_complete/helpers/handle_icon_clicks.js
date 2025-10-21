@@ -19,17 +19,17 @@ async function handle_icons_click(e) {
     }
     return;
   } else {
-    const street_adress_input = await select_element_by_promise(
-      '.hl_contact-details-left input[name="contact.property_address"]'
+    const property_address_el = await select_element_by_promise(
+      "#record-details-lhs  #hlD1NmCkGSCTGUEMIfRU-form-item .hr-input__text-content"
     );
     // const city_input = await select_element_by_promise(
-    //   ".hl_contact-details-left input[name='contact.city']"
+    //   "# input[name='contact.city']"
     // );
     // const state_input = await select_element_by_promise(
-    //   ".hl_contact-details-left input[name='contact.state']"
+    //   "# input[name='contact.state']"
     // );
     // const postal_code_input = await select_element_by_promise(
-    //   ".hl_contact-details-left input[name='contact.postal_code']"
+    //   "# input[name='contact.postal_code']"
     // );
     // if (
     //   !street_adress_input ||
@@ -43,12 +43,12 @@ async function handle_icons_click(e) {
 
     if (e.target.parentElement.id.trim() === "zillow_button") {
       const z_link =
-        "https://www.zillow.com/homes/" + street_adress_input.value;
+        "https://www.zillow.com/homes/" + property_address_el.textContent.trim();
       window.open(z_link, "_blank");
     }
     if (e.target.parentElement.id.trim() === "maps_button") {
       const maps_link =
-        "https://google.com/maps/search/" + street_adress_input.value;
+        "https://google.com/maps/search/" + property_address_el.textContent.trim();
       window.open(maps_link, "_blank");
     }
   }

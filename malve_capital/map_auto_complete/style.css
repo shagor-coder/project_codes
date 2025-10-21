@@ -1,3 +1,31 @@
 .pac-container {
   z-index: 9999 !important;
 }
+
+.custom_google_input {
+  opacity: 1;
+  position: relative;
+  bottom: 0px;
+  z-index: 1;
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: #fff;
+  color: #101828 !important;
+  font-family: "Inter var", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+}
+
+.custom_google_input:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+.custom_google_input::placeholder {
+  display: none;
+  color: transparent;
+}

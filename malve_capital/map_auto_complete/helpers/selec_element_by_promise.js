@@ -1,8 +1,9 @@
 function select_element_by_promise(selectorClass = "", type = "") {
   return new Promise((res, rej) => {
     let element = null;
-    let timeout;
-    timeout = setInterval(() => {
+    let intervalId = null;
+    let timeoutId = null;
+    intervalId = setInterval(() => {
       if (type === "multi") {
         element = [...document.querySelectorAll(selectorClass)];
       } else {
@@ -11,13 +12,15 @@ function select_element_by_promise(selectorClass = "", type = "") {
 
       if (type === "multi" && !element.length) return;
       if (!element) return;
-      clearInterval(timeout);
+      clearInterval(intervalId);
+      clearTimeout(timeoutId);
       res(element);
     }, 200);
 
-    setTimeout(() => {
+   timeoutId = setTimeout(() => {
       if (!element) {
-        clearInterval(timeout);
+        clearTimeout(timeoutId)
+        clearInterval(intervalId);
         res(false);
       }
     }, 20000);
