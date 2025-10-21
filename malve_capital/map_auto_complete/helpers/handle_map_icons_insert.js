@@ -5,23 +5,22 @@ import {
 import { google_maps_icons_container } from "./create_html";
 import select_element_by_promise from "./selec_element_by_promise";
 
+export const google_input = document.createElement("input");
+google_input.classList = `custom_google_input`;
+
 export async function handle_maps_icons_insert_for_contact() {
-  const stret_adress_con = await select_element_by_promise(
-    '.hl_contact-details-left [id="contact.property_address"]'
+  const street_adress_con = await select_element_by_promise(
+    "#record-details-lhs #hlD1NmCkGSCTGUEMIfRU-form-item"
   );
-  if (!stret_adress_con) return;
-  stret_adress_con.style = `
+  if (!street_adress_con) return;
+  street_adress_con.style = `
 	  position: relative !important;
 	`;
 
-  const street_adress_input = await select_element_by_promise(
-    '.hl_contact-details-left input[name="contact.property_address"]'
-  );
+  street_adress_con.append(google_input);
 
-  if (!street_adress_input) return;
-
-  await add_search_auto_complete_for_contacts(street_adress_input);
-  stret_adress_con.append(google_maps_icons_container);
+  await add_search_auto_complete_for_contacts(google_input, street_adress_con);
+  street_adress_con.append(google_maps_icons_container);
 }
 
 export async function handle_maps_icons_insert_for_opportunities() {

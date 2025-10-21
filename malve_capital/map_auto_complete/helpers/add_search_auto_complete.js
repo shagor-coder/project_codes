@@ -1,7 +1,33 @@
 import handle_auto_save, {
   handle_auto_save_for_opportunity,
 } from "./handle_auto_save";
+import { google_input } from "./handle_map_icons_insert";
 import update_adress_inputs from "./update_adress_input";
+
+const mutation_observer = new MutationObserver(mutationCallBackFn(500));
+let userInput = null;
+
+function mutationCallBackFn(timeout) {
+  let timeoutId = null;
+
+  return (mutationList) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      const isValueMutation = mutationList.find(
+        (muL) => muL.attributeName === "value"
+      );
+
+      if (!isValueMutation) return console.log("Not Input Valuation!");
+
+      userInput = isValueMutation.target;
+      update_adress_inputs(google_input, isValueMutation?.target.value.trim());
+
+      google_input.style = `display: block;`;
+
+      google_input.focus();
+    }, timeout);
+  };
+}
 
 function initiate_auto_complete(input_el) {
   const autocomplete = new google.maps.places.Autocomplete(input_el, {
@@ -14,12 +40,19 @@ function initiate_auto_complete(input_el) {
 }
 
 export async function add_search_auto_complete_for_contacts(
-  street_adress_input
+  google_input,
+  street_adress_con
 ) {
   // const { street_adress_input, city_input, state_input, postal_code_input } =
   //   adress_inputs;
 
-  const autocomplete = initiate_auto_complete(street_adress_input);
+  const autocomplete = initiate_auto_complete(google_input);
+
+  mutation_observer.observe(street_adress_con, {
+    attributes: true,
+    childList: true,
+    subtree: true,
+  });
 
   autocomplete.addListener("place_changed", async () => {
     const places = autocomplete.getPlace();
@@ -52,9 +85,13 @@ export async function add_search_auto_complete_for_contacts(
       postal_code_obj ? postal_code_obj.short_name : ""
     }`;
 
-    update_adress_inputs(street_adress_input, full_adress);
+    update_adress_inputs(google_input, full_adress);
+    update_adress_inputs(userInput, full_adress);
+
     const event = new Event("blur");
-    street_adress_input.dispatchEvent(event);
+    google_input.dispatchEvent(event);
+
+    google_input.style = `display: none;`;
 
     await handle_auto_save();
   });
